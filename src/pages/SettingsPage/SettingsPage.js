@@ -1,8 +1,15 @@
 import React from "react";
 
 import { Switch, Route } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
-import { Menu, BottomBarWithIcons, PageInfo, IconsItem } from "components";
+import {
+  Menu,
+  BottomBarWithIcons,
+  PageInfo,
+  IconsItem,
+  IconsChildren,
+} from "components";
 
 import { MainPageWrapper } from "assets/StyledComponents/MainPageWrapper.css";
 
@@ -22,7 +29,39 @@ import {
   search_blackImg,
 } from "pictures/ParentCategoryIcons";
 
+import { setCategory, selectCategory } from "features/category/categorySlice";
+
 function SettingsPage() {
+  const dispatch = useDispatch();
+  const category = useSelector(selectCategory);
+
+  const groceriesChildrens = (
+    <>
+      <IconsChildren text="- vegetables" />
+      <IconsChildren text="- fruits" />
+      <IconsChildren text="- pastries" />
+      <IconsChildren text="- dairy" />
+    </>
+  );
+
+  const productsChildrens = (
+    <>
+      <IconsChildren text="- product cat 1" />
+      <IconsChildren text="- product cat 2" />
+      <IconsChildren text="- product cat 3" />
+      <IconsChildren text="- product cat 4" />
+    </>
+  );
+
+  const dishesChildrens = (
+    <>
+      <IconsChildren text="- dishes cat 1" />
+      <IconsChildren text="- dishes cat 2" />
+      <IconsChildren text="- dishes cat 3" />
+      <IconsChildren text="- dishes cat 4" />
+    </>
+  );
+
   return (
     <>
       <Menu
@@ -44,8 +83,8 @@ function SettingsPage() {
           <Route exact path="/settings/lists">
             /settings/lists
           </Route>
-          <Route exact path="/settings/lists">
-            /settings/lists
+          <Route exact path="/settings/history">
+            /settings/history
           </Route>
           <Route exact path="/settings/search">
             /settings/search
@@ -54,18 +93,24 @@ function SettingsPage() {
             <IconsItem
               image={groceries_coloredImg}
               text="groceries"
-              to="/settings/groceries"
+              handle={() => dispatch(setCategory("groceries"))}
             />
+            {category === "groceries" && groceriesChildrens}
+
             <IconsItem
               image={products_coloredImg}
               text="products"
-              to="/settings/products"
+              handle={() => dispatch(setCategory("products"))}
             />
+            {category === "products" && productsChildrens}
+
             <IconsItem
               image={dishes_coloredImg}
               text="dishes"
-              to="/settings/dishes"
+              handle={() => dispatch(setCategory("dishes"))}
             />
+            {category === "dishes" && dishesChildrens}
+
             <IconsItem
               image={lists_coloredImg}
               text="lists"
@@ -74,7 +119,7 @@ function SettingsPage() {
             <IconsItem
               image={history_coloredImg}
               text="history"
-              to="/settings/lists"
+              to="/settings/history"
             />
             <IconsItem
               image={search_coloredImg}

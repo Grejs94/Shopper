@@ -13,6 +13,7 @@ import {
   products_coloredImg,
   dishes_coloredImg,
   lists_coloredImg,
+  history_coloredImg,
 } from "pictures/ParentCategoryIcons";
 
 function ShopPage() {
@@ -21,8 +22,8 @@ function ShopPage() {
       <Menu iconElementsList={IconElementsShopItemsPage} activeIcon={"shop"} />
       <PageInfo description={"Shop"} />
       <Switch>
-        <Route exact path="/shop">
-          <MainPageWrapper>
+        <MainPageWrapper>
+          <Route exact path="/shop">
             <IconsItem
               image={groceries_coloredImg}
               text="groceries"
@@ -31,7 +32,7 @@ function ShopPage() {
             <IconsItem
               image={products_coloredImg}
               text="products"
-              to="/shop/groceries"
+              to="/shop/products"
             />
             <IconsItem
               image={dishes_coloredImg}
@@ -39,20 +40,28 @@ function ShopPage() {
               to="/shop/dishes"
             />
             <IconsItem image={lists_coloredImg} text="lists" to="/shop/lists" />
-          </MainPageWrapper>
-        </Route>
-        <Route exact path="/shop/groceries">
-          <MainPageWrapper>shop/groceries</MainPageWrapper>
-        </Route>
-        <Route exact path="/shop/products">
-          <MainPageWrapper>shop/products</MainPageWrapper>
-        </Route>
-        <Route exact path="/shop/dishes">
-          <MainPageWrapper>shop/dishes</MainPageWrapper>
-        </Route>
-        <Route exact path="/shop/lists">
-          <MainPageWrapper>shop/lists</MainPageWrapper>
-        </Route>
+            <IconsItem
+              image={history_coloredImg}
+              text="history"
+              to="/settings/history"
+            />
+          </Route>
+          <Route exact path="/shop/groceries">
+            shop/groceries
+          </Route>
+          <Route exact path="/shop/products">
+            shop/products
+          </Route>
+          <Route exact path="/shop/dishes">
+            shop/dishes
+          </Route>
+          <Route exact path="/shop/lists">
+            shop/lists
+          </Route>
+          <Route exact path="/shop/history">
+            shop/lists
+          </Route>
+        </MainPageWrapper>
       </Switch>
 
       <BottomBarWithIcons />

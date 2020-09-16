@@ -1,0 +1,10 @@
+export { default as basket_blackImg } from "./basket_black.png";
+export { default as basket_coloredImg } from "./basket_colored.png";
+export { default as route_blackImg } from "./route_black.png";
+export { default as route_coloredImg } from "./route_colored.png";
+export { default as shopHelper_blackImg } from "./shopHelper_black.png";
+export { default as shopHelper_coloredImg } from "./shopHelper_colored.png";
+export { default as settings_blackImg } from "./settings_black.png";
+export { default as settings_coloredImg } from "./settings_colored.png";
+export { default as shopItems_blackImg } from "./shopItems_black.png";
+export { default as shopItems_coloredImg } from "./shopItems_colored.png";

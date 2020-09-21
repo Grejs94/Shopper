@@ -6,8 +6,8 @@ import API from "hooks/API";
 
 import { Link } from "react-router-dom";
 
-function DishesChildren({ to }) {
-  const { isError, isLoading, isSuccess, data } = API.HookDishesCategory();
+function DishesChildren({ to, scrollInto }) {
+  const { isError, isLoading, isSuccess, data } = API.UseDishesCategory();
 
   return (
     <>
@@ -19,7 +19,7 @@ function DishesChildren({ to }) {
         ? data.map((category) => (
             <ItemsContainer key={category.name}>
               <Link style={{ textDecoration: "none", color: "white" }} to={to}>
-                <Item>
+                <Item onClick={scrollInto}>
                   <ItemText>- {category.name}</ItemText>
                 </Item>
               </Link>

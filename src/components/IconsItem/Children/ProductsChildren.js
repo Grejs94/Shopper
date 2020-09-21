@@ -6,7 +6,7 @@ import API from "hooks/API";
 
 import { Link } from "react-router-dom";
 
-function ProductsChildren({ to }) {
+function ProductsChildren({ to, scrollInto }) {
   const { isError, isLoading, isSuccess, data } = API.useCategory();
 
   const CategoriesFiltred =
@@ -22,7 +22,7 @@ function ProductsChildren({ to }) {
         ? CategoriesFiltred.map((category) => (
             <ItemsContainer key={category.name}>
               <Link style={{ textDecoration: "none", color: "white" }} to={to}>
-                <Item>
+                <Item onClick={scrollInto}>
                   <ItemText>- {category.name}</ItemText>
                 </Item>
               </Link>

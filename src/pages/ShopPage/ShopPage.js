@@ -34,8 +34,16 @@ import {
 
 import { selectCategory } from "features/category/categorySlice";
 
+const goto = (item) => {
+  setTimeout(() => {
+    document.querySelector(`#${item}`).scrollIntoView({ inline: "center" });
+    return null;
+  }, 1000);
+};
+
 function ShopPage() {
   const category = useSelector(selectCategory);
+
   return (
     <>
       <Menu iconElementsList={IconElementsShopItemsPage} activeIcon={"shop"} />
@@ -49,16 +57,23 @@ function ShopPage() {
             )}
             <IconsItem image={products_coloredImg} text="products" />
             {category === "products" && (
-              <ProductsChildren to="/shop/elements_page" />
+              <ProductsChildren
+                to="/shop/elements_page"
+                scrollInto={() => goto("Products")}
+              />
             )}
             <IconsItem image={dishes_coloredImg} text="dishes" />
             {category === "dishes" && (
-              <DishesChildren to="/shop/elements_page" />
+              <DishesChildren
+                to="/shop/elements_page"
+                scrollInto={() => goto("Dishes")}
+              />
             )}
             <IconsItemLink
               image={lists_coloredImg}
               text="lists"
               to="/shop/elements_page"
+              scrollInto={() => goto("Dishes")}
             />
             <IconsItemLink
               image={history_coloredImg}

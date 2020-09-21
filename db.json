@@ -669,13 +669,13 @@
   "dishes": [
     {
       "id": "1",
-      "dishesCategoryId": "2",
+      "categoryId": "2",
       "name": "rosół",
       "itemsIncluded": [{ "itemsId": "4", "value": "2" }]
     },
     {
-      "id": "1",
-      "dishesCategoryId": "2",
+      "id": "2",
+      "categoryId": "2",
       "name": "grzybowa",
       "items": [{ "itemsId": "6", "value": "1" }]
     }
@@ -709,6 +709,7 @@
   "savedLists": [
     {
       "id": "1",
+      "categoryId": "1",
       "name": "example list",
       "items": [
         { "itemsId": "1", "value": "1" },

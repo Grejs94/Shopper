@@ -10,9 +10,7 @@ import { IconElementsShopHelperPage } from "assets";
 
 import {
   lastSearch_coloredImg,
-  lastSearch_blackImg,
   search_coloredImg,
-  search_blackImg,
 } from "pictures/ParentCategoryIcons";
 
 function HelperPage() {

@@ -1,14 +1,8 @@
 import React from "react";
 
-import { useQuery } from "react-query";
-
-import { ListOfSquares } from "components";
-
 import {
-  Wrapper,
   SquareContainer,
   Square,
-  Span,
   Content,
   ParentTitle,
   CategoryTitle,
@@ -20,30 +14,33 @@ function ElementsPage() {
   // { isError, isLoading, isSuccess, data }
   const categories = API.useCategory();
   const items = API.useItems();
-  const ParentCategories = API.useParentCategory();
+  const dishesCategories = API.UseDishesCategory();
+  const dishes = API.UseDishes();
+  const savedList = API.useSavedList();
 
-  if (categories.isError || items.isError || ParentCategories.isError) {
+  if (
+    categories.isError ||
+    items.isError ||
+    dishesCategories.isError ||
+    dishes.isError ||
+    savedList.isError
+  ) {
     return "Fetching data error...";
   } else if (
     categories.isLoading ||
     items.isLoading ||
-    ParentCategories.isLoading
+    dishesCategories.isLoading ||
+    dishes.isLoading ||
+    savedList.isLoading
   ) {
     return "Loading data...";
   } else if (
     categories.isSuccess &&
     items.isSuccess &&
-    ParentCategories.isSuccess
+    dishesCategories.isSuccess &&
+    dishes.isSuccess &&
+    savedList.isSuccess
   ) {
-    const filtredParentCategories = ParentCategories.data.filter(
-      (parentcategory) => parentcategory.id !== "4"
-    );
-
-    // console.log(filtredParentCategories);
-    // console.log(ParentCategories.data);
-    // console.log(items.data);
-    // console.log(category.data);
-
     const foodCategories = categories.data.filter(
       (category) => category.parentCategoryId === "1"
     );
@@ -52,28 +49,39 @@ function ElementsPage() {
       (category) => category.parentCategoryId === "2"
     );
 
-    // console.log(foodCategories);
-    // console.log(ProductsCategories);
-
-    const CreateCategoriesList = ({ ParentsTitle, FiltredCategories }) => {
+    const CreateSquereItemsList = ({ ItemsList }) => {
       return (
-        <div id={ParentsTitle}>
-          <ParentTitle>{ParentsTitle}</ParentTitle>
-          {FiltredCategories.map((category) => {
-            const categoryItems = items.data.filter(
+        <SquareContainer>
+          {ItemsList.map((item) => (
+            <Square key={item.id}>
+              <Content>{item.name}</Content>
+            </Square>
+          ))}
+        </SquareContainer>
+      );
+    };
+
+    const CreateCategoriesList = ({
+      parentsTitle,
+      filtredCategories,
+      itemsList,
+    }) => {
+      return (
+        <div id={parentsTitle}>
+          <ParentTitle>{parentsTitle}</ParentTitle>
+          {filtredCategories.map((category) => {
+            const ItemsList = itemsList.data.filter(
               (item) => item.categoryId === category.id
             );
+
+            if (ItemsList.length === 0) {
+              return;
+            }
 
             return (
               <div key={category.name}>
                 <CategoryTitle>{category.name}</CategoryTitle>
-                <SquareContainer>
-                  {categoryItems.map((item) => (
-                    <Square key={item.id}>
-                      <Content>{item.name}</Content>
-                    </Square>
-                  ))}
-                </SquareContainer>
+                <CreateSquereItemsList ItemsList={ItemsList} />
               </div>
             );
           })}
@@ -81,17 +89,32 @@ function ElementsPage() {
       );
     };
 
-    const DishesList = "";
-
     return (
       <div>
         <CreateCategoriesList
-          ParentsTitle="Food"
-          FiltredCategories={foodCategories}
+          parentsTitle="Food"
+          filtredCategories={foodCategories}
+          itemsList={items}
         />
         <CreateCategoriesList
-          ParentsTitle="Products"
-          FiltredCategories={ProductsCategories}
+          parentsTitle="Products"
+          filtredCategories={ProductsCategories}
+          itemsList={items}
+        />
+        <CreateCategoriesList
+          parentsTitle="Dishes"
+          filtredCategories={dishesCategories.data}
+          itemsList={dishes}
+        />
+        <CreateCategoriesList
+          parentsTitle="SavedList"
+          filtredCategories={[
+            {
+              id: "1",
+              name: "All",
+            },
+          ]}
+          itemsList={savedList}
         />
       </div>
     );

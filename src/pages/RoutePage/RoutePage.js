@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Menu, BottomBarWithIcons, IconsItemLink } from "components";
+import { Menu, BottomBarWithIcons } from "components";
 
 import { MainPageWrapper } from "assets/StyledComponents/MainPageWrapper.css";
 
@@ -10,9 +10,7 @@ function RoutePage() {
   return (
     <>
       <Menu iconElementsList={IconElementsRoutePage} activeIcon={"route"} />
-      <MainPageWrapper>
-        <IconsItemLink />
-      </MainPageWrapper>
+      <MainPageWrapper></MainPageWrapper>
       <BottomBarWithIcons />
     </>
   );

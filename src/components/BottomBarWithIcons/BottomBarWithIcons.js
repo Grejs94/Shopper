@@ -13,22 +13,10 @@ import {
 } from "./BottomBarWithIcons.css";
 
 import {
-  add_blackImg,
-  add_coloredImg,
   edit_blackImg,
   edit_coloredImg,
-  remove_blackImg,
-  remove_coloredImg,
-  repeat_blackImg,
-  repeat_coloredImg,
   return_blackImg,
   return_coloredImg,
-  shop_blackImg,
-  shop_coloredImg,
-  sort_blackImg,
-  sort_coloredImg,
-  list_blackImg,
-  list_coloredImg,
 } from "pictures";
 
 import {

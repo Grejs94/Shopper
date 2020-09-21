@@ -1,7 +1,5 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div``;
-
 export const SquareContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
@@ -43,10 +41,5 @@ export const ParentTitle = styled.p`
 export const CategoryTitle = styled.p`
   font-size: 22px;
   text-align: center;
-  margin: 20px 0;
-`;
-
-export const Span = styled.span`
-  font-size: 18px;
   margin: 20px 0;
 `;

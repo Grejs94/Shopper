@@ -4,6 +4,15 @@ import {
   useItems,
 } from "hooks/API/HookCategory";
 
-import { HookDishesCategory } from "hooks/API/HookDishesCategory";
+import { UseDishesCategory, UseDishes } from "hooks/API/DishesHooks";
 
-export default { useParentCategory, useCategory, useItems, HookDishesCategory };
+import { useSavedList } from "./SavedListsHooks";
+
+export default {
+  useParentCategory,
+  useCategory,
+  useItems,
+  UseDishesCategory,
+  UseDishes,
+  useSavedList,
+};

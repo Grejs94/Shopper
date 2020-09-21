@@ -133,27 +133,536 @@
       "name": "sweets"
     },
     {
-      "parentCategoryId": "2",
+      "parentCategoryId": "1",
       "id": "11",
-      "name": "home products"
+      "name": "from Service"
     },
     {
       "parentCategoryId": "2",
-      "id": "12",
-      "name": "chigiena"
+      "id": "30",
+      "name": "hygiene and care"
+    },
+    {
+      "parentCategoryId": "2",
+      "id": "31",
+      "name": "cleaning products"
     }
   ],
   "items": [
     {
       "id": "1",
-      "name": "papryka",
+      "name": "pepper",
       "categoryId": "1",
       "showInShop": true
     },
     {
       "id": "2",
-      "name": "salat",
+      "name": "tomato",
       "categoryId": "1",
+      "showInShop": true
+    },
+    {
+      "id": "3",
+      "name": "potato",
+      "categoryId": "1",
+      "showInShop": true
+    },
+    {
+      "id": "4",
+      "name": "onion",
+      "categoryId": "1",
+      "showInShop": true
+    },
+    {
+      "id": "5",
+      "name": "lettuce",
+      "categoryId": "1",
+      "showInShop": true
+    },
+    {
+      "id": "6",
+      "name": "cucumber",
+      "categoryId": "1",
+      "showInShop": true
+    },
+    {
+      "id": "7",
+      "name": "courgette",
+      "categoryId": "1",
+      "showInShop": true
+    },
+    {
+      "id": "50",
+      "name": "grapa",
+      "categoryId": "2",
+      "showInShop": true
+    },
+    {
+      "id": "51",
+      "name": "banana",
+      "categoryId": "2",
+      "showInShop": true
+    },
+    {
+      "id": "52",
+      "name": "Apple",
+      "categoryId": "2",
+      "showInShop": true
+    },
+    {
+      "id": "53",
+      "name": "orange",
+      "categoryId": "2",
+      "showInShop": true
+    },
+    {
+      "id": "54",
+      "name": "watermelon",
+      "categoryId": "2",
+      "showInShop": true
+    },
+    {
+      "id": "100",
+      "name": "eggs",
+      "categoryId": "3",
+      "showInShop": true
+    },
+    {
+      "id": "101",
+      "name": "cheese",
+      "categoryId": "3",
+      "showInShop": true
+    },
+    {
+      "id": "102",
+      "name": "milk",
+      "categoryId": "3",
+      "showInShop": true
+    },
+    {
+      "id": "103",
+      "name": "yoghurt",
+      "categoryId": "3",
+      "showInShop": true
+    },
+    {
+      "id": "150",
+      "name": "ham",
+      "categoryId": "4",
+      "showInShop": true
+    },
+    {
+      "id": "151",
+      "name": "sausages",
+      "categoryId": "4",
+      "showInShop": true
+    },
+    {
+      "id": "152",
+      "name": "chicken fillet",
+      "categoryId": "4",
+      "showInShop": true
+    },
+    {
+      "id": "200",
+      "name": "still water",
+      "categoryId": "5",
+      "showInShop": true
+    },
+    {
+      "id": "201",
+      "name": "sparkling water",
+      "categoryId": "5",
+      "showInShop": true
+    },
+    {
+      "id": "202",
+      "name": "juice",
+      "categoryId": "5",
+      "showInShop": true
+    },
+    {
+      "id": "203",
+      "name": "beer",
+      "categoryId": "5",
+      "showInShop": true
+    },
+    {
+      "id": "204",
+      "name": "wine",
+      "categoryId": "5",
+      "showInShop": true
+    },
+    {
+      "id": "205",
+      "name": "whisky",
+      "categoryId": "5",
+      "showInShop": true
+    },
+    {
+      "id": "206",
+      "name": "vodka",
+      "categoryId": "5",
+      "showInShop": true
+    },
+    {
+      "id": "207",
+      "name": "coca cola",
+      "categoryId": "5",
+      "showInShop": true
+    },
+    {
+      "id": "208",
+      "name": "sprite",
+      "categoryId": "5",
+      "showInShop": true
+    },
+    {
+      "id": "250",
+      "name": "pizza",
+      "categoryId": "6",
+      "showInShop": true
+    },
+    {
+      "id": "251",
+      "name": "frites",
+      "categoryId": "6",
+      "showInShop": true
+    },
+    {
+      "id": "252",
+      "name": "prawns",
+      "categoryId": "6",
+      "showInShop": true
+    },
+    {
+      "id": "253",
+      "name": "seafood",
+      "categoryId": "6",
+      "showInShop": true
+    },
+    {
+      "id": "254",
+      "name": "fish sticks",
+      "categoryId": "6",
+      "showInShop": true
+    },
+    {
+      "id": "300",
+      "name": "bread",
+      "categoryId": "7",
+      "showInShop": true
+    },
+    {
+      "id": "301",
+      "name": "rolls",
+      "categoryId": "7",
+      "showInShop": true
+    },
+    {
+      "id": "302",
+      "name": "baguette",
+      "categoryId": "7",
+      "showInShop": true
+    },
+    {
+      "id": "303",
+      "name": "donut",
+      "categoryId": "7",
+      "showInShop": true
+    },
+    {
+      "id": "350",
+      "name": "kucharek",
+      "categoryId": "8",
+      "showInShop": true
+    },
+    {
+      "id": "350",
+      "name": "pepper",
+      "categoryId": "8",
+      "showInShop": true
+    },
+    {
+      "id": "350",
+      "name": "salt",
+      "categoryId": "8",
+      "showInShop": true
+    },
+    {
+      "id": "350",
+      "name": "sugar",
+      "categoryId": "8",
+      "showInShop": true
+    },
+    {
+      "id": "350",
+      "name": "ground paprika",
+      "categoryId": "8",
+      "showInShop": true
+    },
+    {
+      "id": "400",
+      "name": "rice",
+      "categoryId": "9",
+      "showInShop": true
+    },
+    {
+      "id": "401",
+      "name": "breakfast cereals",
+      "categoryId": "9",
+      "showInShop": true
+    },
+    {
+      "id": "402",
+      "name": "Oatmeal",
+      "categoryId": "9",
+      "showInShop": true
+    },
+    {
+      "id": "403",
+      "name": "bread crumbs",
+      "categoryId": "9",
+      "showInShop": true
+    },
+    {
+      "id": "450",
+      "name": "chocolate",
+      "categoryId": "10",
+      "showInShop": true
+    },
+    {
+      "id": "451",
+      "name": "chips",
+      "categoryId": "10",
+      "showInShop": true
+    },
+    {
+      "id": "452",
+      "name": "breadsticks",
+      "categoryId": "10",
+      "showInShop": true
+    },
+    {
+      "id": "453",
+      "name": "Peanuts",
+      "categoryId": "10",
+      "showInShop": true
+    },
+    {
+      "id": "500",
+      "name": "ham S",
+      "categoryId": "11",
+      "showInShop": true
+    },
+    {
+      "id": "501",
+      "name": "cheese S",
+      "categoryId": "11",
+      "showInShop": true
+    },
+    {
+      "id": "502",
+      "name": "Salads S",
+      "categoryId": "11",
+      "showInShop": true
+    },
+    {
+      "id": "503",
+      "name": "chicken fillet S",
+      "categoryId": "11",
+      "showInShop": true
+    },
+    {
+      "id": "504",
+      "name": "chicken wings S",
+      "categoryId": "11",
+      "showInShop": true
+    },
+    {
+      "id": "505",
+      "name": "turkey neck S",
+      "categoryId": "11",
+      "showInShop": true
+    },
+    {
+      "id": "506",
+      "name": "broth portion S",
+      "categoryId": "11",
+      "showInShop": true
+    },
+    {
+      "id": "507",
+      "name": "beef meat S",
+      "categoryId": "11",
+      "showInShop": true
+    },
+    {
+      "id": "508",
+      "name": "sausage S",
+      "categoryId": "11",
+      "showInShop": true
+    },
+    {
+      "id": "550",
+      "name": "hair sampon",
+      "categoryId": "30",
+      "showInShop": true
+    },
+    {
+      "id": "551",
+      "name": "shower gel",
+      "categoryId": "30",
+      "showInShop": true
+    },
+    {
+      "id": "552",
+      "name": "enzyme peeling",
+      "categoryId": "30",
+      "showInShop": true
+    },
+    {
+      "id": "553",
+      "name": "Toothpaste",
+      "categoryId": "30",
+      "showInShop": true
+    },
+    {
+      "id": "554",
+      "name": "hair gel",
+      "categoryId": "30",
+      "showInShop": true
+    },
+    {
+      "id": "555",
+      "name": "hair spray",
+      "categoryId": "30",
+      "showInShop": true
+    },
+    {
+      "id": "556",
+      "name": "moisturizing cream",
+      "categoryId": "30",
+      "showInShop": true
+    },
+    {
+      "id": "557",
+      "name": "the razor",
+      "categoryId": "30",
+      "showInShop": true
+    },
+    {
+      "id": "600",
+      "name": "toilet paper",
+      "categoryId": "31",
+      "showInShop": true
+    },
+    {
+      "id": "600",
+      "name": "paper towels",
+      "categoryId": "31",
+      "showInShop": true
+    },
+    {
+      "id": "600",
+      "name": "cloth rags",
+      "categoryId": "31",
+      "showInShop": true
+    },
+    {
+      "id": "600",
+      "name": "dish sponges",
+      "categoryId": "31",
+      "showInShop": true
+    },
+    {
+      "id": "600",
+      "name": "dish soap",
+      "categoryId": "31",
+      "showInShop": true
+    },
+    {
+      "id": "600",
+      "name": "dishwasher cubes",
+      "categoryId": "31",
+      "showInShop": true
+    },
+    {
+      "id": "600",
+      "name": "dishwasher rinse aid",
+      "categoryId": "31",
+      "showInShop": true
+    },
+    {
+      "id": "600",
+      "name": "dishwasher salt",
+      "categoryId": "31",
+      "showInShop": true
+    },
+    {
+      "id": "600",
+      "name": "dishwasher freshener",
+      "categoryId": "31",
+      "showInShop": true
+    },
+    {
+      "id": "600",
+      "name": "dishwasher cleaning capsule",
+      "categoryId": "31",
+      "showInShop": true
+    },
+    {
+      "id": "600",
+      "name": "washing capsules",
+      "categoryId": "31",
+      "showInShop": true
+    },
+    {
+      "id": "600",
+      "name": "fabric softener",
+      "categoryId": "31",
+      "showInShop": true
+    },
+    {
+      "id": "600",
+      "name": "aromatic wipes for the dryer",
+      "categoryId": "31",
+      "showInShop": true
+    },
+    {
+      "id": "600",
+      "name": "washing machine cleaning capsules",
+      "categoryId": "31",
+      "showInShop": true
+    },
+    {
+      "id": "600",
+      "name": "liquid soap",
+      "categoryId": "31",
+      "showInShop": true
+    },
+    {
+      "id": "600",
+      "name": "toilet fluid",
+      "categoryId": "31",
+      "showInShop": true
+    },
+    {
+      "id": "600",
+      "name": "toilet cubes",
+      "categoryId": "31",
+      "showInShop": true
+    },
+    {
+      "id": "600",
+      "name": "bubble bath",
+      "categoryId": "31",
+      "showInShop": true
+    },
+    {
+      "id": "600",
+      "name": "razor cleaning fluid",
+      "categoryId": "31",
       "showInShop": true
     }
   ],

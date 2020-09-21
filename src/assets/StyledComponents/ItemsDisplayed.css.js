@@ -1,13 +1,8 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-`;
+export const Wrapper = styled.div``;
 
 export const SquareContainer = styled.div`
-  flex-basis: 100%;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   gap: 20px;
@@ -36,6 +31,19 @@ export const Square = styled.div`
 
 export const Content = styled.div`
   position: absolute;
+  text-align: center;
+`;
+
+export const ParentTitle = styled.p`
+  text-align: center;
+  font-size: 26px;
+  margin: 20px 0;
+`;
+
+export const CategoryTitle = styled.p`
+  font-size: 22px;
+  text-align: center;
+  margin: 20px 0;
 `;
 
 export const Span = styled.span`

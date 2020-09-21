@@ -8,8 +8,16 @@ export function useCategory() {
   );
 }
 
-// export const useCategory = async () => {
-//   const res = await fetch(`${process.env.REACT_APP_LOCAL_HTTP}/category`);
-//   const fetchCategory = await res.json();
-//   return useQuery("category", fetchCategory);
-// };
+export function useItems() {
+  return useQuery("items", () =>
+    fetch(`${process.env.REACT_APP_LOCAL_HTTP}/items`).then((res) => res.json())
+  );
+}
+
+export function useParentCategory() {
+  return useQuery("parentCategory", () =>
+    fetch(`${process.env.REACT_APP_LOCAL_HTTP}/parentCategory`).then((res) =>
+      res.json()
+    )
+  );
+}

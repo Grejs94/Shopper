@@ -12,6 +12,8 @@ import {
   IconsItemLink,
 } from "components";
 
+import { ElementsPage } from "pages";
+
 import {
   GroceriesChildren,
   ProductsChildren,
@@ -43,18 +45,20 @@ function ShopPage() {
           <Route exact path="/shop">
             <IconsItem image={groceries_coloredImg} text="groceries" />
             {category === "groceries" && (
-              <GroceriesChildren to="/shop/groceries" />
+              <GroceriesChildren to="/shop/elements_page" />
             )}
             <IconsItem image={products_coloredImg} text="products" />
             {category === "products" && (
-              <ProductsChildren to="/shop/products" />
+              <ProductsChildren to="/shop/elements_page" />
             )}
             <IconsItem image={dishes_coloredImg} text="dishes" />
-            {category === "dishes" && <DishesChildren to="/shop/dishes" />}
+            {category === "dishes" && (
+              <DishesChildren to="/shop/elements_page" />
+            )}
             <IconsItemLink
               image={lists_coloredImg}
               text="lists"
-              to="/shop/lists"
+              to="/shop/elements_page"
             />
             <IconsItemLink
               image={history_coloredImg}
@@ -62,17 +66,8 @@ function ShopPage() {
               to="/shop/history"
             />
           </Route>
-          <Route exact path="/shop/groceries">
-            shop/groceries
-          </Route>
-          <Route exact path="/shop/products">
-            shop/products
-          </Route>
-          <Route exact path="/shop/dishes">
-            shop/dishes
-          </Route>
-          <Route exact path="/shop/lists">
-            shop/lists
+          <Route exact path="/shop/elements_page">
+            <ElementsPage />
           </Route>
           <Route exact path="/shop/history">
             shop/history

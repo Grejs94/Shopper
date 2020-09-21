@@ -378,25 +378,25 @@
       "showInShop": true
     },
     {
-      "id": "350",
+      "id": "351",
       "name": "pepper",
       "categoryId": "8",
       "showInShop": true
     },
     {
-      "id": "350",
+      "id": "352",
       "name": "salt",
       "categoryId": "8",
       "showInShop": true
     },
     {
-      "id": "350",
+      "id": "353",
       "name": "sugar",
       "categoryId": "8",
       "showInShop": true
     },
     {
-      "id": "350",
+      "id": "354",
       "name": "ground paprika",
       "categoryId": "8",
       "showInShop": true
@@ -451,55 +451,55 @@
     },
     {
       "id": "500",
-      "name": "ham S",
+      "name": "ham",
       "categoryId": "11",
       "showInShop": true
     },
     {
       "id": "501",
-      "name": "cheese S",
+      "name": "cheese",
       "categoryId": "11",
       "showInShop": true
     },
     {
       "id": "502",
-      "name": "Salads S",
+      "name": "Salads",
       "categoryId": "11",
       "showInShop": true
     },
     {
       "id": "503",
-      "name": "chicken fillet S",
+      "name": "chicken fillet",
       "categoryId": "11",
       "showInShop": true
     },
     {
       "id": "504",
-      "name": "chicken wings S",
+      "name": "chicken wings",
       "categoryId": "11",
       "showInShop": true
     },
     {
       "id": "505",
-      "name": "turkey neck S",
+      "name": "turkey neck",
       "categoryId": "11",
       "showInShop": true
     },
     {
       "id": "506",
-      "name": "broth portion S",
+      "name": "broth portion",
       "categoryId": "11",
       "showInShop": true
     },
     {
       "id": "507",
-      "name": "beef meat S",
+      "name": "beef meat",
       "categoryId": "11",
       "showInShop": true
     },
     {
       "id": "508",
-      "name": "sausage S",
+      "name": "sausage",
       "categoryId": "11",
       "showInShop": true
     },
@@ -558,109 +558,109 @@
       "showInShop": true
     },
     {
-      "id": "600",
+      "id": "601",
       "name": "paper towels",
       "categoryId": "31",
       "showInShop": true
     },
     {
-      "id": "600",
+      "id": "602",
       "name": "cloth rags",
       "categoryId": "31",
       "showInShop": true
     },
     {
-      "id": "600",
+      "id": "603",
       "name": "dish sponges",
       "categoryId": "31",
       "showInShop": true
     },
     {
-      "id": "600",
+      "id": "604",
       "name": "dish soap",
       "categoryId": "31",
       "showInShop": true
     },
     {
-      "id": "600",
+      "id": "605",
       "name": "dishwasher cubes",
       "categoryId": "31",
       "showInShop": true
     },
     {
-      "id": "600",
+      "id": "606",
       "name": "dishwasher rinse aid",
       "categoryId": "31",
       "showInShop": true
     },
     {
-      "id": "600",
+      "id": "607",
       "name": "dishwasher salt",
       "categoryId": "31",
       "showInShop": true
     },
     {
-      "id": "600",
+      "id": "608",
       "name": "dishwasher freshener",
       "categoryId": "31",
       "showInShop": true
     },
     {
-      "id": "600",
+      "id": "609",
       "name": "dishwasher cleaning capsule",
       "categoryId": "31",
       "showInShop": true
     },
     {
-      "id": "600",
+      "id": "610",
       "name": "washing capsules",
       "categoryId": "31",
       "showInShop": true
     },
     {
-      "id": "600",
+      "id": "611",
       "name": "fabric softener",
       "categoryId": "31",
       "showInShop": true
     },
     {
-      "id": "600",
+      "id": "612",
       "name": "aromatic wipes for the dryer",
       "categoryId": "31",
       "showInShop": true
     },
     {
-      "id": "600",
+      "id": "613",
       "name": "washing machine cleaning capsules",
       "categoryId": "31",
       "showInShop": true
     },
     {
-      "id": "600",
+      "id": "614",
       "name": "liquid soap",
       "categoryId": "31",
       "showInShop": true
     },
     {
-      "id": "600",
+      "id": "615",
       "name": "toilet fluid",
       "categoryId": "31",
       "showInShop": true
     },
     {
-      "id": "600",
+      "id": "616",
       "name": "toilet cubes",
       "categoryId": "31",
       "showInShop": true
     },
     {
-      "id": "600",
+      "id": "617",
       "name": "bubble bath",
       "categoryId": "31",
       "showInShop": true
     },
     {
-      "id": "600",
+      "id": "618",
       "name": "razor cleaning fluid",
       "categoryId": "31",
       "showInShop": true

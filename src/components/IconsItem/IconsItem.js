@@ -1,5 +1,9 @@
 import React from "react";
 
+import { useSelector, useDispatch } from "react-redux";
+
+import { setCategory } from "features/category/categorySlice";
+
 import {
   ItemsContainer,
   Item,
@@ -7,37 +11,24 @@ import {
   ItemPictureContainer,
   ItemPicture,
   ItemText,
-} from "./IconsItem.css";
+} from "assets/StyledComponents/IconsItem.css";
 
-import { Link } from "react-router-dom";
+function IconsItem({ image, text }) {
+  const dispatch = useDispatch();
 
-function IconsItem({ image, text, handle, to }) {
-  const ItemOnly = (
-    <ItemsContainer>
-      <Item onClick={() => handle()}>
-        <ItemPictureContainer>
-          <ItemPicture src={image} />
-        </ItemPictureContainer>
-        <ItemText>{text}</ItemText>
-      </Item>
-      <EmptyItem />
-    </ItemsContainer>
-  );
-
-  const ItemWithLink = (
-    <ItemsContainer>
-      <Link to={to} style={{ textDecoration: "none", color: "white" }}>
-        <Item>
+  return (
+    <>
+      <ItemsContainer>
+        <Item onClick={() => dispatch(setCategory(text))}>
           <ItemPictureContainer>
             <ItemPicture src={image} />
           </ItemPictureContainer>
           <ItemText>{text}</ItemText>
         </Item>
-      </Link>
-      <EmptyItem />
-    </ItemsContainer>
+        <EmptyItem />
+      </ItemsContainer>
+    </>
   );
-  return handle ? ItemOnly : ItemWithLink;
 }
 
 export default IconsItem;

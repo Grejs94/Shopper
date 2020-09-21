@@ -85,27 +85,27 @@
     {
       "parentCategoryId": "1",
       "id": "1",
-      "name": "groceries"
+      "name": "vegetables"
     },
     {
       "parentCategoryId": "1",
       "id": "2",
-      "name": "milk, dairy products, eggs"
+      "name": "fruits"
     },
     {
       "parentCategoryId": "1",
       "id": "3",
-      "name": "drinks"
+      "name": "dairy"
     },
     {
       "parentCategoryId": "1",
       "id": "4",
-      "name": "fruits, vegetables, herbs"
+      "name": "meat"
     },
     {
       "parentCategoryId": "1",
       "id": "5",
-      "name": "meat"
+      "name": "drinks"
     },
     {
       "parentCategoryId": "1",
@@ -115,384 +115,58 @@
     {
       "parentCategoryId": "1",
       "id": "7",
-      "name": "cold cuts, sausages"
+      "name": "bakery"
     },
     {
       "parentCategoryId": "1",
       "id": "8",
-      "name": "bakery, confectionery"
+      "name": "spices"
     },
     {
       "parentCategoryId": "1",
       "id": "9",
-      "name": "fresh fish and seafood"
+      "name": "loose"
     },
     {
       "parentCategoryId": "1",
       "id": "10",
-      "name": "ready meals and side dishes"
+      "name": "sweets"
     },
     {
       "parentCategoryId": "2",
       "id": "11",
-      "name": "drugstore, cosmetics, health"
-    },
-    {
-      "parentCategoryId": "2",
-      "id": "12",
       "name": "home products"
     },
     {
       "parentCategoryId": "2",
-      "id": "13",
-      "name": "child"
-    }
-  ],
-  "subcategory": [
-    {
-      "categoryId": "1",
-      "id": "1",
-      "name": "breakfasts"
-    },
-    {
-      "categoryId": "1",
-      "id": "2",
-      "name": "canned food and ready meals"
-    },
-    {
-      "categoryId": "1",
-      "id": "3",
-      "name": "vegetable and fruit preserves"
-    },
-    {
-      "categoryId": "1",
-      "id": "4",
-      "name": "spices and culinary additives"
-    },
-    {
-      "categoryId": "1",
-      "id": "5",
-      "name": "sauces, oils, vinegar"
-    },
-    {
-      "categoryId": "1",
-      "id": "6",
-      "name": "loose and cereal products"
-    },
-    {
-      "categoryId": "1",
-      "id": "7",
-      "name": "sugar"
-    },
-    {
-      "categoryId": "1",
-      "id": "8",
-      "name": "snacks"
-    },
-    {
-      "categoryId": "1",
-      "id": "9",
-      "name": "sweets"
-    },
-    {
-      "categoryId": "1",
-      "id": "10",
-      "name": "for baking and desserts"
-    },
-    {
-      "categoryId": "2",
-      "id": "11",
-      "name": "milk, cream"
-    },
-    {
-      "categoryId": "2",
       "id": "12",
-      "name": "butter, margarine, fats"
-    },
-    {
-      "categoryId": "2",
-      "id": "13",
-      "name": "cheeses"
-    },
-    {
-      "categoryId": "2",
-      "id": "14",
-      "name": "cottage cheese"
-    },
-    {
-      "categoryId": "2",
-      "id": "15",
-      "name": "yoghurt, kefir, buttermilk, chomogenized cheese"
-    },
-    {
-      "categoryId": "2",
-      "id": "16",
-      "name": "desserts"
-    },
-    {
-      "categoryId": "3",
-      "id": "17",
-      "name": "carbonated and non-carbonated drinks"
-    },
-    {
-      "categoryId": "3",
-      "id": "18",
-      "name": "water"
-    },
-    {
-      "categoryId": "3",
-      "id": "19",
-      "name": "juices, nectars, syrups"
-    },
-    {
-      "categoryId": "3",
-      "id": "20",
-      "name": "milk, milk and plant drinks"
-    },
-    {
-      "categoryId": "3",
-      "id": "21",
-      "name": "coffee, tea, cocoa"
-    },
-    {
-      "categoryId": "4",
-      "id": "22",
-      "name": "fruits"
-    },
-    {
-      "categoryId": "4",
-      "id": "23",
-      "name": "vegetables"
-    },
-    {
-      "categoryId": "4",
-      "id": "24",
-      "name": "herbs and lettuces"
-    },
-    {
-      "categoryId": "4",
-      "id": "25",
-      "name": "ready to eat"
-    },
-    {
-      "categoryId": "4",
-      "id": "26",
-      "name": "delicacies"
-    },
-    {
-      "categoryId": "4",
-      "id": "27",
-      "name": "mushrooms"
-    },
-    {
-      "categoryId": "5",
-      "id": "28",
-      "name": "poultry"
-    },
-    {
-      "categoryId": "5",
-      "id": "29",
-      "name": "beef"
-    },
-    {
-      "categoryId": "6",
-      "id": "30",
-      "name": "frozen ready meals"
-    },
-    {
-      "categoryId": "6",
-      "id": "31",
-      "name": "fish, seafood"
-    },
-    {
-      "categoryId": "6",
-      "id": "32",
-      "name": "vegetables, fruits"
-    },
-    {
-      "categoryId": "6",
-      "id": "33",
-      "name": "cakes"
-    },
-    {
-      "categoryId": "7",
-      "id": "34",
-      "name": "dry sausages, salami, kabanos sausages"
-    },
-    {
-      "categoryId": "7",
-      "id": "35",
-      "name": "sausages, meat sausages"
-    },
-    {
-      "categoryId": "7",
-      "id": "36",
-      "name": "hams, smoked meats, bacon, luncheon meat"
-    },
-    {
-      "categoryId": "7",
-      "id": "37",
-      "name": "sausage products"
-    },
-    {
-      "categoryId": "8",
-      "id": "38",
-      "name": "bread"
-    },
-    {
-      "categoryId": "8",
-      "id": "39",
-      "name": "rolls"
-    },
-    {
-      "categoryId": "8",
-      "id": "40",
-      "name": "French pastries, sweet"
-    },
-    {
-      "categoryId": "9",
-      "id": "41",
-      "name": "smoked fish"
-    },
-    {
-      "categoryId": "9",
-      "id": "42",
-      "name": "fish in oil"
-    },
-    {
-      "categoryId": "9",
-      "id": "43",
-      "name": "fish in cream"
-    },
-    {
-      "categoryId": "9",
-      "id": "44",
-      "name": "fish in jelly"
-    },
-    {
-      "categoryId": "9",
-      "id": "45",
-      "name": "fish salads"
-    },
-    {
-      "categoryId": "9",
-      "id": "46",
-      "name": "pickled fish"
-    },
-    {
-      "categoryId": "9",
-      "id": "47",
-      "name": "seafood"
-    },
-    {
-      "categoryId": "9",
-      "id": "48",
-      "name": "pastes, spreads"
-    },
-    {
-      "categoryId": "9",
-      "id": "49",
-      "name": "fresh fish"
-    },
-    {
-      "categoryId": "10",
-      "id": "50",
-      "name": "dishes, side dishes, salads"
-    },
-    {
-      "categoryId": "11",
-      "id": "51",
-      "name": "deodorants and perfumes"
-    },
-    {
-      "categoryId": "11",
-      "id": "52",
-      "name": "beauty cosmetics"
-    },
-    {
-      "categoryId": "11",
-      "id": "53",
-      "name": "for hair"
-    },
-    {
-      "categoryId": "11",
-      "id": "54",
-      "name": "chigiena, cosmetics"
-    },
-    {
-      "categoryId": "11",
-      "id": "55",
-      "name": "makeup, manicure"
-    },
-    {
-      "categoryId": "11",
-      "id": "56",
-      "name": "health and medicine"
-    },
-    {
-      "categoryId": "12",
-      "id": "57",
-      "name": "washing and rinsing"
-    },
-    {
-      "categoryId": "12",
-      "id": "58",
-      "name": "toilet paper, paper towels"
-    },
-    {
-      "categoryId": "12",
-      "id": "59",
-      "name": "wc"
-    },
-    {
-      "categoryId": "12",
-      "id": "60",
-      "name": "chemicals, cleaning"
-    },
-    {
-      "categoryId": "13",
-      "id": "61",
-      "name": "food"
-    },
-    {
-      "categoryId": "13",
-      "id": "62",
-      "name": "diapers, hygiene"
+      "name": "chigiena"
     }
   ],
   "items": [
     {
       "id": "1",
       "name": "papryka",
-      "parentCategoryId": "1",
       "categoryId": "1",
-      "subcategoryId": "122",
-      "defaultValue": "1",
-      "defaultUnit": "szt",
-      "boughtInSpecificStore": { "MyshopsId": "1" },
       "showInShop": true
     },
     {
       "id": "2",
       "name": "salat",
-      "parentCategoryId": "1",
       "categoryId": "1",
-      "subcategoryId": "126",
-      "defaultValue": "1",
-      "defaultUnit": "szt",
-      "boughtInSpecificStore": { "MyshopsId": "2" },
       "showInShop": true
     }
   ],
   "dishes": [
     {
       "id": "1",
-      "dishesCategoryId": "1",
+      "dishesCategoryId": "2",
       "name": "rosół",
       "itemsIncluded": [{ "itemsId": "4", "value": "2" }]
     },
     {
       "id": "1",
+      "dishesCategoryId": "2",
       "name": "grzybowa",
       "items": [{ "itemsId": "6", "value": "1" }]
     }

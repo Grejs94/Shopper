@@ -11,11 +11,11 @@ import {
 
 import { Link } from "react-router-dom";
 
-function IconsItemLink({ to, image, text, scrollInto = () => {} }) {
+function IconsItemLink({ to, image, text }) {
   return (
     <ItemsContainer>
       <Link to={to} style={{ textDecoration: "none", color: "white" }}>
-        <Item onClick={scrollInto}>
+        <Item>
           <ItemPictureContainer>
             <ItemPicture src={image} />
           </ItemPictureContainer>

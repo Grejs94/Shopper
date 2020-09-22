@@ -2,8 +2,6 @@ import React from "react";
 
 import { Switch, Route } from "react-router-dom";
 
-import { useSelector } from "react-redux";
-
 import {
   Menu,
   BottomBarWithIcons,
@@ -13,12 +11,6 @@ import {
 } from "components";
 
 import { ElementsPage } from "pages";
-
-import {
-  GroceriesChildren,
-  ProductsChildren,
-  DishesChildren,
-} from "components/IconsItem/Children";
 
 import { MainPageWrapper } from "assets/StyledComponents/MainPageWrapper.css";
 
@@ -32,18 +24,7 @@ import {
   history_coloredImg,
 } from "pictures/ParentCategoryIcons";
 
-import { selectCategory } from "features/category/categorySlice";
-
-const goto = (item) => {
-  setTimeout(() => {
-    document.querySelector(`#${item}`).scrollIntoView({ inline: "center" });
-    return null;
-  }, 1000);
-};
-
 function ShopPage() {
-  const category = useSelector(selectCategory);
-
   return (
     <>
       <Menu iconElementsList={IconElementsShopItemsPage} activeIcon={"shop"} />
@@ -51,33 +32,30 @@ function ShopPage() {
       <Switch>
         <MainPageWrapper>
           <Route exact path="/shop">
-            <IconsItem image={groceries_coloredImg} text="groceries" />
-            {category === "groceries" && (
-              <GroceriesChildren to="/shop/elements_page" />
-            )}
-            <IconsItem image={products_coloredImg} text="products" />
-            {category === "products" && (
-              <ProductsChildren
-                to="/shop/elements_page"
-                scrollInto={() => goto("Products")}
-              />
-            )}
-            <IconsItem image={dishes_coloredImg} text="dishes" />
-            {category === "dishes" && (
-              <DishesChildren
-                to="/shop/elements_page"
-                scrollInto={() => goto("Dishes")}
-              />
-            )}
-            <IconsItemLink
-              image={lists_coloredImg}
-              text="lists"
+            <IconsItem
+              image={groceries_coloredImg}
+              text="Groceries"
               to="/shop/elements_page"
-              scrollInto={() => goto("Dishes")}
+            />
+            <IconsItem
+              image={products_coloredImg}
+              text="Products"
+              to="/shop/elements_page"
+            />
+            <IconsItem
+              image={dishes_coloredImg}
+              text="Dishes"
+              to="/shop/elements_page"
+            />
+
+            <IconsItem
+              image={lists_coloredImg}
+              text="SavedList"
+              to="/shop/elements_page"
             />
             <IconsItemLink
               image={history_coloredImg}
-              text="history"
+              text="History"
               to="/shop/history"
             />
           </Route>

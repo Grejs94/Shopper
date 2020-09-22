@@ -6,9 +6,52 @@ import {
   Content,
   ParentTitle,
   CategoryTitle,
+  HideTheMenuWhenScrollIntoView,
 } from "assets/StyledComponents/ItemsDisplayed.css";
 
+import { useSelector } from "react-redux";
+import { selectCategory } from "features/category/categorySlice";
+
 import API from "hooks/API";
+
+const CreateSquereItemsList = ({ ItemsList }) => {
+  return (
+    <SquareContainer>
+      {ItemsList.map((item) => (
+        <Square key={item.id}>
+          <Content>{item.name}</Content>
+        </Square>
+      ))}
+    </SquareContainer>
+  );
+};
+const CreateCategoriesList = ({
+  parentsTitle,
+  filtredCategories,
+  itemsList,
+}) => {
+  return (
+    <div>
+      <ParentTitle>{parentsTitle}</ParentTitle>
+      {filtredCategories.map((category) => {
+        const ItemsList = itemsList.data.filter(
+          (item) => item.categoryId === category.id
+        );
+
+        if (ItemsList.length === 0) {
+          return;
+        }
+
+        return (
+          <div key={category.name}>
+            <CategoryTitle>{category.name}</CategoryTitle>
+            <CreateSquereItemsList ItemsList={ItemsList} />
+          </div>
+        );
+      })}
+    </div>
+  );
+};
 
 function ElementsPage() {
   // { isError, isLoading, isSuccess, data }
@@ -17,6 +60,7 @@ function ElementsPage() {
   const dishesCategories = API.UseDishesCategory();
   const dishes = API.UseDishes();
   const savedList = API.useSavedList();
+  const category = useSelector(selectCategory);
 
   if (
     categories.isError ||
@@ -49,63 +93,35 @@ function ElementsPage() {
       (category) => category.parentCategoryId === "2"
     );
 
-    const CreateSquereItemsList = ({ ItemsList }) => {
-      return (
-        <SquareContainer>
-          {ItemsList.map((item) => (
-            <Square key={item.id}>
-              <Content>{item.name}</Content>
-            </Square>
-          ))}
-        </SquareContainer>
-      );
-    };
+    const div = document.querySelector(`#${category}`);
 
-    const CreateCategoriesList = ({
-      parentsTitle,
-      filtredCategories,
-      itemsList,
-    }) => {
-      return (
-        <div id={parentsTitle}>
-          <ParentTitle>{parentsTitle}</ParentTitle>
-          {filtredCategories.map((category) => {
-            const ItemsList = itemsList.data.filter(
-              (item) => item.categoryId === category.id
-            );
-
-            if (ItemsList.length === 0) {
-              return;
-            }
-
-            return (
-              <div key={category.name}>
-                <CategoryTitle>{category.name}</CategoryTitle>
-                <CreateSquereItemsList ItemsList={ItemsList} />
-              </div>
-            );
-          })}
-        </div>
-      );
-    };
+    setTimeout(() => {
+      if (!!div) {
+        console.log(div);
+        div.scrollIntoView();
+      }
+    }, 300);
 
     return (
       <div>
         <CreateCategoriesList
-          parentsTitle="Food"
+          parentsTitle="Groceries"
           filtredCategories={foodCategories}
           itemsList={items}
         />
+        <HideTheMenuWhenScrollIntoView id="Products" />
         <CreateCategoriesList
           parentsTitle="Products"
           filtredCategories={ProductsCategories}
           itemsList={items}
         />
+        <HideTheMenuWhenScrollIntoView id="Dishes" />
         <CreateCategoriesList
           parentsTitle="Dishes"
           filtredCategories={dishesCategories.data}
           itemsList={dishes}
         />
+        <HideTheMenuWhenScrollIntoView id="SavedList" />
         <CreateCategoriesList
           parentsTitle="SavedList"
           filtredCategories={[

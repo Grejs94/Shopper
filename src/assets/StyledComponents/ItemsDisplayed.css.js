@@ -43,3 +43,7 @@ export const CategoryTitle = styled.p`
   text-align: center;
   margin: 20px 0;
 `;
+
+export const HideTheMenuWhenScrollIntoView = styled.div`
+  min-height: 100px;
+`;

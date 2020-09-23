@@ -8,6 +8,10 @@ import {
   CategoryTitle,
 } from "assets/StyledComponents/ItemsDisplayed.css";
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
 const CreateCategoriesList = ({
   parentsTitle,
   filtredCategories,
@@ -27,7 +31,9 @@ const CreateCategoriesList = ({
 
         return (
           <div key={category.name}>
-            <CategoryTitle>{category.name}</CategoryTitle>
+            <CategoryTitle>
+              {capitalizeFirstLetter(category.name)}
+            </CategoryTitle>
             <SquareContainer>
               {ItemsList.map((item) => (
                 <Square key={item.id}>

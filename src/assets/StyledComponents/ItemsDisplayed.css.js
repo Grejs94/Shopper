@@ -34,7 +34,7 @@ export const Content = styled.div`
 
 export const ParentTitle = styled.p`
   text-align: center;
-  font-size: 26px;
+  font-size: 22px;
   margin: 20px 0;
 `;
 

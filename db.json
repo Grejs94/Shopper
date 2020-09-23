@@ -1,68 +1,63 @@
 {
-  "myshops": {
-    "citys": [
-      {
-        "name": "Piekary Śląskie",
-        "shops": [
-          {
-            "id": "1",
-            "name": "Kaufland",
-            "road": "Bytomska",
-            "number": "41",
-            "picture": "http/...",
-            "storageRacks": [
-              {
-                "id": "1",
-                "IncludedCategoriesId": ["4", "2", "2"],
-                "shelfs": [
-                  {
-                    "numberFromTheTop": "1",
-                    "ShelfSide": [
-                      {
-                        "left": {
-                          "IncludedItems": [{ "itemsId": "1" }]
-                        }
-                      },
-                      {
-                        "center": {
-                          "IncludedItems": [{ "itemsId": "5" }]
-                        }
-                      },
-                      {
-                        "right": {
-                          "IncludedItems": [{ "itemsId": "3" }]
-                        }
-                      }
-                    ]
-                  },
-                  {
-                    "numberFromTheTop": "2",
-                    "ShelfSide": [
-                      {
-                        "left": {
-                          "IncludedItems": [{ "itemsId": "9" }]
-                        }
-                      },
-                      {
-                        "center": {
-                          "IncludedItems": [{ "itemsId": "8" }]
-                        }
-                      },
-                      {
-                        "right": {
-                          "IncludedItems": [{ "itemsId": "6" }]
-                        }
-                      }
-                    ]
+  "shops": [
+    {
+      "id": "1",
+      "name": "Kaufland",
+      "road": "Bytomska",
+      "number": "41",
+      "picture": "http/...",
+      "town": "Piekary Śląskie",
+      "voivodeship": "Śląskie",
+      "storageRacks": [
+        {
+          "id": "1",
+          "IncludedCategoriesId": ["4", "2", "2"],
+          "shelfs": [
+            {
+              "numberFromTheTop": "1",
+              "ShelfSide": [
+                {
+                  "left": {
+                    "IncludedItems": [{ "itemsId": "1" }]
                   }
-                ]
-              }
-            ]
-          }
-        ]
-      }
-    ]
-  },
+                },
+                {
+                  "center": {
+                    "IncludedItems": [{ "itemsId": "5" }]
+                  }
+                },
+                {
+                  "right": {
+                    "IncludedItems": [{ "itemsId": "3" }]
+                  }
+                }
+              ]
+            },
+            {
+              "numberFromTheTop": "2",
+              "ShelfSide": [
+                {
+                  "left": {
+                    "IncludedItems": [{ "itemsId": "9" }]
+                  }
+                },
+                {
+                  "center": {
+                    "IncludedItems": [{ "itemsId": "8" }]
+                  }
+                },
+                {
+                  "right": {
+                    "IncludedItems": [{ "itemsId": "6" }]
+                  }
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
   "parentCategory": [
     {
       "id": "1",
@@ -722,10 +717,17 @@
   ],
   "basket": [
     {
-      "MyshopId": "1",
+      "shopId": "1",
       "items": [
         { "itemId": "1", "value": "1" },
-        { "itemId": "3", "value": "1" }
+        { "itemId": "3", "value": "1" },
+        { "itemId": "200", "value": "1" },
+        { "itemId": "250", "value": "1" },
+        { "itemId": "254", "value": "1" },
+        { "itemId": "550", "value": "1" },
+        { "itemId": "601", "value": "1" },
+        { "itemId": "611", "value": "1" },
+        { "itemId": "618", "value": "1" }
       ],
       "dishes": [
         { "dishesId": "1", "value": "1" },

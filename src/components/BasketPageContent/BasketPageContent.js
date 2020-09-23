@@ -1,7 +1,8 @@
 import React from "react";
 
-import { HideTheMenuWhenScrollIntoView } from "assets/StyledComponents/ItemsDisplayed.css";
+// import { HideTheMenuWhenScrollIntoView } from "assets/StyledComponents/ItemsDisplayed.css";
 import { ShopTitle } from "./BasketPageContent.css";
+import { HideTheMenuWhenScrollIntoView } from "assets/StyledComponents/ItemsDisplayed.css";
 
 import { CreateCategoriesList } from "components";
 
@@ -47,37 +48,34 @@ const BasketPageContent = () => {
     savedList.isSuccess
   ) {
     const createL = useBasket.data.map((shop) => {
-      //   const ShopName = shop.ShopName;
+      const basketShopId = shop.shopId;
+      //   console.log(useMyshops.data);
+      //   console.log(basketShopId);
 
-      //   getShopName
-      console.log(useMyshops.data.citys);
-      //   const ShopName = useMyshops.data.map(
-      //     (item) => console.log(item)
-      //     // ShopDishesDataBaseFormat.find(
-      //     //   (basketItem) => basketItem.dishesId === item.id
-      //     // )
-      //   );
-      //   console.log(ShopName);
+      const currentShop = useMyshops.data.find(
+        (shop) => shop.id === basketShopId
+      );
+      //   console.log(Shop.name);
 
       //   console.log(useBasket);
-      // const ShopItemsDataBaseFormat = shop.items;
+      const ShopItemsDataBaseFormat = shop.items;
       // console.log(ShopItemsDataBaseFormat);
 
       // const ShopDishesDataBaseFormat = shop.dishes;
       // console.log(ShopDishesDataBaseFormat);
 
-      const ShopSavedListsDataBaseFormat = shop.savedLists;
+      //   const ShopSavedListsDataBaseFormat = shop.savedLists;
       // console.log(ShopSavedListsDataBaseFormat);
 
       // console.log(ShopItemsDataBaseFormat);
       // console.log(items.data);
 
-      // const ShopItems = items.data.filter((item) =>
-      //   ShopItemsDataBaseFormat.find(
-      //     (basketItem) => basketItem.itemId === item.id
-      //   )
-      // );
-      // console.log(ShopItems);
+      const ShopItems = items.data.filter((item) =>
+        ShopItemsDataBaseFormat.find(
+          (basketItem) => basketItem.itemId === item.id
+        )
+      );
+      //   console.log(ShopItems);
 
       // const ShopDishes = dishes.data.filter((item) =>
       //   ShopDishesDataBaseFormat.find(
@@ -86,16 +84,35 @@ const BasketPageContent = () => {
       // );
       // console.log(ShopDishes);
 
-      const ShopSavedList = savedList.data.filter((item) =>
-        ShopSavedListsDataBaseFormat.find(
-          (basketItem) => basketItem.savedListsId === item.id
-        )
-      );
+      //   const ShopSavedList = savedList.data.filter((item) =>
+      //     ShopSavedListsDataBaseFormat.find(
+      //       (basketItem) => basketItem.savedListsId === item.id
+      //     )
+      //   );
       //   console.log(ShopSavedList);
 
+      const foodCategories = categories.data.filter(
+        (category) => category.parentCategoryId === "1"
+      );
+
+      const ProductsCategories = categories.data.filter(
+        (category) => category.parentCategoryId === "2"
+      );
+
       return (
-        <div>
-          <ShopTitle></ShopTitle>
+        <div key={currentShop.name}>
+          <ShopTitle>{currentShop.name}</ShopTitle>
+          <CreateCategoriesList
+            parentsTitle="Groceries"
+            filtredCategories={foodCategories}
+            itemsList={ShopItems}
+          />
+          <HideTheMenuWhenScrollIntoView />
+          <CreateCategoriesList
+            parentsTitle="Products"
+            filtredCategories={ProductsCategories}
+            itemsList={ShopItems}
+          />
         </div>
       );
     });
@@ -104,13 +121,13 @@ const BasketPageContent = () => {
     // basketDishes
     // basketSavedLists
 
-    const foodCategories = categories.data.filter(
-      (category) => category.parentCategoryId === "1"
-    );
+    // const foodCategories = categories.data.filter(
+    //   (category) => category.parentCategoryId === "1"
+    // );
 
-    const ProductsCategories = categories.data.filter(
-      (category) => category.parentCategoryId === "2"
-    );
+    // const ProductsCategories = categories.data.filter(
+    //   (category) => category.parentCategoryId === "2"
+    // );
 
     return (
       <div>

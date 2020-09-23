@@ -14,43 +14,44 @@ import { selectCategory } from "features/category/categorySlice";
 
 import API from "hooks/API";
 
-const CreateSquereItemsList = ({ ItemsList }) => {
-  return (
-    <SquareContainer>
-      {ItemsList.map((item) => (
-        <Square key={item.id}>
-          <Content>{item.name}</Content>
-        </Square>
-      ))}
-    </SquareContainer>
-  );
-};
 const CreateCategoriesList = ({
   parentsTitle,
   filtredCategories,
   itemsList,
 }) => {
-  return (
-    <div>
-      <ParentTitle>{parentsTitle}</ParentTitle>
-      {filtredCategories.map((category) => {
-        const ItemsList = itemsList.data.filter(
-          (item) => item.categoryId === category.id
-        );
+  if (itemsList.isError) {
+    return "Data download error...";
+  } else if (itemsList.isLoading) {
+    return "Loading data...";
+  } else if (itemsList.isSuccess) {
+    return (
+      <div>
+        <ParentTitle>{parentsTitle}</ParentTitle>
+        {filtredCategories.map((category) => {
+          const ItemsList = itemsList.data.filter(
+            (item) => item.categoryId === category.id
+          );
 
-        if (ItemsList.length === 0) {
-          return;
-        }
+          if (ItemsList.length === 0) {
+            return;
+          }
 
-        return (
-          <div key={category.name}>
-            <CategoryTitle>{category.name}</CategoryTitle>
-            <CreateSquereItemsList ItemsList={ItemsList} />
-          </div>
-        );
-      })}
-    </div>
-  );
+          return (
+            <div key={category.name}>
+              <CategoryTitle>{category.name}</CategoryTitle>
+              <SquareContainer>
+                {ItemsList.map((item) => (
+                  <Square key={item.id}>
+                    <Content>{item.name}</Content>
+                  </Square>
+                ))}
+              </SquareContainer>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
 };
 
 function ElementsPage() {
@@ -62,79 +63,55 @@ function ElementsPage() {
   const savedList = API.useSavedList();
   const category = useSelector(selectCategory);
 
-  if (
-    categories.isError ||
-    items.isError ||
-    dishesCategories.isError ||
-    dishes.isError ||
-    savedList.isError
-  ) {
-    return "Fetching data error...";
-  } else if (
-    categories.isLoading ||
-    items.isLoading ||
-    dishesCategories.isLoading ||
-    dishes.isLoading ||
-    savedList.isLoading
-  ) {
-    return "Loading data...";
-  } else if (
+  const foodCategories =
     categories.isSuccess &&
-    items.isSuccess &&
-    dishesCategories.isSuccess &&
-    dishes.isSuccess &&
-    savedList.isSuccess
-  ) {
-    const foodCategories = categories.data.filter(
-      (category) => category.parentCategoryId === "1"
-    );
+    categories.data.filter((category) => category.parentCategoryId === "1");
 
-    const ProductsCategories = categories.data.filter(
-      (category) => category.parentCategoryId === "2"
-    );
+  const ProductsCategories =
+    categories.isSuccess &&
+    categories.data.filter((category) => category.parentCategoryId === "2");
 
+  const ScrollToParentCategory = (() => {
     const div = document.querySelector(`#${category}`);
 
-    setTimeout(() => {
-      if (!!div) {
-        console.log(div);
-        div.scrollIntoView();
-      }
-    }, 300);
+    if (!!div) {
+      console.log(div);
+      div.scrollIntoView();
+    }
+  })();
 
-    return (
-      <div>
-        <CreateCategoriesList
-          parentsTitle="Groceries"
-          filtredCategories={foodCategories}
-          itemsList={items}
-        />
-        <HideTheMenuWhenScrollIntoView id="Products" />
-        <CreateCategoriesList
-          parentsTitle="Products"
-          filtredCategories={ProductsCategories}
-          itemsList={items}
-        />
-        <HideTheMenuWhenScrollIntoView id="Dishes" />
-        <CreateCategoriesList
-          parentsTitle="Dishes"
-          filtredCategories={dishesCategories.data}
-          itemsList={dishes}
-        />
-        <HideTheMenuWhenScrollIntoView id="SavedList" />
-        <CreateCategoriesList
-          parentsTitle="SavedList"
-          filtredCategories={[
-            {
-              id: "1",
-              name: "All",
-            },
-          ]}
-          itemsList={savedList}
-        />
-      </div>
-    );
-  }
+  return (
+    <div>
+      <CreateCategoriesList
+        parentsTitle="Groceries"
+        filtredCategories={foodCategories}
+        itemsList={items}
+      />
+      <HideTheMenuWhenScrollIntoView id="Products" />
+      <CreateCategoriesList
+        parentsTitle="Products"
+        filtredCategories={ProductsCategories}
+        itemsList={items}
+      />
+      <HideTheMenuWhenScrollIntoView id="Dishes" />
+      <CreateCategoriesList
+        parentsTitle="Dishes"
+        filtredCategories={dishesCategories.data}
+        itemsList={dishes}
+      />
+      <HideTheMenuWhenScrollIntoView id="SavedList" />
+      <CreateCategoriesList
+        parentsTitle="SavedList"
+        filtredCategories={[
+          {
+            id: "1",
+            name: "All",
+          },
+        ]}
+        itemsList={savedList}
+      />
+    </div>
+  );
 }
 
 export default ElementsPage;

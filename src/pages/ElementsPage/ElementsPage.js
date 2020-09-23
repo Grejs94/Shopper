@@ -25,6 +25,7 @@ function ElementsPage() {
   const dishesCategories = API.UseDishesCategory();
   const dishes = API.UseDishes();
   const savedList = API.useSavedList();
+  const useSavedListsCategories = API.useSavedListsCategories();
   const category = useSelector(selectCategory);
 
   if (
@@ -32,7 +33,8 @@ function ElementsPage() {
     items.isError ||
     dishesCategories.isError ||
     dishes.isError ||
-    savedList.isError
+    savedList.isError ||
+    useSavedListsCategories.isError
   ) {
     return "Fetching date error...";
   } else if (
@@ -40,7 +42,8 @@ function ElementsPage() {
     items.isLoading ||
     dishesCategories.isLoading ||
     dishes.isLoading ||
-    savedList.isLoading
+    savedList.isLoading ||
+    useSavedListsCategories.isLoading
   ) {
     return "Loading date...";
   } else if (
@@ -48,7 +51,8 @@ function ElementsPage() {
     items.isSuccess &&
     dishesCategories.isSuccess &&
     dishes.isSuccess &&
-    savedList.isSuccess
+    savedList.isSuccess &&
+    useSavedListsCategories.isSuccess
   ) {
     const foodCategories = categories.data.filter(
       (category) => category.parentCategoryId === "1"
@@ -82,12 +86,7 @@ function ElementsPage() {
         <HideTheMenuWhenScrollIntoView id="SavedList" />
         <CreateCategoriesList
           parentsTitle="SavedList"
-          filtredCategories={[
-            {
-              id: "1",
-              name: "All",
-            },
-          ]}
+          filtredCategories={useSavedListsCategories.data}
           itemsList={savedList.data}
         />
       </div>

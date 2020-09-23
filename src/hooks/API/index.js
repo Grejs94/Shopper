@@ -6,7 +6,7 @@ import {
 
 import { UseDishesCategory, UseDishes } from "hooks/API/DishesHooks";
 
-import { useSavedList } from "./SavedListsHooks";
+import { useSavedList, useSavedListsCategories } from "./SavedListsHooks";
 
 import { useBasket } from "./BasketHooks";
 
@@ -19,6 +19,7 @@ export default {
   UseDishesCategory,
   UseDishes,
   useSavedList,
+  useSavedListsCategories,
   useBasket,
   useMyshops,
 };

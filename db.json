@@ -705,6 +705,7 @@
     {
       "id": "1",
       "name": "example list",
+      "categoryId": "1",
       "items": [
         { "itemsId": "1", "value": "1" },
         { "itemsId": "3", "value": "1" }
@@ -713,6 +714,12 @@
         { "dishesId": "1", "value": "1" },
         { "dishesId": "2", "value": "3" }
       ]
+    }
+  ],
+  "savedListsCategories": [
+    {
+      "id": "1",
+      "name": "All"
     }
   ],
   "basket": [

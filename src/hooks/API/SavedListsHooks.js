@@ -7,3 +7,11 @@ export function useSavedList() {
     )
   );
 }
+
+export function useSavedListsCategories() {
+  return useQuery("savedListsCategories", () =>
+    fetch(
+      `${process.env.REACT_APP_LOCAL_HTTP}/savedListsCategories`
+    ).then((res) => res.json())
+  );
+}

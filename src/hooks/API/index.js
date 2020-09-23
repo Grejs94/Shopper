@@ -8,6 +8,10 @@ import { UseDishesCategory, UseDishes } from "hooks/API/DishesHooks";
 
 import { useSavedList } from "./SavedListsHooks";
 
+import { useBasket } from "./BasketHooks";
+
+import { useMyshops } from "./ShopsHooks";
+
 export default {
   useParentCategory,
   useCategory,
@@ -15,4 +19,6 @@ export default {
   UseDishesCategory,
   UseDishes,
   useSavedList,
+  useBasket,
+  useMyshops,
 };

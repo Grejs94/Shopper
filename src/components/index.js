@@ -4,3 +4,4 @@ export { default as PageInfo } from "./PageInfo";
 export { default as IconsItem } from "./IconsItem";
 export { default as IconsItemLink } from "./IconsItemLink";
 export { default as CreateCategoriesList } from "./CreateCategoriesList";
+export { default as BasketPageContent } from "./BasketPageContent";

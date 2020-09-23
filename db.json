@@ -6,7 +6,7 @@
         "shops": [
           {
             "id": "1",
-            "name": "kaufland",
+            "name": "Kaufland",
             "road": "Bytomska",
             "number": "41",
             "picture": "http/...",
@@ -709,36 +709,32 @@
   "savedLists": [
     {
       "id": "1",
-      "categoryId": "1",
       "name": "example list",
       "items": [
         { "itemsId": "1", "value": "1" },
         { "itemsId": "3", "value": "1" }
       ],
       "dishes": [
-        { "dishesId": "1", "name": "rosół", "value": "1" },
-        { "dishesId": "2", "name": "kaczka", "value": "3" }
+        { "dishesId": "1", "value": "1" },
+        { "dishesId": "2", "value": "3" }
       ]
     }
   ],
   "basket": [
     {
       "MyshopId": "1",
-      "ShopName": "kaufland",
-      "ShopCity": "Piekary Śląskie",
-      "ShopRoad": "Bytomska",
-      "ShopNumber": "41",
       "items": [
         { "itemId": "1", "value": "1" },
         { "itemId": "3", "value": "1" }
       ],
       "dishes": [
-        { "dishesId": "1", "name": "rosół", "value": "1" },
-        { "dishesId": "2", "name": "rosół", "value": "3" }
+        { "dishesId": "1", "value": "1" },
+        { "dishesId": "2", "value": "3" }
       ],
       "savedLists": [
         {
-          "savedListsId": "1"
+          "savedListsId": "1",
+          "value": "3"
         }
       ]
     }
@@ -749,12 +745,13 @@
       { "itemId": "3", "value": "1" }
     ],
     "dishes": [
-      { "dishesId": "1", "name": "rosół", "value": "1" },
-      { "dishesId": "2", "name": "kaczka", "value": "3" }
+      { "dishesId": "1", "value": "1" },
+      { "dishesId": "2", "value": "3" }
     ],
     "savedLists": [
       {
-        "savedListsId": "1"
+        "savedListsId": "1",
+        "value": "1"
       }
     ]
   },

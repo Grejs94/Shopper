@@ -9,6 +9,15 @@ import API from "hooks/API";
 
 import { CreateCategoriesList } from "components";
 
+const ScrollToParentCategory = ({ category }) => {
+  const div = document.querySelector(`#${category}`);
+
+  if (!!div) {
+    console.log(div);
+    div.scrollIntoView();
+  }
+};
+
 function ElementsPage() {
   // { isError, isLoading, isSuccess, data }
   const categories = API.useCategory();
@@ -18,55 +27,76 @@ function ElementsPage() {
   const savedList = API.useSavedList();
   const category = useSelector(selectCategory);
 
-  const foodCategories =
+  if (
+    categories.isError ||
+    items.isError ||
+    dishesCategories.isError ||
+    dishes.isError ||
+    savedList.isError
+  ) {
+    return "Fetching date error...";
+  } else if (
+    categories.isLoading ||
+    items.isLoading ||
+    dishesCategories.isLoading ||
+    dishes.isLoading ||
+    savedList.isLoading
+  ) {
+    return "Loading date...";
+  } else if (
     categories.isSuccess &&
-    categories.data.filter((category) => category.parentCategoryId === "1");
+    items.isSuccess &&
+    dishesCategories.isSuccess &&
+    dishes.isSuccess &&
+    savedList.isSuccess
+  ) {
+    const foodCategories = categories.data.filter(
+      (category) => category.parentCategoryId === "1"
+    );
 
-  const ProductsCategories =
-    categories.isSuccess &&
-    categories.data.filter((category) => category.parentCategoryId === "2");
+    const ProductsCategories = categories.data.filter(
+      (category) => category.parentCategoryId === "2"
+    );
 
-  const ScrollToParentCategory = (() => {
-    const div = document.querySelector(`#${category}`);
+    const itemsElements = items.data;
+    const dishesElements = dishes.data;
+    const savedListElements = savedList.data;
 
-    if (!!div) {
-      console.log(div);
-      div.scrollIntoView();
-    }
-  })();
+    ScrollToParentCategory({ category });
 
-  return (
-    <div>
-      <CreateCategoriesList
-        parentsTitle="Groceries"
-        filtredCategories={foodCategories}
-        itemsList={items}
-      />
-      <HideTheMenuWhenScrollIntoView id="Products" />
-      <CreateCategoriesList
-        parentsTitle="Products"
-        filtredCategories={ProductsCategories}
-        itemsList={items}
-      />
-      <HideTheMenuWhenScrollIntoView id="Dishes" />
-      <CreateCategoriesList
-        parentsTitle="Dishes"
-        filtredCategories={dishesCategories.data}
-        itemsList={dishes}
-      />
-      <HideTheMenuWhenScrollIntoView id="SavedList" />
-      <CreateCategoriesList
-        parentsTitle="SavedList"
-        filtredCategories={[
-          {
-            id: "1",
-            name: "All",
-          },
-        ]}
-        itemsList={savedList}
-      />
-    </div>
-  );
+    return (
+      <div>
+        <CreateCategoriesList
+          parentsTitle="Groceries"
+          filtredCategories={foodCategories}
+          itemsList={itemsElements}
+        />
+        <HideTheMenuWhenScrollIntoView id="Products" />
+        <CreateCategoriesList
+          parentsTitle="Products"
+          filtredCategories={ProductsCategories}
+          itemsList={itemsElements}
+        />
+        <HideTheMenuWhenScrollIntoView id="Dishes" />
+        <CreateCategoriesList
+          parentsTitle="Dishes"
+          filtredCategories={dishesCategories.data}
+          itemsList={dishesElements}
+        />
+        <HideTheMenuWhenScrollIntoView id="SavedList" />
+        <CreateCategoriesList
+          parentsTitle="SavedList"
+          filtredCategories={[
+            {
+              id: "1",
+              name: "All",
+            },
+          ]}
+          itemsList={savedListElements}
+        />
+      </div>
+    );
+  }
 }
 
 export default ElementsPage;

@@ -58,10 +58,6 @@ function ElementsPage() {
       (category) => category.parentCategoryId === "2"
     );
 
-    const itemsElements = items.data;
-    const dishesElements = dishes.data;
-    const savedListElements = savedList.data;
-
     ScrollToParentCategory({ category });
 
     return (
@@ -69,19 +65,19 @@ function ElementsPage() {
         <CreateCategoriesList
           parentsTitle="Groceries"
           filtredCategories={foodCategories}
-          itemsList={itemsElements}
+          itemsList={items.data}
         />
         <HideTheMenuWhenScrollIntoView id="Products" />
         <CreateCategoriesList
           parentsTitle="Products"
           filtredCategories={ProductsCategories}
-          itemsList={itemsElements}
+          itemsList={items.data}
         />
         <HideTheMenuWhenScrollIntoView id="Dishes" />
         <CreateCategoriesList
           parentsTitle="Dishes"
           filtredCategories={dishesCategories.data}
-          itemsList={dishesElements}
+          itemsList={dishes.data}
         />
         <HideTheMenuWhenScrollIntoView id="SavedList" />
         <CreateCategoriesList
@@ -92,7 +88,7 @@ function ElementsPage() {
               name: "All",
             },
           ]}
-          itemsList={savedListElements}
+          itemsList={savedList.data}
         />
       </div>
     );

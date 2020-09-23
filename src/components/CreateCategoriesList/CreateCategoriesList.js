@@ -8,7 +8,11 @@ import {
   CategoryTitle,
 } from "assets/StyledComponents/ItemsDisplayed.css";
 
-function CreateCategoriesList({ parentsTitle, filtredCategories, itemsList }) {
+const CreateCategoriesList = ({
+  parentsTitle,
+  filtredCategories,
+  itemsList,
+}) => {
   return (
     <div>
       <ParentTitle>{parentsTitle}</ParentTitle>
@@ -18,7 +22,7 @@ function CreateCategoriesList({ parentsTitle, filtredCategories, itemsList }) {
         );
 
         if (ItemsList.length === 0) {
-          return;
+          return null;
         }
 
         return (
@@ -36,6 +40,6 @@ function CreateCategoriesList({ parentsTitle, filtredCategories, itemsList }) {
       })}
     </div>
   );
-}
+};
 
 export default CreateCategoriesList;

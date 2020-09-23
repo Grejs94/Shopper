@@ -13,7 +13,7 @@ const ScrollToParentCategory = ({ category }) => {
   const div = document.querySelector(`#${category}`);
 
   if (!!div) {
-    console.log(div);
+    // console.log(div);
     div.scrollIntoView();
   }
 };

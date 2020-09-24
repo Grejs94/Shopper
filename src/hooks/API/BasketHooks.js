@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery, queryCache, useMutation } from "react-query";
 
 export function useBasketGroceres() {
   return useQuery("basketGroceres", () =>
@@ -91,3 +91,35 @@ export const addBasketSavedLists = async ({ data }) => {
 
   return await response.json();
 };
+
+export function useAddBasketGroceries() {
+  return useMutation(addBasketGroceries, {
+    onSuccess() {
+      queryCache.invalidateQueries("basketGroceres");
+    },
+  });
+}
+
+export function useAddBasketProducts() {
+  return useMutation(addBasketProducts, {
+    onSuccess() {
+      queryCache.invalidateQueries("basketProducts");
+    },
+  });
+}
+
+export function useAddBasketDishes() {
+  return useMutation(addBasketDishes, {
+    onSuccess() {
+      queryCache.invalidateQueries("basketDishes");
+    },
+  });
+}
+
+export function useAddBasketSavedLists() {
+  return useMutation(addBasketSavedLists, {
+    onSuccess() {
+      queryCache.invalidateQueries("basketSavedLists");
+    },
+  });
+}

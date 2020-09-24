@@ -32,29 +32,13 @@ const CreateCategoriesList = ({
   const useBasketDishes = API.useBasketDishes();
   const useBasketSavedLists = API.useBasketSavedLists();
 
-  const [mutateBasketGroceries] = useMutation(API.addBasketGroceries, {
-    onSuccess() {
-      queryCache.invalidateQueries("basketGroceres");
-    },
-  });
+  const [mutate_Post_BasketGroceries] = API.useAddBasketGroceries();
 
-  const [mutateBasketProducts] = useMutation(API.addBasketProducts, {
-    onSuccess() {
-      queryCache.invalidateQueries("basketProducts");
-    },
-  });
+  const [mutate_Post_BasketProducts] = API.useAddBasketProducts();
 
-  const [mutateBasketDishes] = useMutation(API.addBasketDishes, {
-    onSuccess() {
-      queryCache.invalidateQueries("basketDishes");
-    },
-  });
+  const [mutate_Post_BasketDishes] = API.useAddBasketDishes();
 
-  const [mutateBasketSavedLists] = useMutation(API.addBasketSavedLists, {
-    onSuccess() {
-      queryCache.invalidateQueries("basketSavedLists");
-    },
-  });
+  const [mutate_Post_BasketSavedLists] = API.useAddBasketGroceries();
 
   if (
     useBasketGroceres.isError ||
@@ -87,7 +71,7 @@ const CreateCategoriesList = ({
         if (allreadyInBasket) {
           console.log("produkt jest w koszyku zwiększ wartość");
         } else {
-          mutateBasketGroceries({
+          mutate_Post_BasketGroceries({
             data: {
               id: item.id,
               name: item.name,

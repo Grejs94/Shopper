@@ -950,6 +950,27 @@
       "categoryId": "1",
       "parentCategoryId": "1",
       "value": "1"
+    },
+    {
+      "id": "102",
+      "name": "milk",
+      "categoryId": "3",
+      "parentCategoryId": "1",
+      "value": "1"
+    },
+    {
+      "id": "152",
+      "name": "chicken fillet",
+      "categoryId": "4",
+      "parentCategoryId": "1",
+      "value": "1"
+    },
+    {
+      "id": "151",
+      "name": "sausages",
+      "categoryId": "4",
+      "parentCategoryId": "1",
+      "value": "1"
     }
   ],
   "basketProducts": [],

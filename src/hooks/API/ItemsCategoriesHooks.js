@@ -8,12 +8,6 @@ export function useCategory() {
   );
 }
 
-export function useItems() {
-  return useQuery("items", () =>
-    fetch(`${process.env.REACT_APP_LOCAL_HTTP}/items`).then((res) => res.json())
-  );
-}
-
 export function useParentCategory() {
   return useQuery("parentCategory", () =>
     fetch(`${process.env.REACT_APP_LOCAL_HTTP}/parentCategory`).then((res) =>

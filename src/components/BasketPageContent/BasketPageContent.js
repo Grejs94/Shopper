@@ -7,8 +7,6 @@ import { CreateCategoriesList } from "components";
 
 import API from "hooks/API";
 
-import { useDispatch, useSelector } from "react-redux";
-
 const BasketPageContent = () => {
   // { isError, isLoading, isSuccess, data }
   const useBasket = API.useBasket();
@@ -79,8 +77,6 @@ const BasketPageContent = () => {
           (basketItem) => basketItem.savedListsId === item.id
         )
       );
-
-      // ustaw do reduxa , useEffect ma dbać o to aby to wykonało się tylko raz
 
       const foodCategories = categories.data.filter(
         (category) => category.parentCategoryId === "1"

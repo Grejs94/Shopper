@@ -104,595 +104,673 @@
       "name": "savedlists"
     }
   ],
-  "category": [
-    {
-      "parentCategoryId": "1",
-      "id": "1",
-      "name": "vegetables"
-    },
-    {
-      "parentCategoryId": "1",
-      "id": "2",
-      "name": "fruits"
-    },
-    {
-      "parentCategoryId": "1",
-      "id": "3",
-      "name": "dairy"
-    },
-    {
-      "parentCategoryId": "1",
-      "id": "4",
-      "name": "meat"
-    },
-    {
-      "parentCategoryId": "1",
-      "id": "5",
-      "name": "drinks"
-    },
-    {
-      "parentCategoryId": "1",
-      "id": "6",
-      "name": "frozen food"
-    },
-    {
-      "parentCategoryId": "1",
-      "id": "7",
-      "name": "bakery"
-    },
-    {
-      "parentCategoryId": "1",
-      "id": "8",
-      "name": "spices"
-    },
-    {
-      "parentCategoryId": "1",
-      "id": "9",
-      "name": "loose"
-    },
-    {
-      "parentCategoryId": "1",
-      "id": "10",
-      "name": "sweets"
-    },
-    {
-      "parentCategoryId": "1",
-      "id": "11",
-      "name": "from Service"
-    },
-    {
-      "parentCategoryId": "2",
-      "id": "30",
-      "name": "hygiene and care"
-    },
-    {
-      "parentCategoryId": "2",
-      "id": "31",
-      "name": "cleaning products"
-    }
-  ],
-  "items": [
+  "groceres": [
     {
       "id": "1",
       "name": "pepper",
       "categoryId": "1",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "2",
       "name": "tomato",
       "categoryId": "1",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "3",
       "name": "potato",
       "categoryId": "1",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "4",
       "name": "onion",
       "categoryId": "1",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "5",
       "name": "lettuce",
       "categoryId": "1",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "6",
       "name": "cucumber",
       "categoryId": "1",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "7",
       "name": "courgette",
       "categoryId": "1",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "50",
       "name": "grapa",
       "categoryId": "2",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "51",
       "name": "banana",
       "categoryId": "2",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "52",
       "name": "Apple",
       "categoryId": "2",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "53",
       "name": "orange",
       "categoryId": "2",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "54",
       "name": "watermelon",
       "categoryId": "2",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "100",
       "name": "eggs",
       "categoryId": "3",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "101",
       "name": "cheese",
       "categoryId": "3",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "102",
       "name": "milk",
       "categoryId": "3",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "103",
       "name": "yoghurt",
       "categoryId": "3",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "150",
       "name": "ham",
       "categoryId": "4",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "151",
       "name": "sausages",
       "categoryId": "4",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "152",
       "name": "chicken fillet",
       "categoryId": "4",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "200",
       "name": "still water",
       "categoryId": "5",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "201",
       "name": "sparkling water",
       "categoryId": "5",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "202",
       "name": "juice",
       "categoryId": "5",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "203",
       "name": "beer",
       "categoryId": "5",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "204",
       "name": "wine",
       "categoryId": "5",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "205",
       "name": "whisky",
       "categoryId": "5",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "206",
       "name": "vodka",
       "categoryId": "5",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "207",
       "name": "coca cola",
       "categoryId": "5",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "208",
       "name": "sprite",
       "categoryId": "5",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "250",
       "name": "pizza",
       "categoryId": "6",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "251",
       "name": "frites",
       "categoryId": "6",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "252",
       "name": "prawns",
       "categoryId": "6",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "253",
       "name": "seafood",
       "categoryId": "6",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "254",
       "name": "fish sticks",
       "categoryId": "6",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "300",
       "name": "bread",
       "categoryId": "7",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "301",
       "name": "rolls",
       "categoryId": "7",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "302",
       "name": "baguette",
       "categoryId": "7",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "303",
       "name": "donut",
       "categoryId": "7",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "350",
       "name": "kucharek",
       "categoryId": "8",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "351",
       "name": "pepper",
       "categoryId": "8",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "352",
       "name": "salt",
       "categoryId": "8",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "353",
       "name": "sugar",
       "categoryId": "8",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "354",
       "name": "ground paprika",
       "categoryId": "8",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "400",
       "name": "rice",
       "categoryId": "9",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "401",
       "name": "breakfast cereals",
       "categoryId": "9",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "402",
       "name": "Oatmeal",
       "categoryId": "9",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "403",
       "name": "bread crumbs",
       "categoryId": "9",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "450",
       "name": "chocolate",
       "categoryId": "10",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "451",
       "name": "chips",
       "categoryId": "10",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "452",
       "name": "breadsticks",
       "categoryId": "10",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "453",
       "name": "Peanuts",
       "categoryId": "10",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "500",
       "name": "ham",
       "categoryId": "11",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "501",
       "name": "cheese",
       "categoryId": "11",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "502",
       "name": "Salads",
       "categoryId": "11",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "503",
       "name": "chicken fillet",
       "categoryId": "11",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "504",
       "name": "chicken wings",
       "categoryId": "11",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "505",
       "name": "turkey neck",
       "categoryId": "11",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "506",
       "name": "broth portion",
       "categoryId": "11",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "507",
       "name": "beef meat",
       "categoryId": "11",
+      "parentCategoryId": "1",
       "showInShop": true
     },
     {
       "id": "508",
       "name": "sausage",
       "categoryId": "11",
+      "parentCategoryId": "1",
       "showInShop": true
+    }
+  ],
+  "groceriesCategories": [
+    {
+      "id": "1",
+      "name": "vegetables"
     },
+    {
+      "id": "2",
+      "name": "fruits"
+    },
+    {
+      "id": "3",
+      "name": "dairy"
+    },
+    {
+      "id": "4",
+      "name": "meat"
+    },
+    {
+      "id": "5",
+      "name": "drinks"
+    },
+    {
+      "id": "6",
+      "name": "frozen food"
+    },
+    {
+      "id": "7",
+      "name": "bakery"
+    },
+    {
+      "id": "8",
+      "name": "spices"
+    },
+    {
+      "id": "9",
+      "name": "loose"
+    },
+    {
+      "id": "10",
+      "name": "sweets"
+    },
+    {
+      "id": "11",
+      "name": "from Service"
+    }
+  ],
+  "products": [
     {
       "id": "550",
       "name": "hair sampon",
       "categoryId": "30",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "551",
       "name": "shower gel",
       "categoryId": "30",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "552",
       "name": "enzyme peeling",
       "categoryId": "30",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "553",
       "name": "Toothpaste",
       "categoryId": "30",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "554",
       "name": "hair gel",
       "categoryId": "30",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "555",
       "name": "hair spray",
       "categoryId": "30",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "556",
       "name": "moisturizing cream",
       "categoryId": "30",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "557",
       "name": "the razor",
       "categoryId": "30",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "600",
       "name": "toilet paper",
       "categoryId": "31",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "601",
       "name": "paper towels",
       "categoryId": "31",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "602",
       "name": "cloth rags",
       "categoryId": "31",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "603",
       "name": "dish sponges",
       "categoryId": "31",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "604",
       "name": "dish soap",
       "categoryId": "31",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "605",
       "name": "dishwasher cubes",
       "categoryId": "31",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "606",
       "name": "dishwasher rinse aid",
       "categoryId": "31",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "607",
       "name": "dishwasher salt",
       "categoryId": "31",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "608",
       "name": "dishwasher freshener",
       "categoryId": "31",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "609",
       "name": "dishwasher cleaning capsule",
       "categoryId": "31",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "610",
       "name": "washing capsules",
       "categoryId": "31",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "611",
       "name": "fabric softener",
       "categoryId": "31",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "612",
       "name": "aromatic wipes for the dryer",
       "categoryId": "31",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "613",
       "name": "washing machine cleaning capsules",
       "categoryId": "31",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "614",
       "name": "liquid soap",
       "categoryId": "31",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "615",
       "name": "toilet fluid",
       "categoryId": "31",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "616",
       "name": "toilet cubes",
       "categoryId": "31",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "617",
       "name": "bubble bath",
       "categoryId": "31",
+      "parentCategoryId": "2",
       "showInShop": true
     },
     {
       "id": "618",
       "name": "razor cleaning fluid",
       "categoryId": "31",
+      "parentCategoryId": "2",
       "showInShop": true
+    }
+  ],
+  "productsCategories": [
+    {
+      "id": "30",
+      "name": "hygiene and care"
+    },
+    {
+      "id": "31",
+      "name": "cleaning products"
     }
   ],
   "dishes": [
     {
       "id": "1",
       "categoryId": "2",
+      "parentCategoryId": "3",
       "name": "rosół",
       "itemsIncluded": [
         {
@@ -704,6 +782,7 @@
     {
       "id": "2",
       "categoryId": "2",
+      "parentCategoryId": "3",
       "name": "grzybowa",
       "items": [
         {
@@ -744,6 +823,7 @@
       "id": "1",
       "name": "example list",
       "categoryId": "1",
+      "parentCategoryId": "4",
       "items": [
         {
           "itemsId": "1",
@@ -772,76 +852,109 @@
       "name": "All"
     }
   ],
-  "basketItems": [
+  "basketGroceries": [
     {
-      "itemId": "1",
-      "value": "1"
-    },
-    {
-      "itemId": "3",
-      "value": "1"
-    },
-    {
-      "itemId": "200",
-      "value": "1"
-    },
-    {
-      "itemId": "250",
-      "value": "1"
-    },
-    {
-      "itemId": "254",
-      "value": "1"
-    },
-    {
-      "itemId": "550",
-      "value": "1"
-    },
-    {
-      "itemId": "601",
-      "value": "1"
-    },
-    {
-      "itemId": "611",
-      "value": "1"
-    },
-    {
-      "itemId": "618",
+      "id": "1",
+      "name": "pepper",
+      "categoryId": "1",
+      "parentCategoryId": "1",
       "value": "1"
     },
     {
       "id": "2",
       "name": "tomato",
       "categoryId": "1",
-      "showInShop": true
-    },
-    {
-      "itemId": "2",
-      "value": "1",
-      "id": "ZAyyePy"
-    },
-    {
-      "itemId": "7",
-      "value": "1",
-      "id": "pxLaCk8"
-    }
-  ],
-  "basketDishes": [
-    {
-      "dishesId": "1",
+      "parentCategoryId": "1",
       "value": "1"
     },
     {
-      "dishesId": "2",
-      "value": "3"
-    }
-  ],
-  "basketSavedLists": [
+      "id": "4",
+      "name": "onion",
+      "categoryId": "1",
+      "parentCategoryId": "1",
+      "value": "1"
+    },
     {
-      "savedListsId": "1",
-      "value": "3"
+      "id": "3",
+      "name": "potato",
+      "categoryId": "1",
+      "parentCategoryId": "1",
+      "value": "1"
+    },
+    {
+      "id": "5",
+      "name": "lettuce",
+      "categoryId": "1",
+      "parentCategoryId": "1",
+      "value": "1"
+    },
+    {
+      "id": "51",
+      "name": "banana",
+      "categoryId": "2",
+      "parentCategoryId": "1",
+      "value": "1"
+    },
+    {
+      "id": "202",
+      "name": "juice",
+      "categoryId": "5",
+      "parentCategoryId": "1",
+      "value": "1"
+    },
+    {
+      "id": "203",
+      "name": "beer",
+      "categoryId": "5",
+      "parentCategoryId": "1",
+      "value": "1"
+    },
+    {
+      "id": "206",
+      "name": "vodka",
+      "categoryId": "5",
+      "parentCategoryId": "1",
+      "value": "1"
+    },
+    {
+      "id": "207",
+      "name": "coca cola",
+      "categoryId": "5",
+      "parentCategoryId": "1",
+      "value": "1"
+    },
+    {
+      "id": "351",
+      "name": "pepper",
+      "categoryId": "8",
+      "parentCategoryId": "1",
+      "value": "1"
+    },
+    {
+      "id": "50",
+      "name": "grapa",
+      "categoryId": "2",
+      "parentCategoryId": "1",
+      "value": "1"
+    },
+    {
+      "id": "7",
+      "name": "courgette",
+      "categoryId": "1",
+      "parentCategoryId": "1",
+      "value": "1"
+    },
+    {
+      "id": "6",
+      "name": "cucumber",
+      "categoryId": "1",
+      "parentCategoryId": "1",
+      "value": "1"
     }
   ],
+  "basketProducts": [],
+  "basketDishes": [],
+  "basketSavedLists": [],
   "searchList": {
     "items": [
       {

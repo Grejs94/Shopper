@@ -4,22 +4,41 @@ import { UseDishesCategory, UseDishes } from "hooks/API/DishesHooks";
 
 import { useSavedList, useSavedListsCategories } from "./SavedListsHooks";
 
-import { useBasket, addBasketItem } from "./BasketHooks";
+import {
+  addBasketGroceries,
+  addBasketProducts,
+  addBasketDishes,
+  addBasketSavedLists,
+  useBasketGroceres,
+  useBasketProducts,
+  useBasketDishes,
+  useBasketSavedLists,
+} from "./BasketHooks";
 
 import { useMyshops } from "./ShopsHooks";
 
-import { useItems } from "./ItemsHooks";
+import { useGroceres, useGroceriesCategories } from "./GroceriesHooks";
+
+import { useProducts, useProductsCategories } from "./ProductsHooks";
 
 export default {
   useParentCategory,
   useCategory,
-  useItems,
-  // useAddItem,
+  useGroceres,
+  useGroceriesCategories,
+  useProducts,
+  useProductsCategories,
   UseDishesCategory,
   UseDishes,
   useSavedList,
   useSavedListsCategories,
-  useBasket,
-  addBasketItem,
+  addBasketGroceries,
+  addBasketProducts,
+  addBasketDishes,
+  addBasketSavedLists,
+  useBasketGroceres,
+  useBasketProducts,
+  useBasketDishes,
+  useBasketSavedLists,
   useMyshops,
 };

@@ -1,6 +1,5 @@
 import React from "react";
 
-import { ShopTitle } from "./BasketPageContent.css";
 import { HideTheMenuWhenScrollIntoView } from "assets/StyledComponents/ItemsDisplayed.css";
 
 import { CreateCategoriesList } from "components";
@@ -9,112 +8,95 @@ import API from "hooks/API";
 
 const BasketPageContent = () => {
   // { isError, isLoading, isSuccess, data }
-  const useBasket = API.useBasket();
-  const useMyshops = API.useMyshops();
-  const categories = API.useCategory();
-  const items = API.useItems();
-  const dishesCategories = API.UseDishesCategory();
+  const useGroceres = API.useGroceres();
+  const useGroceriesCategories = API.useGroceriesCategories();
+  const useProducts = API.useProducts();
+  const useProductsCategories = API.useProductsCategories();
   const dishes = API.UseDishes();
+  const dishesCategories = API.UseDishesCategory();
   const savedList = API.useSavedList();
   const useSavedListsCategories = API.useSavedListsCategories();
 
+  const useBasketGroceres = API.useBasketGroceres();
+  const useBasketProducts = API.useBasketProducts();
+  const useBasketDishes = API.useBasketDishes();
+  const useBasketSavedLists = API.useBasketSavedLists();
+
   if (
-    useBasket.isError ||
-    useMyshops.isError ||
-    categories.isError ||
-    items.isError ||
-    dishesCategories.isError ||
+    useGroceres.isError ||
+    useGroceriesCategories.isError ||
+    useProducts.isError ||
+    useProductsCategories.isError ||
     dishes.isError ||
+    dishesCategories.isError ||
     savedList.isError ||
-    useSavedListsCategories.isError
+    useSavedListsCategories.isError ||
+    useBasketGroceres.isError ||
+    useBasketProducts.isError ||
+    useBasketDishes.isError ||
+    useBasketSavedLists.isError
   ) {
     return "Fetching date error...";
   } else if (
-    useBasket.isLoading ||
-    useMyshops.isLoading ||
-    categories.isLoading ||
-    items.isLoading ||
-    dishesCategories.isLoading ||
+    useGroceres.isLoading ||
+    useGroceriesCategories.isLoading ||
+    useProducts.isLoading ||
+    useProductsCategories.isLoading ||
     dishes.isLoading ||
+    dishesCategories.isLoading ||
     savedList.isLoading ||
-    useSavedListsCategories.isLoading
+    useSavedListsCategories.isLoading ||
+    useBasketGroceres.isLoading ||
+    useBasketProducts.isLoading ||
+    useBasketDishes.isLoading ||
+    useBasketSavedLists.isLoading
   ) {
     return "Loading date...";
   } else if (
-    useBasket.isSuccess &&
-    useMyshops.isSuccess &&
-    categories.isSuccess &&
-    items.isSuccess &&
-    dishesCategories.isSuccess &&
+    useGroceres.isSuccess &&
+    useGroceriesCategories.isSuccess &&
+    useProducts.isSuccess &&
+    useProductsCategories.isSuccess &&
     dishes.isSuccess &&
+    dishesCategories.isSuccess &&
     savedList.isSuccess &&
-    useSavedListsCategories.isSuccess
+    useSavedListsCategories.isSuccess &&
+    useBasketGroceres.isSuccess &&
+    useBasketProducts.isSuccess &&
+    useBasketDishes.isSuccess &&
+    useBasketSavedLists.isSuccess
   ) {
-    const createContent = useBasket.data.map((shop) => {
-      const basketShopId = shop.shopId;
-
-      const currentShop = useMyshops.data.find(
-        (shop) => shop.id === basketShopId
-      );
-
-      const ShopItemsDataBaseFormat = shop.items;
-      const ShopDishesDataBaseFormat = shop.dishes;
-      const ShopSavedListsDataBaseFormat = shop.savedLists;
-
-      const ShopItems = items.data.filter((item) =>
-        ShopItemsDataBaseFormat.find(
-          (basketItem) => basketItem.itemId === item.id
-        )
-      );
-
-      const ShopDishes = dishes.data.filter((item) =>
-        ShopDishesDataBaseFormat.find(
-          (basketItem) => basketItem.dishesId === item.id
-        )
-      );
-      const ShopSavedList = savedList.data.filter((item) =>
-        ShopSavedListsDataBaseFormat.find(
-          (basketItem) => basketItem.savedListsId === item.id
-        )
-      );
-
-      const foodCategories = categories.data.filter(
-        (category) => category.parentCategoryId === "1"
-      );
-      const ProductsCategories = categories.data.filter(
-        (category) => category.parentCategoryId === "2"
-      );
-
-      return (
-        <div key={currentShop.name}>
-          <ShopTitle>{currentShop.name}</ShopTitle>
-          <CreateCategoriesList
-            parentsTitle="Groceries"
-            filtredCategories={foodCategories}
-            itemsList={ShopItems}
-          />
-          <HideTheMenuWhenScrollIntoView />
-          <CreateCategoriesList
-            parentsTitle="Products"
-            filtredCategories={ProductsCategories}
-            itemsList={ShopItems}
-          />
-          <HideTheMenuWhenScrollIntoView />
-          <CreateCategoriesList
-            parentsTitle="Dishes"
-            filtredCategories={dishesCategories.data}
-            itemsList={ShopDishes}
-          />
-          <HideTheMenuWhenScrollIntoView />
-          <CreateCategoriesList
-            parentsTitle="SavedList"
-            filtredCategories={useSavedListsCategories.data}
-            itemsList={ShopSavedList}
-          />
-        </div>
-      );
-    });
-    return <div>{createContent}</div>;
+    return (
+      <div>
+        <CreateCategoriesList
+          parentsTitle="Groceries"
+          itemsList={useBasketGroceres.data}
+          filtredCategories={useGroceriesCategories.data}
+          handleOnClick={() => console.log("klik w element w koszyku")}
+        />
+        <HideTheMenuWhenScrollIntoView />
+        <CreateCategoriesList
+          parentsTitle="Products"
+          itemsList={useBasketProducts.data}
+          filtredCategories={useProductsCategories.data}
+          handleOnClick={() => console.log("klik w element w koszyku")}
+        />
+        <HideTheMenuWhenScrollIntoView />
+        <CreateCategoriesList
+          parentsTitle="Dishes"
+          itemsList={useBasketDishes.data}
+          filtredCategories={dishesCategories.data}
+          handleOnClick={() => console.log("klik w element w koszyku")}
+        />
+        <HideTheMenuWhenScrollIntoView />
+        <CreateCategoriesList
+          parentsTitle="SavedList"
+          itemsList={useBasketSavedLists.data}
+          filtredCategories={useSavedListsCategories.data}
+          handleOnClick={() => console.log("klik w element w koszyku")}
+        />
+      </div>
+    );
   }
 };
 

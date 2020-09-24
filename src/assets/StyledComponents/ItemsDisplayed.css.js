@@ -28,7 +28,6 @@ export const Square = styled.div`
 `;
 
 export const Content = styled.div`
-  position: absolute;
   text-align: center;
 `;
 

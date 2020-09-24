@@ -1,13 +1,11 @@
 import React from "react";
 
-import { HideTheMenuWhenScrollIntoView } from "assets/StyledComponents/ItemsDisplayed.css";
-
 import { useSelector } from "react-redux";
-import { selectCategory } from "features/category/categorySlice";
-
-import API from "hooks/API";
 
 import { CreateCategoriesList } from "components";
+
+import API from "hooks/API";
+import { selectCategory } from "features/category/categorySlice";
 
 const ScrollToParentCategory = ({ category }) => {
   const div = document.querySelector(`#${category}`);
@@ -20,74 +18,76 @@ const ScrollToParentCategory = ({ category }) => {
 
 function ElementsPage() {
   // { isError, isLoading, isSuccess, data }
-  const categories = API.useCategory();
-  const items = API.useItems();
-  const dishesCategories = API.UseDishesCategory();
+  const useGroceres = API.useGroceres();
+  const useGroceriesCategories = API.useGroceriesCategories();
+  const useProducts = API.useProducts();
+  const useProductsCategories = API.useProductsCategories();
   const dishes = API.UseDishes();
+  const dishesCategories = API.UseDishesCategory();
   const savedList = API.useSavedList();
   const useSavedListsCategories = API.useSavedListsCategories();
+
   const category = useSelector(selectCategory);
 
   if (
-    categories.isError ||
-    items.isError ||
-    dishesCategories.isError ||
+    useGroceres.isError ||
+    useGroceriesCategories.isError ||
+    useProducts.isError ||
+    useProductsCategories.isError ||
     dishes.isError ||
+    dishesCategories.isError ||
     savedList.isError ||
     useSavedListsCategories.isError
   ) {
     return "Fetching date error...";
   } else if (
-    categories.isLoading ||
-    items.isLoading ||
-    dishesCategories.isLoading ||
+    useGroceres.isLoading ||
+    useGroceriesCategories.isLoading ||
+    useProducts.isLoading ||
+    useProductsCategories.isLoading ||
     dishes.isLoading ||
+    dishesCategories.isLoading ||
     savedList.isLoading ||
     useSavedListsCategories.isLoading
   ) {
     return "Loading date...";
   } else if (
-    categories.isSuccess &&
-    items.isSuccess &&
-    dishesCategories.isSuccess &&
+    useGroceres.isSuccess &&
+    useGroceriesCategories.isSuccess &&
+    useProducts.isSuccess &&
+    useProductsCategories.isSuccess &&
     dishes.isSuccess &&
+    dishesCategories.isSuccess &&
     savedList.isSuccess &&
     useSavedListsCategories.isSuccess
   ) {
-    const foodCategories = categories.data.filter(
-      (category) => category.parentCategoryId === "1"
-    );
-
-    const ProductsCategories = categories.data.filter(
-      (category) => category.parentCategoryId === "2"
-    );
-
     ScrollToParentCategory({ category });
 
     return (
       <div>
         <CreateCategoriesList
           parentsTitle="Groceries"
-          filtredCategories={foodCategories}
-          itemsList={items.data}
+          itemsList={useGroceres.data}
+          filtredCategories={useGroceriesCategories.data}
+          variant="shop"
         />
-        <HideTheMenuWhenScrollIntoView id="Products" />
         <CreateCategoriesList
           parentsTitle="Products"
-          filtredCategories={ProductsCategories}
-          itemsList={items.data}
+          itemsList={useProducts.data}
+          filtredCategories={useProductsCategories.data}
+          variant="shop"
         />
-        <HideTheMenuWhenScrollIntoView id="Dishes" />
         <CreateCategoriesList
           parentsTitle="Dishes"
-          filtredCategories={dishesCategories.data}
           itemsList={dishes.data}
+          filtredCategories={dishesCategories.data}
+          variant="shop"
         />
-        <HideTheMenuWhenScrollIntoView id="SavedList" />
         <CreateCategoriesList
           parentsTitle="SavedList"
-          filtredCategories={useSavedListsCategories.data}
           itemsList={savedList.data}
+          filtredCategories={useSavedListsCategories.data}
+          variant="shop"
         />
       </div>
     );

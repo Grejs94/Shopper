@@ -42,26 +42,7 @@ function SettingsPage() {
       <MainPageWrapper>
         <Switch>
           <Route exact path="/settings">
-            <IconsItem image={groceries_coloredImg} text="groceries" />
-            {category === "groceries" && (
-              <GroceriesChildren to="/settings/groceries" />
-            )}
-            <IconsItem image={products_coloredImg} text="products" />
-            {category === "products" && (
-              <ProductsChildren to="/settings/products" />
-            )}
-            <IconsItem image={dishes_coloredImg} text="dishes" />
-            {category === "dishes" && <DishesChildren to="/settings/dishes" />}
-            <IconsItemLink
-              image={lists_coloredImg}
-              text="lists"
-              to="/settings/lists"
-            />
-            <IconsItemLink
-              image={history_coloredImg}
-              text="history"
-              to="/settings/history"
-            />
+            Setting page
           </Route>
           <Route exact path="/settings/groceries">
             /settings/groceries

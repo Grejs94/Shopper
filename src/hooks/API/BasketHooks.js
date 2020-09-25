@@ -32,7 +32,7 @@ export function useBasketSavedLists() {
   );
 }
 
-export const addBasketGroceries = async ({ data }) => {
+const addBasketGroceries = async ({ data }) => {
   const response = await fetch(
     `${process.env.REACT_APP_LOCAL_HTTP}/basketGroceries`,
     {
@@ -47,7 +47,7 @@ export const addBasketGroceries = async ({ data }) => {
   return await response.json();
 };
 
-export const addBasketProducts = async ({ data }) => {
+const addBasketProducts = async ({ data }) => {
   const response = await fetch(
     `${process.env.REACT_APP_LOCAL_HTTP}/basketProducts`,
     {
@@ -62,7 +62,7 @@ export const addBasketProducts = async ({ data }) => {
   return await response.json();
 };
 
-export const addBasketDishes = async ({ data }) => {
+const addBasketDishes = async ({ data }) => {
   const response = await fetch(
     `${process.env.REACT_APP_LOCAL_HTTP}/basketDishes`,
     {
@@ -77,7 +77,7 @@ export const addBasketDishes = async ({ data }) => {
   return await response.json();
 };
 
-export const addBasketSavedLists = async ({ data }) => {
+const addBasketSavedLists = async ({ data }) => {
   const response = await fetch(
     `${process.env.REACT_APP_LOCAL_HTTP}/basketSavedLists`,
     {

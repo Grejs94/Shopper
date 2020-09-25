@@ -71,17 +71,6 @@ const CreateCategoriesList = ({
         if (allreadyInBasket) {
           console.log("produkt jest w koszyku zwiększ wartość");
         } else {
-          mutate_Post_BasketGroceries({
-            data: {
-              id: item.id,
-              name: item.name,
-              categoryId: item.categoryId,
-              parentCategoryId: item.parentCategoryId,
-              value: "1",
-            },
-          }).then(() => {
-            console.log("dodane");
-          });
           console.log("produktu nie ma jeszcze w koszyku dodaj go");
         }
       } else if (item.parentCategoryId === "2") {

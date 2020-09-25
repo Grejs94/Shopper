@@ -858,7 +858,7 @@
       "name": "pepper",
       "categoryId": "1",
       "parentCategoryId": "1",
-      "value": "1"
+      "value": "3"
     },
     {
       "id": "2",
@@ -868,107 +868,9 @@
       "value": "1"
     },
     {
-      "id": "4",
-      "name": "onion",
-      "categoryId": "1",
-      "parentCategoryId": "1",
-      "value": "1"
-    },
-    {
-      "id": "3",
-      "name": "potato",
-      "categoryId": "1",
-      "parentCategoryId": "1",
-      "value": "1"
-    },
-    {
-      "id": "5",
-      "name": "lettuce",
-      "categoryId": "1",
-      "parentCategoryId": "1",
-      "value": "1"
-    },
-    {
-      "id": "51",
-      "name": "banana",
-      "categoryId": "2",
-      "parentCategoryId": "1",
-      "value": "1"
-    },
-    {
-      "id": "202",
-      "name": "juice",
-      "categoryId": "5",
-      "parentCategoryId": "1",
-      "value": "1"
-    },
-    {
-      "id": "203",
-      "name": "beer",
-      "categoryId": "5",
-      "parentCategoryId": "1",
-      "value": "1"
-    },
-    {
-      "id": "206",
-      "name": "vodka",
-      "categoryId": "5",
-      "parentCategoryId": "1",
-      "value": "1"
-    },
-    {
-      "id": "207",
-      "name": "coca cola",
-      "categoryId": "5",
-      "parentCategoryId": "1",
-      "value": "1"
-    },
-    {
-      "id": "351",
-      "name": "pepper",
-      "categoryId": "8",
-      "parentCategoryId": "1",
-      "value": "1"
-    },
-    {
-      "id": "50",
-      "name": "grapa",
-      "categoryId": "2",
-      "parentCategoryId": "1",
-      "value": "1"
-    },
-    {
-      "id": "7",
-      "name": "courgette",
-      "categoryId": "1",
-      "parentCategoryId": "1",
-      "value": "1"
-    },
-    {
       "id": "6",
       "name": "cucumber",
       "categoryId": "1",
-      "parentCategoryId": "1",
-      "value": "1"
-    },
-    {
-      "id": "102",
-      "name": "milk",
-      "categoryId": "3",
-      "parentCategoryId": "1",
-      "value": "1"
-    },
-    {
-      "id": "152",
-      "name": "chicken fillet",
-      "categoryId": "4",
-      "parentCategoryId": "1",
-      "value": "1"
-    },
-    {
-      "id": "151",
-      "name": "sausages",
-      "categoryId": "4",
       "parentCategoryId": "1",
       "value": "1"
     }

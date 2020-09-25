@@ -16,6 +16,7 @@ import {
 import { Wrapper } from "./App.css.js";
 
 function App() {
+  console.log(`${process.env.REACT_APP_LOCAL_HTTP}/basketGroceries`);
   return (
     <>
       <Router>

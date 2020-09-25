@@ -1,4 +1,4 @@
-import { useParentCategory } from "hooks/API/ParentCategoryHooks";
+import { useParentCategories } from "hooks/API/ParentCategoryHooks";
 
 import { UseDishesCategory, UseDishes } from "hooks/API/DishesHooks";
 
@@ -22,7 +22,7 @@ import { useGroceres, useGroceriesCategories } from "./GroceriesHooks";
 import { useProducts, useProductsCategories } from "./ProductsHooks";
 
 export default {
-  useParentCategory,
+  useParentCategories,
   useGroceres,
   useGroceriesCategories,
   useProducts,

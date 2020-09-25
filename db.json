@@ -11,11 +11,7 @@
       "storageRacks": [
         {
           "id": "1",
-          "IncludedCategoriesId": [
-            "4",
-            "2",
-            "2"
-          ],
+          "IncludedCategoriesId": ["4", "2", "2"],
           "shelfs": [
             {
               "numberFromTheTop": "1",
@@ -86,7 +82,7 @@
       ]
     }
   ],
-  "parentCategory": [
+  "useParentCategories": [
     {
       "id": "1",
       "name": "food"

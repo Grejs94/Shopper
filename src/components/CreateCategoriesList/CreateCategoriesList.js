@@ -9,8 +9,6 @@ import {
   HideTheMenuWhenScrollIntoView,
 } from "assets/StyledComponents/ItemsDisplayed.css";
 
-import { queryCache, useMutation } from "react-query";
-
 import API from "hooks/API";
 
 function capitalizeFirstLetter(string) {
@@ -31,55 +29,67 @@ const CreateCategoriesList = ({
   const useBasketProducts = API.useBasketProducts();
   const useBasketDishes = API.useBasketDishes();
   const useBasketSavedLists = API.useBasketSavedLists();
+  const useParentCategories = API.useParentCategories();
 
-  const [mutate_Post_BasketGroceries] = API.useAddBasketGroceries();
-
-  const [mutate_Post_BasketProducts] = API.useAddBasketProducts();
-
-  const [mutate_Post_BasketDishes] = API.useAddBasketDishes();
-
-  const [mutate_Post_BasketSavedLists] = API.useAddBasketGroceries();
+  // const [mutate_Post_BasketGroceries] = API.useAddBasketGroceries();
+  // const [mutate_Post_BasketProducts] = API.useAddBasketProducts();
+  // const [mutate_Post_BasketDishes] = API.useAddBasketDishes();
+  // const [mutate_Post_BasketSavedLists] = API.useAddBasketGroceries();
 
   if (
     useBasketGroceres.isError ||
     useBasketProducts.isError ||
     useBasketDishes.isError ||
-    useBasketSavedLists.isError
+    useBasketSavedLists.isError ||
+    useParentCategories.isError
   ) {
     return "Fetching date error...";
   } else if (
     useBasketGroceres.isLoading ||
     useBasketProducts.isLoading ||
     useBasketDishes.isLoading ||
-    useBasketSavedLists.isLoading
+    useBasketSavedLists.isLoading ||
+    useParentCategories.isLoading
   ) {
     return "Loading date...";
   } else if (
     useBasketGroceres.isSuccess &&
     useBasketProducts.isSuccess &&
     useBasketDishes.isSuccess &&
-    useBasketSavedLists.isSuccess
+    useBasketSavedLists.isSuccess &&
+    useParentCategories.isSuccess
   ) {
     const handleShopOnClick = (item) => {
-      if (item.parentCategoryId === "1") {
-        const findNumberinBasket = useBasketGroceres.data.filter(
-          (basketGrocery) => basketGrocery.id === item.id
-        );
+      // need be in correct order
+      const elementsLists = [
+        useBasketGroceres,
+        useBasketProducts,
+        useBasketDishes,
+        useBasketSavedLists,
+      ];
 
-        const allreadyInBasket = findNumberinBasket.length ? true : false;
+      // need be in correct order
+      useParentCategories.data.map((ParentCategory) => {
+        if (item.parentCategoryId === ParentCategory.id) {
+          const index = Number(item.parentCategoryId) - 1;
+          const useBasketElementsList = elementsLists[index];
 
-        if (allreadyInBasket) {
-          console.log("produkt jest w koszyku zwiększ wartość");
+          const findElement = useBasketElementsList.data.filter(
+            (basketGrocery) => basketGrocery.id === item.id
+          );
+
+          const allreadyInBasket = findElement.length ? true : false;
+
+          if (allreadyInBasket) {
+            console.log("produkt jest w koszyku zwiększ wartość");
+          } else {
+            console.log("produktu nie ma jeszcze w koszyku dodaj go");
+          }
         } else {
-          console.log("produktu nie ma jeszcze w koszyku dodaj go");
+          return null;
         }
-      } else if (item.parentCategoryId === "2") {
-        console.log("dodaj Product do koszyka");
-      } else if (item.parentCategoryId === "3") {
-        console.log("dodaj Danie do koszyka");
-      } else if (item.parentCategoryId === "4") {
-        console.log("dodaj Listę do koszyka");
-      }
+        return null;
+      });
     };
 
     const CreateContent = (handleOnClick) => {

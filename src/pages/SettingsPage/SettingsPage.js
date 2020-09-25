@@ -1,37 +1,14 @@
 import React from "react";
 
 import { Switch, Route } from "react-router-dom";
-import { useSelector } from "react-redux";
 
-import {
-  Menu,
-  BottomBarWithIcons,
-  PageInfo,
-  IconsItem,
-  IconsItemLink,
-} from "components";
-import {
-  GroceriesChildren,
-  ProductsChildren,
-  DishesChildren,
-} from "components/IconsItem/Children";
+import { Menu, BottomBarWithIcons, PageInfo } from "components";
+
 import { IconElementsSettingsPage } from "assets";
 
 import { MainPageWrapper } from "assets/StyledComponents/MainPageWrapper.css";
 
-import {
-  groceries_coloredImg,
-  products_coloredImg,
-  dishes_coloredImg,
-  lists_coloredImg,
-  history_coloredImg,
-} from "pictures/ParentCategoryIcons";
-
-import { selectCategory } from "features/category/categorySlice";
-
 function SettingsPage() {
-  const category = useSelector(selectCategory);
-
   return (
     <>
       <Menu

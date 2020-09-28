@@ -1,5 +1,7 @@
 import React from "react";
 
+import { toast } from "react-toastify";
+
 import {
   SquareContainer,
   Square,
@@ -95,6 +97,10 @@ const CreateCategoriesList = ({
 
       const useBasketElementsList = elementsLists[index];
 
+      const parentCategoryName = useParentCategories.data.find(
+        (parentCategory) => parentCategory.id === item.parentCategoryId
+      ).name;
+
       const findElement = useBasketElementsList.data.filter(
         (basketGrocery) => basketGrocery.id === item.id
       );
@@ -113,14 +119,23 @@ const CreateCategoriesList = ({
                 ...basketItem,
                 value: incrementValue,
               },
-            }).then();
+            }).then(
+              toast.success(
+                `The ${parentCategoryName}: "${item.name}" 
+                current value is ${incrementValue}`
+              )
+            );
           } else {
             mutatePostFunctions[index]({
               data: {
                 ...item,
                 value: "1",
               },
-            });
+            }).then(
+              toast.success(
+                `The ${parentCategoryName}: "${item.name}" has been successfully added to your basket`
+              )
+            );
           }
         } else {
           return null;

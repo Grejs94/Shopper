@@ -1,6 +1,8 @@
 import React from "react";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import { ReactQueryDevtools } from "react-query-devtools";
 
@@ -14,6 +16,8 @@ import {
 } from "pages";
 
 import { Wrapper } from "./App.css.js";
+
+toast.configure();
 
 function App() {
   return (

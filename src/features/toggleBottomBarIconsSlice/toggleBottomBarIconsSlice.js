@@ -3,11 +3,19 @@ import { createSlice } from "@reduxjs/toolkit";
 export const toggleBottomBarIconsSlice = createSlice({
   name: "editBottomIcons",
   initialState: {
-    editIcon: true,
+    editIcon: false,
+    addIcon: false,
+    removeIcon: false,
   },
   reducers: {
     toggleEditIcon: (state) => {
       state.editIcon = !state.editIcon;
+    },
+    toggleAddIcon: (state) => {
+      state.addIcon = !state.addIcon;
+    },
+    toggleRemoveIcon: (state) => {
+      state.removeIcon = !state.removeIcon;
     },
     resetEditIcon: (state) => {
       state.editIcon = false;
@@ -17,9 +25,13 @@ export const toggleBottomBarIconsSlice = createSlice({
 
 export const {
   toggleEditIcon,
+  toggleAddIcon,
+  toggleRemoveIcon,
   resetEditIcon,
 } = toggleBottomBarIconsSlice.actions;
 
 export const selectEditIcon = (state) => state.editBottomIcons.editIcon;
+export const selectAddIcon = (state) => state.editBottomIcons.addIcon;
+export const selectRemoveIcon = (state) => state.editBottomIcons.removeIcon;
 
 export default toggleBottomBarIconsSlice.reducer;

@@ -13,20 +13,28 @@ import {
 } from "./BottomBarWithIcons.css";
 
 import {
-  edit_blackImg,
+  list_coloredImg,
   edit_coloredImg,
   return_blackImg,
   return_coloredImg,
+  add_blackImg,
+  add_coloredImg,
+  remove_blackImg,
+  remove_coloredImg,
 } from "pictures";
 
 import {
   selectEditIcon,
+  selectAddIcon,
+  selectRemoveIcon,
   resetEditIcon,
 } from "features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice";
 
 function BottomBarWithIcons({ icons }) {
   const dispatch = useDispatch();
   const editIcon = useSelector(selectEditIcon);
+  const addIcon = useSelector(selectAddIcon);
+  const removeIcon = useSelector(selectRemoveIcon);
 
   const history = useHistory();
 
@@ -58,10 +66,22 @@ function BottomBarWithIcons({ icons }) {
   const IconSwitch = (icon) => {
     switch (icon) {
       case "edit":
-        if (editIcon === true) {
-          return edit_coloredImg;
+        if (editIcon === false) {
+          return list_coloredImg;
         } else {
-          return edit_blackImg;
+          return edit_coloredImg;
+        }
+      case "add":
+        if (addIcon === false) {
+          return add_blackImg;
+        } else {
+          return add_coloredImg;
+        }
+      case "remove":
+        if (removeIcon === false) {
+          return remove_blackImg;
+        } else {
+          return remove_coloredImg;
         }
 
       default:

@@ -1,5 +1,8 @@
 import React from "react";
 
+import { useSelector } from "react-redux";
+import { selectEditIcon } from "features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice";
+
 import {
   Menu,
   BottomBarWithIcons,
@@ -9,9 +12,15 @@ import {
 
 import { MainPageWrapper } from "assets/StyledComponents/MainPageWrapper.css";
 
-import { IconElementsBasketPage, IconsBottom1 } from "assets";
+import {
+  IconElementsBasketPage,
+  IconsBottomEditVariant,
+  IconsBottomListVariant,
+} from "assets";
 
 function BasketPage() {
+  const editMode = useSelector(selectEditIcon);
+
   return (
     <>
       <Menu iconElementsList={IconElementsBasketPage} activeIcon="basket" />
@@ -19,7 +28,9 @@ function BasketPage() {
       <MainPageWrapper>
         <BasketPageContent />
       </MainPageWrapper>
-      <BottomBarWithIcons icons={IconsBottom1} />
+      <BottomBarWithIcons
+        icons={!editMode ? IconsBottomListVariant : IconsBottomEditVariant}
+      />
     </>
   );
 }

@@ -123,3 +123,95 @@ export function useAddBasketSavedLists() {
     },
   });
 }
+
+const putBasketGroceries = async ({ data, id }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_LOCAL_HTTP}/basketGroceries/${id}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
+
+  return await response.json();
+};
+
+const putBasketProducts = async ({ data, id }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_LOCAL_HTTP}/basketProducts/${id}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
+
+  return await response.json();
+};
+
+const putBasketDishes = async ({ data, id }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_LOCAL_HTTP}/basketDishes/${id}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
+
+  return await response.json();
+};
+
+const putBasketSavedLists = async ({ data, id }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_LOCAL_HTTP}/basketSavedLists/${id}`,
+    {
+      method: "PUT",
+      headers: {
+        "Content-type": "application/json",
+      },
+      body: JSON.stringify(data),
+    }
+  );
+
+  return await response.json();
+};
+
+export function usePutBasketGroceries() {
+  return useMutation(putBasketGroceries, {
+    onSuccess() {
+      queryCache.invalidateQueries("basketGroceres");
+    },
+  });
+}
+
+export function usePutBasketProducts() {
+  return useMutation(putBasketProducts, {
+    onSuccess() {
+      queryCache.invalidateQueries("basketProducts");
+    },
+  });
+}
+
+export function usePutBasketDishes() {
+  return useMutation(putBasketDishes, {
+    onSuccess() {
+      queryCache.invalidateQueries("basketDishes");
+    },
+  });
+}
+
+export function usePutBasketSavedLists() {
+  return useMutation(putBasketSavedLists, {
+    onSuccess() {
+      queryCache.invalidateQueries("basketSavedLists");
+    },
+  });
+}

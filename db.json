@@ -765,9 +765,9 @@
   "dishes": [
     {
       "id": "1",
+      "name": "rosół",
       "categoryId": "2",
       "parentCategoryId": "3",
-      "name": "rosół",
       "itemsIncluded": [
         {
           "itemsId": "4",
@@ -848,29 +848,7 @@
       "name": "All"
     }
   ],
-  "basketGroceries": [
-    {
-      "id": "1",
-      "name": "pepper",
-      "categoryId": "1",
-      "parentCategoryId": "1",
-      "value": "3"
-    },
-    {
-      "id": "2",
-      "name": "tomato",
-      "categoryId": "1",
-      "parentCategoryId": "1",
-      "value": "1"
-    },
-    {
-      "id": "6",
-      "name": "cucumber",
-      "categoryId": "1",
-      "parentCategoryId": "1",
-      "value": "1"
-    }
-  ],
+  "basketGroceries": [],
   "basketProducts": [],
   "basketDishes": [],
   "basketSavedLists": [],

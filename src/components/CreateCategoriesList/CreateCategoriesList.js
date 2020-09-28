@@ -11,6 +11,8 @@ import {
 
 import API from "hooks/API";
 
+import { incrementedString } from "assets";
+
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
@@ -31,10 +33,15 @@ const CreateCategoriesList = ({
   const useBasketSavedLists = API.useBasketSavedLists();
   const useParentCategories = API.useParentCategories();
 
-  // const [mutate_Post_BasketGroceries] = API.useAddBasketGroceries();
-  // const [mutate_Post_BasketProducts] = API.useAddBasketProducts();
-  // const [mutate_Post_BasketDishes] = API.useAddBasketDishes();
-  // const [mutate_Post_BasketSavedLists] = API.useAddBasketGroceries();
+  const [mutate_Post_BasketGroceries] = API.useAddBasketGroceries();
+  const [mutate_Post_BasketProducts] = API.useAddBasketProducts();
+  const [mutate_Post_BasketDishes] = API.useAddBasketDishes();
+  const [mutate_Post_BasketSavedLists] = API.useAddBasketSavedLists();
+
+  const [mutate_PUT_BasketGroceries] = API.usePutBasketGroceries();
+  const [mutate_PUT_BasketProducts] = API.usePutBasketProducts();
+  const [mutate_PUT_BasketDishes] = API.usePutBasketDishes();
+  const [mutate_PUT_BasketSavedLists] = API.usePutBasketSavedLists();
 
   if (
     useBasketGroceres.isError ||
@@ -60,6 +67,8 @@ const CreateCategoriesList = ({
     useParentCategories.isSuccess
   ) {
     const handleShopOnClick = (item) => {
+      const index = Number(item.parentCategoryId) - 1;
+
       // need be in correct order
       const elementsLists = [
         useBasketGroceres,
@@ -69,21 +78,49 @@ const CreateCategoriesList = ({
       ];
 
       // need be in correct order
+      const mutatePostFunctions = [
+        mutate_Post_BasketGroceries,
+        mutate_Post_BasketProducts,
+        mutate_Post_BasketDishes,
+        mutate_Post_BasketSavedLists,
+      ];
+
+      // need be in correct order
+      const mutatePutFunctions = [
+        mutate_PUT_BasketGroceries,
+        mutate_PUT_BasketProducts,
+        mutate_PUT_BasketDishes,
+        mutate_PUT_BasketSavedLists,
+      ];
+
+      const useBasketElementsList = elementsLists[index];
+
+      const findElement = useBasketElementsList.data.filter(
+        (basketGrocery) => basketGrocery.id === item.id
+      );
+
+      const allreadyInBasket = findElement.length ? true : false;
+
       useParentCategories.data.map((ParentCategory) => {
         if (item.parentCategoryId === ParentCategory.id) {
-          const index = Number(item.parentCategoryId) - 1;
-          const useBasketElementsList = elementsLists[index];
-
-          const findElement = useBasketElementsList.data.filter(
-            (basketGrocery) => basketGrocery.id === item.id
-          );
-
-          const allreadyInBasket = findElement.length ? true : false;
-
           if (allreadyInBasket) {
-            console.log("produkt jest w koszyku zwiększ wartość");
+            const basketItem = findElement[0];
+            const incrementValue = incrementedString(basketItem.value, "1");
+
+            mutatePutFunctions[index]({
+              id: item.id,
+              data: {
+                ...basketItem,
+                value: incrementValue,
+              },
+            }).then();
           } else {
-            console.log("produktu nie ma jeszcze w koszyku dodaj go");
+            mutatePostFunctions[index]({
+              data: {
+                ...item,
+                value: "1",
+              },
+            });
           }
         } else {
           return null;

@@ -72,28 +72,24 @@ const BasketPageContent = () => {
           parentsTitle="Groceries"
           itemsList={useBasketGroceres.data}
           filtredCategories={useGroceriesCategories.data}
-          handleOnClick={() => console.log("klik w element w koszyku")}
         />
         <HideTheMenuWhenScrollIntoView />
         <CreateCategoriesList
           parentsTitle="Products"
           itemsList={useBasketProducts.data}
           filtredCategories={useProductsCategories.data}
-          handleOnClick={() => console.log("klik w element w koszyku")}
         />
         <HideTheMenuWhenScrollIntoView />
         <CreateCategoriesList
           parentsTitle="Dishes"
           itemsList={useBasketDishes.data}
           filtredCategories={dishesCategories.data}
-          handleOnClick={() => console.log("klik w element w koszyku")}
         />
         <HideTheMenuWhenScrollIntoView />
         <CreateCategoriesList
           parentsTitle="SavedList"
           itemsList={useBasketSavedLists.data}
           filtredCategories={useSavedListsCategories.data}
-          handleOnClick={() => console.log("klik w element w koszyku")}
         />
       </div>
     );

@@ -19,10 +19,6 @@ function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
-const handleBasketOnClick = () => {
-  console.log("klik w element w koszyku");
-};
-
 const CreateCategoriesList = ({
   parentsTitle,
   filtredCategories,
@@ -68,6 +64,10 @@ const CreateCategoriesList = ({
     useBasketSavedLists.isSuccess &&
     useParentCategories.isSuccess
   ) {
+    const handleBasketOnClick = (item) => {
+      console.log(`klik w element ${item.name} w koszyku`);
+    };
+
     const handleShopOnClick = (item) => {
       const index = Number(item.parentCategoryId) - 1;
 
@@ -144,55 +144,54 @@ const CreateCategoriesList = ({
       });
     };
 
-    const CreateContent = (handleOnClick) => {
-      return (
-        <div>
-          {itemsList.length > 0 ? (
-            <>
-              {parentsTitle !== "Groceries" ? (
-                <HideTheMenuWhenScrollIntoView id={parentsTitle} />
-              ) : null}
-              <ParentTitle>{parentsTitle}</ParentTitle>
-            </>
-          ) : null}
-          {filtredCategories.map((category) => {
-            const ItemsList = itemsList.filter(
-              (item) => item.categoryId === category.id
-            );
+    return (
+      <div>
+        {itemsList.length > 0 ? (
+          <>
+            {parentsTitle !== "Groceries" ? (
+              <HideTheMenuWhenScrollIntoView id={parentsTitle} />
+            ) : null}
+            <ParentTitle>{parentsTitle}</ParentTitle>
+          </>
+        ) : null}
+        {filtredCategories.map((category) => {
+          const ItemsList = itemsList.filter(
+            (item) => item.categoryId === category.id
+          );
 
-            if (ItemsList.length === 0) {
-              return null;
-            }
+          if (ItemsList.length === 0) {
+            return null;
+          }
 
-            return (
-              <div key={category.name}>
-                <CategoryTitle>
-                  {capitalizeFirstLetter(category.name)}
-                </CategoryTitle>
-                <SquareContainer>
-                  {ItemsList.map((item) => {
-                    return (
-                      <Square key={item.id} onClick={() => handleOnClick(item)}>
-                        <Content>
-                          {item.value > 1
-                            ? `${item.name} (${item.value})`
-                            : `${item.name}`}
-                        </Content>
-                      </Square>
-                    );
-                  })}
-                </SquareContainer>
-              </div>
-            );
-          })}
-        </div>
-      );
-    };
-
-    return variant === "basket" ? (
-      <>{CreateContent(handleBasketOnClick)}</>
-    ) : (
-      <>{CreateContent(handleShopOnClick)}</>
+          return (
+            <div key={category.name}>
+              <CategoryTitle>
+                {capitalizeFirstLetter(category.name)}
+              </CategoryTitle>
+              <SquareContainer>
+                {ItemsList.map((item) => {
+                  return (
+                    <Square
+                      key={item.id}
+                      onClick={() =>
+                        variant === "basket"
+                          ? handleBasketOnClick(item)
+                          : handleShopOnClick(item)
+                      }
+                    >
+                      <Content>
+                        {item.value > 1
+                          ? `${item.name} (${item.value})`
+                          : `${item.name}`}
+                      </Content>
+                    </Square>
+                  );
+                })}
+              </SquareContainer>
+            </div>
+          );
+        })}
+      </div>
     );
   }
 };

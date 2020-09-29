@@ -215,3 +215,92 @@ export function usePutBasketSavedLists() {
     },
   });
 }
+
+// Delete DELETE
+
+const deleteBasketGroceries = async ({ id }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_LOCAL_HTTP}/basketGroceries/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }
+  );
+  return await response.json();
+};
+
+const deleteBasketProducts = async ({ id }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_LOCAL_HTTP}/basketProducts/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+      },
+    }
+  );
+
+  return await response.json();
+};
+
+const deleteBasketDishes = async ({ id }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_LOCAL_HTTP}/basketDishes/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+      },
+    }
+  );
+
+  return await response.json();
+};
+
+const deleteBasketSavedLists = async ({ id }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_LOCAL_HTTP}/basketSavedLists/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json",
+      },
+    }
+  );
+
+  return await response.json();
+};
+
+export function useDeleteBasketGroceries() {
+  return useMutation(deleteBasketGroceries, {
+    onSuccess() {
+      queryCache.refetchQueries("basketGroceres");
+    },
+  });
+}
+
+export function useDeleteBasketProducts() {
+  return useMutation(deleteBasketProducts, {
+    onSuccess() {
+      queryCache.refetchQueries("basketProducts");
+    },
+  });
+}
+
+export function useDeleteBasketDishes() {
+  return useMutation(deleteBasketDishes, {
+    onSuccess() {
+      queryCache.refetchQueries("basketDishes");
+    },
+  });
+}
+
+export function useDeleteBasketSavedLists() {
+  return useMutation(deleteBasketSavedLists, {
+    onSuccess() {
+      queryCache.refetchQueries("basketSavedLists");
+    },
+  });
+}

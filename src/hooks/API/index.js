@@ -17,6 +17,10 @@ import {
   usePutBasketProducts,
   usePutBasketDishes,
   usePutBasketSavedLists,
+  useDeleteBasketGroceries,
+  useDeleteBasketProducts,
+  useDeleteBasketDishes,
+  useDeleteBasketSavedLists,
 } from "./BasketHooks";
 
 import { useMyshops } from "./ShopsHooks";
@@ -47,5 +51,9 @@ export default {
   usePutBasketProducts,
   usePutBasketDishes,
   usePutBasketSavedLists,
+  useDeleteBasketGroceries,
+  useDeleteBasketProducts,
+  useDeleteBasketDishes,
+  useDeleteBasketSavedLists,
   useMyshops,
 };

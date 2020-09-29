@@ -2,6 +2,7 @@ import React from "react";
 
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+
 import {
   selectEditIcon,
   selectAddIcon,
@@ -36,7 +37,6 @@ const CreateCategoriesList = ({
   parentsTitle,
   filtredCategories,
   itemsList,
-  variant = "basket",
 }) => {
   const editMode = useSelector(selectEditIcon);
   const addIcon = useSelector(selectAddIcon);
@@ -61,6 +61,18 @@ const CreateCategoriesList = ({
   const [mutate_PUT_BasketProducts] = API.usePutBasketProducts();
   const [mutate_PUT_BasketDishes] = API.usePutBasketDishes();
   const [mutate_PUT_BasketSavedLists] = API.usePutBasketSavedLists();
+
+  // Delete
+
+  const [mutate_DELETE_BasketGroceries] = API.useDeleteBasketGroceries();
+  const [mutate_DELETE_BasketProducts] = API.useDeleteBasketProducts();
+  const [mutate_DELETE_BasketDishes] = API.useDeleteBasketDishes();
+  const [mutate_DELETE_BasketSavedLists] = API.useDeleteBasketSavedLists();
+
+  // useDeleteBasketGroceries
+  // useDeleteBasketProducts
+  // useDeleteBasketDishes
+  // useDeleteBasketSavedLists
 
   if (
     useBasketGroceres.isError ||
@@ -111,6 +123,15 @@ const CreateCategoriesList = ({
         mutate_PUT_BasketDishes,
         mutate_PUT_BasketSavedLists,
       ];
+
+      // need be in correct order
+      const mutateDeleteFunctions = [
+        mutate_DELETE_BasketGroceries,
+        mutate_DELETE_BasketProducts,
+        mutate_DELETE_BasketDishes,
+        mutate_DELETE_BasketSavedLists,
+      ];
+
       const useBasketElementsList = elementsLists[index];
 
       const parentCategoryName = useParentCategories.data.find(
@@ -125,7 +146,6 @@ const CreateCategoriesList = ({
 
       useParentCategories.data.map((ParentCategory) => {
         if (item.parentCategoryId === ParentCategory.id) {
-          // jesli item zgadza się z kategorią to zrób coć
           if (activeMenuIcon === "basket") {
             if (addIcon) {
               const basketItem = findElement[0];
@@ -151,11 +171,11 @@ const CreateCategoriesList = ({
                     ...basketItem,
                     value: reduced,
                   },
-                }).then();
+                });
               } else {
-                //
-                console.log("function deleted item from dataBase");
-                //
+                mutateDeleteFunctions[index]({
+                  id: item.id,
+                });
               }
             }
           } else if (activeMenuIcon === "shop") {

@@ -2,7 +2,11 @@ import React from "react";
 
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
-import { selectEditIcon } from "features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice";
+import {
+  selectEditIcon,
+  selectAddIcon,
+  selectRemoveIcon,
+} from "features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice";
 
 import { selectActiveMenuIcon } from "features/activeMenuIcon/activeMenuIconSlice";
 
@@ -35,6 +39,9 @@ const CreateCategoriesList = ({
   variant = "basket",
 }) => {
   const editMode = useSelector(selectEditIcon);
+  const addIcon = useSelector(selectAddIcon);
+  const removeIcon = useSelector(selectRemoveIcon);
+
   const activeMenuIcon = useSelector(selectActiveMenuIcon);
 
   // console.log(editMode);
@@ -118,33 +125,68 @@ const CreateCategoriesList = ({
 
       useParentCategories.data.map((ParentCategory) => {
         if (item.parentCategoryId === ParentCategory.id) {
-          if (allreadyInBasket) {
-            const basketItem = findElement[0];
-            const incrementValue = incrementedString(basketItem.value, "1");
+          // jesli item zgadza się z kategorią to zrób coć
+          if (activeMenuIcon === "basket") {
+            if (addIcon) {
+              const basketItem = findElement[0];
+              const incrementValue = incrementedString(basketItem.value, "1");
 
-            mutatePutFunctions[index]({
-              id: item.id,
-              data: {
-                ...basketItem,
-                value: incrementValue,
-              },
-            }).then(
-              toast.success(
-                `The ${parentCategoryName}: "${item.name}" 
-                current value is ${incrementValue}`
-              )
-            );
-          } else {
-            mutatePostFunctions[index]({
-              data: {
-                ...item,
-                value: "1",
-              },
-            }).then(
-              toast.success(
-                `The ${parentCategoryName}: "${item.name}" has been successfully added to your basket`
-              )
-            );
+              mutatePutFunctions[index]({
+                id: item.id,
+                data: {
+                  ...basketItem,
+                  value: incrementValue,
+                },
+              });
+            }
+
+            if (removeIcon) {
+              if (item.value > 1) {
+                const basketItem = findElement[0];
+                const reduced = incrementedString(basketItem.value, "-1");
+
+                mutatePutFunctions[index]({
+                  id: item.id,
+                  data: {
+                    ...basketItem,
+                    value: reduced,
+                  },
+                }).then();
+              } else {
+                //
+                console.log("function deleted item from dataBase");
+                //
+              }
+            }
+          } else if (activeMenuIcon === "shop") {
+            if (allreadyInBasket) {
+              const basketItem = findElement[0];
+              const incrementValue = incrementedString(basketItem.value, "1");
+
+              mutatePutFunctions[index]({
+                id: item.id,
+                data: {
+                  ...basketItem,
+                  value: incrementValue,
+                },
+              }).then(
+                toast.success(
+                  `The ${parentCategoryName}: "${item.name}" 
+                  current value is ${incrementValue}`
+                )
+              );
+            } else {
+              mutatePostFunctions[index]({
+                data: {
+                  ...item,
+                  value: "1",
+                },
+              }).then(
+                toast.success(
+                  `The ${parentCategoryName}: "${item.name}" has been successfully added to your basket`
+                )
+              );
+            }
           }
         } else {
           return null;

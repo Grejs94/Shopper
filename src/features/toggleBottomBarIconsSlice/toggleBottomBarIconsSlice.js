@@ -13,9 +13,11 @@ export const toggleBottomBarIconsSlice = createSlice({
     },
     toggleAddIcon: (state) => {
       state.addIcon = !state.addIcon;
+      state.removeIcon = false;
     },
     toggleRemoveIcon: (state) => {
       state.removeIcon = !state.removeIcon;
+      state.addIcon = false;
     },
     resetEditIcon: (state) => {
       state.editIcon = false;

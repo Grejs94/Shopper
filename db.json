@@ -11,11 +11,7 @@
       "storageRacks": [
         {
           "id": "1",
-          "IncludedCategoriesId": [
-            "4",
-            "2",
-            "2"
-          ],
+          "IncludedCategoriesId": ["4", "2", "2"],
           "shelfs": [
             {
               "numberFromTheTop": "1",
@@ -852,80 +848,7 @@
       "name": "All"
     }
   ],
-  "basketGroceries": [
-    {
-      "id": "1",
-      "name": "pepper",
-      "categoryId": "1",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "1"
-    },
-    {
-      "id": "3",
-      "name": "potato",
-      "categoryId": "1",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "1"
-    },
-    {
-      "id": "7",
-      "name": "courgette",
-      "categoryId": "1",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "1"
-    },
-    {
-      "id": "6",
-      "name": "cucumber",
-      "categoryId": "1",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "1"
-    },
-    {
-      "id": "101",
-      "name": "cheese",
-      "categoryId": "3",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "2"
-    },
-    {
-      "id": "100",
-      "name": "eggs",
-      "categoryId": "3",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "1"
-    },
-    {
-      "id": "150",
-      "name": "ham",
-      "categoryId": "4",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "1"
-    },
-    {
-      "id": "151",
-      "name": "sausages",
-      "categoryId": "4",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "1"
-    },
-    {
-      "id": "201",
-      "name": "sparkling water",
-      "categoryId": "5",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "1"
-    }
-  ],
+  "basketGroceries": [],
   "basketProducts": [],
   "basketDishes": [],
   "basketSavedLists": [],

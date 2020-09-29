@@ -29,7 +29,7 @@ function BasketPage() {
         <BasketPageContent />
       </MainPageWrapper>
       <BottomBarWithIcons
-        icons={!editMode ? IconsBottomListVariant : IconsBottomEditVariant}
+        icons={editMode ? IconsBottomEditVariant : IconsBottomListVariant}
       />
     </>
   );

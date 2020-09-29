@@ -6,13 +6,6 @@ import {
 
 export const IconsBottomEditVariant = [
   {
-    name: "edit",
-    onClick: toggleEditIcon,
-  },
-];
-
-export const IconsBottomListVariant = [
-  {
     name: "add",
     onClick: toggleAddIcon,
   },
@@ -20,6 +13,13 @@ export const IconsBottomListVariant = [
     name: "remove",
     onClick: toggleRemoveIcon,
   },
+  {
+    name: "edit",
+    onClick: toggleEditIcon,
+  },
+];
+
+export const IconsBottomListVariant = [
   {
     name: "edit",
     onClick: toggleEditIcon,

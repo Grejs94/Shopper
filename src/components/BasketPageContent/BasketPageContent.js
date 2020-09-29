@@ -73,19 +73,16 @@ const BasketPageContent = () => {
           itemsList={useBasketGroceres.data}
           filtredCategories={useGroceriesCategories.data}
         />
-        <HideTheMenuWhenScrollIntoView />
         <CreateCategoriesList
           parentsTitle="Products"
           itemsList={useBasketProducts.data}
           filtredCategories={useProductsCategories.data}
         />
-        <HideTheMenuWhenScrollIntoView />
         <CreateCategoriesList
           parentsTitle="Dishes"
           itemsList={useBasketDishes.data}
           filtredCategories={dishesCategories.data}
         />
-        <HideTheMenuWhenScrollIntoView />
         <CreateCategoriesList
           parentsTitle="SavedList"
           itemsList={useBasketSavedLists.data}

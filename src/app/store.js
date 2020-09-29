@@ -3,6 +3,7 @@ import counterReducer from "../features/counter/counterSlice";
 import {
   toggleBottomBarIconsSlice,
   category as categoryReducer,
+  activeMenuIconSlice as activeMenuIconReducer,
 } from "features";
 
 export default configureStore({
@@ -10,5 +11,6 @@ export default configureStore({
     counter: counterReducer,
     editBottomIcons: toggleBottomBarIconsSlice,
     category: categoryReducer,
+    activeMenuIcon: activeMenuIconReducer,
   },
 });

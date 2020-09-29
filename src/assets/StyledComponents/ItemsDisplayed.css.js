@@ -46,3 +46,33 @@ export const CategoryTitle = styled.p`
 export const HideTheMenuWhenScrollIntoView = styled.div`
   min-height: 100px;
 `;
+
+// List
+
+export const ListContainer = styled.div`
+  padding: 10px;
+  margin-top: 15px;
+`;
+
+export const ParentTitleList = styled.p`
+  font-size: 24px;
+  margin: 0;
+`;
+
+export const CategoryTitleListContainer = styled.div`
+  margin: 0;
+`;
+
+export const CategoryTitleList = styled.p`
+  font-size: 24px;
+  margin: 5px 0 0 5px;
+`;
+
+export const ListElementContainer = styled.div`
+  margin: 10px 0 20px 0;
+`;
+
+export const ListElement = styled.span`
+  font-size: 22px;
+  margin-left: 10px;
+`;

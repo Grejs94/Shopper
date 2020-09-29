@@ -1,6 +1,8 @@
 import React from "react";
 
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setActiveMenuIcon } from "features/activeMenuIcon/activeMenuIconSlice";
 
 import {
   basket_blackImg,
@@ -23,8 +25,6 @@ import {
   Img,
   LogoElement,
 } from "./Menu.css";
-
-import { useDispatch } from "react-redux";
 
 import { resetEditIcon } from "features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice";
 
@@ -73,13 +73,20 @@ function Menu({ iconElementsList, activeIcon }) {
     }
   };
 
-  const iconList = iconElementsList.map((icon) => (
-    <IconElement key={icon}>
-      <Link to={`/${icon}`}>
-        <Img src={IconSwitch(icon)} />
-      </Link>
-    </IconElement>
-  ));
+  const iconList = iconElementsList.map((icon) => {
+    return (
+      <IconElement
+        onClick={() => {
+          dispatch(setActiveMenuIcon(icon));
+        }}
+        key={icon}
+      >
+        <Link to={`/${icon}`}>
+          <Img src={IconSwitch(icon)} />
+        </Link>
+      </IconElement>
+    );
+  });
 
   const createLogoLink = (
     <LogoElement>

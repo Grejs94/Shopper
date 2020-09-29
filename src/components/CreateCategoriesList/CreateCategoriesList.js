@@ -1,6 +1,10 @@
 import React from "react";
 
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import { selectEditIcon } from "features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice";
+
+import { selectActiveMenuIcon } from "features/activeMenuIcon/activeMenuIconSlice";
 
 import {
   SquareContainer,
@@ -9,6 +13,12 @@ import {
   ParentTitle,
   CategoryTitle,
   HideTheMenuWhenScrollIntoView,
+  ListContainer,
+  CategoryTitleListContainer,
+  CategoryTitleList,
+  ListElementContainer,
+  ListElement,
+  ParentTitleList,
 } from "assets/StyledComponents/ItemsDisplayed.css";
 
 import API from "hooks/API";
@@ -25,6 +35,11 @@ const CreateCategoriesList = ({
   itemsList,
   variant = "basket",
 }) => {
+  const editMode = useSelector(selectEditIcon);
+  const activeMenuIcon = useSelector(selectActiveMenuIcon);
+
+  // console.log(editMode);
+
   const useBasketGroceres = API.useBasketGroceres();
   const useBasketProducts = API.useBasketProducts();
   const useBasketDishes = API.useBasketDishes();
@@ -144,7 +159,7 @@ const CreateCategoriesList = ({
       });
     };
 
-    return (
+    const editModeContent = (
       <div>
         {itemsList.length > 0 ? (
           <>
@@ -193,6 +208,50 @@ const CreateCategoriesList = ({
         })}
       </div>
     );
+
+    const listModeContent = (
+      <ListContainer>
+        {itemsList.length > 0 ? (
+          <>
+            <ParentTitleList>{`${parentsTitle}:`}</ParentTitleList>
+          </>
+        ) : null}
+        {filtredCategories.map((category) => {
+          const ItemsList = itemsList.filter(
+            (item) => item.categoryId === category.id
+          );
+
+          if (ItemsList.length === 0) {
+            return null;
+          }
+
+          return (
+            <div key={category.name}>
+              <CategoryTitleList>
+                {capitalizeFirstLetter(`${category.name}:`)}
+              </CategoryTitleList>
+              <ListElementContainer>
+                {ItemsList.map((item) => {
+                  return (
+                    <ListElement key={item.name}>
+                      {item.value > 1
+                        ? `${item.name}(${item.value}),`
+                        : `${item.name},`}
+                    </ListElement>
+                  );
+                })}
+              </ListElementContainer>
+            </div>
+          );
+        })}
+      </ListContainer>
+    );
+
+    return activeMenuIcon === "shop"
+      ? editModeContent
+      : editMode
+      ? editModeContent
+      : listModeContent;
   }
 };
 

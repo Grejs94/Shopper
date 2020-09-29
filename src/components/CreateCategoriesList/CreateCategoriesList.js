@@ -14,7 +14,6 @@ import {
   CategoryTitle,
   HideTheMenuWhenScrollIntoView,
   ListContainer,
-  CategoryTitleListContainer,
   CategoryTitleList,
   ListElementContainer,
   ListElement,
@@ -79,11 +78,7 @@ const CreateCategoriesList = ({
     useBasketSavedLists.isSuccess &&
     useParentCategories.isSuccess
   ) {
-    const handleBasketOnClick = (item) => {
-      console.log(`klik w element ${item.name} w koszyku`);
-    };
-
-    const handleShopOnClick = (item) => {
+    const handleOnClick = (item) => {
       const index = Number(item.parentCategoryId) - 1;
 
       // need be in correct order
@@ -109,7 +104,6 @@ const CreateCategoriesList = ({
         mutate_PUT_BasketDishes,
         mutate_PUT_BasketSavedLists,
       ];
-
       const useBasketElementsList = elementsLists[index];
 
       const parentCategoryName = useParentCategories.data.find(
@@ -186,14 +180,7 @@ const CreateCategoriesList = ({
               <SquareContainer>
                 {ItemsList.map((item) => {
                   return (
-                    <Square
-                      key={item.id}
-                      onClick={() =>
-                        variant === "basket"
-                          ? handleBasketOnClick(item)
-                          : handleShopOnClick(item)
-                      }
-                    >
+                    <Square key={item.id} onClick={() => handleOnClick(item)}>
                       <Content>
                         {item.value > 1
                           ? `${item.name} (${item.value})`

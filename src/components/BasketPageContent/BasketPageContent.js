@@ -1,7 +1,5 @@
 import React from "react";
 
-import { HideTheMenuWhenScrollIntoView } from "assets/StyledComponents/ItemsDisplayed.css";
-
 import { CreateCategoriesList } from "components";
 
 import API from "hooks/API";

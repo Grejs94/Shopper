@@ -82,7 +82,7 @@
       ]
     }
   ],
-  "useParentCategories": [
+  "parentCategories": [
     {
       "id": "1",
       "name": "food"
@@ -522,43 +522,53 @@
     },
     {
       "id": "2",
-      "name": "fruits"
+      "name": "fruits",
+      "parentCategoryId": "1"
     },
     {
       "id": "3",
-      "name": "dairy"
+      "name": "dairy",
+      "parentCategoryId": "1"
     },
     {
       "id": "4",
-      "name": "meat"
+      "name": "meat",
+      "parentCategoryId": "1"
     },
     {
       "id": "5",
-      "name": "drinks"
+      "name": "drinks",
+      "parentCategoryId": "1"
     },
     {
       "id": "6",
-      "name": "frozen food"
+      "name": "frozen food",
+      "parentCategoryId": "1"
     },
     {
       "id": "7",
-      "name": "bakery"
+      "name": "bakery",
+      "parentCategoryId": "1"
     },
     {
       "id": "8",
-      "name": "spices"
+      "name": "spices",
+      "parentCategoryId": "1"
     },
     {
       "id": "9",
-      "name": "loose"
+      "name": "loose",
+      "parentCategoryId": "1"
     },
     {
       "id": "10",
-      "name": "sweets"
+      "name": "sweets",
+      "parentCategoryId": "1"
     },
     {
       "id": "11",
-      "name": "from Service"
+      "name": "from Service",
+      "parentCategoryId": "1"
     }
   ],
   "products": [
@@ -755,11 +765,13 @@
   "productsCategories": [
     {
       "id": "30",
-      "name": "hygiene and care"
+      "name": "hygiene and care",
+      "parentCategoryId": "2"
     },
     {
       "id": "31",
-      "name": "cleaning products"
+      "name": "cleaning products",
+      "parentCategoryId": "2"
     }
   ],
   "dishes": [
@@ -770,19 +782,59 @@
       "parentCategoryId": "3",
       "itemsIncluded": [
         {
-          "itemsId": "4",
+          "id": "4",
+          "name": "onion",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "5"
+        },
+        {
+          "id": "103",
+          "name": "yoghurt",
+          "categoryId": "3",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "350",
+          "name": "kucharek",
+          "categoryId": "8",
+          "parentCategoryId": "1",
+          "showInShop": true,
           "value": "2"
         }
       ]
     },
     {
       "id": "2",
+      "name": "grzybowa",
       "categoryId": "2",
       "parentCategoryId": "3",
-      "name": "grzybowa",
-      "items": [
+      "itemsIncluded": [
         {
-          "itemsId": "6",
+          "id": "5",
+          "name": "lettuce",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "6",
+          "name": "cucumber",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "7",
+          "name": "courgette",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
           "value": "1"
         }
       ]
@@ -791,27 +843,33 @@
   "dishesCategories": [
     {
       "id": "1",
-      "name": "breakFast"
+      "name": "breakFast",
+      "parentCategoryId": "3"
     },
     {
       "id": "2",
-      "name": "soup"
+      "name": "soup",
+      "parentCategoryId": "3"
     },
     {
       "id": "3",
-      "name": "lunch"
+      "name": "lunch",
+      "parentCategoryId": "3"
     },
     {
       "id": "4",
-      "name": "main course"
+      "name": "main course",
+      "parentCategoryId": "3"
     },
     {
       "id": "5",
-      "name": "supper"
+      "name": "supper",
+      "parentCategoryId": "3"
     },
     {
       "id": "6",
-      "name": "sweets"
+      "name": "sweets",
+      "parentCategoryId": "3"
     }
   ],
   "savedLists": [
@@ -822,22 +880,179 @@
       "parentCategoryId": "4",
       "items": [
         {
-          "itemsId": "1",
+          "id": "3",
+          "name": "potato",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
           "value": "1"
         },
         {
-          "itemsId": "3",
+          "id": "4",
+          "name": "onion",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "5",
+          "name": "lettuce",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "6",
+          "name": "cucumber",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
           "value": "1"
         }
       ],
       "dishes": [
         {
-          "dishesId": "1",
+          "id": "1",
+          "name": "rosół",
+          "categoryId": "2",
+          "parentCategoryId": "3",
+          "value": "2",
+          "itemsIncluded": [
+            {
+              "id": "4",
+              "name": "onion",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "5"
+            },
+            {
+              "id": "103",
+              "name": "yoghurt",
+              "categoryId": "3",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "350",
+              "name": "kucharek",
+              "categoryId": "8",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "example list second",
+      "categoryId": "1",
+      "parentCategoryId": "4",
+      "items": [
+        {
+          "id": "3",
+          "name": "potato",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
           "value": "1"
         },
         {
-          "dishesId": "2",
-          "value": "3"
+          "id": "4",
+          "name": "onion",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "5",
+          "name": "lettuce",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "6",
+          "name": "cucumber",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        }
+      ],
+      "dishes": [
+        {
+          "id": "1",
+          "name": "rosół",
+          "categoryId": "2",
+          "parentCategoryId": "3",
+          "value": "1",
+          "itemsIncluded": [
+            {
+              "id": "4",
+              "name": "onion",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "5"
+            },
+            {
+              "id": "103",
+              "name": "yoghurt",
+              "categoryId": "3",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "350",
+              "name": "kucharek",
+              "categoryId": "8",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "name": "grzybowa",
+          "categoryId": "2",
+          "parentCategoryId": "3",
+          "value": "1",
+          "itemsIncluded": [
+            {
+              "id": "5",
+              "name": "lettuce",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "6",
+              "name": "cucumber",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "7",
+              "name": "courgette",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            }
+          ]
         }
       ]
     }
@@ -845,7 +1060,8 @@
   "savedListsCategories": [
     {
       "id": "1",
-      "name": "All"
+      "name": "All",
+      "parentCategoryId": "4"
     }
   ],
   "basketGroceries": [],

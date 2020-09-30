@@ -60,6 +60,8 @@ export const ParentTitleList = styled.p`
 `;
 
 export const CategoryTitleListContainer = styled.div`
+  display: flex;
+  align-items: center;
   margin: 0;
 `;
 

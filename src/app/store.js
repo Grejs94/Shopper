@@ -4,6 +4,7 @@ import {
   toggleBottomBarIconsSlice,
   category as categoryReducer,
   activeMenuIconSlice as activeMenuIconReducer,
+  showMoreSlice as showMoreSliceReducer,
 } from "features";
 
 export default configureStore({
@@ -12,5 +13,6 @@ export default configureStore({
     editBottomIcons: toggleBottomBarIconsSlice,
     category: categoryReducer,
     activeMenuIcon: activeMenuIconReducer,
+    showMore: showMoreSliceReducer,
   },
 });

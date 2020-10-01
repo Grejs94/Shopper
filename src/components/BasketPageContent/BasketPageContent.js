@@ -1,11 +1,17 @@
 import React from "react";
 
-import { CreateCategoriesList } from "components";
+import { useSelector } from "react-redux";
+
+import { EditModeList, ListModeList } from "components";
+
+import { selectEditIcon } from "features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice";
 
 import API from "hooks/API";
 
 const BasketPageContent = () => {
   // { isError, isLoading, isSuccess, data }
+  const editMode = useSelector(selectEditIcon);
+
   const useGroceres = API.useGroceres();
   const useGroceriesCategories = API.useGroceriesCategories();
   const useProducts = API.useProducts();
@@ -64,24 +70,47 @@ const BasketPageContent = () => {
     useBasketDishes.isSuccess &&
     useBasketSavedLists.isSuccess
   ) {
-    return (
+    return editMode ? (
       <div>
-        <CreateCategoriesList
+        <EditModeList
           parentsTitle="Groceries"
           itemsList={useBasketGroceres.data}
           filtredCategories={useGroceriesCategories.data}
         />
-        <CreateCategoriesList
+        <EditModeList
           parentsTitle="Products"
           itemsList={useBasketProducts.data}
           filtredCategories={useProductsCategories.data}
         />
-        <CreateCategoriesList
+        <EditModeList
           parentsTitle="Dishes"
           itemsList={useBasketDishes.data}
           filtredCategories={dishesCategories.data}
         />
-        <CreateCategoriesList
+        <EditModeList
+          parentsTitle="SavedList"
+          itemsList={useBasketSavedLists.data}
+          filtredCategories={useSavedListsCategories.data}
+        />
+      </div>
+    ) : (
+      <div>
+        <ListModeList
+          parentsTitle="Groceries"
+          itemsList={useBasketGroceres.data}
+          filtredCategories={useGroceriesCategories.data}
+        />
+        <ListModeList
+          parentsTitle="Products"
+          itemsList={useBasketProducts.data}
+          filtredCategories={useProductsCategories.data}
+        />
+        <ListModeList
+          parentsTitle="Dishes"
+          itemsList={useBasketDishes.data}
+          filtredCategories={dishesCategories.data}
+        />
+        <ListModeList
           parentsTitle="SavedList"
           itemsList={useBasketSavedLists.data}
           filtredCategories={useSavedListsCategories.data}

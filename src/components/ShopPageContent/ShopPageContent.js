@@ -2,7 +2,7 @@ import React from "react";
 
 import { useSelector } from "react-redux";
 
-import { CreateCategoriesList } from "components";
+import { EditModeList } from "components";
 
 import API from "hooks/API";
 import { selectCategory } from "features/category/categorySlice";
@@ -65,25 +65,25 @@ function ElementsPage() {
 
     return (
       <div>
-        <CreateCategoriesList
+        <EditModeList
           parentsTitle="Groceries"
           itemsList={useGroceres.data}
           filtredCategories={useGroceriesCategories.data}
           variant="shop"
         />
-        <CreateCategoriesList
+        <EditModeList
           parentsTitle="Products"
           itemsList={useProducts.data}
           filtredCategories={useProductsCategories.data}
           variant="shop"
         />
-        <CreateCategoriesList
+        <EditModeList
           parentsTitle="Dishes"
           itemsList={dishes.data}
           filtredCategories={dishesCategories.data}
           variant="shop"
         />
-        <CreateCategoriesList
+        <EditModeList
           parentsTitle="SavedList"
           itemsList={savedList.data}
           filtredCategories={useSavedListsCategories.data}

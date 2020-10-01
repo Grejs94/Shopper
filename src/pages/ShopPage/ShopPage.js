@@ -8,9 +8,8 @@ import {
   PageInfo,
   IconsItem,
   IconsItemLink,
+  ShopPageContent,
 } from "components";
-
-import { ElementsPage } from "pages";
 
 import { MainPageWrapper } from "assets/StyledComponents/MainPageWrapper.css";
 
@@ -60,7 +59,7 @@ function ShopPage() {
             />
           </Route>
           <Route exact path="/shop/elements_page">
-            <ElementsPage />
+            <ShopPageContent />
           </Route>
           <Route exact path="/shop/history">
             shop/history

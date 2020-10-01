@@ -518,7 +518,8 @@
   "groceriesCategories": [
     {
       "id": "1",
-      "name": "vegetables"
+      "name": "vegetables",
+      "parentCategoryId": "1"
     },
     {
       "id": "2",

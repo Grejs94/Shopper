@@ -10,6 +10,7 @@ export const IconsBottomEditVariant = [
   {
     name: "save",
     onClick: setBasketHistory,
+    restOnClick: () => console.log("wysyłam do historii"),
   },
   {
     name: "add",
@@ -29,6 +30,7 @@ export const IconsBottomListVariant = [
   {
     name: "save",
     onClick: setBasketHistory,
+    restOnClick: () => console.log("wysyłam do historii"),
   },
   {
     name: "edit",

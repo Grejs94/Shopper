@@ -102,11 +102,16 @@ function BottomBarWithIcons({ icons }) {
 
   const restIconsList =
     icons &&
-    icons.map(({ name, onClick }) => (
+    icons.map(({ name, onClick, restOnClick = () => {} }) => (
       <IconElement
         key={name}
         onClick={() => {
           dispatch(onClick());
+          if (BasketHistory) {
+            return;
+          } else {
+            restOnClick();
+          }
         }}
       >
         <Img src={IconSwitch(name)}></Img>

@@ -9,6 +9,7 @@ import {
   IconsItem,
   IconsItemLink,
   ShopPageContent,
+  HistoryContent,
 } from "components";
 
 import { MainPageWrapper } from "assets/StyledComponents/MainPageWrapper.css";
@@ -62,7 +63,7 @@ function ShopPage() {
             <ShopPageContent />
           </Route>
           <Route exact path="/shop/history">
-            shop/history
+            <HistoryContent />
           </Route>
         </MainPageWrapper>
       </Switch>

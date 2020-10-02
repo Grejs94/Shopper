@@ -141,7 +141,10 @@ function BottomBarWithIcons({ icons }) {
               } else {
                 mutate_Post_History({
                   data: {
-                    saved: new Date(),
+                    saved: Date.now(),
+                    DateToShow: new Date(Date.now())
+                      .toLocaleString()
+                      .slice(0, 9),
                     groceries: [...useBasketGroceres.data],
                     products: [...useBasketProducts.data],
                     dishes: [...useBasketDishes.data],

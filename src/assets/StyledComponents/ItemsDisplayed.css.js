@@ -50,13 +50,12 @@ export const HideTheMenuWhenScrollIntoView = styled.div`
 // List
 
 export const ListContainer = styled.div`
-  padding: 10px;
-  margin-top: 15px;
+  margin-top: 5px;
 `;
 
 export const ParentTitleList = styled.p`
-  font-size: 24px;
-  margin: 0;
+  font-size: 20px;
+  margin: 0 0 10px 0;
 `;
 
 export const CategoryTitleListContainer = styled.div`
@@ -65,9 +64,9 @@ export const CategoryTitleListContainer = styled.div`
   margin: 0;
 `;
 
-export const CategoryTitleList = styled.p`
-  font-size: 24px;
-  margin: 5px 0 0 5px;
+export const CategoryTitleList = styled.div`
+  font-size: 20px;
+  margin: 0 0 0 5px;
 `;
 
 export const ListElementContainer = styled.div`
@@ -77,4 +76,5 @@ export const ListElementContainer = styled.div`
 export const ListElement = styled.span`
   font-size: 22px;
   margin-left: 10px;
+  display: block-inline;
 `;

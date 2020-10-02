@@ -2,12 +2,14 @@ import React from "react";
 
 import { toast } from "react-toastify";
 import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import {
   selectAddIcon,
   selectRemoveIcon,
 } from "features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice";
 import { selectActiveMenuIcon } from "features/activeMenuIcon/activeMenuIconSlice";
+import { selectFakeHistory } from "features/createBasketHistory/createBasketHistorySlice";
 
 import {
   SquareContainer,
@@ -27,12 +29,14 @@ function capitalizeFirstLetter(string) {
 }
 
 const EditModeList = ({ parentsTitle, filtredCategories, itemsList }) => {
+  const history = useHistory();
+
   const addIcon = useSelector(selectAddIcon);
   const removeIcon = useSelector(selectRemoveIcon);
-
   const activeMenuIcon = useSelector(selectActiveMenuIcon);
+  const FakeHistory = useSelector(selectFakeHistory);
 
-  // console.log(editMode);
+  // setFakeHistory
 
   const useBasketGroceres = API.useBasketGroceres();
   const useBasketProducts = API.useBasketProducts();
@@ -56,11 +60,6 @@ const EditModeList = ({ parentsTitle, filtredCategories, itemsList }) => {
   const [mutate_DELETE_BasketProducts] = API.useDeleteBasketProducts();
   const [mutate_DELETE_BasketDishes] = API.useDeleteBasketDishes();
   const [mutate_DELETE_BasketSavedLists] = API.useDeleteBasketSavedLists();
-
-  // useDeleteBasketGroceries
-  // useDeleteBasketProducts
-  // useDeleteBasketDishes
-  // useDeleteBasketSavedLists
 
   if (
     useBasketGroceres.isError ||
@@ -149,6 +148,11 @@ const EditModeList = ({ parentsTitle, filtredCategories, itemsList }) => {
             }
 
             if (removeIcon) {
+              if (!FakeHistory) {
+                history.push("/basket/createBasketHistory");
+                return null;
+              }
+
               if (item.value > 1) {
                 const basketItem = findElement[0];
                 const reduced = incrementedString(basketItem.value, "-1");

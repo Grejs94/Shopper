@@ -1,8 +1,14 @@
 import React from "react";
 
 import { useSelector } from "react-redux";
+import { Switch, Route } from "react-router-dom";
 
-import { EditModeList, ListModeList } from "components";
+import {
+  EditModeList,
+  ListModeList,
+  Modal,
+  CreateHistoryModalContent,
+} from "components";
 
 import { selectEditIcon } from "features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice";
 
@@ -92,6 +98,13 @@ const BasketPageContent = () => {
           itemsList={useBasketSavedLists.data}
           filtredCategories={useSavedListsCategories.data}
         />
+        <Switch>
+          <Route path="/basket/createBasketHistory">
+            <Modal>
+              <CreateHistoryModalContent />
+            </Modal>
+          </Route>
+        </Switch>
       </div>
     ) : (
       <div>

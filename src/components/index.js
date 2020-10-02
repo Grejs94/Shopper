@@ -6,3 +6,5 @@ export { default as IconsItemLink } from "./IconsItemLink";
 export { default as BasketPageContent } from "./BasketPageContent";
 export { default as ShopPageContent } from "./ShopPageContent";
 export { EditModeList, ListModeList } from "./CreateParentCategoryList";
+export { default as Modal } from "./Modal";
+export { CreateHistoryModalContent } from "./ModalsContent";

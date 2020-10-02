@@ -36,8 +36,6 @@ const EditModeList = ({ parentsTitle, filtredCategories, itemsList }) => {
   const activeMenuIcon = useSelector(selectActiveMenuIcon);
   const FakeHistory = useSelector(selectFakeHistory);
 
-  // setFakeHistory
-
   const useBasketGroceres = API.useBasketGroceres();
   const useBasketProducts = API.useBasketProducts();
   const useBasketDishes = API.useBasketDishes();
@@ -53,8 +51,6 @@ const EditModeList = ({ parentsTitle, filtredCategories, itemsList }) => {
   const [mutate_PUT_BasketProducts] = API.usePutBasketProducts();
   const [mutate_PUT_BasketDishes] = API.usePutBasketDishes();
   const [mutate_PUT_BasketSavedLists] = API.usePutBasketSavedLists();
-
-  // Delete
 
   const [mutate_DELETE_BasketGroceries] = API.useDeleteBasketGroceries();
   const [mutate_DELETE_BasketProducts] = API.useDeleteBasketProducts();

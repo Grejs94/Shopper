@@ -2,6 +2,7 @@ import React from "react";
 
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 
 import {
   setBasketHistory,
@@ -26,7 +27,7 @@ const CreateHistoryModalContent = () => {
   const useBasketDishes = API.useBasketDishes();
   const useBasketSavedLists = API.useBasketSavedLists();
 
-  // const [mutate_Post_History] = API.useAddHistory();
+  const [mutate_Post_History] = API.useAddHistory();
   if (
     useBasketGroceres.isError ||
     useBasketProducts.isError ||
@@ -47,11 +48,6 @@ const CreateHistoryModalContent = () => {
     useBasketDishes.isSuccess &&
     useBasketSavedLists.isSuccess
   ) {
-    console.log(useBasketGroceres.data);
-    console.log(useBasketProducts.data);
-    console.log(useBasketDishes.data);
-    console.log(useBasketSavedLists.data);
-
     return (
       <Wrapper>
         <Info>Do you want to save your shopping list?</Info>
@@ -59,16 +55,17 @@ const CreateHistoryModalContent = () => {
           <Button
             onClick={() => {
               dispatch(setBasketHistory());
-              // mutate_Post_History({
-              //   data: {
-              //     ...item,
-              //     value: "1",
-              //   },
-              // }).then(
-              //   toast.success(
-              //     `The ${parentCategoryName}: "${item.name}" has been successfully added to your basket`
-              //   ))
-              console.log("wyślij listę zakupów");
+              mutate_Post_History({
+                data: {
+                  saved: new Date(),
+                  groceries: [...useBasketGroceres.data],
+                  products: [...useBasketProducts.data],
+                  dishes: [...useBasketDishes.data],
+                  savedLists: [...useBasketSavedLists.data],
+                },
+              }).then(
+                toast.success(`the shopping list has been added to history `)
+              );
               history.goBack();
             }}
           >

@@ -5,6 +5,7 @@ import {
   category as categoryReducer,
   activeMenuIconSlice as activeMenuIconReducer,
   showMoreSlice as showMoreSliceReducer,
+  createBasketHistorySlice as createBasketHistoryReducer,
 } from "features";
 
 export default configureStore({
@@ -14,5 +15,6 @@ export default configureStore({
     category: categoryReducer,
     activeMenuIcon: activeMenuIconReducer,
     showMore: showMoreSliceReducer,
+    BasketHistory: createBasketHistoryReducer,
   },
 });

@@ -21,6 +21,8 @@ import {
   add_coloredImg,
   remove_blackImg,
   remove_coloredImg,
+  save_blackImg,
+  save_coloredImg,
 } from "pictures";
 
 import {
@@ -30,11 +32,14 @@ import {
   resetEditIcon,
 } from "features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice";
 
+import { selectBasketHistory } from "features/createBasketHistory/createBasketHistorySlice";
+
 function BottomBarWithIcons({ icons }) {
   const dispatch = useDispatch();
   const editIcon = useSelector(selectEditIcon);
   const addIcon = useSelector(selectAddIcon);
   const removeIcon = useSelector(selectRemoveIcon);
+  const BasketHistory = useSelector(selectBasketHistory);
 
   const history = useHistory();
 
@@ -65,6 +70,12 @@ function BottomBarWithIcons({ icons }) {
 
   const IconSwitch = (icon) => {
     switch (icon) {
+      case "save":
+        if (BasketHistory === false) {
+          return save_blackImg;
+        } else {
+          return save_coloredImg;
+        }
       case "edit":
         if (editIcon === false) {
           return list_coloredImg;

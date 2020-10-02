@@ -14,3 +14,5 @@ export { default as sort_blackImg } from "./sort_black.png";
 export { default as sort_coloredImg } from "./sort_colored.png";
 export { default as list_blackImg } from "./list_black.png";
 export { default as list_coloredImg } from "./list_colored.png";
+export { default as save_blackImg } from "./save_black.png";
+export { default as save_coloredImg } from "./save_colored.png";

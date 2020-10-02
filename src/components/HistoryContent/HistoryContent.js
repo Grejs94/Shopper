@@ -2,7 +2,7 @@ import React from "react";
 
 import { HistoryParentCategoryList } from "./components";
 
-import { Wrapper, Date, EmptyDivToSpace } from "./HistoryContent.css";
+import { Wrapper, Date, EmptyDivToSpace, Button } from "./HistoryContent.css";
 
 import API from "hooks/API";
 
@@ -13,6 +13,8 @@ const HistoryContent = () => {
   const useProductsCategories = API.useProductsCategories();
   const dishesCategories = API.UseDishesCategory();
   const useSavedListsCategories = API.useSavedListsCategories();
+
+  const [mutate_DELETE_DeleteHistory] = API.useDeleteHistory();
 
   if (
     useHistory.isError ||
@@ -37,11 +39,23 @@ const HistoryContent = () => {
     dishesCategories.isSuccess &&
     useSavedListsCategories.isSuccess
   ) {
-    const historyMap = useHistory.data.map(
+    const CreateHistoryElement = useHistory.data.map(
       ({ groceries, products, dishes, savedLists, id, DateToShow }) => {
         return (
           <Wrapper key={id}>
-            <Date>{DateToShow}</Date>
+            <div>
+              <Date>{DateToShow}</Date>
+              <Button
+                onClick={() =>
+                  mutate_DELETE_DeleteHistory({
+                    id: id,
+                  })
+                }
+              >
+                Delete from history
+              </Button>
+            </div>
+
             <HistoryParentCategoryList
               parentsTitle="Groceries"
               itemsList={groceries}
@@ -70,7 +84,7 @@ const HistoryContent = () => {
       }
     );
 
-    return historyMap;
+    return CreateHistoryElement;
   }
 };
 

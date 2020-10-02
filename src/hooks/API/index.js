@@ -29,7 +29,7 @@ import { useGroceres, useGroceriesCategories } from "./GroceriesHooks";
 
 import { useProducts, useProductsCategories } from "./ProductsHooks";
 
-import { useHistory, useAddHistory } from "./HistoryHooks";
+import { useHistory, useAddHistory, useDeleteHistory } from "./HistoryHooks";
 
 export default {
   useParentCategories,
@@ -60,4 +60,5 @@ export default {
   useMyshops,
   useHistory,
   useAddHistory,
+  useDeleteHistory,
 };

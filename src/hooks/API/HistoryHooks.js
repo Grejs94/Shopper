@@ -27,3 +27,24 @@ export function useAddHistory() {
     },
   });
 }
+
+const deleteHistory = async ({ id }) => {
+  const response = await fetch(
+    `${process.env.REACT_APP_LOCAL_HTTP}/history/${id}`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+      },
+    }
+  );
+  return await response.json();
+};
+
+export function useDeleteHistory() {
+  return useMutation(deleteHistory, {
+    onSuccess() {
+      queryCache.refetchQueries("history");
+    },
+  });
+}

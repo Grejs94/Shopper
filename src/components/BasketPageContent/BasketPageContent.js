@@ -86,8 +86,6 @@ const BasketPageContent = () => {
 
     const messege = <Message>Your basket is empty!</Message>;
 
-    console.log(basketEmpty);
-
     return basketEmpty ? (
       messege
     ) : editMode ? (

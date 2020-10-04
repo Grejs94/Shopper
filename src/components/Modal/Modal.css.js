@@ -30,3 +30,16 @@ export const CloseIcon = styled.div`
   cursor: pointer;
   font-size: 20px;
 `;
+
+export const ChildrenContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: center;
+  height: 100%;
+`;
+export const ChildrenInfo = styled.p`
+  font-size: 22px;
+  flex-basis: 100%;
+  margin: 30px 0;
+`;

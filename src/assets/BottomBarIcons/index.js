@@ -8,10 +8,6 @@ import { setBasketHistory } from "features/createBasketHistory/createBasketHisto
 
 export const IconsBottomEditVariant = [
   {
-    name: "save",
-    onClick: setBasketHistory,
-  },
-  {
     name: "add",
     onClick: toggleAddIcon,
   },
@@ -27,11 +23,14 @@ export const IconsBottomEditVariant = [
 
 export const IconsBottomListVariant = [
   {
-    name: "save",
-    onClick: setBasketHistory,
-  },
-  {
     name: "edit",
     onClick: toggleEditIcon,
+  },
+];
+
+export const saveIconArray = [
+  {
+    name: "save",
+    onClick: setBasketHistory,
   },
 ];

@@ -35,7 +35,7 @@ import {
 
 import { selectBasketHistory } from "features/createBasketHistory/createBasketHistorySlice";
 
-function BottomBarWithIcons({ icons }) {
+function BottomBarWithIcons({ icons, saveIconArray }) {
   const useBasketGroceres = API.useBasketGroceres();
   const useBasketProducts = API.useBasketProducts();
   const useBasketDishes = API.useBasketDishes();
@@ -71,6 +71,12 @@ function BottomBarWithIcons({ icons }) {
     useBasketDishes.isSuccess &&
     useBasketSavedLists.isSuccess
   ) {
+    const basketEmpty =
+      useBasketGroceres.data.length === 0 &&
+      useBasketProducts.data.length === 0 &&
+      useBasketDishes.data.length === 0 &&
+      useBasketSavedLists.data.length === 0;
+
     const handleMouseDownIcon = () => {
       const img = document.querySelector("#returnIcon");
       img.setAttribute("src", return_coloredImg);
@@ -139,6 +145,48 @@ function BottomBarWithIcons({ icons }) {
               if (BasketHistory) {
                 return;
               } else {
+                if (basketEmpty) {
+                  console.log("show modal");
+                  return;
+                } else {
+                  mutate_Post_History({
+                    data: {
+                      saved: Date.now(),
+                      DateToShow: new Date(Date.now())
+                        .toLocaleString()
+                        .slice(0, 9),
+                      groceries: [...useBasketGroceres.data],
+                      products: [...useBasketProducts.data],
+                      dishes: [...useBasketDishes.data],
+                      savedLists: [...useBasketSavedLists.data],
+                    },
+                  }).then(
+                    toast.success(
+                      `the shopping list has been added to history `
+                    )
+                  );
+                  return;
+                }
+              }
+            }
+          }}
+        >
+          <Img src={IconSwitch(name)}></Img>
+        </IconElement>
+      ));
+
+    const saveIcon =
+      saveIconArray &&
+      saveIconArray.map(({ name, onClick }) => (
+        <IconElement
+          key={name}
+          onClick={() => {
+            if (BasketHistory) {
+              return;
+            } else {
+              if (basketEmpty) {
+                history.push("/basket/messageWhenEmpty");
+              } else {
                 mutate_Post_History({
                   data: {
                     saved: Date.now(),
@@ -153,6 +201,7 @@ function BottomBarWithIcons({ icons }) {
                 }).then(
                   toast.success(`the shopping list has been added to history `)
                 );
+                dispatch(onClick());
               }
             }
           }}
@@ -164,7 +213,10 @@ function BottomBarWithIcons({ icons }) {
     return (
       <Wrapper>
         <ContainerReturnIcon>{resetIcon}</ContainerReturnIcon>
-        <ContainerRestIcons>{restIconsList}</ContainerRestIcons>
+        <ContainerRestIcons>
+          {saveIcon}
+          {restIconsList}
+        </ContainerRestIcons>
       </Wrapper>
     );
   }

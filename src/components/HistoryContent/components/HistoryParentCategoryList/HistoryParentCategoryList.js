@@ -37,6 +37,10 @@ const HistoryParentCategoryList = ({
   const toggleDishes = useSelector(selectDishes);
   const toggleSavedList = useSelector(selectSavedList);
 
+  if (itemsList.length === 0) {
+    return null;
+  }
+
   return (
     <ListContainer>
       {itemsList.length > 0 ? (

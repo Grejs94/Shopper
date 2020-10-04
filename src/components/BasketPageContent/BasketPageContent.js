@@ -14,6 +14,8 @@ import { selectEditIcon } from "features/toggleBottomBarIconsSlice/toggleBottomB
 
 import API from "hooks/API";
 
+import { Message } from "./BasketPageContent.css";
+
 const BasketPageContent = () => {
   // { isError, isLoading, isSuccess, data }
   const editMode = useSelector(selectEditIcon);
@@ -76,7 +78,19 @@ const BasketPageContent = () => {
     useBasketDishes.isSuccess &&
     useBasketSavedLists.isSuccess
   ) {
-    return editMode ? (
+    const basketEmpty =
+      useBasketGroceres.data.length === 0 &&
+      useBasketProducts.data.length === 0 &&
+      useBasketDishes.data.length === 0 &&
+      useBasketSavedLists.data.length === 0;
+
+    const messege = <Message>Your basket is empty!</Message>;
+
+    console.log(basketEmpty);
+
+    return basketEmpty ? (
+      messege
+    ) : editMode ? (
       <div>
         <EditModeList
           parentsTitle="Groceries"

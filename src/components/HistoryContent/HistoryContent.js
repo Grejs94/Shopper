@@ -2,7 +2,13 @@ import React from "react";
 
 import { HistoryParentCategoryList } from "./components";
 
-import { Wrapper, Date, EmptyDivToSpace, Button } from "./HistoryContent.css";
+import {
+  Wrapper,
+  Date,
+  EmptyDivToSpace,
+  Button,
+  Message,
+} from "./HistoryContent.css";
 
 import API from "hooks/API";
 
@@ -39,6 +45,12 @@ const HistoryContent = () => {
     dishesCategories.isSuccess &&
     useSavedListsCategories.isSuccess
   ) {
+    const showWhenEmpty = <Message>Your purchase history is empty!</Message>;
+
+    if (useHistory.data.length < 1) {
+      return showWhenEmpty;
+    }
+
     const CreateHistoryElement = useHistory.data.map(
       ({ groceries, products, dishes, savedLists, id, DateToShow }) => {
         return (

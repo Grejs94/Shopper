@@ -17,3 +17,8 @@ export const Button = styled.button`
   margin-left: 14px;
   padding: 6px 8px;
 `;
+
+export const Message = styled.p`
+  font-size: 24px;
+  text-align: center;
+`;

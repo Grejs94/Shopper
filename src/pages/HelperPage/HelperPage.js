@@ -2,7 +2,13 @@ import React from "react";
 
 import { Switch, Route } from "react-router-dom";
 
-import { Menu, BottomBarWithIcons, PageInfo, IconsItem } from "components";
+import {
+  Menu,
+  BottomBarWithIcons,
+  PageInfo,
+  IconsItem,
+  CreateSmartList,
+} from "components";
 
 import { MainPageWrapper } from "assets/StyledComponents/MainPageWrapper.css";
 
@@ -27,13 +33,16 @@ function HelperPage() {
             <IconsItem
               image={lastSearch_coloredImg}
               text="Last smart list"
-              to="/shop/smartList"
+              to="/shopHelper/smartList"
             />
             <IconsItem
               image={search_coloredImg}
               text="Create smart list"
-              to="/shop/CreateSmartList"
+              to="/shopHelper/createSmartList"
             />
+          </Route>
+          <Route exact path="/shopHelper/createSmartList">
+            <CreateSmartList />
           </Route>
         </Switch>
       </MainPageWrapper>

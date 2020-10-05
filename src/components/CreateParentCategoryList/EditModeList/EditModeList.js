@@ -82,7 +82,6 @@ const EditModeList = ({ parentsTitle, filtredCategories, itemsList }) => {
   ) {
     const handleOnClick = (item) => {
       const index = Number(item.parentCategoryId) - 1;
-
       // need be in correct order
       const elementsLists = [
         useBasketGroceres,
@@ -166,7 +165,10 @@ const EditModeList = ({ parentsTitle, filtredCategories, itemsList }) => {
                 });
               }
             }
-          } else if (activeMenuIcon === "shop") {
+          } else if (
+            activeMenuIcon === "shop" ||
+            activeMenuIcon === "shopHelper"
+          ) {
             if (allreadyInBasket) {
               const basketItem = findElement[0];
               const incrementValue = incrementedString(basketItem.value, "1");

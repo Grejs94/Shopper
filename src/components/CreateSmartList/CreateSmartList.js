@@ -18,6 +18,8 @@ const CreateSmartList = () => {
 
   const useHistory = API.useHistory();
 
+  const useSettings = API.useSettings();
+
   if (
     useGroceres.isError ||
     useGroceriesCategories.isError ||
@@ -27,7 +29,8 @@ const CreateSmartList = () => {
     dishesCategories.isError ||
     savedList.isError ||
     useSavedListsCategories.isError ||
-    useHistory.isError
+    useHistory.isError ||
+    useSettings.isError
   ) {
     return "Fetching date error...";
   } else if (
@@ -39,10 +42,13 @@ const CreateSmartList = () => {
     dishesCategories.isLoading ||
     savedList.isLoading ||
     useSavedListsCategories.isLoading.isLoading ||
-    useHistory.isLoading
+    useHistory.isLoading ||
+    useSettings.isLoading
   ) {
     return "Loading date...";
   }
+
+  const sortByNumber = useSettings.data.sortBy === "Bought most times";
 
   if (useHistory.data.length === 0) {
     return (
@@ -53,7 +59,17 @@ const CreateSmartList = () => {
       </div>
     );
   }
-  // 218 code lines
+
+  if (!sortByNumber && useHistory.data.length < 2) {
+    return (
+      <div>
+        <Message>
+          Your history is to small. I need at least 2 history data to create
+          smartlist sorted by time intervals!
+        </Message>
+      </div>
+    );
+  }
 
   const workingUseGroceresX = [];
   const workingUseProductsX = [];
@@ -71,37 +87,39 @@ const CreateSmartList = () => {
 
   const historyElements = useHistory.data;
 
-  ArrayParentCategories.map((array, index) => {
-    array.data.map((item) => {
-      let value = 0;
+  const itemsListWithAverage = [];
 
-      historyElements.map((history) => {
-        const switchParentCategory = (index) => {
-          switch (index) {
-            case 0:
-              return history.groceries;
-            case 1:
-              return history.products;
-            case 2:
-              return history.dishes;
-            case 3:
-              return history.savedLists;
+  if (sortByNumber) {
+    ArrayParentCategories.map((array, index) => {
+      array.data.map((item) => {
+        let value = 0;
 
-            default:
-              return history.groceries;
-          }
-        };
+        historyElements.map((history) => {
+          const switchParentCategory = (index) => {
+            switch (index) {
+              case 0:
+                return history.groceries;
+              case 1:
+                return history.products;
+              case 2:
+                return history.dishes;
+              case 3:
+                return history.savedLists;
 
-        switchParentCategory(index).map((historyItem) => {
-          if (switchParentCategory(index).length === 0) {
+              default:
+                return history.groceries;
+            }
+          };
+
+          switchParentCategory(index).map((historyItem) => {
+            if (item.id === historyItem.id) {
+              value++;
+            }
             return null;
-          }
-          if (item.id === historyItem.id) {
-            value++;
-          }
+          });
+
           return null;
         });
-
         const parentCategoryItem = { ...item, value: value };
 
         if (value > 0) {
@@ -111,19 +129,71 @@ const CreateSmartList = () => {
       });
       return null;
     });
-    return null;
-  });
+  } else if (!sortByNumber) {
+    const itemsList = [];
 
-  const sortedGroceriesFromHistory = workingArraysList[0].sort(
+    useGroceres.data.map((grocery) => {
+      const intervals = [];
+      historyElements.map((history) => {
+        history.groceries.map((groceryHistoryItem) => {
+          if (groceryHistoryItem.id === grocery.id) {
+            intervals.push(history.saved);
+          }
+          return null;
+        });
+        return null;
+      });
+      if (intervals.length > 1) {
+        const item = { ...grocery, intervals: intervals };
+        itemsList.push(item);
+      }
+      return null;
+    });
+    itemsList.map((item) => {
+      const daysDifferenceArray = [];
+      const numberOfExecution = item.intervals.length - 1;
+      let i;
+      for (i = 0; i < numberOfExecution; i++) {
+        let millisecondsDifference = item.intervals[i + 1] - item.intervals[i];
+        let days = Math.round(millisecondsDifference / 86400000);
+        if (days < 1) {
+          days = 1;
+        }
+        daysDifferenceArray.push(days);
+      }
+
+      let sum = 0;
+      let j;
+      for (j = 0; j < daysDifferenceArray.length; j++) {
+        sum += daysDifferenceArray[j];
+      }
+
+      const daysAverage = Math.round(sum / daysDifferenceArray.length);
+
+      const workItem = { ...item };
+      delete workItem.intervals;
+
+      itemsListWithAverage.push({
+        ...workItem,
+        value: daysAverage,
+      });
+    });
+  }
+
+  const sortedGroceriesByDaysAverage = itemsListWithAverage.sort(
+    (a, b) => b.daysAverage - a.daysAverage
+  );
+
+  const sortedGroceriesByValueFromHistory = workingArraysList[0].sort(
     (a, b) => b.value - a.value
   );
-  const sortedProductsFromHistory = workingArraysList[1].sort(
+  const sortedProductsByValueFromHistory = workingArraysList[1].sort(
     (a, b) => b.value - a.value
   );
-  const sortedDishesFromHistory = workingArraysList[2].sort(
+  const sortedDishesByValueFromHistory = workingArraysList[2].sort(
     (a, b) => b.value - a.value
   );
-  const sortedSavedListFromHistory = workingArraysList[3].sort(
+  const sortedSavedListByValueFromHistory = workingArraysList[3].sort(
     (a, b) => b.value - a.value
   );
 
@@ -131,25 +201,29 @@ const CreateSmartList = () => {
     <div>
       <EditModeList
         parentsTitle="Groceries"
-        itemsList={sortedGroceriesFromHistory}
+        itemsList={
+          sortByNumber
+            ? sortedGroceriesByValueFromHistory
+            : sortedGroceriesByDaysAverage
+        }
         filtredCategories={useGroceriesCategories.data}
         variant="shop"
       />
       <EditModeList
         parentsTitle="Products"
-        itemsList={sortedProductsFromHistory}
+        itemsList={sortByNumber ? sortedProductsByValueFromHistory : []}
         filtredCategories={useProductsCategories.data}
         variant="shop"
       />
       <EditModeList
         parentsTitle="Dishes"
-        itemsList={sortedDishesFromHistory}
+        itemsList={sortByNumber ? sortedDishesByValueFromHistory : []}
         filtredCategories={dishesCategories.data}
         variant="shop"
       />
       <EditModeList
         parentsTitle="SavedList"
-        itemsList={sortedSavedListFromHistory}
+        itemsList={sortByNumber ? sortedSavedListByValueFromHistory : []}
         filtredCategories={useSavedListsCategories.data}
         variant="shop"
       />

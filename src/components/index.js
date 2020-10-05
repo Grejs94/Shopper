@@ -9,3 +9,4 @@ export { EditModeList, ListModeList } from "./CreateParentCategoryList";
 export { default as Modal } from "./Modal";
 export { CreateHistoryModalContent } from "./ModalsContent";
 export { default as HistoryContent } from "./HistoryContent";
+export { default as SettingsHelperContent } from "./SettingsHelperContent";

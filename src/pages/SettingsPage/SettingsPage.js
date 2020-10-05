@@ -2,9 +2,17 @@ import React from "react";
 
 import { Switch, Route } from "react-router-dom";
 
-import { Menu, BottomBarWithIcons, PageInfo } from "components";
+import {
+  Menu,
+  BottomBarWithIcons,
+  PageInfo,
+  SettingsHelperContent,
+  IconsItemLink,
+} from "components";
 
 import { IconElementsSettingsPage } from "assets";
+
+import { shopHelper_coloredImg } from "pictures";
 
 import { MainPageWrapper } from "assets/StyledComponents/MainPageWrapper.css";
 
@@ -19,25 +27,14 @@ function SettingsPage() {
       <MainPageWrapper>
         <Switch>
           <Route exact path="/settings">
-            Setting page
+            <IconsItemLink
+              image={shopHelper_coloredImg}
+              text="Helper"
+              to="/settings/helper"
+            />
           </Route>
-          <Route exact path="/settings/groceries">
-            /settings/groceries
-          </Route>
-          <Route exact path="/settings/products">
-            /settings/products
-          </Route>
-          <Route exact path="/settings/dishes">
-            /settings/dishes
-          </Route>
-          <Route exact path="/settings/lists">
-            /settings/lists
-          </Route>
-          <Route exact path="/settings/history">
-            /settings/history
-          </Route>
-          <Route exact path="/settings/search">
-            /settings/search
+          <Route exact path="/settings/helper">
+            <SettingsHelperContent />
           </Route>
         </Switch>
       </MainPageWrapper>

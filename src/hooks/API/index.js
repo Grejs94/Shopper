@@ -31,6 +31,8 @@ import { useProducts, useProductsCategories } from "./ProductsHooks";
 
 import { useHistory, useAddHistory, useDeleteHistory } from "./HistoryHooks";
 
+import { useSettings, usePutSettings } from "./SettingsHooks";
+
 export default {
   useParentCategories,
   useGroceres,
@@ -61,4 +63,6 @@ export default {
   useHistory,
   useAddHistory,
   useDeleteHistory,
+  useSettings,
+  usePutSettings,
 };

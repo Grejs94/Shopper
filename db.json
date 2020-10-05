@@ -1103,34 +1103,7 @@
   },
   "history": [],
   "settings": {
-    "sortBy": {
-      "selectedStoreHistoryOnly": false,
-      "intervalsOrNumber": "number",
-      "showSelectedParentCategories": [
-        {
-          "parentCategoryId": "1"
-        },
-        {
-          "parentCategoryId": "2"
-        },
-        {
-          "parentCategoryId": "3"
-        },
-        {
-          "parentCategoryId": "4"
-        },
-        {
-          "parentCategoryId": "5"
-        }
-      ],
-      "shopsToVisit": [
-        {
-          "MyshopsId": "1",
-          "name": "kaufland",
-          "city": "Piekary Śląskie"
-        }
-      ]
-    }
+    "sortBy": "Time Intervals"
   },
   "hideElements": [
     {

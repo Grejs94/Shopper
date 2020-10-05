@@ -53,134 +53,77 @@ const CreateSmartList = () => {
       </div>
     );
   }
+  // 218 code lines
 
-  const workingUseGroceres = [];
-  const workingUseProducts = [];
-  const workingDishes = [];
-  const workingSavedList = [];
+  const workingUseGroceresX = [];
+  const workingUseProductsX = [];
+  const workingDishesX = [];
+  const workingSavedListX = [];
+
+  const workingArraysList = [
+    workingUseGroceresX,
+    workingUseProductsX,
+    workingDishesX,
+    workingSavedListX,
+  ];
+
+  const ArrayParentCategories = [useGroceres, useProducts, dishes, savedList];
 
   const historyElements = useHistory.data;
 
-  // Groceries
-  useGroceres.data.map((grocery) => {
-    let value = 0;
+  ArrayParentCategories.map((array, index) => {
+    array.data.map((item) => {
+      let value = 0;
 
-    historyElements.map((history) => {
-      history.groceries.map((historyGroceryItem) => {
-        if (history.groceries.length === 0) {
+      historyElements.map((history) => {
+        const switchParentCategory = (index) => {
+          switch (index) {
+            case 0:
+              return history.groceries;
+            case 1:
+              return history.products;
+            case 2:
+              return history.dishes;
+            case 3:
+              return history.savedLists;
+
+            default:
+              return history.groceries;
+          }
+        };
+
+        switchParentCategory(index).map((historyItem) => {
+          if (switchParentCategory(index).length === 0) {
+            return null;
+          }
+          if (item.id === historyItem.id) {
+            value++;
+          }
           return null;
-        }
+        });
 
-        if (grocery.id === historyGroceryItem.id) {
-          value++;
+        const parentCategoryItem = { ...item, value: value };
+
+        if (value > 0) {
+          workingArraysList[index].push(parentCategoryItem);
         }
         return null;
       });
       return null;
     });
-
-    const groceryItem = { ...grocery, value: value };
-
-    if (value > 0) {
-      workingUseGroceres.push(groceryItem);
-    }
     return null;
   });
 
-  const sortedGroceriesFromHistory = workingUseGroceres.sort(
+  const sortedGroceriesFromHistory = workingArraysList[0].sort(
     (a, b) => b.value - a.value
   );
-
-  // Products
-  useProducts.data.map((product) => {
-    let value = 0;
-
-    historyElements.map((history) => {
-      // console.log(history);
-      history.products.map((historyProductItem) => {
-        // console.log(historyProductItem);
-        if (history.products.length === 0) {
-          return null;
-        }
-        if (product.id === historyProductItem.id) {
-          value++;
-        }
-        return null;
-      });
-      return null;
-    });
-
-    const productItem = { ...product, value: value };
-
-    if (value > 0) {
-      workingUseProducts.push(productItem);
-    }
-    return null;
-  });
-
-  const sortedProductsFromHistory = workingUseProducts.sort(
+  const sortedProductsFromHistory = workingArraysList[1].sort(
     (a, b) => b.value - a.value
   );
-
-  // Dishes
-  dishes.data.map((dish) => {
-    let value = 0;
-
-    historyElements.map((history) => {
-      // console.log(history);
-      history.dishes.map((historydishItem) => {
-        // console.log(historyProductItem);
-        if (history.dishes.length === 0) {
-          return null;
-        }
-        if (dish.id === historydishItem.id) {
-          value++;
-        }
-        return null;
-      });
-      return null;
-    });
-
-    const dishItem = { ...dish, value: value };
-
-    if (value > 0) {
-      workingDishes.push(dishItem);
-    }
-    return null;
-  });
-
-  const sortedDishesFromHistory = workingDishes.sort(
+  const sortedDishesFromHistory = workingArraysList[2].sort(
     (a, b) => b.value - a.value
   );
-
-  // SavedLists
-  savedList.data.map((savedList) => {
-    let value = 0;
-
-    historyElements.map((history) => {
-      // console.log(history);
-      history.savedLists.map((historySavedListsItem) => {
-        // console.log(historyProductItem);
-        if (history.savedLists.length === 0) {
-          return null;
-        }
-        if (savedList.id === historySavedListsItem.id) {
-          value++;
-        }
-        return null;
-      });
-      return null;
-    });
-
-    const savedListItem = { ...savedList, value: value };
-
-    if (value > 0) {
-      workingSavedList.push(savedListItem);
-    }
-    return null;
-  });
-
-  const sortedSavedListFromHistory = workingSavedList.sort(
+  const sortedSavedListFromHistory = workingArraysList[3].sort(
     (a, b) => b.value - a.value
   );
 

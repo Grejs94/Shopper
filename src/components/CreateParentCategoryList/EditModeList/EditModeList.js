@@ -234,9 +234,9 @@ const EditModeList = ({ parentsTitle, filtredCategories, itemsList }) => {
                   return (
                     <Square key={item.id} onClick={() => handleOnClick(item)}>
                       <Content>
-                        {item.value > 1
-                          ? `${item.name} (${item.value})`
-                          : `${item.name}`}
+                        {item.value === "1" || item.value === undefined
+                          ? `${item.name}`
+                          : `${item.name} (${item.value})`}
                       </Content>
                     </Square>
                   );

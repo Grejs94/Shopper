@@ -14,10 +14,7 @@ import { MainPageWrapper } from "assets/StyledComponents/MainPageWrapper.css";
 
 import { IconElementsShopHelperPage } from "assets";
 
-import {
-  lastSearch_coloredImg,
-  search_coloredImg,
-} from "pictures/ParentCategoryIcons";
+import { search_coloredImg } from "pictures/ParentCategoryIcons";
 
 function HelperPage() {
   return (
@@ -30,11 +27,6 @@ function HelperPage() {
       <MainPageWrapper>
         <Switch>
           <Route exact path="/shopHelper">
-            <IconsItem
-              image={lastSearch_coloredImg}
-              text="Last smart list"
-              to="/shopHelper/smartList"
-            />
             <IconsItem
               image={search_coloredImg}
               text="Create smart list"

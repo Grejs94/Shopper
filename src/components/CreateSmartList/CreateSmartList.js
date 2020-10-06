@@ -141,14 +141,10 @@ const CreateSmartList = () => {
     });
   } else if (!sortByNumber) {
     ArrayParentCategories.map((parentCategory, index) => {
-      // console.log(parentCategory);
       parentCategory.data.map((item) => {
         const itemsList = [];
-
-        // console.log(item);
         const intervals = [];
         historyElements.map((history) => {
-          // console.log(history);
           const switchParentCategory = (index) => {
             switch (index) {
               case 0:
@@ -164,37 +160,32 @@ const CreateSmartList = () => {
                 return history.groceries;
             }
           };
-          //
           switchParentCategory(index).map((historyItem) => {
             if (historyItem.id === item.id) {
               intervals.push(history.saved);
             }
             return null;
           });
-          // console.log(intervals);
           return null;
         });
         if (intervals.length > 1) {
           const workItem = { ...item, intervals: intervals };
           itemsList.push(workItem);
         }
-        // console.log(itemsList);
 
-        itemsList.map((item) => {
-          console.log(item);
+        itemsList.map((updatedItem) => {
           const daysDifferenceArray = [];
-          const numberOfExecution = item.intervals.length - 1;
+          const numberOfExecution = updatedItem.intervals.length - 1;
           let i;
           for (i = 0; i < numberOfExecution; i++) {
             let millisecondsDifference =
-              item.intervals[i + 1] - item.intervals[i];
+              updatedItem.intervals[i + 1] - updatedItem.intervals[i];
             let days = Math.round(millisecondsDifference / 86400000);
             if (days < 1) {
               days = 1;
             }
             daysDifferenceArray.push(days);
           }
-          // console.log(daysDifferenceArray);
 
           let sum = 0;
           let j;
@@ -204,16 +195,35 @@ const CreateSmartList = () => {
 
           const daysAverage = Math.round(sum / daysDifferenceArray.length);
 
-          const workItem = { ...item };
-          console.log(workItem);
-          delete workItem.intervals;
+          const lastPurchase =
+            updatedItem.intervals[updatedItem.intervals.length - 1];
+
+          const nowMilisecondTime = Date.now();
+
+          const timeDifference = nowMilisecondTime - lastPurchase;
+
+          let daysPassedSinceTheLastPurchase = Math.round(
+            timeDifference / 86400000
+          );
+          if (daysPassedSinceTheLastPurchase < 1) {
+            daysPassedSinceTheLastPurchase = 1;
+          }
+
+          const probabilityIndex = daysPassedSinceTheLastPurchase - daysAverage;
+
+          const workItem = {
+            ...updatedItem,
+          };
 
           arrayOfItemsByAverage[index].push({
             ...workItem,
-            value: daysAverage,
+            value: probabilityIndex,
           });
+          return null;
         });
+        return null;
       });
+      return null;
     });
   }
 

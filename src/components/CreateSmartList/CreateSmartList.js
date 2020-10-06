@@ -87,7 +87,17 @@ const CreateSmartList = () => {
 
   const historyElements = useHistory.data;
 
-  const itemsListWithAverage = [];
+  const itemsListFromGroceriesWithAverage = [];
+  const itemsListFromProductsWithAverage = [];
+  const itemsListFromDishesWithAverage = [];
+  const itemsListFromSavedListSWithAverage = [];
+
+  const arrayOfItemsByAverage = [
+    itemsListFromGroceriesWithAverage,
+    itemsListFromProductsWithAverage,
+    itemsListFromDishesWithAverage,
+    itemsListFromSavedListSWithAverage,
+  ];
 
   if (sortByNumber) {
     ArrayParentCategories.map((array, index) => {
@@ -130,57 +140,96 @@ const CreateSmartList = () => {
       return null;
     });
   } else if (!sortByNumber) {
-    const itemsList = [];
+    ArrayParentCategories.map((parentCategory, index) => {
+      // console.log(parentCategory);
+      parentCategory.data.map((item) => {
+        const itemsList = [];
 
-    useGroceres.data.map((grocery) => {
-      const intervals = [];
-      historyElements.map((history) => {
-        history.groceries.map((groceryHistoryItem) => {
-          if (groceryHistoryItem.id === grocery.id) {
-            intervals.push(history.saved);
-          }
+        // console.log(item);
+        const intervals = [];
+        historyElements.map((history) => {
+          // console.log(history);
+          const switchParentCategory = (index) => {
+            switch (index) {
+              case 0:
+                return history.groceries;
+              case 1:
+                return history.products;
+              case 2:
+                return history.dishes;
+              case 3:
+                return history.savedLists;
+
+              default:
+                return history.groceries;
+            }
+          };
+          //
+          switchParentCategory(index).map((historyItem) => {
+            if (historyItem.id === item.id) {
+              intervals.push(history.saved);
+            }
+            return null;
+          });
+          // console.log(intervals);
           return null;
         });
-        return null;
-      });
-      if (intervals.length > 1) {
-        const item = { ...grocery, intervals: intervals };
-        itemsList.push(item);
-      }
-      return null;
-    });
-    itemsList.map((item) => {
-      const daysDifferenceArray = [];
-      const numberOfExecution = item.intervals.length - 1;
-      let i;
-      for (i = 0; i < numberOfExecution; i++) {
-        let millisecondsDifference = item.intervals[i + 1] - item.intervals[i];
-        let days = Math.round(millisecondsDifference / 86400000);
-        if (days < 1) {
-          days = 1;
+        if (intervals.length > 1) {
+          const workItem = { ...item, intervals: intervals };
+          itemsList.push(workItem);
         }
-        daysDifferenceArray.push(days);
-      }
+        // console.log(itemsList);
 
-      let sum = 0;
-      let j;
-      for (j = 0; j < daysDifferenceArray.length; j++) {
-        sum += daysDifferenceArray[j];
-      }
+        itemsList.map((item) => {
+          console.log(item);
+          const daysDifferenceArray = [];
+          const numberOfExecution = item.intervals.length - 1;
+          let i;
+          for (i = 0; i < numberOfExecution; i++) {
+            let millisecondsDifference =
+              item.intervals[i + 1] - item.intervals[i];
+            let days = Math.round(millisecondsDifference / 86400000);
+            if (days < 1) {
+              days = 1;
+            }
+            daysDifferenceArray.push(days);
+          }
+          // console.log(daysDifferenceArray);
 
-      const daysAverage = Math.round(sum / daysDifferenceArray.length);
+          let sum = 0;
+          let j;
+          for (j = 0; j < daysDifferenceArray.length; j++) {
+            sum += daysDifferenceArray[j];
+          }
 
-      const workItem = { ...item };
-      delete workItem.intervals;
+          const daysAverage = Math.round(sum / daysDifferenceArray.length);
 
-      itemsListWithAverage.push({
-        ...workItem,
-        value: daysAverage,
+          const workItem = { ...item };
+          console.log(workItem);
+          delete workItem.intervals;
+
+          arrayOfItemsByAverage[index].push({
+            ...workItem,
+            value: daysAverage,
+          });
+        });
       });
     });
   }
 
-  const sortedGroceriesByDaysAverage = itemsListWithAverage.sort(
+  const sortedGroceriesByDaysAverage = arrayOfItemsByAverage[0].sort(
+    (a, b) => b.daysAverage - a.daysAverage
+  );
+
+  const sortedProductsByDaysAverage = arrayOfItemsByAverage[1].sort(
+    (a, b) => b.daysAverage - a.daysAverage
+  );
+
+  const sortedDishesByDaysAverage = arrayOfItemsByAverage[2].sort(
+    (a, b) => b.daysAverage - a.daysAverage
+  );
+
+  const sortedSavedListsByDaysAverage = arrayOfItemsByAverage[3].sort(
     (a, b) => b.daysAverage - a.daysAverage
   );
 
@@ -211,19 +260,31 @@ const CreateSmartList = () => {
       />
       <EditModeList
         parentsTitle="Products"
-        itemsList={sortByNumber ? sortedProductsByValueFromHistory : []}
+        itemsList={
+          sortByNumber
+            ? sortedProductsByValueFromHistory
+            : sortedProductsByDaysAverage
+        }
         filtredCategories={useProductsCategories.data}
         variant="shop"
       />
       <EditModeList
         parentsTitle="Dishes"
-        itemsList={sortByNumber ? sortedDishesByValueFromHistory : []}
+        itemsList={
+          sortByNumber
+            ? sortedDishesByValueFromHistory
+            : sortedDishesByDaysAverage
+        }
         filtredCategories={dishesCategories.data}
         variant="shop"
       />
       <EditModeList
         parentsTitle="SavedList"
-        itemsList={sortByNumber ? sortedSavedListByValueFromHistory : []}
+        itemsList={
+          sortByNumber
+            ? sortedSavedListByValueFromHistory
+            : sortedSavedListsByDaysAverage
+        }
         filtredCategories={useSavedListsCategories.data}
         variant="shop"
       />

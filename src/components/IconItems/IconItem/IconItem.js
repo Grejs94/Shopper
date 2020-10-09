@@ -7,9 +7,9 @@ import {
   ItemText,
 } from "./IconItem.css";
 
-function IconItem({ image, text }) {
+function IconItem({ image, text, addStyle, handleOnClick = () => {} }) {
   return (
-    <Item>
+    <Item onClick={handleOnClick} style={addStyle}>
       <ItemPictureContainer>
         <ItemPicture src={image} />
       </ItemPictureContainer>

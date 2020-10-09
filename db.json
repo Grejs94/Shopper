@@ -1107,32 +1107,7 @@
       "parentCategoryId": "4"
     }
   ],
-  "basketGroceries": [
-    {
-      "id": "300",
-      "name": "bread",
-      "categoryId": "7",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "1"
-    },
-    {
-      "id": "1",
-      "name": "pepper",
-      "categoryId": "1",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "1"
-    },
-    {
-      "id": "2",
-      "name": "tomato",
-      "categoryId": "1",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "1"
-    }
-  ],
+  "basketGroceries": [],
   "basketProducts": [],
   "basketDishes": [],
   "basketSavedLists": [],
@@ -1164,76 +1139,7 @@
       }
     ]
   },
-  "history": [
-    {
-      "saved": 1602151507815,
-      "DateToShow": "8.10.2020",
-      "groceries": [
-        {
-          "id": "300",
-          "name": "bread",
-          "categoryId": "7",
-          "parentCategoryId": "1",
-          "showInShop": true,
-          "value": "1"
-        },
-        {
-          "id": "1",
-          "name": "pepper",
-          "categoryId": "1",
-          "parentCategoryId": "1",
-          "showInShop": true,
-          "value": "1"
-        },
-        {
-          "id": "2",
-          "name": "tomato",
-          "categoryId": "1",
-          "parentCategoryId": "1",
-          "showInShop": true,
-          "value": "1"
-        }
-      ],
-      "products": [],
-      "dishes": [],
-      "savedLists": [],
-      "id": 1
-    },
-    {
-      "saved": 1602235281334,
-      "DateToShow": "9.10.2020",
-      "groceries": [
-        {
-          "id": "300",
-          "name": "bread",
-          "categoryId": "7",
-          "parentCategoryId": "1",
-          "showInShop": true,
-          "value": "1"
-        },
-        {
-          "id": "1",
-          "name": "pepper",
-          "categoryId": "1",
-          "parentCategoryId": "1",
-          "showInShop": true,
-          "value": "1"
-        },
-        {
-          "id": "2",
-          "name": "tomato",
-          "categoryId": "1",
-          "parentCategoryId": "1",
-          "showInShop": true,
-          "value": "1"
-        }
-      ],
-      "products": [],
-      "dishes": [],
-      "savedLists": [],
-      "id": 2
-    }
-  ],
+  "history": [],
   "settings": {
     "sortBy": "Time Intervals"
   },

@@ -17,5 +17,6 @@ export const ItemPicture = styled.img`
 `;
 
 export const ItemText = styled.span`
+  font-size: 20px;
   margin-left: 5px;
 `;

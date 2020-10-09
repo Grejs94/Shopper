@@ -2,9 +2,9 @@ import React from "react";
 
 import { ItemsContainer, EmptyItem } from "./IconItemContainer.css";
 
-const IconItemContainer = ({ children }) => {
+const IconItemContainer = ({ children, addStyles }) => {
   return (
-    <ItemsContainer>
+    <ItemsContainer style={addStyles}>
       {children}
       <EmptyItem />
     </ItemsContainer>

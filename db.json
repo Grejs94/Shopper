@@ -11,77 +11,103 @@
       "storageRacks": [
         {
           "id": "1",
+          "ParentCategoriesId": "1",
+          "IncludedCategoriesId": [],
+          "itemsIncluded": []
+        },
+        {
+          "id": "2",
+          "ParentCategoriesId": "1",
+          "IncludedCategoriesId": [],
+          "itemsIncluded": []
+        },
+        {
+          "id": "3",
+          "ParentCategoriesId": "1",
+          "IncludedCategoriesId": [],
+          "itemsIncluded": []
+        },
+        {
+          "id": "4",
+          "ParentCategoriesId": "1",
           "IncludedCategoriesId": [
-            "4",
-            "2",
             "2"
           ],
-          "shelfs": [
-            {
-              "numberFromTheTop": "1",
-              "ShelfSide": [
-                {
-                  "left": {
-                    "IncludedItems": [
-                      {
-                        "itemsId": "1"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "center": {
-                    "IncludedItems": [
-                      {
-                        "itemsId": "5"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "right": {
-                    "IncludedItems": [
-                      {
-                        "itemsId": "3"
-                      }
-                    ]
-                  }
-                }
-              ]
-            },
-            {
-              "numberFromTheTop": "2",
-              "ShelfSide": [
-                {
-                  "left": {
-                    "IncludedItems": [
-                      {
-                        "itemsId": "9"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "center": {
-                    "IncludedItems": [
-                      {
-                        "itemsId": "8"
-                      }
-                    ]
-                  }
-                },
-                {
-                  "right": {
-                    "IncludedItems": [
-                      {
-                        "itemsId": "6"
-                      }
-                    ]
-                  }
-                }
-              ]
-            }
+          "itemsIncluded": []
+        },
+        {
+          "id": "5",
+          "ParentCategoriesId": "1",
+          "IncludedCategoriesId": [
+            "2"
+          ],
+          "itemsIncluded": []
+        },
+        {
+          "id": "6",
+          "ParentCategoriesId": "1",
+          "IncludedCategoriesId": [
+            "12"
+          ],
+          "itemsIncluded": [
+            "550"
           ]
+        },
+        {
+          "id": "8",
+          "ParentCategoriesId": "1",
+          "IncludedCategoriesId": [
+            "2"
+          ],
+          "itemsIncluded": []
+        },
+        {
+          "id": "9",
+          "ParentCategoriesId": "1",
+          "IncludedCategoriesId": [
+            "2"
+          ],
+          "itemsIncluded": []
+        },
+        {
+          "id": "13",
+          "ParentCategoriesId": "1",
+          "IncludedCategoriesId": [
+            "1"
+          ],
+          "itemsIncluded": []
+        },
+        {
+          "id": "14",
+          "ParentCategoriesId": "1",
+          "IncludedCategoriesId": [
+            "2"
+          ],
+          "itemsIncluded": []
+        },
+        {
+          "id": "15",
+          "ParentCategoriesId": "1",
+          "IncludedCategoriesId": [
+            "1"
+          ],
+          "itemsIncluded": []
+        },
+        {
+          "id": "16",
+          "ParentCategoriesId": "1",
+          "IncludedCategoriesId": [
+            "1"
+          ],
+          "itemsIncluded": []
+        },
+        {
+          "id": "20",
+          "ParentCategoriesId": "1",
+          "IncludedCategoriesId": [
+            "1"
+          ],
+          "itemsIncluded": []
         }
       ]
     }
@@ -517,6 +543,13 @@
       "categoryId": "11",
       "parentCategoryId": "1",
       "showInShop": true
+    },
+    {
+      "id": "550",
+      "name": "oil",
+      "categoryId": "12",
+      "parentCategoryId": "1",
+      "showInShop": true
     }
   ],
   "groceriesCategories": [
@@ -573,6 +606,11 @@
     {
       "id": "11",
       "name": "from Service",
+      "parentCategoryId": "1"
+    },
+    {
+      "id": "12",
+      "name": "oils",
       "parentCategoryId": "1"
     }
   ],
@@ -1069,7 +1107,32 @@
       "parentCategoryId": "4"
     }
   ],
-  "basketGroceries": [],
+  "basketGroceries": [
+    {
+      "id": "300",
+      "name": "bread",
+      "categoryId": "7",
+      "parentCategoryId": "1",
+      "showInShop": true,
+      "value": "1"
+    },
+    {
+      "id": "1",
+      "name": "pepper",
+      "categoryId": "1",
+      "parentCategoryId": "1",
+      "showInShop": true,
+      "value": "1"
+    },
+    {
+      "id": "2",
+      "name": "tomato",
+      "categoryId": "1",
+      "parentCategoryId": "1",
+      "showInShop": true,
+      "value": "1"
+    }
+  ],
   "basketProducts": [],
   "basketDishes": [],
   "basketSavedLists": [],
@@ -1101,9 +1164,44 @@
       }
     ]
   },
-  "history": [],
+  "history": [
+    {
+      "saved": 1602151507815,
+      "DateToShow": "8.10.2020",
+      "groceries": [
+        {
+          "id": "300",
+          "name": "bread",
+          "categoryId": "7",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "1",
+          "name": "pepper",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "2",
+          "name": "tomato",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        }
+      ],
+      "products": [],
+      "dishes": [],
+      "savedLists": [],
+      "id": 1
+    }
+  ],
   "settings": {
-    "sortBy": "Bought most times"
+    "sortBy": "Time Intervals"
   },
   "hideElements": [
     {

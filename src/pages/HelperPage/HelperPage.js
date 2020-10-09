@@ -8,6 +8,8 @@ import {
   PageInfo,
   IconsItem,
   CreateSmartList,
+  IconItemWithLinkAndSetCategory,
+  IconItemContainer,
 } from "components";
 
 import { MainPageWrapper } from "assets/StyledComponents/MainPageWrapper.css";
@@ -27,11 +29,13 @@ function HelperPage() {
       <MainPageWrapper>
         <Switch>
           <Route exact path="/shopHelper">
-            <IconsItem
-              image={search_coloredImg}
-              text="Create smart list"
-              to="/shopHelper/createSmartList"
-            />
+            <IconItemContainer>
+              <IconItemWithLinkAndSetCategory
+                image={search_coloredImg}
+                text="Create smart list"
+                to="/shopHelper/createSmartList"
+              />
+            </IconItemContainer>
           </Route>
           <Route exact path="/shopHelper/createSmartList">
             <CreateSmartList />

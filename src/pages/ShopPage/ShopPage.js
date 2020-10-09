@@ -6,10 +6,11 @@ import {
   Menu,
   BottomBarWithIcons,
   PageInfo,
-  IconsItem,
-  IconsItemLink,
   ShopPageContent,
   HistoryContent,
+  IconItemContainer,
+  IconItemWithLink,
+  IconItemWithLinkAndSetCategory,
 } from "components";
 
 import { MainPageWrapper } from "assets/StyledComponents/MainPageWrapper.css";
@@ -32,32 +33,41 @@ function ShopPage() {
       <Switch>
         <MainPageWrapper>
           <Route exact path="/shop">
-            <IconsItem
-              image={groceries_coloredImg}
-              text="Groceries"
-              to="/shop/elements_page"
-            />
-            <IconsItem
-              image={products_coloredImg}
-              text="Products"
-              to="/shop/elements_page"
-            />
-            <IconsItem
-              image={dishes_coloredImg}
-              text="Dishes"
-              to="/shop/elements_page"
-            />
-
-            <IconsItem
-              image={lists_coloredImg}
-              text="SavedList"
-              to="/shop/elements_page"
-            />
-            <IconsItemLink
-              image={history_coloredImg}
-              text="History"
-              to="/shop/history"
-            />
+            <IconItemContainer>
+              <IconItemWithLinkAndSetCategory
+                image={groceries_coloredImg}
+                text="Groceries"
+                to="/shop/elements_page"
+              />
+            </IconItemContainer>
+            <IconItemContainer>
+              <IconItemWithLinkAndSetCategory
+                image={products_coloredImg}
+                text="Products"
+                to="/shop/elements_page"
+              />
+            </IconItemContainer>
+            <IconItemContainer>
+              <IconItemWithLinkAndSetCategory
+                image={dishes_coloredImg}
+                text="Dishes"
+                to="/shop/elements_page"
+              />
+            </IconItemContainer>
+            <IconItemContainer>
+              <IconItemWithLinkAndSetCategory
+                image={lists_coloredImg}
+                text="SavedList"
+                to="/shop/elements_page"
+              />
+            </IconItemContainer>
+            <IconItemContainer>
+              <IconItemWithLink
+                image={history_coloredImg}
+                text="History"
+                to="/shop/history"
+              />
+            </IconItemContainer>
           </Route>
           <Route exact path="/shop/elements_page">
             <ShopPageContent />

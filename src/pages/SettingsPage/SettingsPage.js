@@ -7,7 +7,8 @@ import {
   BottomBarWithIcons,
   PageInfo,
   SettingsHelperContent,
-  IconsItemLink,
+  IconItemContainer,
+  IconItemWithLink,
 } from "components";
 
 import { IconElementsSettingsPage } from "assets";
@@ -27,11 +28,13 @@ function SettingsPage() {
       <MainPageWrapper>
         <Switch>
           <Route exact path="/settings">
-            <IconsItemLink
-              image={shopHelper_coloredImg}
-              text="Helper"
-              to="/settings/helper"
-            />
+            <IconItemContainer>
+              <IconItemWithLink
+                image={shopHelper_coloredImg}
+                text="Helper"
+                to="/settings/helper"
+              />
+            </IconItemContainer>
           </Route>
           <Route exact path="/settings/helper">
             <SettingsHelperContent />

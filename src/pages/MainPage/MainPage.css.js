@@ -35,4 +35,6 @@ export const SectionTitle = styled.p`
   font-size: 24px;
 `;
 
+export const SectionsContainer = styled.div``;
+
 export const SectionContainer = styled.div``;

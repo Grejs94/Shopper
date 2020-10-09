@@ -15,3 +15,4 @@ export {
   IconItemWithLink,
   IconItemWithLinkAndSetCategory,
 } from "./IconItems";
+export { default as ScrollTop } from "./ScrollTop";

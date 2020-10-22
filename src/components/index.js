@@ -1,18 +1,37 @@
-export { default as Menu } from "./Menu";
-export { default as BottomBarWithIcons } from "./BottomBarWithIcons";
-export { default as PageInfo } from "./PageInfo";
-export { default as BasketPageContent } from "./BasketPageContent";
-export { default as ShopPageContent } from "./ShopPageContent";
-export { EditModeList, ListModeList } from "./CreateParentCategoryList";
-export { default as Modal } from "./Modal";
-export { CreateHistoryModalContent } from "./ModalsContent";
-export { default as HistoryContent } from "./HistoryContent";
-export { default as SettingsHelperContent } from "./SettingsHelperContent";
-export { default as CreateSmartList } from "./CreateSmartList";
-export {
+import Menu from './Menu'
+import BasketPageContent from './BasketPageContent'
+import BottomBarWithIcons from './BottomBarWithIcons'
+import EditModeList from './EditModeList'
+import PageInfo from './PageInfo'
+import ShopPageContent from './ShopPageContent'
+import Modal from './Modal'
+import HistoryContent from './HistoryContent'
+import SettingsHelperContent from './SettingsHelperContent'
+import CreateSmartList from './CreateSmartList'
+import {
   IconItem,
   IconItemContainer,
   IconItemWithLink,
   IconItemWithLinkAndSetCategory,
-} from "./IconItems";
-export { default as ScrollTop } from "./ScrollTop";
+} from './IconItems'
+import ScrollTop from './ScrollTop'
+import ListModeList from './ListModeList'
+
+export {
+  BottomBarWithIcons,
+  BasketPageContent,
+  EditModeList,
+  Menu,
+  PageInfo,
+  ShopPageContent,
+  ListModeList,
+  Modal,
+  HistoryContent,
+  SettingsHelperContent,
+  CreateSmartList,
+  IconItem,
+  IconItemContainer,
+  IconItemWithLink,
+  IconItemWithLinkAndSetCategory,
+  ScrollTop,
+}

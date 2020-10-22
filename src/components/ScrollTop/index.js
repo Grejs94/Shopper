@@ -16,8 +16,13 @@ const ScrollTop = ({ value }) => {
       display = 'flex'
       opacity = currentScroll * 0.0008
     }
-    document.querySelector('#scroll').style.opacity = opacity
-    document.querySelector('#scroll').style.display = display
+
+    const element = document.querySelector('#scroll')
+
+    if (!!element) {
+      element.style.opacity = opacity
+      element.style.display = display
+    }
   })
 
   return (

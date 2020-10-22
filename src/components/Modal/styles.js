@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   background-color: rgba(0, 0, 0, 0.5);
@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
   z-index: 100;
-`;
+`
 
 export const Content = styled.div`
   background-color: #fff;
@@ -21,7 +21,7 @@ export const Content = styled.div`
   height: 300px;
   padding: 20px;
   text-align: center;
-`;
+`
 
 export const CloseIcon = styled.div`
   position: absolute;
@@ -29,7 +29,7 @@ export const CloseIcon = styled.div`
   top: 5px;
   cursor: pointer;
   font-size: 20px;
-`;
+`
 
 export const ChildrenContainer = styled.div`
   display: flex;
@@ -37,9 +37,9 @@ export const ChildrenContainer = styled.div`
   justify-content: center;
   align-content: center;
   height: 100%;
-`;
+`
 export const ChildrenInfo = styled.p`
   font-size: 22px;
   flex-basis: 100%;
   margin: 30px 0;
-`;
+`

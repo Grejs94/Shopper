@@ -1,8 +1,8 @@
-import { useParentCategories } from "hooks/API/ParentCategoryHooks";
+import { useParentCategories } from 'API/ParentCategoryHooks'
 
-import { UseDishesCategory, UseDishes } from "hooks/API/DishesHooks";
+import { UseDishesCategory, UseDishes } from 'API/DishesHooks'
 
-import { useSavedList, useSavedListsCategories } from "./SavedListsHooks";
+import { useSavedList, useSavedListsCategories } from './SavedListsHooks'
 
 import {
   useBasketGroceres,
@@ -21,17 +21,17 @@ import {
   useDeleteBasketProducts,
   useDeleteBasketDishes,
   useDeleteBasketSavedLists,
-} from "./BasketHooks";
+} from './BasketHooks'
 
-import { useMyshops } from "./ShopsHooks";
+import { useMyshops } from './ShopsHooks'
 
-import { useGroceres, useGroceriesCategories } from "./GroceriesHooks";
+import { useGroceres, useGroceriesCategories } from './GroceriesHooks'
 
-import { useProducts, useProductsCategories } from "./ProductsHooks";
+import { useProducts, useProductsCategories } from './ProductsHooks'
 
-import { useHistory, useAddHistory, useDeleteHistory } from "./HistoryHooks";
+import { useHistory, useAddHistory, useDeleteHistory } from './HistoryHooks'
 
-import { useSettings, usePutSettings } from "./SettingsHooks";
+import { useSettings, usePutSettings } from './SettingsHooks'
 
 export default {
   useParentCategories,
@@ -65,4 +65,4 @@ export default {
   useDeleteHistory,
   useSettings,
   usePutSettings,
-};
+}

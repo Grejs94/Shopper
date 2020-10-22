@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 import {
   MainPage,
@@ -11,11 +11,11 @@ import {
   SettingsPage,
   RoutePage,
   HelperPage,
-} from "pages";
+} from 'pages'
 
-import { Wrapper } from "./App.css.js";
+import { Wrapper } from './styles.js'
 
-toast.configure();
+toast.configure()
 
 function App() {
   return (
@@ -45,7 +45,7 @@ function App() {
         </Wrapper>
       </Router>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

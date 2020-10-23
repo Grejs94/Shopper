@@ -1,21 +1,12 @@
-import React from "react";
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { Wrapper } from './styles.js'
+import { mainRoutes } from 'assets/Routes'
 
-import {
-  MainPage,
-  BasketPage,
-  ShopPage,
-  SettingsPage,
-  RoutePage,
-  HelperPage,
-} from "pages";
-
-import { Wrapper } from "./App.css.js";
-
-toast.configure();
+toast.configure()
 
 function App() {
   return (
@@ -23,29 +14,19 @@ function App() {
       <Router>
         <Wrapper>
           <Switch>
-            <Route path="/shopHelper">
-              <HelperPage />
-            </Route>
-            <Route path="/basket">
-              <BasketPage />
-            </Route>
-            <Route path="/route">
-              <RoutePage />
-            </Route>
-            <Route path="/settings">
-              <SettingsPage />
-            </Route>
-            <Route path="/shop">
-              <ShopPage />
-            </Route>
-            <Route exact path="/">
-              <MainPage />
-            </Route>
+            {mainRoutes.map((route, index) => (
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                component={route.component}
+              />
+            ))}
           </Switch>
         </Wrapper>
       </Router>
     </>
-  );
+  )
 }
 
-export default App;
+export default App

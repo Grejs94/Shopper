@@ -1,2 +1,2 @@
-export { EditModeList } from "./EditModeList";
-export { ListModeList } from "./ListModeList";
+export { default as EditModeList } from './EditModeList'
+export { default as ListModeList } from './ListModeList'

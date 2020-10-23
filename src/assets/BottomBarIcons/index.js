@@ -2,35 +2,34 @@ import {
   toggleEditIcon,
   toggleAddIcon,
   toggleRemoveIcon,
-} from "features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice";
-
-import { setBasketHistory } from "features/createBasketHistory/createBasketHistorySlice";
+} from 'features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice'
+import { setBasketHistory } from 'features/createBasketHistory/createBasketHistorySlice'
 
 export const IconsBottomEditVariant = [
   {
-    name: "add",
+    name: 'add',
     onClick: toggleAddIcon,
   },
   {
-    name: "remove",
+    name: 'remove',
     onClick: toggleRemoveIcon,
   },
   {
-    name: "edit",
+    name: 'edit',
     onClick: toggleEditIcon,
   },
-];
+]
 
 export const IconsBottomListVariant = [
   {
-    name: "edit",
+    name: 'edit',
     onClick: toggleEditIcon,
   },
-];
+]
 
 export const saveIconArray = [
   {
-    name: "save",
+    name: 'save',
     onClick: setBasketHistory,
   },
-];
+]

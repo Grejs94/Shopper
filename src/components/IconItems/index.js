@@ -1,4 +1,11 @@
-export { default as IconItem } from "./IconItem";
-export { default as IconItemContainer } from "./IconItemContainer";
-export { default as IconItemWithLink } from "./IconItemWithLink";
-export { default as IconItemWithLinkAndSetCategory } from "./IconItemWithLinkAndSetCategory";
+import IconItem from './IconItem'
+import IconItemContainer from './IconItemContainer'
+import IconItemWithLink from './IconItemWithLink'
+import IconItemWithLinkAndSetCategory from './IconItemWithLinkAndSetCategory'
+
+export {
+  IconItem,
+  IconItemContainer,
+  IconItemWithLink,
+  IconItemWithLinkAndSetCategory,
+}

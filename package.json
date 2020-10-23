@@ -42,5 +42,12 @@
     "react-router-dom": "^5.2.0",
     "react-toastify": "^6.0.8",
     "styled-components": "^5.2.0"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true,
+    "tabWidth": 2,
+    "printWidth": 80,
+    "trailingComma": "all"
   }
 }

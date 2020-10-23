@@ -1,1 +1,1 @@
-export { default } from "./activeMenuIconSlice";
+export { default } from './activeMenuIconSlice'

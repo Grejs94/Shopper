@@ -5,7 +5,6 @@ import {
   Menu,
   BottomBarWithIcons,
   PageInfo,
-  IconsItem,
   CreateSmartList,
   IconItemWithLinkAndSetCategory,
   IconItemContainer,

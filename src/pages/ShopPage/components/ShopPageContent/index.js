@@ -1,10 +1,9 @@
 import React from 'react'
-
 import { useSelector } from 'react-redux'
 
 import { EditModeList } from 'components'
-
 import API from 'API'
+
 import { selectCategory } from 'features/category/categorySlice'
 
 const ScrollToParentCategory = ({ category }) => {

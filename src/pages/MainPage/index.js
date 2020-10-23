@@ -1,9 +1,6 @@
 import React from 'react'
 
 import { Menu, IconItemContainer, IconItem, ScrollTop } from 'components'
-
-import * as Styles2 from 'assets/StyledComponents/MainPageWrapper.css'
-
 import {
   basket_coloredImg,
   edit_coloredImg,
@@ -22,10 +19,10 @@ import {
   settings_coloredImg,
   route_coloredImg,
 } from 'pictures'
-
-import * as Styles from './styles'
-
 import { IconElementsMainPage } from 'assets'
+
+import * as Styles2 from 'assets/StyledComponents/MainPageWrapper.css'
+import * as Styles from './styles'
 
 const ScrollToParentCategory = (category) => {
   const div = document.querySelector(`#${category}`)

@@ -1,8 +1,7 @@
 import React from 'react'
 
-import API from 'API'
-
 import { EditModeList } from 'components'
+import API from 'API'
 
 import * as Styles from './styles'
 

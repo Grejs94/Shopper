@@ -1,20 +1,17 @@
 import React from 'react'
-
 import { Switch, Route } from 'react-router-dom'
 
 import {
   Menu,
   BottomBarWithIcons,
   PageInfo,
-  SettingsHelperContent,
   IconItemContainer,
   IconItemWithLink,
 } from 'components'
-
 import { IconElementsSettingsPage } from 'assets'
-
 import { shopHelper_coloredImg } from 'pictures'
 
+import { SettingsHelperContent } from './components'
 import * as Styles from 'assets/StyledComponents/MainPageWrapper.css'
 
 function SettingsPage() {

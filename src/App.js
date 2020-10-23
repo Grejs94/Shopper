@@ -1,19 +1,10 @@
 import React from 'react'
-
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-import {
-  MainPage,
-  BasketPage,
-  ShopPage,
-  SettingsPage,
-  RoutePage,
-  HelperPage,
-} from 'pages'
-
 import { Wrapper } from './styles.js'
+import { mainRoutes } from 'assets/Routes'
 
 toast.configure()
 
@@ -23,24 +14,14 @@ function App() {
       <Router>
         <Wrapper>
           <Switch>
-            <Route path="/shopHelper">
-              <HelperPage />
-            </Route>
-            <Route path="/basket">
-              <BasketPage />
-            </Route>
-            <Route path="/route">
-              <RoutePage />
-            </Route>
-            <Route path="/settings">
-              <SettingsPage />
-            </Route>
-            <Route path="/shop">
-              <ShopPage />
-            </Route>
-            <Route exact path="/">
-              <MainPage />
-            </Route>
+            {mainRoutes.map((route, index) => (
+              <Route
+                key={index}
+                path={route.path}
+                exact={route.exact}
+                component={route.component}
+              />
+            ))}
           </Switch>
         </Wrapper>
       </Router>

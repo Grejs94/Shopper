@@ -1,12 +1,9 @@
 import React from 'react'
-
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
+
 import API from 'API'
-
-import * as Styles from './styles'
-
 import {
   list_coloredImg,
   edit_coloredImg,
@@ -20,13 +17,13 @@ import {
   save_coloredImg,
 } from 'pictures'
 
+import * as Styles from './styles'
 import {
   selectEditIcon,
   selectAddIcon,
   selectRemoveIcon,
   resetEditIcon,
 } from 'features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice'
-
 import { selectBasketHistory } from 'features/createBasketHistory/createBasketHistorySlice'
 
 function BottomBarWithIcons({ icons, saveIconArray }) {

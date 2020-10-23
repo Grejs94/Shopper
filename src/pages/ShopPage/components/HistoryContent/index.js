@@ -1,10 +1,9 @@
 import React from 'react'
 
-import { HistoryParentCategoryList } from './components'
-
-import * as Styles from './styles'
-
 import API from 'API'
+
+import { HistoryParentCategoryList } from './components'
+import * as Styles from './styles'
 
 const HistoryContent = () => {
   const useHistory = API.useHistory()

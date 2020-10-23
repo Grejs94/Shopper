@@ -1,8 +1,7 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 import { IconItem } from '../index'
-
-import { Link } from 'react-router-dom'
 
 const IconItemWithLink = ({ image, text, to }) => {
   return (

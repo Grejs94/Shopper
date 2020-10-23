@@ -1,1 +1,3 @@
-export { default as CreateHistoryModalContent } from "./CreateHistoryModalContent";
+import CreateHistoryModalContent from './CreateHistoryModalContent'
+
+export { CreateHistoryModalContent }

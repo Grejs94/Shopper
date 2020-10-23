@@ -1,22 +1,18 @@
 import React from 'react'
 
 import { Switch, Route } from 'react-router-dom'
-
 import {
   Menu,
   BottomBarWithIcons,
   PageInfo,
-  ShopPageContent,
-  HistoryContent,
   IconItemContainer,
   IconItemWithLink,
   IconItemWithLinkAndSetCategory,
 } from 'components'
-
-import * as Styles from 'assets/StyledComponents/MainPageWrapper.css'
-
 import { IconElementsShopItemsPage } from 'assets'
 
+import { ShopPageContent, HistoryContent } from './components'
+import * as Styles from 'assets/StyledComponents/MainPageWrapper.css'
 import {
   groceries_coloredImg,
   products_coloredImg,

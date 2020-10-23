@@ -1,26 +1,18 @@
 import React from 'react'
-
 import { useSelector } from 'react-redux'
-import { selectEditIcon } from 'features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice'
-
 import { Switch, Route } from 'react-router-dom'
 
-import {
-  Menu,
-  BottomBarWithIcons,
-  PageInfo,
-  BasketPageContent,
-  Modal,
-} from 'components'
-
-import * as Styles2 from 'assets/StyledComponents/MainPageWrapper.css'
-
+import { Menu, BottomBarWithIcons, PageInfo, Modal } from 'components'
 import {
   IconElementsBasketPage,
   IconsBottomEditVariant,
   IconsBottomListVariant,
   saveIconArray,
 } from 'assets'
+
+import { BasketPageContent } from './components'
+import * as Styles2 from 'assets/StyledComponents/MainPageWrapper.css'
+import { selectEditIcon } from 'features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice'
 
 function BasketPage() {
   const editMode = useSelector(selectEditIcon)

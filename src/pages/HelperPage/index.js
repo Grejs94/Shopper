@@ -1,5 +1,4 @@
 import React from 'react'
-
 import { Switch, Route } from 'react-router-dom'
 
 import {
@@ -13,9 +12,7 @@ import {
 } from 'components'
 
 import * as Styles2 from 'assets/StyledComponents/MainPageWrapper.css'
-
 import { IconElementsShopHelperPage } from 'assets'
-
 import { search_coloredImg } from 'pictures/ParentCategoryIcons'
 
 function HelperPage() {

@@ -1,8 +1,6 @@
 import React from 'react'
-
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { setActiveMenuIcon } from 'features/activeMenuIcon/activeMenuIconSlice'
 
 import {
   basket_blackImg,
@@ -18,7 +16,7 @@ import {
 } from 'pictures'
 
 import * as Styles from './styles'
-
+import { setActiveMenuIcon } from 'features/activeMenuIcon/activeMenuIconSlice'
 import { resetEditIcon } from 'features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice'
 
 function Menu({ iconElementsList, activeIcon }) {

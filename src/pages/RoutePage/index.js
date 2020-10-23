@@ -1,12 +1,10 @@
 import React from 'react'
 
 import { Menu, BottomBarWithIcons } from 'components'
+import { IconElementsRoutePage } from 'assets'
 
 import * as Styles2 from 'assets/StyledComponents/MainPageWrapper.css'
-
 import * as Styles from './styles'
-
-import { IconElementsRoutePage } from 'assets'
 
 function RoutePage() {
   return (

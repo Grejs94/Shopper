@@ -1,6 +1,6 @@
-import { useParentCategories } from 'API/ParentCategoryHooks'
+import { useParentCategories } from 'api/ParentCategoryHooks'
 
-import { UseDishesCategory, UseDishes } from 'API/DishesHooks'
+import { UseDishesCategory, UseDishes } from 'api/DishesHooks'
 
 import { useSavedList, useSavedListsCategories } from './SavedListsHooks'
 

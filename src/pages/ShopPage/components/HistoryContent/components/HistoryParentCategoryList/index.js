@@ -1,23 +1,21 @@
 import React from 'react'
-
 import { useSelector, useDispatch } from 'react-redux'
 
+import { incrementedString } from 'assets'
+
+import { Button, Dishes, ListElementDishesShow } from './styles'
 import {
   selectDishes,
   selectSavedList,
   toggleDishesButton,
   toggleSavedListButton,
 } from 'features/showMore/showMoreSlice'
-
 import {
   ListContainer,
   CategoryTitleList,
   ListElement,
   ParentTitleList,
 } from 'assets/StyledComponents/ItemsDisplayed.css'
-import { Button, Dishes, ListElementDishesShow } from './styles'
-
-import { incrementedString } from 'assets'
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)

@@ -1,10 +1,8 @@
 import React from 'react'
-
 import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 
 import { IconItem } from '../index'
-
 import { setCategory } from 'features/category/categorySlice'
 
 const IconItemWithLinkAndSetCategory = ({ image, text, to }) => {

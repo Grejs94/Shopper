@@ -1,16 +1,12 @@
 import React from 'react'
-
 import { useSelector } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
 
 import { EditModeList, ListModeList, Modal } from 'components'
-
-import CreateHistoryModalContent from 'components/ModalsContent/CreateHistoryModalContent'
-
-import { selectEditIcon } from 'features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice'
-
 import API from 'API'
 
+import CreateHistoryModalContent from 'components/ModalsContent/CreateHistoryModalContent'
+import { selectEditIcon } from 'features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice'
 import * as Styles from './styles'
 
 const BasketPageContent = () => {

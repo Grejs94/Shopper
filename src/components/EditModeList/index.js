@@ -4,18 +4,16 @@ import { toast } from 'react-toastify'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
+import API from 'API'
+import { incrementedString } from 'assets'
+
 import {
   selectAddIcon,
   selectRemoveIcon,
 } from 'features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice'
 import { selectActiveMenuIcon } from 'features/activeMenuIcon/activeMenuIconSlice'
 import { selectFakeHistory } from 'features/createBasketHistory/createBasketHistorySlice'
-
 import * as Styles from 'assets/StyledComponents/ItemsDisplayed.css'
-
-import API from 'API'
-
-import { incrementedString } from 'assets'
 
 function capitalizeFirstLetter(string) {
   return string.charAt(0).toUpperCase() + string.slice(1)

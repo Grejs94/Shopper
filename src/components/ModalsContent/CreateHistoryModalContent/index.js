@@ -1,16 +1,14 @@
 import React from 'react'
-
 import { useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
+
+import API from 'api'
 
 import {
   setBasketHistory,
   setFakeHistory,
 } from 'features/createBasketHistory/createBasketHistorySlice'
-
-import API from 'API'
-
 import * as Styles from './styles'
 
 const CreateHistoryModalContent = () => {

@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
 
 import { EditModeList, ListModeList, Modal } from 'components'
-import API from 'API'
+import API from 'api'
 
 import CreateHistoryModalContent from 'components/ModalsContent/CreateHistoryModalContent'
 import { selectEditIcon } from 'features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice'

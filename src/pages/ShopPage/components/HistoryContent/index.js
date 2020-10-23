@@ -1,6 +1,6 @@
 import React from 'react'
 
-import API from 'API'
+import API from 'api'
 
 import { HistoryParentCategoryList } from './components'
 import * as Styles from './styles'

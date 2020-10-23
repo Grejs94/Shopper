@@ -4,7 +4,7 @@ import { toast } from 'react-toastify'
 import { useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 
-import API from 'API'
+import API from 'api'
 import { incrementedString } from 'assets'
 
 import {

@@ -23,7 +23,7 @@ import {
   selectAddIcon,
   selectRemoveIcon,
   resetEditIcon,
-} from 'features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice'
+} from 'features/toggleBottomBarIcons/toggleBottomBarIconsSlice'
 import { selectBasketHistory } from 'features/createBasketHistory/createBasketHistorySlice'
 
 function BottomBarWithIcons({ icons, saveIconArray }) {

@@ -1,17 +1,17 @@
-import { useQuery } from "react-query";
+import { useQuery } from 'react-query'
 
 export function useGroceres() {
-  return useQuery("groceres", () =>
+  return useQuery('groceres', () =>
     fetch(`${process.env.REACT_APP_LOCAL_HTTP}/groceres`).then((res) =>
-      res.json()
-    )
-  );
+      res.json(),
+    ),
+  )
 }
 
 export function useGroceriesCategories() {
-  return useQuery("groceriesCategories", () =>
+  return useQuery('groceriesCategories', () =>
     fetch(
-      `${process.env.REACT_APP_LOCAL_HTTP}/groceriesCategories`
-    ).then((res) => res.json())
-  );
+      `${process.env.REACT_APP_LOCAL_HTTP}/groceriesCategories`,
+    ).then((res) => res.json()),
+  )
 }

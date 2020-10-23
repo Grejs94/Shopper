@@ -1,17 +1,20 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
 
 import { EditModeList, ListModeList, Modal } from 'components'
 import API from 'api'
 
 import CreateHistoryModalContent from 'components/ModalsContent/CreateHistoryModalContent'
-import { selectEditIcon } from 'features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice'
+import { selectEditIcon } from 'features/toggleBottomBarIcons/toggleBottomBarIconsSlice'
 import * as Styles from './styles'
 
 const BasketPageContent = () => {
   // { isError, isLoading, isSuccess, data }
   const editMode = useSelector(selectEditIcon)
+
+  // console.log(grocereies)
+  // console.log(groceriesStatus)
 
   const useGroceres = API.useGroceres()
   const useGroceriesCategories = API.useGroceriesCategories()

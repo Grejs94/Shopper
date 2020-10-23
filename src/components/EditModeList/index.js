@@ -10,7 +10,7 @@ import { incrementedString } from 'assets'
 import {
   selectAddIcon,
   selectRemoveIcon,
-} from 'features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice'
+} from 'features/toggleBottomBarIcons/toggleBottomBarIconsSlice'
 import { selectActiveMenuIcon } from 'features/activeMenuIcon/activeMenuIconSlice'
 import { selectFakeHistory } from 'features/createBasketHistory/createBasketHistorySlice'
 import * as Styles from 'assets/StyledComponents/ItemsDisplayed.css'

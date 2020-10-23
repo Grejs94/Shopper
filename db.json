@@ -30,83 +30,61 @@
         {
           "id": "4",
           "ParentCategoriesId": "1",
-          "IncludedCategoriesId": [
-            "2"
-          ],
+          "IncludedCategoriesId": ["2"],
           "itemsIncluded": []
         },
         {
           "id": "5",
           "ParentCategoriesId": "1",
-          "IncludedCategoriesId": [
-            "2"
-          ],
+          "IncludedCategoriesId": ["2"],
           "itemsIncluded": []
         },
         {
           "id": "6",
           "ParentCategoriesId": "1",
-          "IncludedCategoriesId": [
-            "12"
-          ],
-          "itemsIncluded": [
-            "550"
-          ]
+          "IncludedCategoriesId": ["12"],
+          "itemsIncluded": ["550"]
         },
         {
           "id": "8",
           "ParentCategoriesId": "1",
-          "IncludedCategoriesId": [
-            "2"
-          ],
+          "IncludedCategoriesId": ["2"],
           "itemsIncluded": []
         },
         {
           "id": "9",
           "ParentCategoriesId": "1",
-          "IncludedCategoriesId": [
-            "2"
-          ],
+          "IncludedCategoriesId": ["2"],
           "itemsIncluded": []
         },
         {
           "id": "13",
           "ParentCategoriesId": "1",
-          "IncludedCategoriesId": [
-            "1"
-          ],
+          "IncludedCategoriesId": ["1"],
           "itemsIncluded": []
         },
         {
           "id": "14",
           "ParentCategoriesId": "1",
-          "IncludedCategoriesId": [
-            "2"
-          ],
+          "IncludedCategoriesId": ["2"],
           "itemsIncluded": []
         },
         {
           "id": "15",
           "ParentCategoriesId": "1",
-          "IncludedCategoriesId": [
-            "1"
-          ],
+          "IncludedCategoriesId": ["1"],
           "itemsIncluded": []
         },
         {
           "id": "16",
           "ParentCategoriesId": "1",
-          "IncludedCategoriesId": [
-            "1"
-          ],
+          "IncludedCategoriesId": ["1"],
           "itemsIncluded": []
         },
         {
           "id": "20",
           "ParentCategoriesId": "1",
-          "IncludedCategoriesId": [
-            "1"
-          ],
+          "IncludedCategoriesId": ["1"],
           "itemsIncluded": []
         }
       ]

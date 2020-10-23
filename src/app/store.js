@@ -1,12 +1,16 @@
-import { configureStore } from "@reduxjs/toolkit";
-import counterReducer from "../features/counter/counterSlice";
+import { configureStore } from '@reduxjs/toolkit'
+import counterReducer from '../features/counter/counterSlice'
 import {
   toggleBottomBarIconsSlice,
   category as categoryReducer,
   activeMenuIconSlice as activeMenuIconReducer,
   showMoreSlice as showMoreSliceReducer,
   createBasketHistorySlice as createBasketHistoryReducer,
-} from "features";
+  groceriesSlice as groceriesReducer,
+  productsSlice as productsReducer,
+  dishesSlice as dishesReducer,
+  savedListSlice as savedListReducer,
+} from 'features'
 
 export default configureStore({
   reducer: {
@@ -16,5 +20,9 @@ export default configureStore({
     activeMenuIcon: activeMenuIconReducer,
     showMore: showMoreSliceReducer,
     BasketHistory: createBasketHistoryReducer,
+    groceries: groceriesReducer,
+    products: productsReducer,
+    dishes: dishesReducer,
+    savedList: savedListReducer,
   },
-});
+})

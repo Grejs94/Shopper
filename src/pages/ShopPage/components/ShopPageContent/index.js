@@ -39,14 +39,14 @@ const ScrollToParentCategory = ({ category }) => {
 }
 
 function ElementsPage() {
+  const dispatch = useDispatch()
+
   useEffect(() => {
     dispatch(fetchGroceries())
     dispatch(fetchProducts())
     dispatch(fetchDishes())
     dispatch(fetchSavedLists())
-  }, [])
-
-  const dispatch = useDispatch()
+  }, [dispatch])
 
   const grocereiesData = useSelector(selectGroceriesData)
   const groceriesCategoriesData = useSelector(selectGroceriesCategoriesData)

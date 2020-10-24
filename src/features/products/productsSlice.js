@@ -7,6 +7,7 @@ export const productsSlice = createSlice({
   initialState: {
     data: [],
     categoriesData: [],
+    basketData: [],
     status: 'iddle',
   },
   reducers: {
@@ -25,6 +26,9 @@ export const productsSlice = createSlice({
     setCategoriesData: (state, action) => {
       state.categoriesData = action.payload
     },
+    setBasketData: (state, action) => {
+      state.basketData = action.payload
+    },
   },
 })
 
@@ -34,6 +38,7 @@ export const {
   fetchProductsFailed,
   setData,
   setCategoriesData,
+  setBasketData,
 } = productsSlice.actions
 
 export const fetchProducts = () => async (dispatch) => {
@@ -46,6 +51,9 @@ export const fetchProducts = () => async (dispatch) => {
     const categoriesData = await api.products.getProductsCategories()
     dispatch(setCategoriesData(categoriesData))
 
+    const basketData = await api.products.getBasketProducts()
+    dispatch(setBasketData(basketData))
+
     dispatch(fetchProductsSucceeded())
   } catch (error) {
     dispatch(fetchProductsFailed())
@@ -55,6 +63,7 @@ export const fetchProducts = () => async (dispatch) => {
 export const selectProductsData = (state) => state.products.data
 export const selectProductsCategoriesData = (state) =>
   state.products.categoriesData
+export const selectProductsBasketData = (state) => state.products.basketData
 export const selectProductsStatus = (state) => state.products.status
 
 export default productsSlice.reducer

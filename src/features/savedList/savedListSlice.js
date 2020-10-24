@@ -7,6 +7,7 @@ export const savedListSlice = createSlice({
   initialState: {
     data: [],
     categoriesData: [],
+    basketData: [],
     status: 'iddle',
   },
   reducers: {
@@ -25,6 +26,9 @@ export const savedListSlice = createSlice({
     setCategoriesData: (state, action) => {
       state.categoriesData = action.payload
     },
+    setBasketData: (state, action) => {
+      state.basketData = action.payload
+    },
   },
 })
 
@@ -34,6 +38,7 @@ export const {
   fetchSavedListFailed,
   setData,
   setCategoriesData,
+  setBasketData,
 } = savedListSlice.actions
 
 export const fetchSavedLists = () => async (dispatch) => {
@@ -46,6 +51,9 @@ export const fetchSavedLists = () => async (dispatch) => {
     const categoriesData = await api.savedList.getSavedListsCategories()
     dispatch(setCategoriesData(categoriesData))
 
+    const basketData = await api.savedList.getBasket()
+    dispatch(setBasketData(basketData))
+
     dispatch(fetchSavedListSucceeded())
   } catch (error) {
     dispatch(fetchSavedListFailed())
@@ -55,6 +63,7 @@ export const fetchSavedLists = () => async (dispatch) => {
 export const selectSavedListData = (state) => state.savedList.data
 export const selectSavedListCategoriesData = (state) =>
   state.savedList.categoriesData
+export const selectSavedListBasketData = (state) => state.savedList.basketData
 export const selectSavedListStatus = (state) => state.savedList.status
 
 export default savedListSlice.reducer

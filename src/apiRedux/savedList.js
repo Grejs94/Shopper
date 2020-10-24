@@ -9,3 +9,8 @@ export const getSavedListsCategories = async () => {
   const res = await fetch(`${config.url}/savedListsCategories`)
   return await res.json()
 }
+
+export const getBasket = async () => {
+  const res = await fetch(`${config.url}/basketSavedLists`)
+  return await res.json()
+}

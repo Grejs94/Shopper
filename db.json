@@ -30,61 +30,83 @@
         {
           "id": "4",
           "ParentCategoriesId": "1",
-          "IncludedCategoriesId": ["2"],
+          "IncludedCategoriesId": [
+            "2"
+          ],
           "itemsIncluded": []
         },
         {
           "id": "5",
           "ParentCategoriesId": "1",
-          "IncludedCategoriesId": ["2"],
+          "IncludedCategoriesId": [
+            "2"
+          ],
           "itemsIncluded": []
         },
         {
           "id": "6",
           "ParentCategoriesId": "1",
-          "IncludedCategoriesId": ["12"],
-          "itemsIncluded": ["550"]
+          "IncludedCategoriesId": [
+            "12"
+          ],
+          "itemsIncluded": [
+            "550"
+          ]
         },
         {
           "id": "8",
           "ParentCategoriesId": "1",
-          "IncludedCategoriesId": ["2"],
+          "IncludedCategoriesId": [
+            "2"
+          ],
           "itemsIncluded": []
         },
         {
           "id": "9",
           "ParentCategoriesId": "1",
-          "IncludedCategoriesId": ["2"],
+          "IncludedCategoriesId": [
+            "2"
+          ],
           "itemsIncluded": []
         },
         {
           "id": "13",
           "ParentCategoriesId": "1",
-          "IncludedCategoriesId": ["1"],
+          "IncludedCategoriesId": [
+            "1"
+          ],
           "itemsIncluded": []
         },
         {
           "id": "14",
           "ParentCategoriesId": "1",
-          "IncludedCategoriesId": ["2"],
+          "IncludedCategoriesId": [
+            "2"
+          ],
           "itemsIncluded": []
         },
         {
           "id": "15",
           "ParentCategoriesId": "1",
-          "IncludedCategoriesId": ["1"],
+          "IncludedCategoriesId": [
+            "1"
+          ],
           "itemsIncluded": []
         },
         {
           "id": "16",
           "ParentCategoriesId": "1",
-          "IncludedCategoriesId": ["1"],
+          "IncludedCategoriesId": [
+            "1"
+          ],
           "itemsIncluded": []
         },
         {
           "id": "20",
           "ParentCategoriesId": "1",
-          "IncludedCategoriesId": ["1"],
+          "IncludedCategoriesId": [
+            "1"
+          ],
           "itemsIncluded": []
         }
       ]
@@ -1085,10 +1107,172 @@
       "parentCategoryId": "4"
     }
   ],
-  "basketGroceries": [],
-  "basketProducts": [],
-  "basketDishes": [],
-  "basketSavedLists": [],
+  "basketGroceries": [
+    {
+      "id": "1",
+      "name": "pepper",
+      "categoryId": "1",
+      "parentCategoryId": "1",
+      "showInShop": true,
+      "value": "7"
+    }
+  ],
+  "basketProducts": [
+    {
+      "id": "552",
+      "name": "enzyme peeling",
+      "categoryId": "30",
+      "parentCategoryId": "2",
+      "showInShop": true,
+      "value": "5"
+    }
+  ],
+  "basketDishes": [
+    {
+      "id": "2",
+      "name": "grzybowa",
+      "categoryId": "2",
+      "parentCategoryId": "3",
+      "itemsIncluded": [
+        {
+          "id": "5",
+          "name": "lettuce",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "6",
+          "name": "cucumber",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "7",
+          "name": "courgette",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        }
+      ],
+      "value": "4"
+    }
+  ],
+  "basketSavedLists": [
+    {
+      "id": "2",
+      "name": "example list second",
+      "categoryId": "1",
+      "parentCategoryId": "4",
+      "items": [
+        {
+          "id": "3",
+          "name": "potato",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "4",
+          "name": "onion",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "5",
+          "name": "lettuce",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "6",
+          "name": "cucumber",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        }
+      ],
+      "dishes": [
+        {
+          "id": "1",
+          "name": "rosół",
+          "categoryId": "2",
+          "parentCategoryId": "3",
+          "value": "1",
+          "itemsIncluded": [
+            {
+              "id": "4",
+              "name": "onion",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "5"
+            },
+            {
+              "id": "103",
+              "name": "yoghurt",
+              "categoryId": "3",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "350",
+              "name": "kucharek",
+              "categoryId": "8",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "2"
+            }
+          ]
+        },
+        {
+          "id": "2",
+          "name": "grzybowa",
+          "categoryId": "2",
+          "parentCategoryId": "3",
+          "value": "1",
+          "itemsIncluded": [
+            {
+              "id": "5",
+              "name": "lettuce",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "6",
+              "name": "cucumber",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "7",
+              "name": "courgette",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            }
+          ]
+        }
+      ],
+      "value": "2"
+    }
+  ],
   "searchList": {
     "items": [
       {

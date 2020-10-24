@@ -9,3 +9,8 @@ export const getGroceriesCategories = async () => {
   const res = await fetch(`${config.url}/groceriesCategories`)
   return await res.json()
 }
+
+export const getBasketGroceries = async () => {
+  const res = await fetch(`${config.url}/basketGroceries`)
+  return await res.json()
+}

@@ -7,6 +7,7 @@ export const groceriesSlice = createSlice({
   initialState: {
     data: [],
     categoriesData: [],
+    basketData: [],
     status: 'iddle',
   },
   reducers: {
@@ -25,6 +26,9 @@ export const groceriesSlice = createSlice({
     setCategoriesData: (state, action) => {
       state.categoriesData = action.payload
     },
+    setBasketData: (state, action) => {
+      state.basketData = action.payload
+    },
   },
 })
 
@@ -34,6 +38,7 @@ export const {
   fetchGroceriesFailed,
   setData,
   setCategoriesData,
+  setBasketData,
 } = groceriesSlice.actions
 
 export const fetchGroceries = () => async (dispatch) => {
@@ -46,6 +51,9 @@ export const fetchGroceries = () => async (dispatch) => {
     const categoriesData = await api.groceries.getGroceriesCategories()
     dispatch(setCategoriesData(categoriesData))
 
+    const basketData = await api.groceries.getBasketGroceries()
+    dispatch(setBasketData(basketData))
+
     dispatch(fetchGroceriesSucceeded())
   } catch (error) {
     dispatch(fetchGroceriesFailed())
@@ -55,6 +63,7 @@ export const fetchGroceries = () => async (dispatch) => {
 export const selectGroceriesData = (state) => state.groceries.data
 export const selectGroceriesCategoriesData = (state) =>
   state.groceries.categoriesData
+export const selectGroceriesBasketData = (state) => state.groceries.basketData
 export const selectGroceriesStatus = (state) => state.groceries.status
 
 export default groceriesSlice.reducer

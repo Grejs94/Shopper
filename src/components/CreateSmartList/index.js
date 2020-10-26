@@ -1,55 +1,103 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { EditModeList } from 'components'
-import API from 'api'
 
 import * as Styles from './styles'
+import {
+  fetchGroceries,
+  selectGroceriesData,
+  selectGroceriesCategoriesData,
+  selectGroceriesStatus,
+} from 'features/groceries/groceriesSlice'
+import {
+  fetchProducts,
+  selectProductsData,
+  selectProductsCategoriesData,
+  selectProductsStatus,
+} from 'features/products/productsSlice'
+import {
+  fetchDishes,
+  selectDishesData,
+  selectDishesCategoriesData,
+  selectDishesStatus,
+} from 'features/dishes/dishesSlice'
+import {
+  fetchSavedLists,
+  selectSavedListData,
+  selectSavedListCategoriesData,
+  selectSavedListStatus,
+} from 'features/savedList/savedListSlice'
+import {
+  fetchHistoryBasket,
+  selectHistoryData,
+  selectHistoryStatus,
+} from 'features/history/historySlice'
+import {
+  fetchSettings,
+  selectSettingsData,
+  selectSettingsStatus,
+} from 'features/settings/settingsSlice'
+import { dataLoadingStatus } from 'hooks/dataLoadingStatus'
 
 const CreateSmartList = () => {
-  const useGroceres = API.useGroceres()
-  const useGroceriesCategories = API.useGroceriesCategories()
-  const useProducts = API.useProducts()
-  const useProductsCategories = API.useProductsCategories()
-  const dishes = API.UseDishes()
-  const dishesCategories = API.UseDishesCategory()
-  const savedList = API.useSavedList()
-  const useSavedListsCategories = API.useSavedListsCategories()
+  const dispatch = useDispatch()
 
-  const useHistory = API.useHistory()
+  useEffect(() => {
+    dispatch(fetchGroceries())
+    dispatch(fetchProducts())
+    dispatch(fetchDishes())
+    dispatch(fetchSavedLists())
+    dispatch(fetchHistoryBasket())
+    dispatch(fetchSettings())
+  }, [dispatch])
 
-  const useSettings = API.useSettings()
+  const groceriesCategoriesData = useSelector(selectGroceriesCategoriesData)
+  const GroceriesData = useSelector(selectGroceriesData)
+  const GroceriesStatus = useSelector(selectGroceriesStatus)
 
-  if (
-    useGroceres.isError ||
-    useGroceriesCategories.isError ||
-    useProducts.isError ||
-    useProductsCategories.isError ||
-    dishes.isError ||
-    dishesCategories.isError ||
-    savedList.isError ||
-    useSavedListsCategories.isError ||
-    useHistory.isError ||
-    useSettings.isError
-  ) {
-    return 'Fetching date error...'
-  } else if (
-    useGroceres.isLoading ||
-    useGroceriesCategories.isLoading ||
-    useProducts.isLoading ||
-    useProductsCategories.isLoading ||
-    dishes.isLoading ||
-    dishesCategories.isLoading ||
-    savedList.isLoading ||
-    useSavedListsCategories.isLoading.isLoading ||
-    useHistory.isLoading ||
-    useSettings.isLoading
-  ) {
-    return 'Loading date...'
+  const productsCategoriesData = useSelector(selectProductsCategoriesData)
+  const ProductsData = useSelector(selectProductsData)
+  const productsStatus = useSelector(selectProductsStatus)
+
+  const dishesCategoriesData = useSelector(selectDishesCategoriesData)
+  const DishesData = useSelector(selectDishesData)
+  const dishesStatus = useSelector(selectDishesStatus)
+
+  const savedListCategoriesData = useSelector(selectSavedListCategoriesData)
+  const SavedListData = useSelector(selectSavedListData)
+  const savedListStatus = useSelector(selectSavedListStatus)
+
+  const historyData = useSelector(selectHistoryData)
+  const historyStatus = useSelector(selectHistoryStatus)
+
+  const settingsData = useSelector(selectSettingsData)
+  const settingsStatus = useSelector(selectSettingsStatus)
+
+  const data = dataLoadingStatus([
+    GroceriesStatus,
+    productsStatus,
+    dishesStatus,
+    savedListStatus,
+    historyStatus,
+    settingsStatus,
+  ])
+
+  if (data.isError) {
+    return 'Fetching data error...'
   }
 
-  const sortByNumber = useSettings.data.sortBy === 'Bought most times'
+  if (data.isLoading) {
+    return 'Loading data...'
+  }
 
-  if (useHistory.data.length === 0) {
+  if (!data.isLoaded) {
+    return null
+  }
+
+  const sortByNumber = settingsData.sortBy === 'Bought most times'
+
+  if (historyData.length === 0) {
     return (
       <div>
         <Styles.Message>
@@ -59,7 +107,7 @@ const CreateSmartList = () => {
     )
   }
 
-  if (!sortByNumber && useHistory.data.length < 2) {
+  if (!sortByNumber && historyData.length < 2) {
     return (
       <div>
         <Styles.Message>
@@ -82,9 +130,14 @@ const CreateSmartList = () => {
     workingSavedListX,
   ]
 
-  const ArrayParentCategories = [useGroceres, useProducts, dishes, savedList]
+  const ArrayParentCategories = [
+    GroceriesData,
+    ProductsData,
+    DishesData,
+    SavedListData,
+  ]
 
-  const historyElements = useHistory.data
+  const historyElements = historyData
 
   const itemsListFromGroceriesWithAverage = []
   const itemsListFromProductsWithAverage = []
@@ -264,7 +317,7 @@ const CreateSmartList = () => {
             ? sortedGroceriesByValueFromHistory
             : sortedGroceriesByDaysAverage
         }
-        filtredCategories={useGroceriesCategories.data}
+        filtredCategories={groceriesCategoriesData}
         variant="shop"
       />
       <EditModeList
@@ -274,7 +327,7 @@ const CreateSmartList = () => {
             ? sortedProductsByValueFromHistory
             : sortedProductsByDaysAverage
         }
-        filtredCategories={useProductsCategories.data}
+        filtredCategories={productsCategoriesData}
         variant="shop"
       />
       <EditModeList
@@ -284,7 +337,7 @@ const CreateSmartList = () => {
             ? sortedDishesByValueFromHistory
             : sortedDishesByDaysAverage
         }
-        filtredCategories={dishesCategories.data}
+        filtredCategories={dishesCategoriesData}
         variant="shop"
       />
       <EditModeList
@@ -294,7 +347,7 @@ const CreateSmartList = () => {
             ? sortedSavedListByValueFromHistory
             : sortedSavedListsByDaysAverage
         }
-        filtredCategories={useSavedListsCategories.data}
+        filtredCategories={savedListCategoriesData}
         variant="shop"
       />
     </div>

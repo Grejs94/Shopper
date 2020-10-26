@@ -1426,7 +1426,304 @@
       }
     ]
   },
-  "history": [],
+  "history": [
+    {
+      "saved": 1603736232753,
+      "DateToShow": "26.10.202",
+      "groceries": [
+        {
+          "id": "1",
+          "name": "pepper",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "200",
+          "name": "still water",
+          "categoryId": "5",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        }
+      ],
+      "products": [
+        {
+          "id": "550",
+          "name": "hair sampon",
+          "categoryId": "30",
+          "parentCategoryId": "2",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "552",
+          "name": "enzyme peeling",
+          "categoryId": "30",
+          "parentCategoryId": "2",
+          "showInShop": true,
+          "value": "1"
+        }
+      ],
+      "dishes": [
+        {
+          "id": "2",
+          "name": "grzybowa",
+          "categoryId": "2",
+          "parentCategoryId": "3",
+          "itemsIncluded": [
+            {
+              "id": "5",
+              "name": "lettuce",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "6",
+              "name": "cucumber",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "7",
+              "name": "courgette",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            }
+          ],
+          "value": "2"
+        },
+        {
+          "id": "1",
+          "name": "rosół",
+          "categoryId": "2",
+          "parentCategoryId": "3",
+          "itemsIncluded": [
+            {
+              "id": "4",
+              "name": "onion",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "5"
+            },
+            {
+              "id": "103",
+              "name": "yoghurt",
+              "categoryId": "3",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "350",
+              "name": "kucharek",
+              "categoryId": "8",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "2"
+            }
+          ],
+          "value": "1"
+        }
+      ],
+      "savedLists": [
+        {
+          "id": "2",
+          "name": "example list second",
+          "categoryId": "1",
+          "parentCategoryId": "4",
+          "items": [
+            {
+              "id": "3",
+              "name": "potato",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "4",
+              "name": "onion",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "5",
+              "name": "lettuce",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "6",
+              "name": "cucumber",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            }
+          ],
+          "dishes": [
+            {
+              "id": "1",
+              "name": "rosół",
+              "categoryId": "2",
+              "parentCategoryId": "3",
+              "value": "1",
+              "itemsIncluded": [
+                {
+                  "id": "4",
+                  "name": "onion",
+                  "categoryId": "1",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "5"
+                },
+                {
+                  "id": "103",
+                  "name": "yoghurt",
+                  "categoryId": "3",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "1"
+                },
+                {
+                  "id": "350",
+                  "name": "kucharek",
+                  "categoryId": "8",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "grzybowa",
+              "categoryId": "2",
+              "parentCategoryId": "3",
+              "value": "1",
+              "itemsIncluded": [
+                {
+                  "id": "5",
+                  "name": "lettuce",
+                  "categoryId": "1",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "1"
+                },
+                {
+                  "id": "6",
+                  "name": "cucumber",
+                  "categoryId": "1",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "1"
+                },
+                {
+                  "id": "7",
+                  "name": "courgette",
+                  "categoryId": "1",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "1"
+                }
+              ]
+            }
+          ],
+          "value": "1"
+        },
+        {
+          "id": "1",
+          "name": "example list",
+          "categoryId": "1",
+          "parentCategoryId": "4",
+          "items": [
+            {
+              "id": "3",
+              "name": "potato",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "4",
+              "name": "onion",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "5",
+              "name": "lettuce",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "6",
+              "name": "cucumber",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            }
+          ],
+          "dishes": [
+            {
+              "id": "1",
+              "name": "rosół",
+              "categoryId": "2",
+              "parentCategoryId": "3",
+              "value": "2",
+              "itemsIncluded": [
+                {
+                  "id": "4",
+                  "name": "onion",
+                  "categoryId": "1",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "5"
+                },
+                {
+                  "id": "103",
+                  "name": "yoghurt",
+                  "categoryId": "3",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "1"
+                },
+                {
+                  "id": "350",
+                  "name": "kucharek",
+                  "categoryId": "8",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "2"
+                }
+              ]
+            }
+          ],
+          "value": "1"
+        }
+      ],
+      "id": 1
+    }
+  ],
   "settings": {
     "sortBy": "Bought most times"
   },

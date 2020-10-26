@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import API from 'api'
 import {
   list_coloredImg,
   edit_coloredImg,
@@ -29,6 +28,7 @@ import { selectGroceriesBasketData } from 'features/groceries/groceriesSlice'
 import { selectProductsBasketData } from 'features/products/productsSlice'
 import { selectDishesBasketData } from 'features/dishes/dishesSlice'
 import { selectSavedListBasketData } from 'features/savedList/savedListSlice'
+import { postHistoryBasket } from 'features/history/historySlice'
 
 function BottomBarWithIcons({ icons, saveIconArray }) {
   const dispatch = useDispatch()
@@ -43,8 +43,6 @@ function BottomBarWithIcons({ icons, saveIconArray }) {
   const addIcon = useSelector(selectAddIcon)
   const removeIcon = useSelector(selectRemoveIcon)
   const BasketHistory = useSelector(selectBasketHistory)
-
-  const [mutate_Post_History] = API.useAddHistory()
 
   const basketEmpty =
     groceriesBasketData.length === 0 &&
@@ -140,18 +138,23 @@ function BottomBarWithIcons({ icons, saveIconArray }) {
             if (basketEmpty) {
               history.push('/basket/messageWhenEmpty')
             } else {
-              mutate_Post_History({
-                data: {
-                  saved: Date.now(),
-                  DateToShow: new Date(Date.now()).toLocaleString().slice(0, 9),
-                  groceries: [...groceriesBasketData],
-                  products: [...productsBasketData],
-                  dishes: [...dishesBasketData],
-                  savedLists: [...savedListBasketData],
-                },
-              }).then(
-                toast.success(`the shopping list has been added to history `),
+              dispatch(
+                postHistoryBasket({
+                  data: {
+                    saved: Date.now(),
+                    DateToShow: new Date(Date.now())
+                      .toLocaleString()
+                      .slice(0, 9),
+                    groceries: [...groceriesBasketData],
+                    products: [...productsBasketData],
+                    dishes: [...dishesBasketData],
+                    savedLists: [...savedListBasketData],
+                  },
+                }),
               )
+
+              toast.success(`the shopping list has been added to history `)
+
               dispatch(onClick())
             }
           }

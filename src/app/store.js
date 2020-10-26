@@ -10,6 +10,7 @@ import {
   productsSlice as productsReducer,
   dishesSlice as dishesReducer,
   savedListSlice as savedListReducer,
+  parentCategoriesSlice as parentCategoriesReducer,
 } from 'features'
 
 export default configureStore({
@@ -24,5 +25,6 @@ export default configureStore({
     products: productsReducer,
     dishes: dishesReducer,
     savedList: savedListReducer,
+    parentCategories: parentCategoriesReducer,
   },
 })

@@ -7,6 +7,7 @@ import showMoreSlice from './showMore'
 import productsSlice from './products'
 import dishesSlice from './dishes'
 import savedListSlice from './savedList'
+import parentCategoriesSlice from './parentCategories'
 
 export {
   activeMenuIconSlice,
@@ -14,6 +15,7 @@ export {
   createBasketHistorySlice,
   dishesSlice,
   groceriesSlice,
+  parentCategoriesSlice,
   productsSlice,
   toggleBottomBarIconsSlice,
   savedListSlice,

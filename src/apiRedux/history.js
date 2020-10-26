@@ -18,14 +18,11 @@ export const postHistory = async ({ data }) => {
 }
 
 export const deleteHistory = async ({ id }) => {
-  const response = await fetch(
-    `${process.env.REACT_APP_LOCAL_HTTP}/history/${id}`,
-    {
-      method: 'DELETE',
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
+  const response = await fetch(`${config.url}/history/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
     },
-  )
+  })
   return await response.json()
 }

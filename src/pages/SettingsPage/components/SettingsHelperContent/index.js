@@ -1,34 +1,61 @@
-import React from 'react'
-
-import API from 'api'
+import React, { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
 import * as Styles from './styles'
+import {
+  fetchSettings,
+  putSettings,
+  selectSettingsData,
+  selectSettingsStatus,
+} from 'features/settings/settingsSlice'
+import { dataLoadingStatus } from 'hooks/dataLoadingStatus'
 
 const SettingsHelperContent = () => {
-  const useSettings = API.useSettings()
-  const [mutate_PUT_Settings] = API.usePutSettings()
+  const dispatch = useDispatch()
+  const [updateSettings, setUpdateSettings] = useState(false)
 
-  if (useSettings.isError) {
-    return 'Fetching date error...'
-  } else if (useSettings.isLoading) {
-    return 'Loading date...'
+  useEffect(() => {
+    dispatch(fetchSettings())
+  }, [dispatch, updateSettings])
+
+  const settingsData = useSelector(selectSettingsData)
+  const settingsStatus = useSelector(selectSettingsStatus)
+
+  const data = dataLoadingStatus([settingsStatus])
+
+  if (data.isError) {
+    return 'Fetching data error...'
+  }
+
+  if (data.isLoading) {
+    return 'Loading data...'
+  }
+
+  if (!data.isLoaded) {
+    return null
+  }
+
+  const handleputSettings = ({ data }) => {
+    dispatch(putSettings({ data }))
+
+    setUpdateSettings((old) => !old)
   }
 
   const handleChangeSortBy = () => {
-    switch (useSettings.data.sortBy) {
+    switch (settingsData.sortBy) {
       case 'Time Intervals':
-        mutate_PUT_Settings({
+        handleputSettings({
           data: {
-            ...useSettings.data,
+            ...settingsData.data,
             sortBy: 'Bought most times',
           },
         })
         break
 
       case 'Bought most times':
-        mutate_PUT_Settings({
+        handleputSettings({
           data: {
-            ...useSettings.data,
+            ...settingsData.data,
             sortBy: 'Time Intervals',
           },
         })
@@ -44,7 +71,7 @@ const SettingsHelperContent = () => {
       <Styles.ParameterContainer>
         <Styles.Parameter>Create smart list based on:</Styles.Parameter>
         <Styles.Button onClick={() => handleChangeSortBy()}>
-          {useSettings.data.sortBy}
+          {settingsData.sortBy}
         </Styles.Button>
       </Styles.ParameterContainer>
     </div>

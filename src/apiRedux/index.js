@@ -4,6 +4,7 @@ import * as history from './history'
 import * as parentCategories from './parentCategories'
 import * as products from './products'
 import * as savedList from './savedList'
+import * as settings from './settings'
 
 export default {
   dishes,
@@ -12,4 +13,5 @@ export default {
   parentCategories,
   products,
   savedList,
+  settings,
 }

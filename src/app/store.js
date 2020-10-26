@@ -12,6 +12,7 @@ import {
   savedListSlice as savedListReducer,
   parentCategoriesSlice as parentCategoriesReducer,
   historySlice as historyReducer,
+  settingsSlice as settingsReducer,
 } from 'features'
 
 export default configureStore({
@@ -28,5 +29,6 @@ export default configureStore({
     savedList: savedListReducer,
     parentCategories: parentCategoriesReducer,
     history: historyReducer,
+    settings: settingsReducer,
   },
 })

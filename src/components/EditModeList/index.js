@@ -36,22 +36,22 @@ const EditModeList = ({
   const history = useHistory()
   const [fetchData, setFetchData] = useState(false)
 
-  useEffect(() => {
-    if (variant === 'shop') {
-      activeMenuIcon = dispatch(setActiveMenuIcon('shop'))
-    } else if (variant === '') {
-      activeMenuIcon = dispatch(setActiveMenuIcon('basket'))
-    }
-  }, [])
+  useEffect(() => {}, [])
 
   useEffect(() => {
     dispatch(updateData())
-  }, [dispatch, fetchData])
+  }, [dispatch, fetchData, updateData])
 
   const addIcon = useSelector(selectAddIcon)
   const removeIcon = useSelector(selectRemoveIcon)
   let activeMenuIcon = useSelector(selectActiveMenuIcon)
   const FakeHistory = useSelector(selectFakeHistory)
+
+  if (variant === 'shop') {
+    activeMenuIcon = dispatch(setActiveMenuIcon('shop'))
+  } else if (variant === '') {
+    activeMenuIcon = dispatch(setActiveMenuIcon('basket'))
+  }
 
   const handleOnClick = (item) => {
     const handlePutBasketItem = (basketItem, valueChangeFunction) => {

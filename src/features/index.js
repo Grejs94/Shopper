@@ -9,6 +9,7 @@ import productsSlice from './products'
 import dishesSlice from './dishes'
 import savedListSlice from './savedList'
 import parentCategoriesSlice from './parentCategories'
+import settingsSlice from './settings'
 
 export {
   activeMenuIconSlice,
@@ -21,5 +22,6 @@ export {
   productsSlice,
   toggleBottomBarIconsSlice,
   savedListSlice,
+  settingsSlice,
   showMoreSlice,
 }

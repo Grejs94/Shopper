@@ -16,45 +16,36 @@ export const getBasket = async () => {
 }
 
 export const postBasketDishes = async ({ data }) => {
-  const response = await fetch(
-    `${process.env.REACT_APP_LOCAL_HTTP}/basketDishes`,
-    {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(data),
+  const response = await fetch(`${config.url}/basketDishes`, {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
     },
-  )
+    body: JSON.stringify(data),
+  })
 
   return await response.json()
 }
 
 export const putBasketDishes = async ({ data, id }) => {
-  const response = await fetch(
-    `${process.env.REACT_APP_LOCAL_HTTP}/basketDishes/${id}`,
-    {
-      method: 'PUT',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(data),
+  const response = await fetch(`${config.url}/basketDishes/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-type': 'application/json',
     },
-  )
+    body: JSON.stringify(data),
+  })
 
   return await response.json()
 }
 
 export const deleteBasketDishes = async ({ id }) => {
-  const response = await fetch(
-    `${process.env.REACT_APP_LOCAL_HTTP}/basketDishes/${id}`,
-    {
-      method: 'DELETE',
-      headers: {
-        'Content-type': 'application/json',
-      },
+  const response = await fetch(`${config.url}/basketDishes/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/json',
     },
-  )
+  })
 
   return await response.json()
 }

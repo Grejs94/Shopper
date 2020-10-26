@@ -28,29 +28,23 @@ export const postBasketGroceries = async ({ data }) => {
 }
 
 export const putBasketGroceries = async ({ data, id }) => {
-  const response = await fetch(
-    `${process.env.REACT_APP_LOCAL_HTTP}/basketGroceries/${id}`,
-    {
-      method: 'PUT',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(data),
+  const response = await fetch(`${config.url}/basketGroceries/${id}`, {
+    method: 'PUT',
+    headers: {
+      'Content-type': 'application/json',
     },
-  )
+    body: JSON.stringify(data),
+  })
 
   return await response.json()
 }
 
 export const deleteBasketGroceries = async ({ id }) => {
-  const response = await fetch(
-    `${process.env.REACT_APP_LOCAL_HTTP}/basketGroceries/${id}`,
-    {
-      method: 'DELETE',
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
-      },
+  const response = await fetch(`${config.url}/basketGroceries/${id}`, {
+    method: 'DELETE',
+    headers: {
+      'Content-type': 'application/json; charset=UTF-8',
     },
-  )
+  })
   return await response.json()
 }

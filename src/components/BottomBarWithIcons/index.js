@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -25,22 +25,10 @@ import {
   resetEditIcon,
 } from 'features/toggleBottomBarIcons/toggleBottomBarIconsSlice'
 import { selectBasketHistory } from 'features/createBasketHistory/createBasketHistorySlice'
-import {
-  fetchGroceriesBasket,
-  selectGroceriesBasketData,
-} from 'features/groceries/groceriesSlice'
-import {
-  fetchProductsBasket,
-  selectProductsBasketData,
-} from 'features/products/productsSlice'
-import {
-  fetchDishesBasket,
-  selectDishesBasketData,
-} from 'features/dishes/dishesSlice'
-import {
-  fetchSavedListsBasket,
-  selectSavedListBasketData,
-} from 'features/savedList/savedListSlice'
+import { selectGroceriesBasketData } from 'features/groceries/groceriesSlice'
+import { selectProductsBasketData } from 'features/products/productsSlice'
+import { selectDishesBasketData } from 'features/dishes/dishesSlice'
+import { selectSavedListBasketData } from 'features/savedList/savedListSlice'
 
 function BottomBarWithIcons({ icons, saveIconArray }) {
   const dispatch = useDispatch()

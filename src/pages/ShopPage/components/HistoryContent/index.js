@@ -1,98 +1,140 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
-import API from 'api'
+import { useSelector, useDispatch } from 'react-redux'
 
 import { HistoryParentCategoryList } from './components'
 import * as Styles from './styles'
+import {
+  fetchGroceries,
+  selectGroceriesCategoriesData,
+  selectGroceriesStatus,
+} from 'features/groceries/groceriesSlice'
+import {
+  fetchProducts,
+  selectProductsCategoriesData,
+  selectProductsStatus,
+} from 'features/products/productsSlice'
+import {
+  fetchDishes,
+  selectDishesCategoriesData,
+  selectDishesStatus,
+} from 'features/dishes/dishesSlice'
+import {
+  fetchSavedLists,
+  selectSavedListCategoriesData,
+  selectSavedListStatus,
+} from 'features/savedList/savedListSlice'
+import {
+  fetchHistoryBasket,
+  deleteHistoryBasket,
+  selectHistoryData,
+  selectHistoryStatus,
+} from 'features/history/historySlice'
+import { dataLoadingStatus } from 'hooks/dataLoadingStatus'
 
 const HistoryContent = () => {
-  const useHistory = API.useHistory()
+  const dispatch = useDispatch()
+  const [updateHistory, setUpdateHistory] = useState(false)
 
-  const useGroceriesCategories = API.useGroceriesCategories()
-  const useProductsCategories = API.useProductsCategories()
-  const dishesCategories = API.UseDishesCategory()
-  const useSavedListsCategories = API.useSavedListsCategories()
+  useEffect(() => {
+    dispatch(fetchGroceries())
+    dispatch(fetchProducts())
+    dispatch(fetchDishes())
+    dispatch(fetchSavedLists())
+  }, [dispatch])
 
-  const [mutate_DELETE_DeleteHistory] = API.useDeleteHistory()
+  useEffect(() => {
+    dispatch(fetchHistoryBasket())
+  }, [dispatch, updateHistory])
 
-  if (
-    useHistory.isError ||
-    useGroceriesCategories.isError ||
-    useProductsCategories.isError ||
-    dishesCategories.isError ||
-    useSavedListsCategories.isError
-  ) {
-    return 'Fetching date error...'
-  } else if (
-    useHistory.isLoading ||
-    useGroceriesCategories.isLoading ||
-    useProductsCategories.isLoading ||
-    dishesCategories.isLoading ||
-    useSavedListsCategories.isLoading
-  ) {
-    return 'Loading date...'
-  } else if (
-    useHistory.isSuccess &&
-    useGroceriesCategories.isSuccess &&
-    useProductsCategories.isSuccess &&
-    dishesCategories.isSuccess &&
-    useSavedListsCategories.isSuccess
-  ) {
-    const showWhenEmpty = (
-      <Styles.Message>Your purchase history is empty!</Styles.Message>
-    )
+  const groceriesCategoriesData = useSelector(selectGroceriesCategoriesData)
+  const groceriesStatus = useSelector(selectGroceriesStatus)
 
-    if (useHistory.data.length < 1) {
-      return showWhenEmpty
-    }
+  const productsCategories = useSelector(selectProductsCategoriesData)
+  const productsStatus = useSelector(selectProductsStatus)
 
-    const CreateHistoryElement = useHistory.data.map(
-      ({ groceries, products, dishes, savedLists, id, DateToShow }) => {
-        return (
-          <Styles.Wrapper key={id}>
-            <div>
-              <Styles.Date>{DateToShow}</Styles.Date>
-              <Styles.Button
-                onClick={() =>
-                  mutate_DELETE_DeleteHistory({
-                    id: id,
-                  })
-                }
-              >
-                Delete from history
-              </Styles.Button>
-            </div>
+  const dishesCategories = useSelector(selectDishesCategoriesData)
+  const dishesStatus = useSelector(selectDishesStatus)
 
-            <HistoryParentCategoryList
-              parentsTitle="Groceries"
-              itemsList={groceries}
-              filtredCategories={useGroceriesCategories.data}
-            />
-            <Styles.EmptyDivToSpace />
-            <HistoryParentCategoryList
-              parentsTitle="Products"
-              itemsList={products}
-              filtredCategories={useProductsCategories.data}
-            />
-            <Styles.EmptyDivToSpace />
-            <HistoryParentCategoryList
-              parentsTitle="Dishes"
-              itemsList={dishes}
-              filtredCategories={dishesCategories.data}
-            />
-            <Styles.EmptyDivToSpace />
-            <HistoryParentCategoryList
-              parentsTitle="SavedList"
-              itemsList={savedLists}
-              filtredCategories={useSavedListsCategories.data}
-            />
-          </Styles.Wrapper>
-        )
-      },
-    )
+  const savedListCategories = useSelector(selectSavedListCategoriesData)
+  const savedListStatus = useSelector(selectSavedListStatus)
 
-    return CreateHistoryElement
+  const historyData = useSelector(selectHistoryData)
+  const historyStatus = useSelector(selectHistoryStatus)
+
+  const data = dataLoadingStatus([
+    groceriesStatus,
+    productsStatus,
+    dishesStatus,
+    savedListStatus,
+    historyStatus,
+  ])
+
+  if (data.isError) {
+    return 'Fetching data error...'
   }
+
+  if (data.isLoading) {
+    return 'Loading data...'
+  }
+
+  if (!data.isLoaded) {
+    return null
+  }
+
+  const showWhenEmpty = (
+    <Styles.Message>Your purchase history is empty!</Styles.Message>
+  )
+
+  if (historyData.length < 1) {
+    return showWhenEmpty
+  }
+
+  const CreateHistoryElement = historyData.map(
+    ({ groceries, products, dishes, savedLists, id, DateToShow }) => {
+      return (
+        <Styles.Wrapper key={id}>
+          <div>
+            <Styles.Date>{DateToShow}</Styles.Date>
+            <Styles.Button
+              onClick={() => {
+                dispatch(deleteHistoryBasket({ id: id }))
+                setUpdateHistory((old) => !old)
+              }}
+            >
+              Delete from history
+            </Styles.Button>
+          </div>
+
+          <HistoryParentCategoryList
+            parentsTitle="Groceries"
+            itemsList={groceries}
+            filtredCategories={groceriesCategoriesData}
+          />
+          <Styles.EmptyDivToSpace />
+          <HistoryParentCategoryList
+            parentsTitle="Products"
+            itemsList={products}
+            filtredCategories={productsCategories}
+          />
+          <Styles.EmptyDivToSpace />
+          <HistoryParentCategoryList
+            parentsTitle="Dishes"
+            itemsList={dishes}
+            filtredCategories={dishesCategories}
+          />
+          <Styles.EmptyDivToSpace />
+          <HistoryParentCategoryList
+            parentsTitle="SavedList"
+            itemsList={savedLists}
+            filtredCategories={savedListCategories}
+          />
+        </Styles.Wrapper>
+      )
+    },
+  )
+
+  return CreateHistoryElement
 }
 
 export default HistoryContent

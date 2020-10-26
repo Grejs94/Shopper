@@ -117,8 +117,6 @@ function ElementsPage() {
     return null
   }
 
-  // wyrzucić postItemToBasket,updateData i importy ?
-
   return (
     <div>
       <EditModeList

@@ -2,6 +2,7 @@ import activeMenuIconSlice from './activeMenuIcon'
 import category from './category'
 import createBasketHistorySlice from './createBasketHistory'
 import groceriesSlice from './groceries'
+import historySlice from './history'
 import toggleBottomBarIconsSlice from './toggleBottomBarIcons'
 import showMoreSlice from './showMore'
 import productsSlice from './products'
@@ -15,6 +16,7 @@ export {
   createBasketHistorySlice,
   dishesSlice,
   groceriesSlice,
+  historySlice,
   parentCategoriesSlice,
   productsSlice,
   toggleBottomBarIconsSlice,

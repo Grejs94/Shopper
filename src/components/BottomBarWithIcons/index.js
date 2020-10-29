@@ -119,6 +119,7 @@ function BottomBarWithIcons({ icons, saveIconArray }) {
       <Styles.IconElement
         key={name}
         onClick={() => {
+          // console.log('toggle edit icon')
           dispatch(onClick())
         }}
       >

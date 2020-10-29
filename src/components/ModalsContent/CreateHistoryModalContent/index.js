@@ -1,81 +1,103 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import API from 'api'
+import {
+  selectGroceriesBasketData,
+  selectGroceriesStatus,
+} from 'features/groceries/groceriesSlice'
+import {
+  selectProductsBasketData,
+  selectProductsStatus,
+} from 'features/products/productsSlice'
+import {
+  selectDishesBasketData,
+  selectDishesStatus,
+} from 'features/dishes/dishesSlice'
+import {
+  selectSavedListBasketData,
+  selectSavedListStatus,
+} from 'features/savedList/savedListSlice'
+import { postHistoryBasket } from 'features/history/historySlice'
 
 import {
   setBasketHistory,
   setFakeHistory,
 } from 'features/createBasketHistory/createBasketHistorySlice'
+import { dataLoadingStatus } from 'hooks/dataLoadingStatus'
 import * as Styles from './styles'
 
 const CreateHistoryModalContent = () => {
   const history = useHistory()
   const dispatch = useDispatch()
 
-  const useBasketGroceres = API.useBasketGroceres()
-  const useBasketProducts = API.useBasketProducts()
-  const useBasketDishes = API.useBasketDishes()
-  const useBasketSavedLists = API.useBasketSavedLists()
+  const GroceriesBasket = useSelector(selectGroceriesBasketData)
+  const ProductsBasket = useSelector(selectProductsBasketData)
+  const DishesBasket = useSelector(selectDishesBasketData)
+  const SavedListBasket = useSelector(selectSavedListBasketData)
 
-  const [mutate_Post_History] = API.useAddHistory()
-  if (
-    useBasketGroceres.isError ||
-    useBasketProducts.isError ||
-    useBasketDishes.isError ||
-    useBasketSavedLists.isError
-  ) {
-    return 'Fetching date error...'
-  } else if (
-    useBasketGroceres.isLoading ||
-    useBasketProducts.isLoading ||
-    useBasketDishes.isLoading ||
-    useBasketSavedLists.isLoading
-  ) {
-    return 'Loading date...'
-  } else if (
-    useBasketGroceres.isSuccess &&
-    useBasketProducts.isSuccess &&
-    useBasketDishes.isSuccess &&
-    useBasketSavedLists.isSuccess
-  ) {
-    return (
-      <Styles.Wrapper>
-        <Styles.Info>Do you want to save your shopping list?</Styles.Info>
-        <Styles.ButtonContainer>
-          <Styles.Button
-            onClick={() => {
-              dispatch(setBasketHistory())
-              mutate_Post_History({
+  const GroceriesStatus = useSelector(selectGroceriesStatus)
+  const productsStatus = useSelector(selectProductsStatus)
+  const dishesStatus = useSelector(selectDishesStatus)
+  const savedListStatus = useSelector(selectSavedListStatus)
+
+  const data = dataLoadingStatus([
+    GroceriesStatus,
+    productsStatus,
+    dishesStatus,
+    savedListStatus,
+  ])
+
+  if (data.isError) {
+    return 'Fetching data error...'
+  }
+
+  if (data.isLoading) {
+    return 'Loading data...'
+  }
+
+  if (!data.isLoaded) {
+    return null
+  }
+
+  return (
+    <Styles.Wrapper>
+      <Styles.Info>Do you want to save your shopping list?</Styles.Info>
+      <Styles.ButtonContainer>
+        <Styles.Button
+          onClick={() => {
+            dispatch(setBasketHistory())
+            console.log('sdf')
+            dispatch(
+              postHistoryBasket({
                 data: {
                   saved: new Date(),
-                  groceries: [...useBasketGroceres.data],
-                  products: [...useBasketProducts.data],
-                  dishes: [...useBasketDishes.data],
-                  savedLists: [...useBasketSavedLists.data],
+                  groceries: [...GroceriesBasket],
+                  products: [...ProductsBasket],
+                  dishes: [...DishesBasket],
+                  savedLists: [...SavedListBasket],
                 },
-              }).then(
-                toast.success(`the shopping list has been added to history `),
-              )
-              history.goBack()
-            }}
-          >
-            yes, save my list
-          </Styles.Button>
-          <Styles.Button
-            onClick={() => {
-              dispatch(setFakeHistory())
-              history.goBack()
-            }}
-          >
-            no, skip that.
-          </Styles.Button>
-        </Styles.ButtonContainer>
-      </Styles.Wrapper>
-    )
-  }
+              }),
+            )
+
+            toast.success(`the shopping list has been added to history `)
+            history.goBack()
+          }}
+        >
+          yes, save my list
+        </Styles.Button>
+        <Styles.Button
+          onClick={() => {
+            dispatch(setFakeHistory())
+            history.goBack()
+          }}
+        >
+          no, skip that.
+        </Styles.Button>
+      </Styles.ButtonContainer>
+    </Styles.Wrapper>
+  )
 }
 
 export default CreateHistoryModalContent

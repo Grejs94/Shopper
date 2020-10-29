@@ -14,7 +14,7 @@ const IconItemWithLinkAndSetCategory = ({ image, text, to }) => {
       onClick={() => {
         dispatch(setCategory(text))
       }}
-      style={{ textDecoration: 'none', color: 'white' }}
+      style={{ textDecoration: 'none', color: 'black' }}
     >
       <IconItem image={image} text={text} />
     </Link>

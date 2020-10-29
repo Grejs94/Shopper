@@ -1,17 +1,17 @@
-import { useQuery } from "react-query";
+import { useQuery } from 'react-query'
 
 export function UseDishesCategory() {
-  return useQuery("dishesCategories", () =>
+  return useQuery('dishesCategories', () =>
     fetch(`${process.env.REACT_APP_LOCAL_HTTP}/dishesCategories`).then((res) =>
-      res.json()
-    )
-  );
+      res.json(),
+    ),
+  )
 }
 
 export function UseDishes() {
-  return useQuery("dishes", () =>
+  return useQuery('dishes', () =>
     fetch(`${process.env.REACT_APP_LOCAL_HTTP}/dishes`).then((res) =>
-      res.json()
-    )
-  );
+      res.json(),
+    ),
+  )
 }

@@ -95,7 +95,7 @@ export const {
 } = dishesSlice.actions
 
 const ifNoDataThrowErrors = (res) => {
-  if (!res.data) {
+  if (res.length < 1) {
     throw new Error()
   }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { EditModeList } from 'components'
@@ -6,27 +6,43 @@ import { EditModeList } from 'components'
 import * as Styles from './styles'
 import {
   fetchGroceries,
+  fetchGroceriesBasket,
+  postGroceriesBasket,
+  putGroceriesBasket,
   selectGroceriesData,
   selectGroceriesCategoriesData,
   selectGroceriesStatus,
+  selectGroceriesBasketData,
 } from 'features/groceries/groceriesSlice'
 import {
   fetchProducts,
+  fetchProductsBasket,
+  postProductsBasket,
+  putProductsBasket,
   selectProductsData,
   selectProductsCategoriesData,
   selectProductsStatus,
+  selectProductsBasketData,
 } from 'features/products/productsSlice'
 import {
   fetchDishes,
+  fetchDishesBasket,
+  postDishesBasket,
+  putDishesBasket,
   selectDishesData,
   selectDishesCategoriesData,
   selectDishesStatus,
+  selectDishesBasketData,
 } from 'features/dishes/dishesSlice'
 import {
   fetchSavedLists,
+  fetchSavedListsBasket,
+  postSavedListsBasket,
+  putSavedListsBasket,
   selectSavedListData,
   selectSavedListCategoriesData,
   selectSavedListStatus,
+  selectSavedListBasketData,
 } from 'features/savedList/savedListSlice'
 import {
   fetchHistoryBasket,
@@ -38,34 +54,68 @@ import {
   selectSettingsData,
   selectSettingsStatus,
 } from 'features/settings/settingsSlice'
+
+import {
+  fetchParentCategories,
+  selectParentCategoriesData,
+  selectParentCategoriesStatus,
+} from 'features/parentCategories/parentCategoriesSlice'
+import { setActiveMenuIcon } from 'features/activeMenuIcon/activeMenuIconSlice'
 import { dataLoadingStatus } from 'hooks/dataLoadingStatus'
 
 const CreateSmartList = () => {
   const dispatch = useDispatch()
 
+  const [fetchGroceriesData, setFetchGroceriesData] = useState(false)
+  const [fetchProductsData, setFetchProductsData] = useState(false)
+  const [fetchDishesData, setFetchDishesData] = useState(false)
+  const [fetchSavedListsData, setFetchSavedListsData] = useState(false)
+
   useEffect(() => {
+    dispatch(setActiveMenuIcon('shopHelper'))
     dispatch(fetchGroceries())
     dispatch(fetchProducts())
     dispatch(fetchDishes())
     dispatch(fetchSavedLists())
     dispatch(fetchHistoryBasket())
     dispatch(fetchSettings())
+    dispatch(fetchParentCategories())
   }, [dispatch])
+
+  useEffect(() => {
+    dispatch(fetchGroceriesBasket())
+  }, [dispatch, fetchGroceriesData])
+
+  useEffect(() => {
+    dispatch(fetchProductsBasket())
+  }, [dispatch, fetchProductsData])
+
+  useEffect(() => {
+    dispatch(fetchDishesBasket())
+  }, [dispatch, fetchDishesData])
+
+  useEffect(() => {
+    dispatch(fetchSavedListsBasket())
+  }, [dispatch, fetchSavedListsData])
 
   const groceriesCategoriesData = useSelector(selectGroceriesCategoriesData)
   const GroceriesData = useSelector(selectGroceriesData)
+  const groceriesBasketData = useSelector(selectGroceriesBasketData)
   const GroceriesStatus = useSelector(selectGroceriesStatus)
 
   const productsCategoriesData = useSelector(selectProductsCategoriesData)
   const ProductsData = useSelector(selectProductsData)
+  const productsBasketData = useSelector(selectProductsBasketData)
   const productsStatus = useSelector(selectProductsStatus)
 
   const dishesCategoriesData = useSelector(selectDishesCategoriesData)
   const DishesData = useSelector(selectDishesData)
+  const dishesBasketData = useSelector(selectDishesBasketData)
   const dishesStatus = useSelector(selectDishesStatus)
 
   const savedListCategoriesData = useSelector(selectSavedListCategoriesData)
   const SavedListData = useSelector(selectSavedListData)
+  const savedListBasketData = useSelector(selectSavedListBasketData)
   const savedListStatus = useSelector(selectSavedListStatus)
 
   const historyData = useSelector(selectHistoryData)
@@ -73,6 +123,9 @@ const CreateSmartList = () => {
 
   const settingsData = useSelector(selectSettingsData)
   const settingsStatus = useSelector(selectSettingsStatus)
+
+  const parentCategories = useSelector(selectParentCategoriesData)
+  const parentCategoriesStatus = useSelector(selectParentCategoriesStatus)
 
   const data = dataLoadingStatus([
     GroceriesStatus,
@@ -153,7 +206,7 @@ const CreateSmartList = () => {
 
   if (sortByNumber) {
     ArrayParentCategories.map((array, index) => {
-      array.data.map((item) => {
+      array.map((item) => {
         let value = 0
 
         historyElements.map((history) => {
@@ -193,7 +246,7 @@ const CreateSmartList = () => {
     })
   } else if (!sortByNumber) {
     ArrayParentCategories.map((parentCategory, index) => {
-      parentCategory.data.map((item) => {
+      parentCategory.map((item) => {
         const itemsList = []
         const intervals = []
         historyElements.map((history) => {
@@ -311,6 +364,7 @@ const CreateSmartList = () => {
   return (
     <div>
       <EditModeList
+        BasketitemsList={groceriesBasketData}
         parentsTitle="Groceries"
         itemsList={
           sortByNumber
@@ -319,8 +373,13 @@ const CreateSmartList = () => {
         }
         filtredCategories={groceriesCategoriesData}
         variant="shop"
+        parentCategories={parentCategories}
+        postItemToBasket={postGroceriesBasket}
+        putBasketItem={putGroceriesBasket}
+        updateData={setFetchGroceriesData}
       />
       <EditModeList
+        BasketitemsList={productsBasketData}
         parentsTitle="Products"
         itemsList={
           sortByNumber
@@ -329,8 +388,13 @@ const CreateSmartList = () => {
         }
         filtredCategories={productsCategoriesData}
         variant="shop"
+        parentCategories={parentCategories}
+        postItemToBasket={postProductsBasket}
+        putBasketItem={putProductsBasket}
+        updateData={setFetchProductsData}
       />
       <EditModeList
+        BasketitemsList={dishesBasketData}
         parentsTitle="Dishes"
         itemsList={
           sortByNumber
@@ -339,8 +403,13 @@ const CreateSmartList = () => {
         }
         filtredCategories={dishesCategoriesData}
         variant="shop"
+        parentCategories={parentCategories}
+        postItemToBasket={postDishesBasket}
+        putBasketItem={putDishesBasket}
+        updateData={setFetchDishesData}
       />
       <EditModeList
+        BasketitemsList={savedListBasketData}
         parentsTitle="SavedList"
         itemsList={
           sortByNumber
@@ -349,6 +418,10 @@ const CreateSmartList = () => {
         }
         filtredCategories={savedListCategoriesData}
         variant="shop"
+        parentCategories={parentCategories}
+        postItemToBasket={postSavedListsBasket}
+        putBasketItem={putSavedListsBasket}
+        updateData={setFetchSavedListsData}
       />
     </div>
   )

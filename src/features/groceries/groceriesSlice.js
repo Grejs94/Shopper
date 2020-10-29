@@ -94,7 +94,7 @@ export const {
 } = groceriesSlice.actions
 
 const ifNoDataThrowErrors = (res) => {
-  if (!res.data) {
+  if (res.length < 1) {
     throw new Error()
   }
 }
@@ -146,7 +146,6 @@ export const postGroceriesBasket = (data) => async (dispatch) => {
 
 export const putGroceriesBasket = ({ id, data }) => async (dispatch) => {
   dispatch(putGroceriesStarted())
-
   try {
     const res = await api.groceries.putBasketGroceries({ id, data })
 

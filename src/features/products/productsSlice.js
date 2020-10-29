@@ -94,7 +94,7 @@ export const {
 } = productsSlice.actions
 
 const ifNoDataThrowErrors = (res) => {
-  if (!res.data) {
+  if (res.length < 1) {
     throw new Error()
   }
 }
@@ -137,7 +137,6 @@ export const postProductsBasket = (data) => async (dispatch) => {
   try {
     const res = await api.products.postBasketProducts(data)
 
-    console.log(res)
     if (!res.data) {
       throw new Error()
     }

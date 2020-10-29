@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { toast } from 'react-toastify'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router-dom'
@@ -9,10 +9,7 @@ import {
   selectAddIcon,
   selectRemoveIcon,
 } from 'features/toggleBottomBarIcons/toggleBottomBarIconsSlice'
-import {
-  selectActiveMenuIcon,
-  setActiveMenuIcon,
-} from 'features/activeMenuIcon/activeMenuIconSlice'
+import { selectActiveMenuIcon } from 'features/activeMenuIcon/activeMenuIconSlice'
 import { selectFakeHistory } from 'features/createBasketHistory/createBasketHistorySlice'
 import * as Styles from 'assets/StyledComponents/ItemsDisplayed.css'
 
@@ -24,53 +21,41 @@ const EditModeList = ({
   parentsTitle,
   filtredCategories,
   itemsList,
-  variant = '',
   BasketitemsList = [],
   parentCategories = [],
-  postItemToBasket = () => {},
-  putBasketItem = () => {},
-  deleteBasketItem = () => {},
-  updateData = () => {},
+  postItemToBasket,
+  putBasketItem,
+  deleteBasketItem,
+  updateData,
 }) => {
   const dispatch = useDispatch()
   const history = useHistory()
-  const [fetchData, setFetchData] = useState(false)
-
-  useEffect(() => {}, [])
-
-  useEffect(() => {
-    dispatch(updateData())
-  }, [dispatch, fetchData, updateData])
 
   const addIcon = useSelector(selectAddIcon)
   const removeIcon = useSelector(selectRemoveIcon)
-  let activeMenuIcon = useSelector(selectActiveMenuIcon)
+  const activeMenuIcon = useSelector(selectActiveMenuIcon)
   const FakeHistory = useSelector(selectFakeHistory)
 
-  if (variant === 'shop') {
-    activeMenuIcon = dispatch(setActiveMenuIcon('shop'))
-  } else if (variant === '') {
-    activeMenuIcon = dispatch(setActiveMenuIcon('basket'))
-  }
-
   const handleOnClick = (item) => {
-    const handlePutBasketItem = (basketItem, valueChangeFunction) => {
+    const handlePutBasketItem = (basketItem, number) => {
+      const incrementValue = incrementedString(basketItem.value, number)
+
       dispatch(
         putBasketItem({
           id: item.id,
           data: {
             ...basketItem,
-            value: valueChangeFunction,
+            value: incrementValue,
           },
         }),
       )
 
       toast.success(
         `The ${parentsTitle}: "${item.name}" 
-        current value is ${valueChangeFunction}`,
+        current value is ${incrementValue}`,
       )
 
-      setFetchData((old) => !old)
+      updateData((old) => !old)
     }
 
     const findElement = BasketitemsList.filter(
@@ -84,9 +69,8 @@ const EditModeList = ({
         if (activeMenuIcon === 'basket') {
           if (addIcon) {
             const basketItem = findElement[0]
-            const incrementValue = incrementedString(basketItem.value, '1')
 
-            handlePutBasketItem(basketItem, incrementValue)
+            handlePutBasketItem(basketItem, '1')
           }
 
           if (removeIcon) {
@@ -97,10 +81,8 @@ const EditModeList = ({
 
             if (item.value > 1) {
               const basketItem = findElement[0]
-              console.log(basketItem)
-              const reduced = incrementedString(basketItem.value, '-1')
 
-              handlePutBasketItem(basketItem, reduced)
+              handlePutBasketItem(basketItem, '-1')
             } else {
               dispatch(
                 deleteBasketItem({
@@ -108,7 +90,7 @@ const EditModeList = ({
                 }),
               )
 
-              setFetchData((old) => !old)
+              updateData((old) => !old)
             }
           }
         } else if (
@@ -117,9 +99,8 @@ const EditModeList = ({
         ) {
           if (allreadyInBasket) {
             const basketItem = findElement[0]
-            const incrementValue = incrementedString(basketItem.value, '1')
 
-            handlePutBasketItem(basketItem, incrementValue)
+            handlePutBasketItem(basketItem, '1')
           } else {
             dispatch(
               postItemToBasket({
@@ -134,7 +115,7 @@ const EditModeList = ({
               `The ${parentsTitle}: "${item.name}" has been successfully added to your basket`,
             )
 
-            setFetchData((old) => !old)
+            updateData((old) => !old)
           }
         }
       } else {

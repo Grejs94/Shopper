@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { EditModeList } from 'components'
@@ -49,6 +49,7 @@ import {
   selectParentCategoriesData,
   selectParentCategoriesStatus,
 } from 'features/parentCategories/parentCategoriesSlice'
+import { setActiveMenuIcon } from 'features/activeMenuIcon/activeMenuIconSlice'
 import { dataLoadingStatus } from 'hooks/dataLoadingStatus'
 
 const ScrollToParentCategory = ({ category }) => {
@@ -62,13 +63,35 @@ const ScrollToParentCategory = ({ category }) => {
 function ElementsPage() {
   const dispatch = useDispatch()
 
+  const [fetchGroceriesData, setFetchGroceriesData] = useState(false)
+  const [fetchProductsData, setFetchProductsData] = useState(false)
+  const [fetchDishesData, setFetchDishesData] = useState(false)
+  const [fetchSavedListsData, setFetchSavedListsData] = useState(false)
+
   useEffect(() => {
+    dispatch(setActiveMenuIcon('shop'))
     dispatch(fetchGroceries())
     dispatch(fetchProducts())
     dispatch(fetchDishes())
     dispatch(fetchSavedLists())
     dispatch(fetchParentCategories())
   }, [dispatch])
+
+  useEffect(() => {
+    dispatch(fetchGroceriesBasket())
+  }, [dispatch, fetchGroceriesData])
+
+  useEffect(() => {
+    dispatch(fetchProductsBasket())
+  }, [dispatch, fetchProductsData])
+
+  useEffect(() => {
+    dispatch(fetchDishesBasket())
+  }, [dispatch, fetchDishesData])
+
+  useEffect(() => {
+    dispatch(fetchSavedListsBasket())
+  }, [dispatch, fetchSavedListsData])
 
   const groceriesData = useSelector(selectGroceriesData)
   const groceriesCategoriesData = useSelector(selectGroceriesCategoriesData)
@@ -128,7 +151,7 @@ function ElementsPage() {
         parentCategories={parentCategories}
         postItemToBasket={postGroceriesBasket}
         putBasketItem={putGroceriesBasket}
-        updateData={fetchGroceriesBasket}
+        updateData={setFetchGroceriesData}
       />
       <EditModeList
         parentsTitle="Products"
@@ -139,7 +162,7 @@ function ElementsPage() {
         parentCategories={parentCategories}
         postItemToBasket={postProductsBasket}
         putBasketItem={putProductsBasket}
-        updateData={fetchProductsBasket}
+        updateData={setFetchProductsData}
       />
       <EditModeList
         parentsTitle="Dishes"
@@ -150,7 +173,7 @@ function ElementsPage() {
         parentCategories={parentCategories}
         postItemToBasket={postDishesBasket}
         putBasketItem={putDishesBasket}
-        updateData={fetchDishesBasket}
+        updateData={setFetchDishesData}
       />
       <EditModeList
         parentsTitle="SavedList"
@@ -161,7 +184,7 @@ function ElementsPage() {
         parentCategories={parentCategories}
         postItemToBasket={postSavedListsBasket}
         putBasketItem={putSavedListsBasket}
-        updateData={fetchSavedListsBasket}
+        updateData={setFetchSavedListsData}
       />
     </div>
   )

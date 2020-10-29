@@ -134,6 +134,7 @@ const CreateSmartList = () => {
     savedListStatus,
     historyStatus,
     settingsStatus,
+    parentCategoriesStatus,
   ])
 
   if (data.isError) {

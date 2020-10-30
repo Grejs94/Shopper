@@ -9,57 +9,27 @@ export const dishesSlice = createSlice({
     data: [],
     categoriesData: [],
     basketData: [],
-    status: 'iddle',
-    postStatus: 'iddle',
-    putStatus: 'iddle',
-    deleteStatus: 'iddle',
-    basketStatus: 'iddle',
+    dataStatus: 'iddle',
+    basketDataStatus: 'iddle',
   },
   reducers: {
-    fetchDishesStarted: (state) => {
-      state.status = 'inProgress'
+    fetchDishesDataStarted: (state) => {
+      state.dataStatus = 'inProgress'
     },
-    fetchDishesSucceeded: (state) => {
-      state.status = 'succeeded'
+    fetchDishesDataSucceeded: (state) => {
+      state.dataStatus = 'succeeded'
     },
-    fetchDishesFailed: (state) => {
-      state.status = 'failed'
+    fetchDishesDataFailed: (state) => {
+      state.dataStatus = 'failed'
     },
-    fetchDishesBasketStarted: (state) => {
-      state.basketStatus = 'inProgress'
+    fetchDishesBasketDataStarted: (state) => {
+      state.basketDataStatus = 'inProgress'
     },
-    fetchDishesBasketSucceeded: (state) => {
-      state.basketStatus = 'succeeded'
+    fetchDishesBasketDataSucceeded: (state) => {
+      state.basketDataStatus = 'succeeded'
     },
-    fetchDishesBasketFailed: (state) => {
-      state.basketStatus = 'failed'
-    },
-    postDishesStarted: (state) => {
-      state.postStatus = 'inProgress'
-    },
-    postDishesSucceeded: (state) => {
-      state.postStatus = 'succeeded'
-    },
-    postDishesFailed: (state) => {
-      state.postStatus = 'failed'
-    },
-    putDishesStarted: (state) => {
-      state.putStatus = 'inProgress'
-    },
-    putDishesSucceeded: (state) => {
-      state.putStatus = 'succeeded'
-    },
-    putDishesFailed: (state) => {
-      state.putStatus = 'failed'
-    },
-    deleteDishesStarted: (state) => {
-      state.deleteStatus = 'inProgress'
-    },
-    deleteDishesSucceeded: (state) => {
-      state.putStatus = 'succeeded'
-    },
-    deleteDishesFailed: (state) => {
-      state.deleteStatus = 'failed'
+    fetchDishesBasketDataFailed: (state) => {
+      state.basketDataStatus = 'failed'
     },
     setData: (state, action) => {
       state.data = action.payload
@@ -74,21 +44,12 @@ export const dishesSlice = createSlice({
 })
 
 export const {
-  fetchDishesStarted,
-  fetchDishesSucceeded,
-  fetchDishesFailed,
-  fetchDishesBasketStarted,
-  fetchDishesBasketSucceeded,
-  fetchDishesBasketFailed,
-  postDishesStarted,
-  postDishesSucceeded,
-  postDishesFailed,
-  putDishesStarted,
-  putDishesSucceeded,
-  putDishesFailed,
-  deleteDishesStarted,
-  deleteDishesSucceeded,
-  deleteDishesFailed,
+  fetchDishesDataStarted,
+  fetchDishesDataSucceeded,
+  fetchDishesDataFailed,
+  fetchDishesBasketDataStarted,
+  fetchDishesBasketDataSucceeded,
+  fetchDishesBasketDataFailed,
   setData,
   setCategoriesData,
   setBasketData,
@@ -101,20 +62,20 @@ const ifNoDataThrowErrors = (res) => {
 }
 
 export const fetchDishesBasket = () => async (dispatch) => {
-  dispatch(fetchDishesBasketStarted())
+  dispatch(fetchDishesBasketDataStarted())
 
   try {
     const basketData = await api.dishes.getBasket()
     dispatch(setBasketData(basketData))
 
-    dispatch(fetchDishesBasketSucceeded())
+    dispatch(fetchDishesBasketDataSucceeded())
   } catch (error) {
-    dispatch(fetchDishesBasketFailed())
+    dispatch(fetchDishesBasketDataFailed())
   }
 }
 
 export const fetchDishes = () => async (dispatch) => {
-  dispatch(fetchDishesStarted())
+  dispatch(fetchDishesDataStarted())
 
   try {
     const data = await api.dishes.getDishes()
@@ -126,54 +87,54 @@ export const fetchDishes = () => async (dispatch) => {
     const basketData = await apiRedux.dishes.getBasket()
     dispatch(setBasketData(basketData))
 
-    dispatch(fetchDishesSucceeded())
+    dispatch(fetchDishesDataSucceeded())
   } catch (error) {
-    dispatch(fetchDishesFailed())
+    dispatch(fetchDishesDataFailed())
   }
 }
 
 export const postDishesBasket = (data) => async (dispatch) => {
-  dispatch(postDishesStarted())
+  dispatch(fetchDishesBasketDataStarted())
 
   try {
     const res = await api.dishes.postBasketDishes(data)
 
     ifNoDataThrowErrors(res)
-    dispatch(postDishesSucceeded())
+    dispatch(fetchDishesBasketDataSucceeded())
   } catch (error) {
-    dispatch(postDishesFailed())
+    dispatch(fetchDishesBasketDataFailed())
   }
 }
 
 export const putDishesBasket = (data) => async (dispatch) => {
-  dispatch(putDishesStarted())
+  dispatch(fetchDishesBasketDataStarted())
 
   try {
     const res = await api.dishes.putBasketDishes(data)
 
     ifNoDataThrowErrors(res)
-    dispatch(putDishesSucceeded())
+    dispatch(fetchDishesBasketDataSucceeded())
   } catch (error) {
-    dispatch(putDishesFailed())
+    dispatch(fetchDishesBasketDataFailed())
   }
 }
 
 export const deleteDishesBasket = ({ id, data }) => async (dispatch) => {
-  dispatch(deleteDishesStarted())
+  dispatch(fetchDishesBasketDataStarted())
 
   try {
     const res = await api.dishes.deleteBasketDishes({ id, data })
 
     ifNoDataThrowErrors(res)
-    dispatch(deleteDishesSucceeded())
+    dispatch(fetchDishesBasketDataSucceeded())
   } catch (error) {
-    dispatch(deleteDishesFailed())
+    dispatch(fetchDishesBasketDataFailed())
   }
 }
 
 export const selectDishesData = (state) => state.dishes.data
 export const selectDishesCategoriesData = (state) => state.dishes.categoriesData
 export const selectDishesBasketData = (state) => state.dishes.basketData
-export const selectDishesStatus = (state) => state.dishes.status
+export const selectDishesStatus = (state) => state.dishes.dataStatus
 
 export default dishesSlice.reducer

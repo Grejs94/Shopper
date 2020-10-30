@@ -128,6 +128,7 @@ const BasketPageContent = () => {
   if (!data.isLoaded) {
     return null
   }
+
   const basketEmpty =
     groceriesBasketData.length === 0 &&
     productsBasketData.length === 0 &&

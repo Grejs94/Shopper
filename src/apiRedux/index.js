@@ -1,10 +1,10 @@
-import * as dishes from './dishes'
-import * as groceries from './groceries'
-import * as history from './history'
-import * as parentCategories from './parentCategories'
-import * as products from './products'
-import * as savedList from './savedList'
-import * as settings from './settings'
+import { dishes } from './dishes'
+import { groceries } from './groceries'
+import { history } from './history'
+import { parentCategories } from './parentCategories'
+import { products } from './products'
+import { savedList } from './savedList'
+import { settings } from './settings'
 
 export default {
   dishes,

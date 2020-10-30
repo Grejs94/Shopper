@@ -6,59 +6,29 @@ export const productsSlice = createSlice({
   name: 'products',
   initialState: {
     data: [],
-    categoriesData: [],
     basketData: [],
-    status: 'iddle',
-    postStatus: 'iddle',
-    putStatus: 'iddle',
-    deleteStatus: 'iddle',
-    basketStatus: 'iddle',
+    categoriesData: [],
+    statusData: 'iddle',
+    basketDataStatus: 'iddle',
   },
   reducers: {
-    fetchProductsStarted: (state) => {
-      state.status = 'inProgress'
+    fetchProductsDataStarted: (state) => {
+      state.statusData = 'inProgress'
     },
-    fetchProductsSucceeded: (state) => {
-      state.status = 'succeeded'
+    fetchProductsDataSucceeded: (state) => {
+      state.statusData = 'succeeded'
     },
-    fetchProductsFailed: (state) => {
-      state.status = 'failed'
+    fetchProductsDataFailed: (state) => {
+      state.statusData = 'failed'
     },
-    fetchProductsBasketStarted: (state) => {
-      state.basketStatus = 'inProgress'
+    fetchProductsBasketDataStarted: (state) => {
+      state.basketDataStatus = 'inProgress'
     },
-    fetchProductsBasketSucceeded: (state) => {
-      state.basketStatus = 'succeeded'
+    fetchProductsBasketDataSucceeded: (state) => {
+      state.basketDataStatus = 'succeeded'
     },
-    fetchProductsBasketFailed: (state) => {
-      state.basketStatus = 'failed'
-    },
-    postProductsStarted: (state) => {
-      state.postStatus = 'inProgress'
-    },
-    postProductsSucceeded: (state) => {
-      state.postStatus = 'succeeded'
-    },
-    postProductsFailed: (state) => {
-      state.postStatus = 'failed'
-    },
-    putProductsStarted: (state) => {
-      state.putStatus = 'inProgress'
-    },
-    putProductsSucceeded: (state) => {
-      state.putStatus = 'succeeded'
-    },
-    putProductsFailed: (state) => {
-      state.putStatus = 'failed'
-    },
-    deleteProductsStarted: (state) => {
-      state.deleteStatus = 'inProgress'
-    },
-    deleteProductsSucceeded: (state) => {
-      state.putStatus = 'succeeded'
-    },
-    deleteProductsFailed: (state) => {
-      state.deleteStatus = 'failed'
+    fetchProductsBasketDataFailed: (state) => {
+      state.basketDataStatus = 'failed'
     },
     setData: (state, action) => {
       state.data = action.payload
@@ -73,21 +43,12 @@ export const productsSlice = createSlice({
 })
 
 export const {
-  fetchProductsStarted,
-  fetchProductsSucceeded,
-  fetchProductsFailed,
-  fetchProductsBasketStarted,
-  fetchProductsBasketSucceeded,
-  fetchProductsBasketFailed,
-  postProductsStarted,
-  postProductsSucceeded,
-  postProductsFailed,
-  putProductsStarted,
-  putProductsSucceeded,
-  putProductsFailed,
-  deleteProductsStarted,
-  deleteProductsSucceeded,
-  deleteProductsFailed,
+  fetchProductsDataStarted,
+  fetchProductsDataSucceeded,
+  fetchProductsDataFailed,
+  fetchProductsBasketDataStarted,
+  fetchProductsBasketDataSucceeded,
+  fetchProductsBasketDataFailed,
   setData,
   setCategoriesData,
   setBasketData,
@@ -100,20 +61,20 @@ const ifNoDataThrowErrors = (res) => {
 }
 
 export const fetchProductsBasket = () => async (dispatch) => {
-  dispatch(fetchProductsBasketStarted())
+  dispatch(fetchProductsBasketDataStarted())
 
   try {
     const basketData = await api.products.getBasketProducts()
     dispatch(setBasketData(basketData))
 
-    dispatch(fetchProductsBasketSucceeded())
+    dispatch(fetchProductsBasketDataSucceeded())
   } catch (error) {
-    dispatch(fetchProductsBasketFailed())
+    dispatch(fetchProductsBasketDataFailed())
   }
 }
 
 export const fetchProducts = () => async (dispatch) => {
-  dispatch(fetchProductsStarted())
+  dispatch(fetchProductsDataStarted())
 
   try {
     const data = await api.products.getProducts()
@@ -125,14 +86,14 @@ export const fetchProducts = () => async (dispatch) => {
     const basketData = await api.products.getBasketProducts()
     dispatch(setBasketData(basketData))
 
-    dispatch(fetchProductsSucceeded())
+    dispatch(fetchProductsDataSucceeded())
   } catch (error) {
-    dispatch(fetchProductsFailed())
+    dispatch(fetchProductsDataFailed())
   }
 }
 
 export const postProductsBasket = (data) => async (dispatch) => {
-  dispatch(postProductsStarted())
+  dispatch(fetchProductsBasketDataStarted())
 
   try {
     const res = await api.products.postBasketProducts(data)
@@ -142,35 +103,35 @@ export const postProductsBasket = (data) => async (dispatch) => {
     }
 
     ifNoDataThrowErrors(res)
-    dispatch(postProductsSucceeded())
+    dispatch(fetchProductsBasketDataSucceeded())
   } catch (error) {
-    dispatch(postProductsFailed())
+    dispatch(fetchProductsBasketDataFailed())
   }
 }
 
 export const putProductsBasket = (data) => async (dispatch) => {
-  dispatch(putProductsStarted())
+  dispatch(fetchProductsBasketDataStarted())
 
   try {
     const res = await api.products.putBasketProducts(data)
 
     ifNoDataThrowErrors(res)
-    dispatch(putProductsSucceeded())
+    dispatch(fetchProductsBasketDataSucceeded())
   } catch (error) {
-    dispatch(putProductsFailed())
+    dispatch(fetchProductsBasketDataFailed())
   }
 }
 
 export const deleteProductsBasket = ({ id, data }) => async (dispatch) => {
-  dispatch(deleteProductsStarted())
+  dispatch(fetchProductsBasketDataStarted())
 
   try {
     const res = await api.products.deleteBasketProducts({ id, data })
 
     ifNoDataThrowErrors(res)
-    dispatch(deleteProductsSucceeded())
+    dispatch(fetchProductsBasketDataSucceeded())
   } catch (error) {
-    dispatch(deleteProductsFailed())
+    dispatch(fetchProductsBasketDataFailed())
   }
 }
 
@@ -178,6 +139,6 @@ export const selectProductsData = (state) => state.products.data
 export const selectProductsCategoriesData = (state) =>
   state.products.categoriesData
 export const selectProductsBasketData = (state) => state.products.basketData
-export const selectProductsStatus = (state) => state.products.status
+export const selectProductsStatus = (state) => state.products.statusData
 
 export default productsSlice.reducer

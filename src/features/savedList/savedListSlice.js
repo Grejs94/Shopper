@@ -8,57 +8,27 @@ export const savedListSlice = createSlice({
     data: [],
     categoriesData: [],
     basketData: [],
-    status: 'iddle',
-    postStatus: 'iddle',
-    putStatus: 'iddle',
-    deleteStatus: 'iddle',
-    basketStatus: 'iddle',
+    statusData: 'iddle',
+    basketDataStatus: 'iddle',
   },
   reducers: {
-    fetchSavedListStarted: (state) => {
-      state.status = 'inProgress'
+    fetchSavedListDataStarted: (state) => {
+      state.statusData = 'inProgress'
     },
-    fetchSavedListSucceeded: (state) => {
-      state.status = 'succeeded'
+    fetchSavedListDataSucceeded: (state) => {
+      state.statusData = 'succeeded'
     },
-    fetchSavedListFailed: (state) => {
-      state.status = 'failed'
+    fetchSavedListDataFailed: (state) => {
+      state.statusData = 'failed'
     },
-    fetchSavedListBasketStarted: (state) => {
-      state.basketStatus = 'inProgress'
+    fetchSavedListBasketDataStarted: (state) => {
+      state.basketDataStatus = 'inProgress'
     },
-    fetchSavedListBasketSucceeded: (state) => {
-      state.basketStatus = 'succeeded'
+    fetchSavedListBasketDataSucceeded: (state) => {
+      state.basketDataStatus = 'succeeded'
     },
-    fetchSavedListBasketFailed: (state) => {
-      state.basketStatus = 'failed'
-    },
-    postSavedListStarted: (state) => {
-      state.postStatus = 'inProgress'
-    },
-    postSavedListSucceeded: (state) => {
-      state.postStatus = 'succeeded'
-    },
-    postSavedListFailed: (state) => {
-      state.postStatus = 'failed'
-    },
-    putSavedListStarted: (state) => {
-      state.putStatus = 'inProgress'
-    },
-    putSavedListSucceeded: (state) => {
-      state.putStatus = 'succeeded'
-    },
-    putSavedListFailed: (state) => {
-      state.putStatus = 'failed'
-    },
-    deleteSavedListStarted: (state) => {
-      state.deleteStatus = 'inProgress'
-    },
-    deleteSavedListSucceeded: (state) => {
-      state.putStatus = 'succeeded'
-    },
-    deleteSavedListFailed: (state) => {
-      state.deleteStatus = 'failed'
+    fetchSavedListBasketDataFailed: (state) => {
+      state.basketDataStatus = 'failed'
     },
     setData: (state, action) => {
       state.data = action.payload
@@ -73,21 +43,12 @@ export const savedListSlice = createSlice({
 })
 
 export const {
-  fetchSavedListStarted,
-  fetchSavedListSucceeded,
-  fetchSavedListFailed,
-  fetchSavedListBasketStarted,
-  fetchSavedListBasketSucceeded,
-  fetchSavedListBasketFailed,
-  postSavedListStarted,
-  postSavedListSucceeded,
-  postSavedListFailed,
-  putSavedListStarted,
-  putSavedListSucceeded,
-  putSavedListFailed,
-  deleteSavedListStarted,
-  deleteSavedListSucceeded,
-  deleteSavedListFailed,
+  fetchSavedListDataStarted,
+  fetchSavedListDataSucceeded,
+  fetchSavedListDataFailed,
+  fetchSavedListBasketDataStarted,
+  fetchSavedListBasketDataSucceeded,
+  fetchSavedListBasketDataFailed,
   setData,
   setCategoriesData,
   setBasketData,
@@ -100,20 +61,20 @@ const ifNoDataThrowErrors = (res) => {
 }
 
 export const fetchSavedListsBasket = () => async (dispatch) => {
-  dispatch(fetchSavedListBasketStarted())
+  dispatch(fetchSavedListBasketDataStarted())
 
   try {
     const basketData = await api.savedList.getBasket()
     dispatch(setBasketData(basketData))
 
-    dispatch(fetchSavedListBasketSucceeded())
+    dispatch(fetchSavedListBasketDataSucceeded())
   } catch (error) {
-    dispatch(fetchSavedListBasketFailed())
+    dispatch(fetchSavedListBasketDataFailed())
   }
 }
 
 export const fetchSavedLists = () => async (dispatch) => {
-  dispatch(fetchSavedListStarted())
+  dispatch(fetchSavedListDataStarted())
 
   try {
     const data = await api.savedList.getSavedLists()
@@ -125,48 +86,48 @@ export const fetchSavedLists = () => async (dispatch) => {
     const basketData = await api.savedList.getBasket()
     dispatch(setBasketData(basketData))
 
-    dispatch(fetchSavedListSucceeded())
+    dispatch(fetchSavedListDataSucceeded())
   } catch (error) {
-    dispatch(fetchSavedListFailed())
+    dispatch(fetchSavedListDataFailed())
   }
 }
 
 export const postSavedListsBasket = (data) => async (dispatch) => {
-  dispatch(postSavedListStarted())
+  dispatch(fetchSavedListBasketDataStarted())
 
   try {
     const res = await api.savedList.postBasketSavedLists(data)
 
     ifNoDataThrowErrors(res)
-    dispatch(postSavedListSucceeded())
+    dispatch(fetchSavedListBasketDataSucceeded())
   } catch (error) {
-    dispatch(postSavedListFailed())
+    dispatch(fetchSavedListBasketDataFailed())
   }
 }
 
 export const putSavedListsBasket = (data) => async (dispatch) => {
-  dispatch(putSavedListStarted())
+  dispatch(fetchSavedListBasketDataStarted())
 
   try {
     const res = await api.savedList.putBasketSavedLists(data)
 
     ifNoDataThrowErrors(res)
-    dispatch(putSavedListSucceeded())
+    dispatch(fetchSavedListBasketDataSucceeded())
   } catch (error) {
-    dispatch(putSavedListFailed())
+    dispatch(fetchSavedListBasketDataFailed())
   }
 }
 
 export const deleteSavedListsBasket = ({ id, data }) => async (dispatch) => {
-  dispatch(deleteSavedListStarted())
+  dispatch(fetchSavedListBasketDataStarted())
 
   try {
     const res = await api.savedList.deleteBasketSavedLists({ id, data })
 
     ifNoDataThrowErrors(res)
-    dispatch(deleteSavedListSucceeded())
+    dispatch(fetchSavedListBasketDataSucceeded())
   } catch (error) {
-    dispatch(deleteSavedListFailed())
+    dispatch(fetchSavedListBasketDataFailed())
   }
 }
 
@@ -174,6 +135,6 @@ export const selectSavedListData = (state) => state.savedList.data
 export const selectSavedListCategoriesData = (state) =>
   state.savedList.categoriesData
 export const selectSavedListBasketData = (state) => state.savedList.basketData
-export const selectSavedListStatus = (state) => state.savedList.status
+export const selectSavedListStatus = (state) => state.savedList.statusData
 
 export default savedListSlice.reducer

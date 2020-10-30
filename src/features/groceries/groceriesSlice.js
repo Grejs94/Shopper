@@ -8,57 +8,27 @@ export const groceriesSlice = createSlice({
     data: [],
     categoriesData: [],
     basketData: [],
-    status: 'iddle',
-    postStatus: 'iddle',
-    putStatus: 'iddle',
-    deleteStatus: 'iddle',
-    basketStatus: 'iddle',
+    dataStatus: 'iddle',
+    basketDataStatus: 'iddle',
   },
   reducers: {
-    fetchGroceriesStarted: (state) => {
-      state.status = 'inProgress'
+    fetchGroceriesDataStarted: (state) => {
+      state.dataStatus = 'inProgress'
     },
-    fetchGroceriesSucceeded: (state) => {
-      state.status = 'succeeded'
+    fetchGroceriesDataSucceeded: (state) => {
+      state.dataStatus = 'succeeded'
     },
-    fetchGroceriesFailed: (state) => {
-      state.status = 'failed'
+    fetchGroceriesDataFailed: (state) => {
+      state.dataStatus = 'failed'
     },
-    fetchGroceriesBasketStarted: (state) => {
-      state.basketStatus = 'inProgress'
+    fetchGroceriesBasketDataStarted: (state) => {
+      state.basketDataStatus = 'inProgress'
     },
-    fetchGroceriesBasketSucceeded: (state) => {
-      state.basketStatus = 'succeeded'
+    fetchGroceriesBasketDataSucceeded: (state) => {
+      state.basketDataStatus = 'succeeded'
     },
-    fetchGroceriesBasketFailed: (state) => {
-      state.basketStatus = 'failed'
-    },
-    postGroceriesStarted: (state) => {
-      state.postStatus = 'inProgress'
-    },
-    postGroceriesSucceeded: (state) => {
-      state.postStatus = 'succeeded'
-    },
-    postGroceriesFailed: (state) => {
-      state.postStatus = 'failed'
-    },
-    putGroceriesStarted: (state) => {
-      state.putStatus = 'inProgress'
-    },
-    putGroceriesSucceeded: (state) => {
-      state.putStatus = 'succeeded'
-    },
-    putGroceriesFailed: (state) => {
-      state.putStatus = 'failed'
-    },
-    deleteGroceriesStarted: (state) => {
-      state.deleteStatus = 'inProgress'
-    },
-    deleteGroceriesSucceeded: (state) => {
-      state.putStatus = 'succeeded'
-    },
-    deleteGroceriesFailed: (state) => {
-      state.deleteStatus = 'failed'
+    fetchGroceriesBasketDataFailed: (state) => {
+      state.basketDataStatus = 'failed'
     },
     setData: (state, action) => {
       state.data = action.payload
@@ -73,21 +43,12 @@ export const groceriesSlice = createSlice({
 })
 
 export const {
-  fetchGroceriesStarted,
-  fetchGroceriesSucceeded,
-  fetchGroceriesFailed,
-  fetchGroceriesBasketStarted,
-  fetchGroceriesBasketSucceeded,
-  fetchGroceriesBasketFailed,
-  postGroceriesStarted,
-  postGroceriesSucceeded,
-  postGroceriesFailed,
-  putGroceriesStarted,
-  putGroceriesSucceeded,
-  putGroceriesFailed,
-  deleteGroceriesStarted,
-  deleteGroceriesSucceeded,
-  deleteGroceriesFailed,
+  fetchGroceriesDataStarted,
+  fetchGroceriesDataSucceeded,
+  fetchGroceriesDataFailed,
+  fetchGroceriesBasketDataStarted,
+  fetchGroceriesBasketDataSucceeded,
+  fetchGroceriesBasketDataFailed,
   setData,
   setCategoriesData,
   setBasketData,
@@ -100,20 +61,20 @@ const ifNoDataThrowErrors = (res) => {
 }
 
 export const fetchGroceriesBasket = () => async (dispatch) => {
-  dispatch(fetchGroceriesBasketStarted())
+  dispatch(fetchGroceriesBasketDataStarted())
 
   try {
     const basketData = await api.groceries.getBasketGroceries()
     dispatch(setBasketData(basketData))
 
-    dispatch(fetchGroceriesBasketSucceeded())
+    dispatch(fetchGroceriesBasketDataSucceeded())
   } catch (error) {
-    dispatch(fetchGroceriesBasketFailed())
+    dispatch(fetchGroceriesBasketDataFailed())
   }
 }
 
 export const fetchGroceries = () => async (dispatch) => {
-  dispatch(fetchGroceriesStarted())
+  dispatch(fetchGroceriesDataStarted())
 
   try {
     const data = await api.groceries.getGroceries()
@@ -125,47 +86,47 @@ export const fetchGroceries = () => async (dispatch) => {
     const basketData = await api.groceries.getBasketGroceries()
     dispatch(setBasketData(basketData))
 
-    dispatch(fetchGroceriesSucceeded())
+    dispatch(fetchGroceriesDataSucceeded())
   } catch (error) {
-    dispatch(fetchGroceriesFailed())
+    dispatch(fetchGroceriesDataFailed())
   }
 }
 
 export const postGroceriesBasket = (data) => async (dispatch) => {
-  dispatch(postGroceriesStarted())
+  dispatch(fetchGroceriesBasketDataStarted())
 
   try {
     const res = await api.groceries.postBasketGroceries(data)
 
     ifNoDataThrowErrors(res)
-    dispatch(postGroceriesSucceeded())
+    dispatch(fetchGroceriesBasketDataSucceeded())
   } catch (error) {
-    dispatch(postGroceriesFailed())
+    dispatch(fetchGroceriesBasketDataFailed())
   }
 }
 
 export const putGroceriesBasket = ({ id, data }) => async (dispatch) => {
-  dispatch(putGroceriesStarted())
+  dispatch(fetchGroceriesBasketDataStarted())
   try {
     const res = await api.groceries.putBasketGroceries({ id, data })
 
     ifNoDataThrowErrors(res)
-    dispatch(putGroceriesSucceeded())
+    dispatch(fetchGroceriesBasketDataSucceeded())
   } catch (error) {
-    dispatch(putGroceriesFailed())
+    dispatch(fetchGroceriesBasketDataFailed())
   }
 }
 
 export const deleteGroceriesBasket = ({ id, data }) => async (dispatch) => {
-  dispatch(deleteGroceriesStarted())
+  dispatch(fetchGroceriesBasketDataStarted())
 
   try {
     const res = await api.groceries.deleteBasketGroceries({ id, data })
 
     ifNoDataThrowErrors(res)
-    dispatch(deleteGroceriesSucceeded())
+    dispatch(fetchGroceriesBasketDataSucceeded())
   } catch (error) {
-    dispatch(deleteGroceriesFailed())
+    dispatch(fetchGroceriesBasketDataFailed())
   }
 }
 
@@ -173,6 +134,6 @@ export const selectGroceriesData = (state) => state.groceries.data
 export const selectGroceriesCategoriesData = (state) =>
   state.groceries.categoriesData
 export const selectGroceriesBasketData = (state) => state.groceries.basketData
-export const selectGroceriesStatus = (state) => state.groceries.status
+export const selectGroceriesStatus = (state) => state.groceries.dataStatus
 
 export default groceriesSlice.reducer

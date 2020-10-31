@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { EditModeList } from 'components'
 
 import * as Styles from './styles'
+import { smartListStatus } from 'features/allDataState'
 import {
   fetchGroceries,
   fetchGroceriesBasket,
@@ -11,7 +12,6 @@ import {
   putGroceriesBasket,
   selectGroceriesData,
   selectGroceriesCategoriesData,
-  selectGroceriesStatus,
   selectGroceriesBasketData,
 } from 'features/groceries/groceriesSlice'
 import {
@@ -21,7 +21,6 @@ import {
   putProductsBasket,
   selectProductsData,
   selectProductsCategoriesData,
-  selectProductsStatus,
   selectProductsBasketData,
 } from 'features/products/productsSlice'
 import {
@@ -31,7 +30,6 @@ import {
   putDishesBasket,
   selectDishesData,
   selectDishesCategoriesData,
-  selectDishesStatus,
   selectDishesBasketData,
 } from 'features/dishes/dishesSlice'
 import {
@@ -41,27 +39,22 @@ import {
   putSavedListsBasket,
   selectSavedListData,
   selectSavedListCategoriesData,
-  selectSavedListStatus,
   selectSavedListBasketData,
 } from 'features/savedList/savedListSlice'
 import {
   fetchHistoryBasket,
   selectHistoryData,
-  selectHistoryStatus,
 } from 'features/history/historySlice'
 import {
   fetchSettings,
   selectSettingsData,
-  selectSettingsStatus,
 } from 'features/settings/settingsSlice'
 
 import {
   fetchParentCategories,
   selectParentCategoriesData,
-  selectParentCategoriesStatus,
 } from 'features/parentCategories/parentCategoriesSlice'
 import { setActiveMenuIcon } from 'features/activeMenuIcon/activeMenuIconSlice'
-import { dataLoadingStatus } from 'hooks/dataLoadingStatus'
 
 const CreateSmartList = () => {
   const dispatch = useDispatch()
@@ -101,41 +94,26 @@ const CreateSmartList = () => {
   const groceriesCategoriesData = useSelector(selectGroceriesCategoriesData)
   const GroceriesData = useSelector(selectGroceriesData)
   const groceriesBasketData = useSelector(selectGroceriesBasketData)
-  const GroceriesStatus = useSelector(selectGroceriesStatus)
 
   const productsCategoriesData = useSelector(selectProductsCategoriesData)
   const ProductsData = useSelector(selectProductsData)
   const productsBasketData = useSelector(selectProductsBasketData)
-  const productsStatus = useSelector(selectProductsStatus)
 
   const dishesCategoriesData = useSelector(selectDishesCategoriesData)
   const DishesData = useSelector(selectDishesData)
   const dishesBasketData = useSelector(selectDishesBasketData)
-  const dishesStatus = useSelector(selectDishesStatus)
 
   const savedListCategoriesData = useSelector(selectSavedListCategoriesData)
   const SavedListData = useSelector(selectSavedListData)
   const savedListBasketData = useSelector(selectSavedListBasketData)
-  const savedListStatus = useSelector(selectSavedListStatus)
 
   const historyData = useSelector(selectHistoryData)
-  const historyStatus = useSelector(selectHistoryStatus)
 
   const settingsData = useSelector(selectSettingsData)
-  const settingsStatus = useSelector(selectSettingsStatus)
 
   const parentCategories = useSelector(selectParentCategoriesData)
-  const parentCategoriesStatus = useSelector(selectParentCategoriesStatus)
 
-  const data = dataLoadingStatus([
-    GroceriesStatus,
-    productsStatus,
-    dishesStatus,
-    savedListStatus,
-    historyStatus,
-    settingsStatus,
-    parentCategoriesStatus,
-  ])
+  const data = useSelector(smartListStatus)
 
   if (data.isError) {
     return 'Fetching data error...'

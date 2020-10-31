@@ -42,7 +42,7 @@ function BottomBarWithIcons({ icons, saveIconArray }) {
   const editIcon = useSelector(selectEditIcon)
   const addIcon = useSelector(selectAddIcon)
   const removeIcon = useSelector(selectRemoveIcon)
-  const BasketHistory = useSelector(selectBasketHistory)
+  const basketHistory = useSelector(selectBasketHistory)
 
   const basketEmpty =
     groceriesBasketData.length === 0 &&
@@ -84,7 +84,7 @@ function BottomBarWithIcons({ icons, saveIconArray }) {
   const IconSwitch = (icon) => {
     switch (icon) {
       case 'save':
-        if (BasketHistory === false) {
+        if (basketHistory === false) {
           return save_blackImg
         } else {
           return save_coloredImg
@@ -132,7 +132,7 @@ function BottomBarWithIcons({ icons, saveIconArray }) {
       <Styles.IconElement
         key={name}
         onClick={() => {
-          if (BasketHistory) {
+          if (basketHistory) {
             return
           } else {
             if (basketEmpty) {

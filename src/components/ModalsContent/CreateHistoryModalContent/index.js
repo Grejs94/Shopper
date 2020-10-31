@@ -3,29 +3,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
-import {
-  selectGroceriesBasketData,
-  selectGroceriesStatus,
-} from 'features/groceries/groceriesSlice'
-import {
-  selectProductsBasketData,
-  selectProductsStatus,
-} from 'features/products/productsSlice'
-import {
-  selectDishesBasketData,
-  selectDishesStatus,
-} from 'features/dishes/dishesSlice'
-import {
-  selectSavedListBasketData,
-  selectSavedListStatus,
-} from 'features/savedList/savedListSlice'
+import { modalDataStatus } from 'features/allDataState'
+import { selectGroceriesBasketData } from 'features/groceries/groceriesSlice'
+import { selectProductsBasketData } from 'features/products/productsSlice'
+import { selectDishesBasketData } from 'features/dishes/dishesSlice'
+import { selectSavedListBasketData } from 'features/savedList/savedListSlice'
 import { postHistoryBasket } from 'features/history/historySlice'
 
 import {
   setBasketHistory,
   setFakeHistory,
 } from 'features/createBasketHistory/createBasketHistorySlice'
-import { dataLoadingStatus } from 'hooks/dataLoadingStatus'
 import * as Styles from './styles'
 
 const CreateHistoryModalContent = () => {
@@ -37,17 +25,7 @@ const CreateHistoryModalContent = () => {
   const DishesBasket = useSelector(selectDishesBasketData)
   const SavedListBasket = useSelector(selectSavedListBasketData)
 
-  const GroceriesStatus = useSelector(selectGroceriesStatus)
-  const productsStatus = useSelector(selectProductsStatus)
-  const dishesStatus = useSelector(selectDishesStatus)
-  const savedListStatus = useSelector(selectSavedListStatus)
-
-  const data = dataLoadingStatus([
-    GroceriesStatus,
-    productsStatus,
-    dishesStatus,
-    savedListStatus,
-  ])
+  const data = modalDataStatus()
 
   if (data.isError) {
     return 'Fetching data error...'

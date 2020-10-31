@@ -6,6 +6,7 @@ import { EditModeList, ListModeList, Modal } from 'components'
 
 import CreateHistoryModalContent from 'components/ModalsContent/CreateHistoryModalContent'
 import * as Styles from './styles'
+import { itemsDataStatus } from 'features/allDataState'
 import { selectEditIcon } from 'features/toggleBottomBarIcons/toggleBottomBarIconsSlice'
 import {
   fetchGroceries,
@@ -15,7 +16,6 @@ import {
   deleteGroceriesBasket,
   selectGroceriesBasketData,
   selectGroceriesCategoriesData,
-  selectGroceriesStatus,
 } from 'features/groceries/groceriesSlice'
 import {
   fetchProducts,
@@ -25,7 +25,6 @@ import {
   deleteProductsBasket,
   selectProductsBasketData,
   selectProductsCategoriesData,
-  selectProductsStatus,
 } from 'features/products/productsSlice'
 import {
   fetchDishes,
@@ -35,7 +34,6 @@ import {
   deleteDishesBasket,
   selectDishesBasketData,
   selectDishesCategoriesData,
-  selectDishesStatus,
 } from 'features/dishes/dishesSlice'
 import {
   fetchSavedLists,
@@ -45,15 +43,12 @@ import {
   deleteSavedListsBasket,
   selectSavedListBasketData,
   selectSavedListCategoriesData,
-  selectSavedListStatus,
 } from 'features/savedList/savedListSlice'
 import {
   fetchParentCategories,
   selectParentCategoriesData,
-  selectParentCategoriesStatus,
 } from 'features/parentCategories/parentCategoriesSlice'
 import { setActiveMenuIcon } from 'features/activeMenuIcon/activeMenuIconSlice'
-import { dataLoadingStatus } from 'hooks/dataLoadingStatus'
 
 const BasketPageContent = () => {
   const dispatch = useDispatch()
@@ -92,30 +87,19 @@ const BasketPageContent = () => {
 
   const groceriesCategoriesData = useSelector(selectGroceriesCategoriesData)
   const groceriesBasketData = useSelector(selectGroceriesBasketData)
-  const GroceriesStatus = useSelector(selectGroceriesStatus)
 
   const productsCategories = useSelector(selectProductsCategoriesData)
   const productsBasketData = useSelector(selectProductsBasketData)
-  const productsStatus = useSelector(selectProductsStatus)
 
   const dishesCategories = useSelector(selectDishesCategoriesData)
   const dishesBasketData = useSelector(selectDishesBasketData)
-  const dishesStatus = useSelector(selectDishesStatus)
 
   const savedListCategories = useSelector(selectSavedListCategoriesData)
   const savedListBasketData = useSelector(selectSavedListBasketData)
-  const savedListStatus = useSelector(selectSavedListStatus)
 
   const parentCategories = useSelector(selectParentCategoriesData)
-  const parentCategoriesStatus = useSelector(selectParentCategoriesStatus)
 
-  const data = dataLoadingStatus([
-    GroceriesStatus,
-    productsStatus,
-    dishesStatus,
-    savedListStatus,
-    parentCategoriesStatus,
-  ])
+  const data = useSelector(itemsDataStatus)
 
   if (data.isError) {
     return 'Fetching data error...'

@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 
 import { EditModeList } from 'components'
 
+import { itemsDataStatus } from 'features/allDataState'
 import { selectCategory } from 'features/category/categorySlice'
 import {
   fetchGroceries,
@@ -12,7 +13,6 @@ import {
   selectGroceriesData,
   selectGroceriesBasketData,
   selectGroceriesCategoriesData,
-  selectGroceriesStatus,
 } from 'features/groceries/groceriesSlice'
 import {
   fetchProducts,
@@ -22,7 +22,6 @@ import {
   selectProductsData,
   selectProductsBasketData,
   selectProductsCategoriesData,
-  selectProductsStatus,
 } from 'features/products/productsSlice'
 import {
   fetchDishes,
@@ -32,7 +31,6 @@ import {
   selectDishesData,
   selectDishesBasketData,
   selectDishesCategoriesData,
-  selectDishesStatus,
 } from 'features/dishes/dishesSlice'
 import {
   fetchSavedLists,
@@ -42,15 +40,12 @@ import {
   selectSavedListData,
   selectSavedListBasketData,
   selectSavedListCategoriesData,
-  selectSavedListStatus,
 } from 'features/savedList/savedListSlice'
 import {
   fetchParentCategories,
   selectParentCategoriesData,
-  selectParentCategoriesStatus,
 } from 'features/parentCategories/parentCategoriesSlice'
 import { setActiveMenuIcon } from 'features/activeMenuIcon/activeMenuIconSlice'
-import { dataLoadingStatus } from 'hooks/dataLoadingStatus'
 
 const ScrollToParentCategory = ({ category }) => {
   const div = document.querySelector(`#${category}`)
@@ -96,33 +91,22 @@ function ElementsPage() {
   const groceriesData = useSelector(selectGroceriesData)
   const groceriesCategoriesData = useSelector(selectGroceriesCategoriesData)
   const groceriesBasketData = useSelector(selectGroceriesBasketData)
-  const GroceriesStatus = useSelector(selectGroceriesStatus)
 
   const productsData = useSelector(selectProductsData)
   const productsCategories = useSelector(selectProductsCategoriesData)
   const productsBasketData = useSelector(selectProductsBasketData)
-  const productsStatus = useSelector(selectProductsStatus)
 
   const dishesData = useSelector(selectDishesData)
   const dishesCategories = useSelector(selectDishesCategoriesData)
   const dishesBasketData = useSelector(selectDishesBasketData)
-  const dishesStatus = useSelector(selectDishesStatus)
 
   const savedListData = useSelector(selectSavedListData)
   const savedListCategories = useSelector(selectSavedListCategoriesData)
   const savedListBasketData = useSelector(selectSavedListBasketData)
-  const savedListStatus = useSelector(selectSavedListStatus)
 
   const parentCategories = useSelector(selectParentCategoriesData)
-  const parentCategoriesStatus = useSelector(selectParentCategoriesStatus)
 
-  const data = dataLoadingStatus([
-    GroceriesStatus,
-    productsStatus,
-    dishesStatus,
-    savedListStatus,
-    parentCategoriesStatus,
-  ])
+  const data = useSelector(itemsDataStatus)
 
   const category = useSelector(selectCategory)
 

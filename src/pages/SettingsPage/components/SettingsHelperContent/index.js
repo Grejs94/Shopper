@@ -6,9 +6,8 @@ import {
   fetchSettings,
   putSettings,
   selectSettingsData,
-  selectSettingsStatus,
 } from 'features/settings/settingsSlice'
-import { dataLoadingStatus } from 'hooks/dataLoadingStatus'
+import { settingsHelperContentStatus } from 'features/allDataState'
 
 const SettingsHelperContent = () => {
   const dispatch = useDispatch()
@@ -19,9 +18,8 @@ const SettingsHelperContent = () => {
   }, [dispatch, updateSettings])
 
   const settingsData = useSelector(selectSettingsData)
-  const settingsStatus = useSelector(selectSettingsStatus)
 
-  const data = dataLoadingStatus([settingsStatus])
+  const data = settingsHelperContentStatus()
 
   if (data.isError) {
     return 'Fetching data error...'

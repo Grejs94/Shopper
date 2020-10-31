@@ -1,5 +1,7 @@
 import { config } from '../config'
 
+import { getPOSTparams, getPUTparams, getDELETEparams } from 'assets'
+
 export const savedList = {
   getSavedLists: async () => {
     const res = await fetch(`${config.url}/savedLists`)
@@ -14,34 +16,26 @@ export const savedList = {
     return await res.json()
   },
   postBasketSavedLists: async ({ data }) => {
-    const response = await fetch(`${config.url}/basketDishes`, {
-      method: 'POST',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
+    const response = await fetch(
+      `${config.url}/basketDishes`,
+      getPOSTparams(data),
+    )
 
     return await response.json()
   },
   putBasketSavedLists: async ({ data, id }) => {
-    const response = await fetch(`${config.url}/basketSavedLists/${id}`, {
-      method: 'PUT',
-      headers: {
-        'Content-type': 'application/json',
-      },
-      body: JSON.stringify(data),
-    })
+    const response = await fetch(
+      `${config.url}/basketSavedLists/${id}`,
+      getPUTparams(data),
+    )
 
     return await response.json()
   },
   deleteBasketSavedLists: async ({ id }) => {
-    const response = await fetch(`${config.url}/basketSavedLists/${id}`, {
-      method: 'DELETE',
-      headers: {
-        'Content-type': 'application/json',
-      },
-    })
+    const response = await fetch(
+      `${config.url}/basketSavedLists/${id}`,
+      getDELETEparams(),
+    )
 
     return await response.json()
   },

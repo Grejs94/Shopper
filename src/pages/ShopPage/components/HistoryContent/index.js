@@ -7,30 +7,25 @@ import * as Styles from './styles'
 import {
   fetchGroceries,
   selectGroceriesCategoriesData,
-  selectGroceriesStatus,
 } from 'features/groceries/groceriesSlice'
 import {
   fetchProducts,
   selectProductsCategoriesData,
-  selectProductsStatus,
 } from 'features/products/productsSlice'
 import {
   fetchDishes,
   selectDishesCategoriesData,
-  selectDishesStatus,
 } from 'features/dishes/dishesSlice'
 import {
   fetchSavedLists,
   selectSavedListCategoriesData,
-  selectSavedListStatus,
 } from 'features/savedList/savedListSlice'
 import {
   fetchHistoryBasket,
   deleteHistoryBasket,
   selectHistoryData,
-  selectHistoryStatus,
 } from 'features/history/historySlice'
-import { dataLoadingStatus } from 'hooks/dataLoadingStatus'
+import { HistoryContentStatus } from 'features/allDataState'
 
 const HistoryContent = () => {
   const dispatch = useDispatch()
@@ -48,27 +43,16 @@ const HistoryContent = () => {
   }, [dispatch, updateHistory])
 
   const groceriesCategoriesData = useSelector(selectGroceriesCategoriesData)
-  const groceriesStatus = useSelector(selectGroceriesStatus)
 
   const productsCategories = useSelector(selectProductsCategoriesData)
-  const productsStatus = useSelector(selectProductsStatus)
 
   const dishesCategories = useSelector(selectDishesCategoriesData)
-  const dishesStatus = useSelector(selectDishesStatus)
 
   const savedListCategories = useSelector(selectSavedListCategoriesData)
-  const savedListStatus = useSelector(selectSavedListStatus)
 
   const historyData = useSelector(selectHistoryData)
-  const historyStatus = useSelector(selectHistoryStatus)
 
-  const data = dataLoadingStatus([
-    groceriesStatus,
-    productsStatus,
-    dishesStatus,
-    savedListStatus,
-    historyStatus,
-  ])
+  const data = HistoryContentStatus()
 
   if (data.isError) {
     return 'Fetching data error...'

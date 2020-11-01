@@ -8,12 +8,40 @@ const selectParentCategoriesStatus = (state) => state.parentCategories.status
 const selectHistoryStatus = (state) => state.history.status
 const selectSettingsStatus = (state) => state.settings.status
 
+export const selectGroceriesBasketData = (state) => state.groceries.basketData
+export const selectProductsBasketData = (state) => state.products.basketData
+export const selectDishesBasketData = (state) => state.dishes.basketData
+export const selectSavedListBasketData = (state) => state.savedList.basketData
+
+export const isBasketEmpty = createSelector(
+  selectGroceriesBasketData,
+  selectProductsBasketData,
+  selectDishesBasketData,
+  selectSavedListBasketData,
+
+  (
+    selectGroceriesBasketData,
+    selectProductsBasketData,
+    selectDishesBasketData,
+    selectSavedListBasketData,
+  ) => {
+    const empty =
+      selectGroceriesBasketData.length === 0 &&
+      selectProductsBasketData.length === 0 &&
+      selectDishesBasketData.length === 0 &&
+      selectSavedListBasketData.length === 0
+
+    return empty
+  },
+)
+
 export const itemsDataStatus = createSelector(
   selectGroceriesStatus,
   selectProductsStatus,
   selectDishesStatus,
   selectSavedListStatus,
   selectParentCategoriesStatus,
+  isBasketEmpty,
 
   (
     selectGroceriesStatus,
@@ -21,6 +49,7 @@ export const itemsDataStatus = createSelector(
     selectDishesStatus,
     selectSavedListStatus,
     selectParentCategoriesStatus,
+    isBasketEmpty,
   ) => {
     const dataStatus = [
       selectGroceriesStatus,
@@ -34,9 +63,11 @@ export const itemsDataStatus = createSelector(
       isError: false,
       isLoading: true,
       isLoaded: false,
+      isBasketEmpty: false,
     }
 
     let workingIsLoaded = true
+    result.isBasketEmpty = isBasketEmpty
 
     dataStatus.forEach((singleStatus) => {
       if (singleStatus === 'failed') {

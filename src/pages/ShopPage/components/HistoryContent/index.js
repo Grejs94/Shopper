@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 
 import { useSelector, useDispatch } from 'react-redux'
 
@@ -70,7 +70,7 @@ const HistoryContent = () => {
     return showWhenEmpty
   }
 
-  const CreateHistoryElement = historyData.map(
+  return historyData.map(
     ({ groceries, products, dishes, savedLists, id, DateToShow }) => {
       return (
         <Styles.Wrapper key={id}>
@@ -113,8 +113,6 @@ const HistoryContent = () => {
       )
     },
   )
-
-  return CreateHistoryElement
 }
 
 export default HistoryContent

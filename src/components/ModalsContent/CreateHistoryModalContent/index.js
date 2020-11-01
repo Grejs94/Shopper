@@ -4,10 +4,22 @@ import { useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { modalDataStatus } from 'features/allDataState'
-import { selectGroceriesBasketData } from 'features/groceries/groceriesSlice'
-import { selectProductsBasketData } from 'features/products/productsSlice'
-import { selectDishesBasketData } from 'features/dishes/dishesSlice'
-import { selectSavedListBasketData } from 'features/savedList/savedListSlice'
+import {
+  selectGroceriesBasketData,
+  fetchGroceries,
+} from 'features/groceries/groceriesSlice'
+import {
+  selectProductsBasketData,
+  fetchProducts,
+} from 'features/products/productsSlice'
+import {
+  selectDishesBasketData,
+  fetchDishes,
+} from 'features/dishes/dishesSlice'
+import {
+  selectSavedListBasketData,
+  fetchSavedLists,
+} from 'features/savedList/savedListSlice'
 import { postHistoryBasket } from 'features/history/historySlice'
 
 import {
@@ -15,6 +27,7 @@ import {
   setFakeHistory,
 } from 'features/createBasketHistory/createBasketHistorySlice'
 import * as Styles from './styles'
+import { useEffect } from 'react'
 
 const CreateHistoryModalContent = () => {
   const history = useHistory()
@@ -25,7 +38,7 @@ const CreateHistoryModalContent = () => {
   const DishesBasket = useSelector(selectDishesBasketData)
   const SavedListBasket = useSelector(selectSavedListBasketData)
 
-  const data = modalDataStatus()
+  const data = useSelector(modalDataStatus)
 
   if (data.isError) {
     return 'Fetching data error...'
@@ -46,7 +59,6 @@ const CreateHistoryModalContent = () => {
         <Styles.Button
           onClick={() => {
             dispatch(setBasketHistory())
-            console.log('sdf')
             dispatch(
               postHistoryBasket({
                 data: {

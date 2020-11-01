@@ -66,6 +66,33 @@ function BottomBarWithIcons({ icons, saveIconArray }) {
     }
   }
 
+  const handleSaveIcon = (onClick) => {
+    if (basketHistory) {
+      return
+    } else {
+      if (basketEmpty) {
+        history.push('/basket/messageWhenEmpty')
+      } else {
+        dispatch(
+          postHistoryBasket({
+            data: {
+              saved: Date.now(),
+              DateToShow: new Date(Date.now()).toLocaleString().slice(0, 9),
+              groceries: [...groceriesBasketData],
+              products: [...productsBasketData],
+              dishes: [...dishesBasketData],
+              savedLists: [...savedListBasketData],
+            },
+          }),
+        )
+
+        toast.success(`the shopping list has been added to history `)
+
+        dispatch(onClick())
+      }
+    }
+  }
+
   const resetIcon = (
     <Styles.IconElement>
       <Styles.Img
@@ -81,36 +108,15 @@ function BottomBarWithIcons({ icons, saveIconArray }) {
     </Styles.IconElement>
   )
 
-  const IconSwitch = (icon) => {
-    switch (icon) {
-      case 'save':
-        if (basketHistory === false) {
-          return save_blackImg
-        } else {
-          return save_coloredImg
-        }
-      case 'edit':
-        if (editIcon === false) {
-          return list_coloredImg
-        } else {
-          return edit_coloredImg
-        }
-      case 'add':
-        if (addIcon === false) {
-          return add_blackImg
-        } else {
-          return add_coloredImg
-        }
-      case 'remove':
-        if (removeIcon === false) {
-          return remove_blackImg
-        } else {
-          return remove_coloredImg
-        }
-
-      default:
-        return
+  const IconSwitchObject = (name) => {
+    const icons = {
+      save: basketHistory ? save_coloredImg : save_blackImg,
+      edit: editIcon ? edit_coloredImg : list_coloredImg,
+      add: addIcon ? add_coloredImg : add_blackImg,
+      remove: removeIcon ? remove_coloredImg : remove_blackImg,
     }
+
+    return icons[name]
   }
 
   const restIconsList =
@@ -122,45 +128,15 @@ function BottomBarWithIcons({ icons, saveIconArray }) {
           dispatch(onClick())
         }}
       >
-        <Styles.Img src={IconSwitch(name)}></Styles.Img>
+        <Styles.Img src={IconSwitchObject(name)}></Styles.Img>
       </Styles.IconElement>
     ))
 
   const saveIcon =
     saveIconArray &&
     saveIconArray.map(({ name, onClick }) => (
-      <Styles.IconElement
-        key={name}
-        onClick={() => {
-          if (basketHistory) {
-            return
-          } else {
-            if (basketEmpty) {
-              history.push('/basket/messageWhenEmpty')
-            } else {
-              dispatch(
-                postHistoryBasket({
-                  data: {
-                    saved: Date.now(),
-                    DateToShow: new Date(Date.now())
-                      .toLocaleString()
-                      .slice(0, 9),
-                    groceries: [...groceriesBasketData],
-                    products: [...productsBasketData],
-                    dishes: [...dishesBasketData],
-                    savedLists: [...savedListBasketData],
-                  },
-                }),
-              )
-
-              toast.success(`the shopping list has been added to history `)
-
-              dispatch(onClick())
-            }
-          }
-        }}
-      >
-        <Styles.Img src={IconSwitch(name)}></Styles.Img>
+      <Styles.IconElement key={name} onClick={() => handleSaveIcon(onClick)}>
+        <Styles.Img src={IconSwitchObject(name)}></Styles.Img>
       </Styles.IconElement>
     ))
 

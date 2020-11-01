@@ -92,13 +92,7 @@ const BasketPageContent = () => {
     return null
   }
 
-  const basketEmpty =
-    groceriesBasketData.length === 0 &&
-    productsBasketData.length === 0 &&
-    dishesBasketData.length === 0 &&
-    savedListBasketData.length === 0
-
-  return basketEmpty ? (
+  return data.isBasketEmpty ? (
     <Styles.Message>Your basket is empty!</Styles.Message>
   ) : editMode ? (
     <div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
 
@@ -53,11 +53,6 @@ import { setActiveMenuIcon } from 'features/activeMenuIcon/activeMenuIconSlice'
 const BasketPageContent = () => {
   const dispatch = useDispatch()
 
-  const [fetchGroceriesData, setFetchGroceriesData] = useState(false)
-  const [fetchProductsData, setFetchProductsData] = useState(false)
-  const [fetchDishesData, setFetchDishesData] = useState(false)
-  const [fetchSavedListsData, setFetchSavedListsData] = useState(false)
-
   useEffect(() => {
     dispatch(setActiveMenuIcon('basket'))
     dispatch(fetchGroceries())
@@ -66,22 +61,6 @@ const BasketPageContent = () => {
     dispatch(fetchSavedLists())
     dispatch(fetchParentCategories())
   }, [dispatch])
-
-  useEffect(() => {
-    dispatch(fetchGroceriesBasket())
-  }, [dispatch, fetchGroceriesData])
-
-  useEffect(() => {
-    dispatch(fetchProductsBasket())
-  }, [dispatch, fetchProductsData])
-
-  useEffect(() => {
-    dispatch(fetchDishesBasket())
-  }, [dispatch, fetchDishesData])
-
-  useEffect(() => {
-    dispatch(fetchSavedListsBasket())
-  }, [dispatch, fetchSavedListsData])
 
   const editMode = useSelector(selectEditIcon)
 
@@ -119,10 +98,8 @@ const BasketPageContent = () => {
     dishesBasketData.length === 0 &&
     savedListBasketData.length === 0
 
-  const messege = <Styles.Message>Your basket is empty!</Styles.Message>
-
   return basketEmpty ? (
-    messege
+    <Styles.Message>Your basket is empty!</Styles.Message>
   ) : editMode ? (
     <div>
       <EditModeList
@@ -134,7 +111,7 @@ const BasketPageContent = () => {
         postItemToBasket={postGroceriesBasket}
         putBasketItem={putGroceriesBasket}
         deleteBasketItem={deleteGroceriesBasket}
-        updateData={setFetchGroceriesData}
+        updateData={() => dispatch(fetchGroceriesBasket())}
       />
       <EditModeList
         parentsTitle="Products"
@@ -145,7 +122,7 @@ const BasketPageContent = () => {
         postItemToBasket={postProductsBasket}
         putBasketItem={putProductsBasket}
         deleteBasketItem={deleteProductsBasket}
-        updateData={setFetchProductsData}
+        updateData={() => dispatch(fetchProductsBasket())}
       />
       <EditModeList
         parentsTitle="Dishes"
@@ -156,7 +133,7 @@ const BasketPageContent = () => {
         postItemToBasket={postDishesBasket}
         putBasketItem={putDishesBasket}
         deleteBasketItem={deleteDishesBasket}
-        updateData={setFetchDishesData}
+        updateData={() => dispatch(fetchDishesBasket())}
       />
       <EditModeList
         parentsTitle="SavedList"
@@ -167,7 +144,7 @@ const BasketPageContent = () => {
         postItemToBasket={postSavedListsBasket}
         putBasketItem={putSavedListsBasket}
         deleteBasketItem={deleteSavedListsBasket}
-        updateData={setFetchSavedListsData}
+        updateData={() => dispatch(fetchSavedListsBasket())}
       />
       <Switch>
         <Route path="/basket/createBasketHistory">

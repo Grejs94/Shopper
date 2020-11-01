@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import * as Styles from './styles'
@@ -7,19 +7,18 @@ import {
   putSettings,
   selectSettingsData,
 } from 'features/settings/settingsSlice'
-import { settingsHelperContentStatus } from 'features/allDataState'
+import { SettingsStatus } from 'features/allDataState'
 
 const SettingsHelperContent = () => {
   const dispatch = useDispatch()
-  const [updateSettings, setUpdateSettings] = useState(false)
 
   useEffect(() => {
     dispatch(fetchSettings())
-  }, [dispatch, updateSettings])
+  }, [dispatch])
 
   const settingsData = useSelector(selectSettingsData)
 
-  const data = settingsHelperContentStatus()
+  const data = useSelector(SettingsStatus)
 
   if (data.isError) {
     return 'Fetching data error...'
@@ -36,7 +35,7 @@ const SettingsHelperContent = () => {
   const handleputSettings = ({ data }) => {
     dispatch(putSettings({ data }))
 
-    setUpdateSettings((old) => !old)
+    dispatch(fetchSettings())
   }
 
   const handleChangeSortBy = () => {

@@ -29,18 +29,14 @@ import { HistoryContentStatus } from 'features/allDataState'
 
 const HistoryContent = () => {
   const dispatch = useDispatch()
-  const [updateHistory, setUpdateHistory] = useState(false)
 
   useEffect(() => {
     dispatch(fetchGroceries())
     dispatch(fetchProducts())
     dispatch(fetchDishes())
     dispatch(fetchSavedLists())
-  }, [dispatch])
-
-  useEffect(() => {
     dispatch(fetchHistoryBasket())
-  }, [dispatch, updateHistory])
+  }, [dispatch])
 
   const groceriesCategoriesData = useSelector(selectGroceriesCategoriesData)
 
@@ -83,7 +79,7 @@ const HistoryContent = () => {
             <Styles.Button
               onClick={() => {
                 dispatch(deleteHistoryBasket({ id: id }))
-                setUpdateHistory((old) => !old)
+                dispatch(fetchHistoryBasket())
               }}
             >
               Delete from history

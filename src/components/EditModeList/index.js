@@ -54,15 +54,13 @@ const EditModeList = ({
         `The ${parentsTitle}: "${item.name}" 
         current value is ${incrementValue}`,
       )
-
-      updateData((old) => !old)
     }
 
     const findElement = BasketitemsList.filter(
       (basketGrocery) => basketGrocery.id === item.id,
     )
 
-    const allreadyInBasket = findElement.length ? true : false
+    const allreadyInBasket = !!findElement.length
 
     parentCategories.map((ParentCategory) => {
       if (item.parentCategoryId === ParentCategory.id) {
@@ -89,8 +87,6 @@ const EditModeList = ({
                   id: item.id,
                 }),
               )
-
-              updateData((old) => !old)
             }
           }
         } else if (
@@ -114,8 +110,6 @@ const EditModeList = ({
             toast.success(
               `The ${parentsTitle}: "${item.name}" has been successfully added to your basket`,
             )
-
-            updateData((old) => !old)
           }
         }
       } else {
@@ -123,6 +117,7 @@ const EditModeList = ({
       }
       return null
     })
+    updateData()
   }
 
   return (

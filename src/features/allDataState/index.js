@@ -173,11 +173,27 @@ export const modalDataStatus = createSelector(
   },
 )
 
-export const settingsHelperContentStatus = createSelector(
-  selectSettingsStatus,
+export const HistoryContentStatus = createSelector(
+  selectGroceriesStatus,
+  selectProductsStatus,
+  selectDishesStatus,
+  selectSavedListStatus,
+  selectHistoryStatus,
 
-  (selectSettingsStatus) => {
-    const dataStatus = [selectSettingsStatus]
+  (
+    selectGroceriesStatus,
+    selectProductsStatus,
+    selectDishesStatus,
+    selectSavedListStatus,
+    selectHistoryStatus,
+  ) => {
+    const dataStatus = [
+      selectGroceriesStatus,
+      selectProductsStatus,
+      selectDishesStatus,
+      selectSavedListStatus,
+      selectHistoryStatus,
+    ]
 
     let result = {
       isError: false,
@@ -211,27 +227,11 @@ export const settingsHelperContentStatus = createSelector(
   },
 )
 
-export const HistoryContentStatus = createSelector(
-  selectGroceriesStatus,
-  selectProductsStatus,
-  selectDishesStatus,
-  selectSavedListStatus,
-  selectHistoryStatus,
+export const SettingsStatus = createSelector(
+  selectSettingsStatus,
 
-  (
-    selectGroceriesStatus,
-    selectProductsStatus,
-    selectDishesStatus,
-    selectSavedListStatus,
-    selectHistoryStatus,
-  ) => {
-    const dataStatus = [
-      selectGroceriesStatus,
-      selectProductsStatus,
-      selectDishesStatus,
-      selectSavedListStatus,
-      selectHistoryStatus,
-    ]
+  (selectSettingsStatus) => {
+    const dataStatus = [selectSettingsStatus]
 
     let result = {
       isError: false,

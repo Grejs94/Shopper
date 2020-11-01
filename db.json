@@ -1114,7 +1114,7 @@
       "categoryId": "1",
       "parentCategoryId": "1",
       "showInShop": true,
-      "value": "36"
+      "value": "40"
     },
     {
       "id": "2",
@@ -1130,7 +1130,7 @@
       "categoryId": "1",
       "parentCategoryId": "1",
       "showInShop": true,
-      "value": "12"
+      "value": "14"
     },
     {
       "id": "52",
@@ -1146,7 +1146,7 @@
       "categoryId": "1",
       "parentCategoryId": "1",
       "showInShop": true,
-      "value": "9"
+      "value": "12"
     },
     {
       "id": "7",
@@ -1187,6 +1187,46 @@
       "parentCategoryId": "1",
       "showInShop": true,
       "value": "5"
+    },
+    {
+      "id": "3",
+      "name": "potato",
+      "categoryId": "1",
+      "parentCategoryId": "1",
+      "showInShop": true,
+      "value": "3"
+    },
+    {
+      "id": "200",
+      "name": "still water",
+      "categoryId": "5",
+      "parentCategoryId": "1",
+      "showInShop": true,
+      "value": "1"
+    },
+    {
+      "id": "207",
+      "name": "coca cola",
+      "categoryId": "5",
+      "parentCategoryId": "1",
+      "showInShop": true,
+      "value": "1"
+    },
+    {
+      "id": "151",
+      "name": "sausages",
+      "categoryId": "4",
+      "parentCategoryId": "1",
+      "showInShop": true,
+      "value": "1"
+    },
+    {
+      "id": "152",
+      "name": "chicken fillet",
+      "categoryId": "4",
+      "parentCategoryId": "1",
+      "showInShop": true,
+      "value": "1"
     }
   ],
   "basketProducts": [
@@ -1303,7 +1343,7 @@
           "value": "1"
         }
       ],
-      "value": "5"
+      "value": "6"
     },
     {
       "id": "1",
@@ -2597,7 +2637,7 @@
     }
   ],
   "settings": {
-    "sortBy": "Bought most times"
+    "sortBy": "Time Intervals"
   },
   "hideElements": [
     {

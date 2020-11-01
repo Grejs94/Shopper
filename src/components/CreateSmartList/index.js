@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 
 import { EditModeList } from 'components'
@@ -59,11 +59,6 @@ import { setActiveMenuIcon } from 'features/activeMenuIcon/activeMenuIconSlice'
 const CreateSmartList = () => {
   const dispatch = useDispatch()
 
-  const [fetchGroceriesData, setFetchGroceriesData] = useState(false)
-  const [fetchProductsData, setFetchProductsData] = useState(false)
-  const [fetchDishesData, setFetchDishesData] = useState(false)
-  const [fetchSavedListsData, setFetchSavedListsData] = useState(false)
-
   useEffect(() => {
     dispatch(setActiveMenuIcon('shopHelper'))
     dispatch(fetchGroceries())
@@ -74,22 +69,6 @@ const CreateSmartList = () => {
     dispatch(fetchSettings())
     dispatch(fetchParentCategories())
   }, [dispatch])
-
-  useEffect(() => {
-    dispatch(fetchGroceriesBasket())
-  }, [dispatch, fetchGroceriesData])
-
-  useEffect(() => {
-    dispatch(fetchProductsBasket())
-  }, [dispatch, fetchProductsData])
-
-  useEffect(() => {
-    dispatch(fetchDishesBasket())
-  }, [dispatch, fetchDishesData])
-
-  useEffect(() => {
-    dispatch(fetchSavedListsBasket())
-  }, [dispatch, fetchSavedListsData])
 
   const groceriesCategoriesData = useSelector(selectGroceriesCategoriesData)
   const GroceriesData = useSelector(selectGroceriesData)
@@ -355,7 +334,7 @@ const CreateSmartList = () => {
         parentCategories={parentCategories}
         postItemToBasket={postGroceriesBasket}
         putBasketItem={putGroceriesBasket}
-        updateData={setFetchGroceriesData}
+        updateData={() => dispatch(fetchGroceriesBasket())}
       />
       <EditModeList
         BasketitemsList={productsBasketData}
@@ -370,7 +349,7 @@ const CreateSmartList = () => {
         parentCategories={parentCategories}
         postItemToBasket={postProductsBasket}
         putBasketItem={putProductsBasket}
-        updateData={setFetchProductsData}
+        updateData={() => dispatch(fetchProductsBasket())}
       />
       <EditModeList
         BasketitemsList={dishesBasketData}
@@ -385,7 +364,7 @@ const CreateSmartList = () => {
         parentCategories={parentCategories}
         postItemToBasket={postDishesBasket}
         putBasketItem={putDishesBasket}
-        updateData={setFetchDishesData}
+        updateData={() => dispatch(fetchDishesBasket())}
       />
       <EditModeList
         BasketitemsList={savedListBasketData}
@@ -400,7 +379,7 @@ const CreateSmartList = () => {
         parentCategories={parentCategories}
         postItemToBasket={postSavedListsBasket}
         putBasketItem={putSavedListsBasket}
-        updateData={setFetchSavedListsData}
+        updateData={() => dispatch(fetchSavedListsBasket())}
       />
     </div>
   )

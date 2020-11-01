@@ -48,7 +48,7 @@ const HistoryContent = () => {
 
   const historyData = useSelector(selectHistoryData)
 
-  const data = HistoryContentStatus()
+  const data = useSelector(HistoryContentStatus)
 
   if (data.isError) {
     return 'Fetching data error...'
@@ -62,12 +62,8 @@ const HistoryContent = () => {
     return null
   }
 
-  const showWhenEmpty = (
-    <Styles.Message>Your purchase history is empty!</Styles.Message>
-  )
-
   if (historyData.length < 1) {
-    return showWhenEmpty
+    return <Styles.Message>Your purchase history is empty!</Styles.Message>
   }
 
   return historyData.map(

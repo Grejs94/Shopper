@@ -290,96 +290,103 @@ const CreateSmartList = () => {
     })
   }
 
-  const sortedGroceriesByDaysAverage = arrayOfItemsByAverage[0].sort(
-    (a, b) => b.daysAverage - a.daysAverage,
+  const sortdaysAverage = (array) =>
+    array.sort((a, b) => b.daysAverage - a.daysAverage)
+
+  const sortedGroceriesByDaysAverage = sortdaysAverage(arrayOfItemsByAverage[0])
+  const sortedProductsByDaysAverage = sortdaysAverage(arrayOfItemsByAverage[1])
+  const sortedDishesByDaysAverage = sortdaysAverage(arrayOfItemsByAverage[2])
+  const sortedSavedListsByDaysAverage = sortdaysAverage(
+    arrayOfItemsByAverage[3],
   )
 
-  const sortedProductsByDaysAverage = arrayOfItemsByAverage[1].sort(
-    (a, b) => b.daysAverage - a.daysAverage,
-  )
+  const sortdaysValue = (array) => array.sort((a, b) => b.value - a.value)
 
-  const sortedDishesByDaysAverage = arrayOfItemsByAverage[2].sort(
-    (a, b) => b.daysAverage - a.daysAverage,
-  )
+  const sortedGroceriesByValueFromHistory = sortdaysValue(workingArraysList[0])
+  const sortedProductsByValueFromHistory = sortdaysValue(workingArraysList[1])
+  const sortedDishesByValueFromHistory = sortdaysValue(workingArraysList[2])
+  const sortedSavedListByValueFromHistory = sortdaysValue(workingArraysList[3])
 
-  const sortedSavedListsByDaysAverage = arrayOfItemsByAverage[3].sort(
-    (a, b) => b.daysAverage - a.daysAverage,
-  )
+  const propsItemsList = {
+    Groceries: sortByNumber
+      ? sortedGroceriesByValueFromHistory
+      : sortedGroceriesByDaysAverage,
+    Products: sortByNumber
+      ? sortedProductsByValueFromHistory
+      : sortedProductsByDaysAverage,
+    Dishes: sortByNumber
+      ? sortedDishesByValueFromHistory
+      : sortedDishesByDaysAverage,
+    SavedList: sortByNumber
+      ? sortedSavedListByValueFromHistory
+      : sortedSavedListsByDaysAverage,
+  }
 
-  const sortedGroceriesByValueFromHistory = workingArraysList[0].sort(
-    (a, b) => b.value - a.value,
-  )
-  const sortedProductsByValueFromHistory = workingArraysList[1].sort(
-    (a, b) => b.value - a.value,
-  )
-  const sortedDishesByValueFromHistory = workingArraysList[2].sort(
-    (a, b) => b.value - a.value,
-  )
-  const sortedSavedListByValueFromHistory = workingArraysList[3].sort(
-    (a, b) => b.value - a.value,
-  )
+  const getEditModeListProps = (
+    data,
+    parentsTitle,
+    itemsList,
+    filtredCategories,
+    postItemToBasket,
+    putBasketItem,
+    updateData,
+  ) => ({
+    BasketitemsList: data,
+    parentsTitle,
+    itemsList: itemsList[parentsTitle],
+    filtredCategories,
+    variant: 'shop',
+    parentCategories: parentCategories,
+    postItemToBasket,
+    putBasketItem,
+    updateData: () => dispatch(updateData()),
+  })
 
   return (
     <div>
       <EditModeList
-        BasketitemsList={groceriesBasketData}
-        parentsTitle="Groceries"
-        itemsList={
-          sortByNumber
-            ? sortedGroceriesByValueFromHistory
-            : sortedGroceriesByDaysAverage
-        }
-        filtredCategories={groceriesCategoriesData}
-        variant="shop"
-        parentCategories={parentCategories}
-        postItemToBasket={postGroceriesBasket}
-        putBasketItem={putGroceriesBasket}
-        updateData={() => dispatch(fetchGroceriesBasket())}
+        {...getEditModeListProps(
+          groceriesBasketData,
+          'Groceries',
+          propsItemsList,
+          groceriesCategoriesData,
+          postGroceriesBasket,
+          putGroceriesBasket,
+          fetchGroceriesBasket,
+        )}
       />
       <EditModeList
-        BasketitemsList={productsBasketData}
-        parentsTitle="Products"
-        itemsList={
-          sortByNumber
-            ? sortedProductsByValueFromHistory
-            : sortedProductsByDaysAverage
-        }
-        filtredCategories={productsCategoriesData}
-        variant="shop"
-        parentCategories={parentCategories}
-        postItemToBasket={postProductsBasket}
-        putBasketItem={putProductsBasket}
-        updateData={() => dispatch(fetchProductsBasket())}
+        {...getEditModeListProps(
+          productsBasketData,
+          'Products',
+          propsItemsList,
+          productsCategoriesData,
+          postProductsBasket,
+          putProductsBasket,
+          fetchProductsBasket,
+        )}
       />
       <EditModeList
-        BasketitemsList={dishesBasketData}
-        parentsTitle="Dishes"
-        itemsList={
-          sortByNumber
-            ? sortedDishesByValueFromHistory
-            : sortedDishesByDaysAverage
-        }
-        filtredCategories={dishesCategoriesData}
-        variant="shop"
-        parentCategories={parentCategories}
-        postItemToBasket={postDishesBasket}
-        putBasketItem={putDishesBasket}
-        updateData={() => dispatch(fetchDishesBasket())}
+        {...getEditModeListProps(
+          dishesBasketData,
+          'Dishes',
+          propsItemsList,
+          dishesCategoriesData,
+          postDishesBasket,
+          putDishesBasket,
+          fetchDishesBasket,
+        )}
       />
       <EditModeList
-        BasketitemsList={savedListBasketData}
-        parentsTitle="SavedList"
-        itemsList={
-          sortByNumber
-            ? sortedSavedListByValueFromHistory
-            : sortedSavedListsByDaysAverage
-        }
-        filtredCategories={savedListCategoriesData}
-        variant="shop"
-        parentCategories={parentCategories}
-        postItemToBasket={postSavedListsBasket}
-        putBasketItem={putSavedListsBasket}
-        updateData={() => dispatch(fetchSavedListsBasket())}
+        {...getEditModeListProps(
+          savedListBasketData,
+          'SavedList',
+          propsItemsList,
+          savedListCategoriesData,
+          postSavedListsBasket,
+          putSavedListsBasket,
+          fetchSavedListsBasket,
+        )}
       />
     </div>
   )

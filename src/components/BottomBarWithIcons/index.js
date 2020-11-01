@@ -108,15 +108,11 @@ function BottomBarWithIcons({ icons, saveIconArray }) {
     </Styles.IconElement>
   )
 
-  const IconSwitchObject = (name) => {
-    const icons = {
-      save: basketHistory ? save_coloredImg : save_blackImg,
-      edit: editIcon ? edit_coloredImg : list_coloredImg,
-      add: addIcon ? add_coloredImg : add_blackImg,
-      remove: removeIcon ? remove_coloredImg : remove_blackImg,
-    }
-
-    return icons[name]
+  const iconSelect = {
+    save: basketHistory ? save_coloredImg : save_blackImg,
+    edit: editIcon ? edit_coloredImg : list_coloredImg,
+    add: addIcon ? add_coloredImg : add_blackImg,
+    remove: removeIcon ? remove_coloredImg : remove_blackImg,
   }
 
   const restIconsList =
@@ -128,7 +124,7 @@ function BottomBarWithIcons({ icons, saveIconArray }) {
           dispatch(onClick())
         }}
       >
-        <Styles.Img src={IconSwitchObject(name)}></Styles.Img>
+        <Styles.Img src={iconSelect[name]}></Styles.Img>
       </Styles.IconElement>
     ))
 
@@ -136,7 +132,7 @@ function BottomBarWithIcons({ icons, saveIconArray }) {
     saveIconArray &&
     saveIconArray.map(({ name, onClick }) => (
       <Styles.IconElement key={name} onClick={() => handleSaveIcon(onClick)}>
-        <Styles.Img src={IconSwitchObject(name)}></Styles.Img>
+        <Styles.Img src={iconSelect[name]}></Styles.Img>
       </Styles.IconElement>
     ))
 

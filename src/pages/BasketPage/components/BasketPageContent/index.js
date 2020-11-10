@@ -92,9 +92,11 @@ const BasketPageContent = () => {
     return null
   }
 
-  return data.isBasketEmpty ? (
-    <Styles.Message>Your basket is empty!</Styles.Message>
-  ) : editMode ? (
+  if (data.isBasketEmpty) {
+    return <Styles.Message>Your basket is empty!</Styles.Message>
+  }
+
+  return editMode ? (
     <div>
       <EditModeList
         parentsTitle="Groceries"

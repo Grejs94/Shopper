@@ -26,10 +26,10 @@ export const isBasketEmpty = createSelector(
     selectSavedListBasketData,
   ) => {
     const empty =
-      selectGroceriesBasketData.length === 0 &&
-      selectProductsBasketData.length === 0 &&
-      selectDishesBasketData.length === 0 &&
-      selectSavedListBasketData.length === 0
+      !selectGroceriesBasketData.length &&
+      !selectProductsBasketData.length &&
+      !selectDishesBasketData.length &&
+      !selectSavedListBasketData.length
 
     return empty
   },
@@ -69,19 +69,25 @@ export const itemsDataStatus = createSelector(
     let workingIsLoaded = true
     result.isBasketEmpty = isBasketEmpty
 
-    dataStatus.forEach((singleStatus) => {
-      if (singleStatus === 'failed') {
-        result.isError = true
-      }
+    let checkSucceded = true
 
-      if (singleStatus === 'inProgress') {
-        result.isLoading = true
-      }
+    if (dataStatus.some((status) => status === 'failed')) {
+      result.isError = true
+      checkSucceded = false
+    }
 
-      if (singleStatus !== 'succeeded') {
-        workingIsLoaded = false
-      }
-    })
+    if (dataStatus.some((status) => status === 'inProgress')) {
+      result.isLoading = true
+      checkSucceded = false
+    }
+
+    if (checkSucceded) {
+      dataStatus.forEach((singleStatus) => {
+        if (singleStatus !== 'succeeded') {
+          workingIsLoaded = false
+        }
+      })
+    }
 
     result.isLoaded = workingIsLoaded
 

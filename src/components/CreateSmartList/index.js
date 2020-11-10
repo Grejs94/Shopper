@@ -129,18 +129,6 @@ const CreateSmartList = () => {
     )
   }
 
-  const workingUseGroceresX = []
-  const workingUseProductsX = []
-  const workingDishesX = []
-  const workingSavedListX = []
-
-  const workingArraysList = [
-    workingUseGroceresX,
-    workingUseProductsX,
-    workingDishesX,
-    workingSavedListX,
-  ]
-
   const ArrayParentCategories = [
     GroceriesData,
     ProductsData,
@@ -148,95 +136,91 @@ const CreateSmartList = () => {
     SavedListData,
   ]
 
-  const historyElements = historyData
+  const historyGroceriesItemsSortByDays = []
+  const historyProductsItemsSortByDays = []
+  const historyDishesItemsSortByDays = []
+  const historySavedListsItemsSortByDays = []
 
-  const itemsListFromGroceriesWithAverage = []
-  const itemsListFromProductsWithAverage = []
-  const itemsListFromDishesWithAverage = []
-  const itemsListFromSavedListSWithAverage = []
+  const historyGroceriesItemsSortByAverage = []
+  const historyProductsItemsSortByAverage = []
+  const historyDishesItemsSortByAverage = []
+  const historySavedListsItemsSortByAverage = []
 
-  const arrayOfItemsByAverage = [
-    itemsListFromGroceriesWithAverage,
-    itemsListFromProductsWithAverage,
-    itemsListFromDishesWithAverage,
-    itemsListFromSavedListSWithAverage,
-  ]
+  const switchParentCategory = (item, history) => {
+    switch (item.parentCategoryId) {
+      case '1':
+        return history.groceries
+
+      case '2':
+        return history.products
+
+      case '3':
+        return history.dishes
+
+      case '4':
+        return history.savedLists
+
+      default:
+        break
+    }
+  }
 
   if (sortByNumber) {
-    ArrayParentCategories.map((array, index) => {
-      array.map((item) => {
+    ArrayParentCategories.forEach((array) => {
+      array.forEach((item) => {
         let value = 0
 
-        historyElements.map((history) => {
-          const switchParentCategory = (index) => {
-            switch (index) {
-              case 0:
-                return history.groceries
-              case 1:
-                return history.products
-              case 2:
-                return history.dishes
-              case 3:
-                return history.savedLists
-
-              default:
-                return history.groceries
-            }
-          }
-
-          switchParentCategory(index).map((historyItem) => {
+        historyData.forEach((history) => {
+          switchParentCategory(item, history).forEach((historyItem) => {
             if (item.id === historyItem.id) {
               value++
             }
-            return null
           })
-
-          return null
         })
         const parentCategoryItem = { ...item, value: value }
 
         if (value > 0) {
-          workingArraysList[index].push(parentCategoryItem)
-        }
-        return null
-      })
-      return null
-    })
-  } else if (!sortByNumber) {
-    ArrayParentCategories.map((parentCategory, index) => {
-      parentCategory.map((item) => {
-        const itemsList = []
-        const intervals = []
-        historyElements.map((history) => {
-          const switchParentCategory = (index) => {
-            switch (index) {
-              case 0:
-                return history.groceries
-              case 1:
-                return history.products
-              case 2:
-                return history.dishes
-              case 3:
-                return history.savedLists
+          const switchArray = () => {
+            switch (item.parentCategoryId) {
+              case '1':
+                return historyGroceriesItemsSortByDays
+
+              case '2':
+                return historyProductsItemsSortByDays
+
+              case '3':
+                return historyDishesItemsSortByDays
+
+              case '4':
+                return historySavedListsItemsSortByDays
 
               default:
-                return history.groceries
+                break
             }
           }
-          switchParentCategory(index).map((historyItem) => {
+
+          switchArray().push(parentCategoryItem)
+        }
+      })
+    })
+  } else if (!sortByNumber) {
+    ArrayParentCategories.forEach((parentCategory, index) => {
+      parentCategory.forEach((item) => {
+        const itemsList = []
+        const intervals = []
+        historyData.forEach((history) => {
+          switchParentCategory(index, history).forEach((historyItem) => {
             if (historyItem.id === item.id) {
               intervals.push(history.saved)
             }
-            return null
           })
-          return null
         })
         if (intervals.length > 1) {
           const workItem = { ...item, intervals: intervals }
           itemsList.push(workItem)
         }
 
-        itemsList.map((updatedItem) => {
+        itemsList.forEach((updatedItem) => {
           const daysDifferenceArray = []
           const numberOfExecution = updatedItem.intervals.length - 1
           let i
@@ -278,48 +262,52 @@ const CreateSmartList = () => {
             ...updatedItem,
           }
 
-          arrayOfItemsByAverage[index].push({
+          const switchAverageArray = (item) => {
+            switch (item.parentCategoryId) {
+              case '1':
+                return historyGroceriesItemsSortByAverage
+
+              case '2':
+                return historyProductsItemsSortByAverage
+
+              case '3':
+                return historyDishesItemsSortByAverage
+
+              case '4':
+                return historySavedListsItemsSortByAverage
+
+              default:
+                break
+            }
+          }
+
+          switchAverageArray(item).push({
             ...workItem,
             value: probabilityIndex,
           })
-          return null
         })
-        return null
       })
-      return null
     })
   }
 
   const sortdaysAverage = (array) =>
     array.sort((a, b) => b.daysAverage - a.daysAverage)
 
-  const sortedGroceriesByDaysAverage = sortdaysAverage(arrayOfItemsByAverage[0])
-  const sortedProductsByDaysAverage = sortdaysAverage(arrayOfItemsByAverage[1])
-  const sortedDishesByDaysAverage = sortdaysAverage(arrayOfItemsByAverage[2])
-  const sortedSavedListsByDaysAverage = sortdaysAverage(
-    arrayOfItemsByAverage[3],
-  )
-
   const sortdaysValue = (array) => array.sort((a, b) => b.value - a.value)
-
-  const sortedGroceriesByValueFromHistory = sortdaysValue(workingArraysList[0])
-  const sortedProductsByValueFromHistory = sortdaysValue(workingArraysList[1])
-  const sortedDishesByValueFromHistory = sortdaysValue(workingArraysList[2])
-  const sortedSavedListByValueFromHistory = sortdaysValue(workingArraysList[3])
 
   const propsItemsList = {
     Groceries: sortByNumber
-      ? sortedGroceriesByValueFromHistory
-      : sortedGroceriesByDaysAverage,
+      ? sortdaysValue(historyGroceriesItemsSortByDays)
+      : sortdaysAverage(historyGroceriesItemsSortByAverage),
     Products: sortByNumber
-      ? sortedProductsByValueFromHistory
-      : sortedProductsByDaysAverage,
+      ? sortdaysValue(historyProductsItemsSortByDays)
+      : sortdaysAverage(historyProductsItemsSortByAverage),
     Dishes: sortByNumber
-      ? sortedDishesByValueFromHistory
-      : sortedDishesByDaysAverage,
+      ? sortdaysValue(historyDishesItemsSortByDays)
+      : sortdaysAverage(historyDishesItemsSortByAverage),
     SavedList: sortByNumber
-      ? sortedSavedListByValueFromHistory
-      : sortedSavedListsByDaysAverage,
+      ? sortdaysValue(historySavedListsItemsSortByDays)
+      : sortdaysAverage(historySavedListsItemsSortByAverage),
   }
 
   const getEditModeListProps = (
@@ -336,7 +324,7 @@ const CreateSmartList = () => {
     itemsList: itemsList[parentsTitle],
     filtredCategories,
     variant: 'shop',
-    parentCategories: parentCategories,
+    parentCategories,
     postItemToBasket,
     putBasketItem,
     updateData: () => dispatch(updateData()),

@@ -4,30 +4,16 @@ import { useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
 
 import { modalDataStatus } from 'features/allDataState'
-import {
-  selectGroceriesBasketData,
-  fetchGroceries,
-} from 'features/groceries/groceriesSlice'
-import {
-  selectProductsBasketData,
-  fetchProducts,
-} from 'features/products/productsSlice'
-import {
-  selectDishesBasketData,
-  fetchDishes,
-} from 'features/dishes/dishesSlice'
-import {
-  selectSavedListBasketData,
-  fetchSavedLists,
-} from 'features/savedList/savedListSlice'
+import { selectGroceriesBasketData } from 'features/groceries/groceriesSlice'
+import { selectProductsBasketData } from 'features/products/productsSlice'
+import { selectDishesBasketData } from 'features/dishes/dishesSlice'
+import { selectSavedListBasketData } from 'features/savedList/savedListSlice'
 import { postHistoryBasket } from 'features/history/historySlice'
-
 import {
   setBasketHistory,
   setFakeHistory,
 } from 'features/createBasketHistory/createBasketHistorySlice'
 import * as Styles from './styles'
-import { useEffect } from 'react'
 
 const CreateHistoryModalContent = () => {
   const history = useHistory()

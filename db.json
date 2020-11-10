@@ -1146,7 +1146,7 @@
       "categoryId": "1",
       "parentCategoryId": "1",
       "showInShop": true,
-      "value": "20"
+      "value": "18"
     },
     {
       "id": "7",
@@ -1178,7 +1178,7 @@
       "categoryId": "2",
       "parentCategoryId": "1",
       "showInShop": true,
-      "value": "1"
+      "value": "2"
     },
     {
       "id": "103",
@@ -1194,7 +1194,7 @@
       "categoryId": "1",
       "parentCategoryId": "1",
       "showInShop": true,
-      "value": "5"
+      "value": "6"
     },
     {
       "id": "200",

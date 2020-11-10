@@ -69,28 +69,29 @@ function BottomBarWithIcons({ icons, saveIconArray }) {
   const handleSaveIcon = (onClick) => {
     if (basketHistory) {
       return
-    } else {
-      if (basketEmpty) {
-        history.push('/basket/messageWhenEmpty')
-      } else {
-        dispatch(
-          postHistoryBasket({
-            data: {
-              saved: Date.now(),
-              DateToShow: new Date(Date.now()).toLocaleString().slice(0, 9),
-              groceries: [...groceriesBasketData],
-              products: [...productsBasketData],
-              dishes: [...dishesBasketData],
-              savedLists: [...savedListBasketData],
-            },
-          }),
-        )
-
-        toast.success(`the shopping list has been added to history `)
-
-        dispatch(onClick())
-      }
     }
+
+    if (basketEmpty) {
+      history.push('/basket/messageWhenEmpty')
+      return
+    }
+
+    dispatch(
+      postHistoryBasket({
+        data: {
+          saved: Date.now(),
+          DateToShow: new Date(Date.now()).toLocaleString().slice(0, 9),
+          groceries: [...groceriesBasketData],
+          products: [...productsBasketData],
+          dishes: [...dishesBasketData],
+          savedLists: [...savedListBasketData],
+        },
+      }),
+    )
+
+    toast.success(`the shopping list has been added to history `)
+
+    dispatch(onClick())
   }
 
   const resetIcon = (

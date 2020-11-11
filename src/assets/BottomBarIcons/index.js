@@ -2,7 +2,7 @@ import {
   toggleEditIcon,
   toggleAddIcon,
   toggleRemoveIcon,
-} from 'features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice'
+} from 'features/toggleBottomBarIcons/toggleBottomBarIconsSlice'
 import { setBasketHistory } from 'features/createBasketHistory/createBasketHistorySlice'
 
 export const IconsBottomEditVariant = [

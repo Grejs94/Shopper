@@ -1,141 +1,179 @@
-import React from 'react'
-import { useSelector } from 'react-redux'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import { Switch, Route } from 'react-router-dom'
 
 import { EditModeList, ListModeList, Modal } from 'components'
-import API from 'api'
 
 import CreateHistoryModalContent from 'components/ModalsContent/CreateHistoryModalContent'
-import { selectEditIcon } from 'features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice'
 import * as Styles from './styles'
+import { itemsDataStatus } from 'features/allDataState'
+import { selectEditIcon } from 'features/toggleBottomBarIcons/toggleBottomBarIconsSlice'
+import {
+  fetchGroceries,
+  fetchGroceriesBasket,
+  postGroceriesBasket,
+  putGroceriesBasket,
+  deleteGroceriesBasket,
+  selectGroceriesBasketData,
+  selectGroceriesCategoriesData,
+} from 'features/groceries/groceriesSlice'
+import {
+  fetchProducts,
+  fetchProductsBasket,
+  postProductsBasket,
+  putProductsBasket,
+  deleteProductsBasket,
+  selectProductsBasketData,
+  selectProductsCategoriesData,
+} from 'features/products/productsSlice'
+import {
+  fetchDishes,
+  fetchDishesBasket,
+  postDishesBasket,
+  putDishesBasket,
+  deleteDishesBasket,
+  selectDishesBasketData,
+  selectDishesCategoriesData,
+} from 'features/dishes/dishesSlice'
+import {
+  fetchSavedLists,
+  fetchSavedListsBasket,
+  postSavedListsBasket,
+  putSavedListsBasket,
+  deleteSavedListsBasket,
+  selectSavedListBasketData,
+  selectSavedListCategoriesData,
+} from 'features/savedList/savedListSlice'
+import {
+  fetchParentCategories,
+  selectParentCategoriesData,
+} from 'features/parentCategories/parentCategoriesSlice'
+import { setActiveMenuIcon } from 'features/activeMenuIcon/activeMenuIconSlice'
 
 const BasketPageContent = () => {
-  // { isError, isLoading, isSuccess, data }
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setActiveMenuIcon('basket'))
+    dispatch(fetchGroceries())
+    dispatch(fetchProducts())
+    dispatch(fetchDishes())
+    dispatch(fetchSavedLists())
+    dispatch(fetchParentCategories())
+  }, [dispatch])
+
   const editMode = useSelector(selectEditIcon)
 
-  const useGroceres = API.useGroceres()
-  const useGroceriesCategories = API.useGroceriesCategories()
-  const useProducts = API.useProducts()
-  const useProductsCategories = API.useProductsCategories()
-  const dishes = API.UseDishes()
-  const dishesCategories = API.UseDishesCategory()
-  const savedList = API.useSavedList()
-  const useSavedListsCategories = API.useSavedListsCategories()
+  const groceriesCategoriesData = useSelector(selectGroceriesCategoriesData)
+  const groceriesBasketData = useSelector(selectGroceriesBasketData)
 
-  const useBasketGroceres = API.useBasketGroceres()
-  const useBasketProducts = API.useBasketProducts()
-  const useBasketDishes = API.useBasketDishes()
-  const useBasketSavedLists = API.useBasketSavedLists()
+  const productsCategories = useSelector(selectProductsCategoriesData)
+  const productsBasketData = useSelector(selectProductsBasketData)
 
-  if (
-    useGroceres.isError ||
-    useGroceriesCategories.isError ||
-    useProducts.isError ||
-    useProductsCategories.isError ||
-    dishes.isError ||
-    dishesCategories.isError ||
-    savedList.isError ||
-    useSavedListsCategories.isError ||
-    useBasketGroceres.isError ||
-    useBasketProducts.isError ||
-    useBasketDishes.isError ||
-    useBasketSavedLists.isError
-  ) {
-    return 'Fetching date error...'
-  } else if (
-    useGroceres.isLoading ||
-    useGroceriesCategories.isLoading ||
-    useProducts.isLoading ||
-    useProductsCategories.isLoading ||
-    dishes.isLoading ||
-    dishesCategories.isLoading ||
-    savedList.isLoading ||
-    useSavedListsCategories.isLoading ||
-    useBasketGroceres.isLoading ||
-    useBasketProducts.isLoading ||
-    useBasketDishes.isLoading ||
-    useBasketSavedLists.isLoading
-  ) {
-    return 'Loading date...'
-  } else if (
-    useGroceres.isSuccess &&
-    useGroceriesCategories.isSuccess &&
-    useProducts.isSuccess &&
-    useProductsCategories.isSuccess &&
-    dishes.isSuccess &&
-    dishesCategories.isSuccess &&
-    savedList.isSuccess &&
-    useSavedListsCategories.isSuccess &&
-    useBasketGroceres.isSuccess &&
-    useBasketProducts.isSuccess &&
-    useBasketDishes.isSuccess &&
-    useBasketSavedLists.isSuccess
-  ) {
-    const basketEmpty =
-      useBasketGroceres.data.length === 0 &&
-      useBasketProducts.data.length === 0 &&
-      useBasketDishes.data.length === 0 &&
-      useBasketSavedLists.data.length === 0
+  const dishesCategories = useSelector(selectDishesCategoriesData)
+  const dishesBasketData = useSelector(selectDishesBasketData)
 
-    const messege = <Styles.Message>Your basket is empty!</Styles.Message>
+  const savedListCategories = useSelector(selectSavedListCategoriesData)
+  const savedListBasketData = useSelector(selectSavedListBasketData)
 
-    return basketEmpty ? (
-      messege
-    ) : editMode ? (
-      <div>
-        <EditModeList
-          parentsTitle="Groceries"
-          itemsList={useBasketGroceres.data}
-          filtredCategories={useGroceriesCategories.data}
-        />
-        <EditModeList
-          parentsTitle="Products"
-          itemsList={useBasketProducts.data}
-          filtredCategories={useProductsCategories.data}
-        />
-        <EditModeList
-          parentsTitle="Dishes"
-          itemsList={useBasketDishes.data}
-          filtredCategories={dishesCategories.data}
-        />
-        <EditModeList
-          parentsTitle="SavedList"
-          itemsList={useBasketSavedLists.data}
-          filtredCategories={useSavedListsCategories.data}
-        />
-        <Switch>
-          <Route path="/basket/createBasketHistory">
-            <Modal>
-              <CreateHistoryModalContent />
-            </Modal>
-          </Route>
-        </Switch>
-      </div>
-    ) : (
-      <div>
-        <ListModeList
-          parentsTitle="Groceries"
-          itemsList={useBasketGroceres.data}
-          filtredCategories={useGroceriesCategories.data}
-        />
-        <ListModeList
-          parentsTitle="Products"
-          itemsList={useBasketProducts.data}
-          filtredCategories={useProductsCategories.data}
-        />
-        <ListModeList
-          parentsTitle="Dishes"
-          itemsList={useBasketDishes.data}
-          filtredCategories={dishesCategories.data}
-        />
-        <ListModeList
-          parentsTitle="SavedList"
-          itemsList={useBasketSavedLists.data}
-          filtredCategories={useSavedListsCategories.data}
-        />
-      </div>
-    )
+  const parentCategories = useSelector(selectParentCategoriesData)
+
+  const data = useSelector(itemsDataStatus)
+
+  if (data.isError) {
+    return 'Fetching data error...'
   }
+
+  if (data.isLoading) {
+    return 'Loading data...'
+  }
+
+  if (!data.isLoaded) {
+    return null
+  }
+
+  if (data.isBasketEmpty) {
+    return <Styles.Message>Your basket is empty!</Styles.Message>
+  }
+
+  return editMode ? (
+    <div>
+      <EditModeList
+        parentsTitle="Groceries"
+        itemsList={groceriesBasketData}
+        BasketitemsList={groceriesBasketData}
+        filtredCategories={groceriesCategoriesData}
+        parentCategories={parentCategories}
+        postItemToBasket={postGroceriesBasket}
+        putBasketItem={putGroceriesBasket}
+        deleteBasketItem={deleteGroceriesBasket}
+        updateData={() => dispatch(fetchGroceriesBasket())}
+      />
+      <EditModeList
+        parentsTitle="Products"
+        itemsList={productsBasketData}
+        BasketitemsList={productsBasketData}
+        filtredCategories={productsCategories}
+        parentCategories={parentCategories}
+        postItemToBasket={postProductsBasket}
+        putBasketItem={putProductsBasket}
+        deleteBasketItem={deleteProductsBasket}
+        updateData={() => dispatch(fetchProductsBasket())}
+      />
+      <EditModeList
+        parentsTitle="Dishes"
+        itemsList={dishesBasketData}
+        BasketitemsList={dishesBasketData}
+        filtredCategories={dishesCategories}
+        parentCategories={parentCategories}
+        postItemToBasket={postDishesBasket}
+        putBasketItem={putDishesBasket}
+        deleteBasketItem={deleteDishesBasket}
+        updateData={() => dispatch(fetchDishesBasket())}
+      />
+      <EditModeList
+        parentsTitle="SavedList"
+        itemsList={savedListBasketData}
+        BasketitemsList={savedListBasketData}
+        filtredCategories={savedListCategories}
+        parentCategories={parentCategories}
+        postItemToBasket={postSavedListsBasket}
+        putBasketItem={putSavedListsBasket}
+        deleteBasketItem={deleteSavedListsBasket}
+        updateData={() => dispatch(fetchSavedListsBasket())}
+      />
+      <Switch>
+        <Route path="/basket/createBasketHistory">
+          <Modal>
+            <CreateHistoryModalContent />
+          </Modal>
+        </Route>
+      </Switch>
+    </div>
+  ) : (
+    <div>
+      <ListModeList
+        parentsTitle="Groceries"
+        itemsList={groceriesBasketData}
+        filtredCategories={groceriesCategoriesData}
+      />
+      <ListModeList
+        parentsTitle="Products"
+        itemsList={productsBasketData}
+        filtredCategories={productsCategories}
+      />
+      <ListModeList
+        parentsTitle="Dishes"
+        itemsList={dishesBasketData}
+        filtredCategories={dishesCategories}
+      />
+      <ListModeList
+        parentsTitle="SavedList"
+        itemsList={savedListBasketData}
+        filtredCategories={savedListCategories}
+      />
+    </div>
+  )
 }
 
 export default BasketPageContent

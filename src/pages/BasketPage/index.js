@@ -12,7 +12,7 @@ import {
 
 import { BasketPageContent } from './components'
 import * as Styles2 from 'assets/StyledComponents/MainPageWrapper.css'
-import { selectEditIcon } from 'features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice'
+import { selectEditIcon } from 'features/toggleBottomBarIcons/toggleBottomBarIconsSlice'
 
 function BasketPage() {
   const editMode = useSelector(selectEditIcon)

@@ -1,30 +1,29 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 
 export const createBasketHistorySlice = createSlice({
-  name: "BasketHistory",
+  name: 'BasketHistory',
   initialState: {
     historyCreated: false,
     fakeHistory: false,
   },
   reducers: {
     setBasketHistory: (state) => {
-      state.historyCreated = true;
-      state.fakeHistory = true;
+      state.historyCreated = true
+      state.fakeHistory = true
     },
     setFakeHistory: (state) => {
-      state.fakeHistory = true;
+      state.fakeHistory = true
     },
   },
-});
+})
 
 export const {
   setBasketHistory,
   setFakeHistory,
-} = createBasketHistorySlice.actions;
+} = createBasketHistorySlice.actions
 
-export const selectBasketHistory = (state) =>
-  state.BasketHistory.historyCreated;
+export const selectBasketHistory = (state) => state.BasketHistory.historyCreated
 
-export const selectFakeHistory = (state) => state.BasketHistory.fakeHistory;
+export const selectFakeHistory = (state) => state.BasketHistory.fakeHistory
 
-export default createBasketHistorySlice.reducer;
+export default createBasketHistorySlice.reducer

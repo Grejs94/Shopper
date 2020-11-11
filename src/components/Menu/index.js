@@ -17,7 +17,7 @@ import {
 
 import * as Styles from './styles'
 import { setActiveMenuIcon } from 'features/activeMenuIcon/activeMenuIconSlice'
-import { resetEditIcon } from 'features/toggleBottomBarIconsSlice/toggleBottomBarIconsSlice'
+import { resetEditIcon } from 'features/toggleBottomBarIcons/toggleBottomBarIconsSlice'
 
 function Menu({ iconElementsList, activeIcon }) {
   const dispatch = useDispatch()

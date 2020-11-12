@@ -26,7 +26,6 @@ const EditModeList = ({
   postItemToBasket,
   putBasketItem,
   deleteBasketItem,
-  updateData,
 }) => {
   const dispatch = useDispatch()
   const history = useHistory()
@@ -117,7 +116,6 @@ const EditModeList = ({
       }
       return null
     })
-    updateData()
   }
 
   return (

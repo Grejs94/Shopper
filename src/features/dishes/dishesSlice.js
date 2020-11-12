@@ -61,17 +61,29 @@ const ifNoDataThrowErrors = (res) => {
   }
 }
 
-export const fetchDishesBasket = () => async (dispatch) => {
+const fetchBasket = async (dispatch) => {
+  const basketData = await api.dishes.getBasket()
+  await dispatch(setBasketData(basketData))
+}
+
+const BasketFetchBody = async (dispatch, api, data) => {
   dispatch(fetchDishesBasketDataStarted())
 
   try {
-    const basketData = await api.dishes.getBasket()
-    dispatch(setBasketData(basketData))
+    if (data && api) {
+      const res = await api(data)
+      ifNoDataThrowErrors(res)
+    }
 
+    await fetchBasket(dispatch)
     dispatch(fetchDishesBasketDataSucceeded())
   } catch (error) {
     dispatch(fetchDishesBasketDataFailed())
   }
+}
+
+export const fetchDishesBasket = () => async (dispatch) => {
+  BasketFetchBody(dispatch)
 }
 
 export const fetchDishes = () => async (dispatch) => {
@@ -94,42 +106,15 @@ export const fetchDishes = () => async (dispatch) => {
 }
 
 export const postDishesBasket = (data) => async (dispatch) => {
-  dispatch(fetchDishesBasketDataStarted())
-
-  try {
-    const res = await api.dishes.postBasketDishes(data)
-
-    ifNoDataThrowErrors(res)
-    dispatch(fetchDishesBasketDataSucceeded())
-  } catch (error) {
-    dispatch(fetchDishesBasketDataFailed())
-  }
+  BasketFetchBody(dispatch, api.dishes.postBasketDishes, data)
 }
 
 export const putDishesBasket = (data) => async (dispatch) => {
-  dispatch(fetchDishesBasketDataStarted())
-
-  try {
-    const res = await api.dishes.putBasketDishes(data)
-
-    ifNoDataThrowErrors(res)
-    dispatch(fetchDishesBasketDataSucceeded())
-  } catch (error) {
-    dispatch(fetchDishesBasketDataFailed())
-  }
+  BasketFetchBody(dispatch, api.dishes.putBasketDishes, data)
 }
 
 export const deleteDishesBasket = ({ id, data }) => async (dispatch) => {
-  dispatch(fetchDishesBasketDataStarted())
-
-  try {
-    const res = await api.dishes.deleteBasketDishes({ id, data })
-
-    ifNoDataThrowErrors(res)
-    dispatch(fetchDishesBasketDataSucceeded())
-  } catch (error) {
-    dispatch(fetchDishesBasketDataFailed())
-  }
+  BasketFetchBody(dispatch, api.dishes.deleteBasketDishes, { id, data })
 }
 
 export const selectDishesData = (state) => state.dishes.data

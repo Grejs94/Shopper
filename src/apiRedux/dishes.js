@@ -1,6 +1,8 @@
 import { config } from '../config'
 
-import { getPOSTparams, getPUTparams, getDELETEparams } from 'assets'
+import { getPOSTparams, getPUTparams, getDELETEparams } from './helpers'
+
+const urlBasket = 'basketDishes'
 
 export const dishes = {
   getDishes: async () => {
@@ -12,12 +14,12 @@ export const dishes = {
     return await res.json()
   },
   getBasket: async () => {
-    const res = await fetch(`${config.url}/basketDishes`)
+    const res = await fetch(`${config.url}/${urlBasket}`)
     return await res.json()
   },
   postBasketDishes: async ({ data }) => {
     const response = await fetch(
-      `${config.url}/basketDishes`,
+      `${config.url}/${urlBasket}`,
       getPOSTparams(data),
     )
 
@@ -25,7 +27,7 @@ export const dishes = {
   },
   putBasketDishes: async ({ data, id }) => {
     const response = await fetch(
-      `${config.url}/basketDishes/${id}`,
+      `${config.url}/${urlBasket}/${id}`,
       getPUTparams(data),
     )
 
@@ -33,7 +35,7 @@ export const dishes = {
   },
   deleteBasketDishes: async ({ id }) => {
     const response = await fetch(
-      `${config.url}/basketDishes/${id}`,
+      `${config.url}/${urlBasket}/${id}`,
       getDELETEparams(),
     )
 

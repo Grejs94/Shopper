@@ -9,9 +9,9 @@ import {
   IconsBottomListVariant,
   saveIconArray,
 } from 'assets'
+import * as Styles2 from 'assets/StyledComponents/MainPageWrapper.css'
 
 import { BasketPageContent } from './components'
-import * as Styles2 from 'assets/StyledComponents/MainPageWrapper.css'
 import { selectEditIcon } from 'features/toggleBottomBarIcons/toggleBottomBarIconsSlice'
 
 function BasketPage() {

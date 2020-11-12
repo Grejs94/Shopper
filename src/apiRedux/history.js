@@ -1,6 +1,6 @@
 import { config } from '../config'
 
-import { getPOSTparams, getDELETEparams } from 'assets'
+import { getPOSTparams, getDELETEparams } from './helpers'
 
 export const history = {
   getHistory: async () => {

@@ -1,7 +1,6 @@
 export * from 'assets/PagesIcons'
 export * from 'assets/BottomBarIcons'
 export * from './StyledComponents'
-export * from './helpers'
 
 export const incrementedString = (string, value) => {
   const number = parseInt(value)

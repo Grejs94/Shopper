@@ -60,17 +60,29 @@ const ifNoDataThrowErrors = (res) => {
   }
 }
 
-export const fetchGroceriesBasket = () => async (dispatch) => {
+const fetchBasket = async (dispatch) => {
+  const basketData = await api.groceries.getBasketGroceries()
+  await dispatch(setBasketData(basketData))
+}
+
+const BasketFetchBody = async (dispatch, api, data) => {
   dispatch(fetchGroceriesBasketDataStarted())
 
   try {
-    const basketData = await api.groceries.getBasketGroceries()
-    dispatch(setBasketData(basketData))
+    if (data && api) {
+      const res = await api(data)
+      ifNoDataThrowErrors(res)
+    }
 
+    await fetchBasket(dispatch)
     dispatch(fetchGroceriesBasketDataSucceeded())
   } catch (error) {
     dispatch(fetchGroceriesBasketDataFailed())
   }
+}
+
+export const fetchGroceriesBasket = () => async (dispatch) => {
+  BasketFetchBody(dispatch)
 }
 
 export const fetchGroceries = () => async (dispatch) => {
@@ -93,41 +105,15 @@ export const fetchGroceries = () => async (dispatch) => {
 }
 
 export const postGroceriesBasket = (data) => async (dispatch) => {
-  dispatch(fetchGroceriesBasketDataStarted())
-
-  try {
-    const res = await api.groceries.postBasketGroceries(data)
-
-    ifNoDataThrowErrors(res)
-    dispatch(fetchGroceriesBasketDataSucceeded())
-  } catch (error) {
-    dispatch(fetchGroceriesBasketDataFailed())
-  }
+  BasketFetchBody(dispatch, api.groceries.postBasketGroceries, data)
 }
 
 export const putGroceriesBasket = ({ id, data }) => async (dispatch) => {
-  dispatch(fetchGroceriesBasketDataStarted())
-  try {
-    const res = await api.groceries.putBasketGroceries({ id, data })
-
-    ifNoDataThrowErrors(res)
-    dispatch(fetchGroceriesBasketDataSucceeded())
-  } catch (error) {
-    dispatch(fetchGroceriesBasketDataFailed())
-  }
+  BasketFetchBody(dispatch, api.groceries.putBasketGroceries, { id, data })
 }
 
 export const deleteGroceriesBasket = ({ id, data }) => async (dispatch) => {
-  dispatch(fetchGroceriesBasketDataStarted())
-
-  try {
-    const res = await api.groceries.deleteBasketGroceries({ id, data })
-
-    ifNoDataThrowErrors(res)
-    dispatch(fetchGroceriesBasketDataSucceeded())
-  } catch (error) {
-    dispatch(fetchGroceriesBasketDataFailed())
-  }
+  BasketFetchBody(dispatch, api.groceries.deleteBasketGroceries, { id, data })
 }
 
 export const selectGroceriesData = (state) => state.groceries.data

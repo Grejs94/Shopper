@@ -1,6 +1,6 @@
 import { config } from '../config'
 
-import { getPUTparams } from 'assets'
+import { getPUTparams } from './helpers'
 
 export const settings = {
   getSettings: async () => {

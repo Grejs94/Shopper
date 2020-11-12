@@ -75,7 +75,6 @@ const HistoryContent = () => {
             <Styles.Button
               onClick={() => {
                 dispatch(deleteHistoryBasket({ id: id }))
-                dispatch(fetchHistoryBasket())
               }}
             >
               Delete from history

@@ -60,17 +60,29 @@ const ifNoDataThrowErrors = (res) => {
   }
 }
 
-export const fetchSavedListsBasket = () => async (dispatch) => {
+const fetchBasket = async (dispatch) => {
+  const basketData = await api.savedList.getBasket()
+  await dispatch(setBasketData(basketData))
+}
+
+const BasketFetchBody = async (dispatch, api, data) => {
   dispatch(fetchSavedListBasketDataStarted())
 
   try {
-    const basketData = await api.savedList.getBasket()
-    dispatch(setBasketData(basketData))
+    if (data && api) {
+      const res = await api(data)
+      ifNoDataThrowErrors(res)
+    }
 
+    await fetchBasket(dispatch)
     dispatch(fetchSavedListBasketDataSucceeded())
   } catch (error) {
     dispatch(fetchSavedListBasketDataFailed())
   }
+}
+
+export const fetchSavedListsBasket = () => async (dispatch) => {
+  BasketFetchBody(dispatch)
 }
 
 export const fetchSavedLists = () => async (dispatch) => {
@@ -93,42 +105,15 @@ export const fetchSavedLists = () => async (dispatch) => {
 }
 
 export const postSavedListsBasket = (data) => async (dispatch) => {
-  dispatch(fetchSavedListBasketDataStarted())
-
-  try {
-    const res = await api.savedList.postBasketSavedLists(data)
-
-    ifNoDataThrowErrors(res)
-    dispatch(fetchSavedListBasketDataSucceeded())
-  } catch (error) {
-    dispatch(fetchSavedListBasketDataFailed())
-  }
+  BasketFetchBody(dispatch, api.savedList.postBasketSavedLists, data)
 }
 
 export const putSavedListsBasket = (data) => async (dispatch) => {
-  dispatch(fetchSavedListBasketDataStarted())
-
-  try {
-    const res = await api.savedList.putBasketSavedLists(data)
-
-    ifNoDataThrowErrors(res)
-    dispatch(fetchSavedListBasketDataSucceeded())
-  } catch (error) {
-    dispatch(fetchSavedListBasketDataFailed())
-  }
+  BasketFetchBody(dispatch, api.savedList.putBasketSavedLists, data)
 }
 
 export const deleteSavedListsBasket = ({ id, data }) => async (dispatch) => {
-  dispatch(fetchSavedListBasketDataStarted())
-
-  try {
-    const res = await api.savedList.deleteBasketSavedLists({ id, data })
-
-    ifNoDataThrowErrors(res)
-    dispatch(fetchSavedListBasketDataSucceeded())
-  } catch (error) {
-    dispatch(fetchSavedListBasketDataFailed())
-  }
+  BasketFetchBody(dispatch, api.savedList.deleteBasketSavedLists, { id, data })
 }
 
 export const selectSavedListData = (state) => state.savedList.data

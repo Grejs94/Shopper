@@ -96,7 +96,8 @@ export const deleteHistoryBasket = ({ id }) => async (dispatch) => {
     const res = await api.history.deleteHistory({ id })
 
     ifNoDataThrowErrors(res)
-    dispatch(deleteHistorySucceeded())
+    await dispatch(deleteHistorySucceeded())
+    await dispatch(fetchHistoryBasket())
   } catch (error) {
     dispatch(deleteHistoryFailed())
   }

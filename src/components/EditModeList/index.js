@@ -86,6 +86,11 @@ const EditModeList = ({
                   id: item.id,
                 }),
               )
+
+              toast.success(
+                `The "${item.name}" 
+                has been successfully deleted`,
+              )
             }
           }
         } else if (

@@ -1107,7 +1107,24 @@
       "parentCategoryId": "4"
     }
   ],
-  "basketGroceries": [],
+  "basketGroceries": [
+    {
+      "id": "1",
+      "name": "pepper",
+      "categoryId": "1",
+      "parentCategoryId": "1",
+      "showInShop": true,
+      "value": "1"
+    },
+    {
+      "id": "2",
+      "name": "tomato",
+      "categoryId": "1",
+      "parentCategoryId": "1",
+      "showInShop": true,
+      "value": "2"
+    }
+  ],
   "basketProducts": [],
   "basketDishes": [],
   "basketSavedLists": [],
@@ -4885,6 +4902,32 @@
         }
       ],
       "id": 12
+    },
+    {
+      "saved": 1608277868114,
+      "DateToShow": "18.12.202",
+      "groceries": [
+        {
+          "id": "1",
+          "name": "pepper",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "2",
+          "name": "tomato",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "2"
+        }
+      ],
+      "products": [],
+      "dishes": [],
+      "savedLists": [],
+      "id": 13
     }
   ],
   "settings": {

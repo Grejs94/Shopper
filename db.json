@@ -1107,306 +1107,10 @@
       "parentCategoryId": "4"
     }
   ],
-  "basketGroceries": [
-    {
-      "id": "1",
-      "name": "pepper",
-      "categoryId": "1",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "52"
-    },
-    {
-      "id": "2",
-      "name": "tomato",
-      "categoryId": "1",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "32"
-    },
-    {
-      "id": "4",
-      "name": "onion",
-      "categoryId": "1",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "13"
-    },
-    {
-      "id": "52",
-      "name": "Apple",
-      "categoryId": "2",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "10"
-    },
-    {
-      "id": "5",
-      "name": "lettuce",
-      "categoryId": "1",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "19"
-    },
-    {
-      "id": "7",
-      "name": "courgette",
-      "categoryId": "1",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "17"
-    },
-    {
-      "id": "402",
-      "name": "Oatmeal",
-      "categoryId": "9",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "2"
-    },
-    {
-      "id": "508",
-      "name": "sausage",
-      "categoryId": "11",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "1"
-    },
-    {
-      "id": "103",
-      "name": "yoghurt",
-      "categoryId": "3",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "6"
-    },
-    {
-      "id": "200",
-      "name": "still water",
-      "categoryId": "5",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "1"
-    },
-    {
-      "id": "207",
-      "name": "coca cola",
-      "categoryId": "5",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "1"
-    },
-    {
-      "id": "152",
-      "name": "chicken fillet",
-      "categoryId": "4",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "1"
-    },
-    {
-      "id": "53",
-      "name": "orange",
-      "categoryId": "2",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "1"
-    },
-    {
-      "id": "51",
-      "name": "banana",
-      "categoryId": "2",
-      "parentCategoryId": "1",
-      "showInShop": true,
-      "value": "1"
-    }
-  ],
-  "basketProducts": [
-    {
-      "id": "556",
-      "name": "moisturizing cream",
-      "categoryId": "30",
-      "parentCategoryId": "2",
-      "showInShop": true,
-      "value": "1"
-    },
-    {
-      "id": "616",
-      "name": "toilet cubes",
-      "categoryId": "31",
-      "parentCategoryId": "2",
-      "showInShop": true,
-      "value": "1"
-    },
-    {
-      "id": "555",
-      "name": "hair spray",
-      "categoryId": "30",
-      "parentCategoryId": "2",
-      "showInShop": true,
-      "value": "4"
-    },
-    {
-      "id": "553",
-      "name": "Toothpaste",
-      "categoryId": "30",
-      "parentCategoryId": "2",
-      "showInShop": true,
-      "value": "1"
-    },
-    {
-      "id": "602",
-      "name": "cloth rags",
-      "categoryId": "31",
-      "parentCategoryId": "2",
-      "showInShop": true,
-      "value": "1"
-    },
-    {
-      "id": "617",
-      "name": "bubble bath",
-      "categoryId": "31",
-      "parentCategoryId": "2",
-      "showInShop": true,
-      "value": "2"
-    },
-    {
-      "id": "606",
-      "name": "dishwasher rinse aid",
-      "categoryId": "31",
-      "parentCategoryId": "2",
-      "showInShop": true,
-      "value": "1"
-    },
-    {
-      "id": "612",
-      "name": "aromatic wipes for the dryer",
-      "categoryId": "31",
-      "parentCategoryId": "2",
-      "showInShop": true,
-      "value": "1"
-    },
-    {
-      "id": "551",
-      "name": "shower gel",
-      "categoryId": "30",
-      "parentCategoryId": "2",
-      "showInShop": true,
-      "value": "2"
-    }
-  ],
+  "basketGroceries": [],
+  "basketProducts": [],
   "basketDishes": [],
-  "basketSavedLists": [
-    {
-      "id": "2",
-      "name": "example list second",
-      "categoryId": "1",
-      "parentCategoryId": "4",
-      "items": [
-        {
-          "id": "3",
-          "name": "potato",
-          "categoryId": "1",
-          "parentCategoryId": "1",
-          "showInShop": true,
-          "value": "1"
-        },
-        {
-          "id": "4",
-          "name": "onion",
-          "categoryId": "1",
-          "parentCategoryId": "1",
-          "showInShop": true,
-          "value": "1"
-        },
-        {
-          "id": "5",
-          "name": "lettuce",
-          "categoryId": "1",
-          "parentCategoryId": "1",
-          "showInShop": true,
-          "value": "1"
-        },
-        {
-          "id": "6",
-          "name": "cucumber",
-          "categoryId": "1",
-          "parentCategoryId": "1",
-          "showInShop": true,
-          "value": "1"
-        }
-      ],
-      "dishes": [
-        {
-          "id": "1",
-          "name": "rosół",
-          "categoryId": "2",
-          "parentCategoryId": "3",
-          "value": "1",
-          "itemsIncluded": [
-            {
-              "id": "4",
-              "name": "onion",
-              "categoryId": "1",
-              "parentCategoryId": "1",
-              "showInShop": true,
-              "value": "5"
-            },
-            {
-              "id": "103",
-              "name": "yoghurt",
-              "categoryId": "3",
-              "parentCategoryId": "1",
-              "showInShop": true,
-              "value": "1"
-            },
-            {
-              "id": "350",
-              "name": "kucharek",
-              "categoryId": "8",
-              "parentCategoryId": "1",
-              "showInShop": true,
-              "value": "2"
-            }
-          ]
-        },
-        {
-          "id": "2",
-          "name": "grzybowa",
-          "categoryId": "2",
-          "parentCategoryId": "3",
-          "value": "1",
-          "itemsIncluded": [
-            {
-              "id": "5",
-              "name": "lettuce",
-              "categoryId": "1",
-              "parentCategoryId": "1",
-              "showInShop": true,
-              "value": "1"
-            },
-            {
-              "id": "6",
-              "name": "cucumber",
-              "categoryId": "1",
-              "parentCategoryId": "1",
-              "showInShop": true,
-              "value": "1"
-            },
-            {
-              "id": "7",
-              "name": "courgette",
-              "categoryId": "1",
-              "parentCategoryId": "1",
-              "showInShop": true,
-              "value": "1"
-            }
-          ]
-        }
-      ],
-      "value": "3"
-    }
-  ],
+  "basketSavedLists": [],
   "searchList": {
     "items": [
       {
@@ -4571,6 +4275,616 @@
         }
       ],
       "id": 10
+    },
+    {
+      "saved": 1608276283958,
+      "DateToShow": "18.12.202",
+      "groceries": [
+        {
+          "id": "1",
+          "name": "pepper",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "52"
+        },
+        {
+          "id": "2",
+          "name": "tomato",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "32"
+        },
+        {
+          "id": "4",
+          "name": "onion",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "13"
+        },
+        {
+          "id": "52",
+          "name": "Apple",
+          "categoryId": "2",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "10"
+        },
+        {
+          "id": "5",
+          "name": "lettuce",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "18"
+        },
+        {
+          "id": "7",
+          "name": "courgette",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "17"
+        },
+        {
+          "id": "402",
+          "name": "Oatmeal",
+          "categoryId": "9",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "2"
+        },
+        {
+          "id": "508",
+          "name": "sausage",
+          "categoryId": "11",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "103",
+          "name": "yoghurt",
+          "categoryId": "3",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "6"
+        },
+        {
+          "id": "200",
+          "name": "still water",
+          "categoryId": "5",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "207",
+          "name": "coca cola",
+          "categoryId": "5",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "152",
+          "name": "chicken fillet",
+          "categoryId": "4",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "53",
+          "name": "orange",
+          "categoryId": "2",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "51",
+          "name": "banana",
+          "categoryId": "2",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        }
+      ],
+      "products": [
+        {
+          "id": "556",
+          "name": "moisturizing cream",
+          "categoryId": "30",
+          "parentCategoryId": "2",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "616",
+          "name": "toilet cubes",
+          "categoryId": "31",
+          "parentCategoryId": "2",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "555",
+          "name": "hair spray",
+          "categoryId": "30",
+          "parentCategoryId": "2",
+          "showInShop": true,
+          "value": "4"
+        },
+        {
+          "id": "553",
+          "name": "Toothpaste",
+          "categoryId": "30",
+          "parentCategoryId": "2",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "602",
+          "name": "cloth rags",
+          "categoryId": "31",
+          "parentCategoryId": "2",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "617",
+          "name": "bubble bath",
+          "categoryId": "31",
+          "parentCategoryId": "2",
+          "showInShop": true,
+          "value": "2"
+        },
+        {
+          "id": "606",
+          "name": "dishwasher rinse aid",
+          "categoryId": "31",
+          "parentCategoryId": "2",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "612",
+          "name": "aromatic wipes for the dryer",
+          "categoryId": "31",
+          "parentCategoryId": "2",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "551",
+          "name": "shower gel",
+          "categoryId": "30",
+          "parentCategoryId": "2",
+          "showInShop": true,
+          "value": "2"
+        }
+      ],
+      "dishes": [],
+      "savedLists": [
+        {
+          "id": "2",
+          "name": "example list second",
+          "categoryId": "1",
+          "parentCategoryId": "4",
+          "items": [
+            {
+              "id": "3",
+              "name": "potato",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "4",
+              "name": "onion",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "5",
+              "name": "lettuce",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "6",
+              "name": "cucumber",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            }
+          ],
+          "dishes": [
+            {
+              "id": "1",
+              "name": "rosół",
+              "categoryId": "2",
+              "parentCategoryId": "3",
+              "value": "1",
+              "itemsIncluded": [
+                {
+                  "id": "4",
+                  "name": "onion",
+                  "categoryId": "1",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "5"
+                },
+                {
+                  "id": "103",
+                  "name": "yoghurt",
+                  "categoryId": "3",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "1"
+                },
+                {
+                  "id": "350",
+                  "name": "kucharek",
+                  "categoryId": "8",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "grzybowa",
+              "categoryId": "2",
+              "parentCategoryId": "3",
+              "value": "1",
+              "itemsIncluded": [
+                {
+                  "id": "5",
+                  "name": "lettuce",
+                  "categoryId": "1",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "1"
+                },
+                {
+                  "id": "6",
+                  "name": "cucumber",
+                  "categoryId": "1",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "1"
+                },
+                {
+                  "id": "7",
+                  "name": "courgette",
+                  "categoryId": "1",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "1"
+                }
+              ]
+            }
+          ],
+          "value": "3"
+        }
+      ],
+      "id": 11
+    },
+    {
+      "saved": 1608276386138,
+      "DateToShow": "18.12.202",
+      "groceries": [
+        {
+          "id": "1",
+          "name": "pepper",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "52"
+        },
+        {
+          "id": "2",
+          "name": "tomato",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "32"
+        },
+        {
+          "id": "4",
+          "name": "onion",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "13"
+        },
+        {
+          "id": "52",
+          "name": "Apple",
+          "categoryId": "2",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "10"
+        },
+        {
+          "id": "5",
+          "name": "lettuce",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "18"
+        },
+        {
+          "id": "7",
+          "name": "courgette",
+          "categoryId": "1",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "17"
+        },
+        {
+          "id": "402",
+          "name": "Oatmeal",
+          "categoryId": "9",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "2"
+        },
+        {
+          "id": "508",
+          "name": "sausage",
+          "categoryId": "11",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "103",
+          "name": "yoghurt",
+          "categoryId": "3",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "6"
+        },
+        {
+          "id": "200",
+          "name": "still water",
+          "categoryId": "5",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "207",
+          "name": "coca cola",
+          "categoryId": "5",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "152",
+          "name": "chicken fillet",
+          "categoryId": "4",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "53",
+          "name": "orange",
+          "categoryId": "2",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "51",
+          "name": "banana",
+          "categoryId": "2",
+          "parentCategoryId": "1",
+          "showInShop": true,
+          "value": "1"
+        }
+      ],
+      "products": [
+        {
+          "id": "556",
+          "name": "moisturizing cream",
+          "categoryId": "30",
+          "parentCategoryId": "2",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "616",
+          "name": "toilet cubes",
+          "categoryId": "31",
+          "parentCategoryId": "2",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "555",
+          "name": "hair spray",
+          "categoryId": "30",
+          "parentCategoryId": "2",
+          "showInShop": true,
+          "value": "4"
+        },
+        {
+          "id": "553",
+          "name": "Toothpaste",
+          "categoryId": "30",
+          "parentCategoryId": "2",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "602",
+          "name": "cloth rags",
+          "categoryId": "31",
+          "parentCategoryId": "2",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "617",
+          "name": "bubble bath",
+          "categoryId": "31",
+          "parentCategoryId": "2",
+          "showInShop": true,
+          "value": "2"
+        },
+        {
+          "id": "606",
+          "name": "dishwasher rinse aid",
+          "categoryId": "31",
+          "parentCategoryId": "2",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "612",
+          "name": "aromatic wipes for the dryer",
+          "categoryId": "31",
+          "parentCategoryId": "2",
+          "showInShop": true,
+          "value": "1"
+        },
+        {
+          "id": "551",
+          "name": "shower gel",
+          "categoryId": "30",
+          "parentCategoryId": "2",
+          "showInShop": true,
+          "value": "2"
+        }
+      ],
+      "dishes": [],
+      "savedLists": [
+        {
+          "id": "2",
+          "name": "example list second",
+          "categoryId": "1",
+          "parentCategoryId": "4",
+          "items": [
+            {
+              "id": "3",
+              "name": "potato",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "4",
+              "name": "onion",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "5",
+              "name": "lettuce",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            },
+            {
+              "id": "6",
+              "name": "cucumber",
+              "categoryId": "1",
+              "parentCategoryId": "1",
+              "showInShop": true,
+              "value": "1"
+            }
+          ],
+          "dishes": [
+            {
+              "id": "1",
+              "name": "rosół",
+              "categoryId": "2",
+              "parentCategoryId": "3",
+              "value": "1",
+              "itemsIncluded": [
+                {
+                  "id": "4",
+                  "name": "onion",
+                  "categoryId": "1",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "5"
+                },
+                {
+                  "id": "103",
+                  "name": "yoghurt",
+                  "categoryId": "3",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "1"
+                },
+                {
+                  "id": "350",
+                  "name": "kucharek",
+                  "categoryId": "8",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "2"
+                }
+              ]
+            },
+            {
+              "id": "2",
+              "name": "grzybowa",
+              "categoryId": "2",
+              "parentCategoryId": "3",
+              "value": "1",
+              "itemsIncluded": [
+                {
+                  "id": "5",
+                  "name": "lettuce",
+                  "categoryId": "1",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "1"
+                },
+                {
+                  "id": "6",
+                  "name": "cucumber",
+                  "categoryId": "1",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "1"
+                },
+                {
+                  "id": "7",
+                  "name": "courgette",
+                  "categoryId": "1",
+                  "parentCategoryId": "1",
+                  "showInShop": true,
+                  "value": "1"
+                }
+              ]
+            }
+          ],
+          "value": "3"
+        }
+      ],
+      "id": 12
     }
   ],
   "settings": {

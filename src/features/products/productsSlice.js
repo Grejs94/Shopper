@@ -60,11 +60,6 @@ const ifNoDataThrowErrors = (res) => {
   }
 }
 
-const fetchBasket = async (dispatch) => {
-  const basketData = await api.products.getBasketProducts()
-  await dispatch(setBasketData(basketData))
-}
-
 const BasketFetchBody = async (dispatch, api, data) => {
   dispatch(fetchProductsBasketDataStarted())
 
@@ -74,7 +69,8 @@ const BasketFetchBody = async (dispatch, api, data) => {
       ifNoDataThrowErrors(res)
     }
 
-    await fetchBasket(dispatch)
+    const basketData = await api.products.getBasketProducts()
+    await dispatch(setBasketData(basketData))
     dispatch(fetchProductsBasketDataSucceeded())
   } catch (error) {
     dispatch(fetchProductsBasketDataFailed())

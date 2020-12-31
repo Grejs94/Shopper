@@ -22,7 +22,6 @@ export const products = {
       `${config.url}/${urlBasket}`,
       getPOSTparams(data),
     )
-
     return await response.json()
   },
   putBasketProducts: async ({ data, id }) => {
